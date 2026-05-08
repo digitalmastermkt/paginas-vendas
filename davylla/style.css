@@ -370,45 +370,25 @@ button {
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(212, 165, 116, 0.15);
 }
 
-.btn-narracao,
 .btn-proximo {
   font-family: var(--serif-texto);
   font-size: 0.95rem;
   letter-spacing: 0.05em;
   padding: 0.85rem 1.5rem;
-  border: 1px solid rgba(212, 165, 116, 0.4);
+  border: 1px solid var(--dourado);
   border-radius: 2px;
-  background: transparent;
-  color: var(--offwhite);
   transition: all 350ms ease;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-}
-
-.btn-narracao:hover,
-.btn-narracao:focus-visible {
-  border-color: var(--dourado);
-  background: rgba(212, 165, 116, 0.08);
-  color: var(--dourado-claro);
-}
-
-.btn-narracao .icone-play,
-.btn-narracao .icone-pause {
-  color: var(--dourado);
-  font-size: 0.85em;
-}
-
-.btn-proximo {
   background: var(--dourado);
   color: var(--preto);
-  border-color: var(--dourado);
   font-weight: 500;
 }
 
