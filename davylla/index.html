@@ -20,10 +20,6 @@
   Imagens: geradas via Gemini Imagen 4 (sem rostos reconheciveis,
   estetica documental cinematografica).
 
-  Narracao dos capitulos: a ser substituida pelos arquivos cap1.mp3 a
-  cap6.mp3 (ElevenLabs, voz clonada do pai). Atualmente sao placeholders
-  silenciosos de 1s.
-
   Foto de assinatura: assets/foto-assinatura.jpg e placeholder. O Salatiel
   vai substituir manualmente pela foto dele com a Davylla.
 -->
@@ -31,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css?v=2" />
 </head>
 <body>
 
@@ -78,15 +74,9 @@
       <p>Era voce que tinha vindo me ensinar o que e esperar com fe.</p>
     </div>
     <div class="cap-controles">
-      <button class="btn-narracao" data-cap="1" aria-label="Ouvir narracao do capitulo 1">
-        <span class="icone-play">&#9654;</span>
-        <span class="icone-pause" hidden>&#10074;&#10074;</span>
-        <span class="btn-narracao-label">Ouvir narracao</span>
-      </button>
       <button class="btn-proximo" data-proximo="2">Proximo capitulo &rarr;</button>
     </div>
   </div>
-  <audio class="audio-narracao" id="narracao-1" src="assets/audio/cap1.mp3" preload="none"></audio>
 </section>
 
 <section class="capitulo" id="cap-2" data-capitulo="2" aria-hidden="true">
@@ -104,15 +94,9 @@
       <p>Eu nao sabia ainda quem voce seria. Nao sabia da sua voz, do seu jeito, dos seus sonhos. Mas eu ja sabia uma coisa: voce era um presente. E presente de Deus a gente nao recusa. A gente recebe de joelho.</p>
     </div>
     <div class="cap-controles">
-      <button class="btn-narracao" data-cap="2" aria-label="Ouvir narracao do capitulo 2">
-        <span class="icone-play">&#9654;</span>
-        <span class="icone-pause" hidden>&#10074;&#10074;</span>
-        <span class="btn-narracao-label">Ouvir narracao</span>
-      </button>
       <button class="btn-proximo" data-proximo="3">Proximo capitulo &rarr;</button>
     </div>
   </div>
-  <audio class="audio-narracao" id="narracao-2" src="assets/audio/cap2.mp3" preload="none"></audio>
 </section>
 
 <section class="capitulo" id="cap-3" data-capitulo="3" aria-hidden="true">
@@ -131,15 +115,9 @@
       <p>Foram oito dias ate eu poder te ver. Oito dias contando hora por hora. E quando eu finalmente te peguei no colo... eu entendi que aquela espera tinha valido cada minuto.</p>
     </div>
     <div class="cap-controles">
-      <button class="btn-narracao" data-cap="3" aria-label="Ouvir narracao do capitulo 3">
-        <span class="icone-play">&#9654;</span>
-        <span class="icone-pause" hidden>&#10074;&#10074;</span>
-        <span class="btn-narracao-label">Ouvir narracao</span>
-      </button>
       <button class="btn-proximo" data-proximo="4">Proximo capitulo &rarr;</button>
     </div>
   </div>
-  <audio class="audio-narracao" id="narracao-3" src="assets/audio/cap3.mp3" preload="none"></audio>
 </section>
 
 <section class="capitulo" id="cap-4" data-capitulo="4" aria-hidden="true">
@@ -158,15 +136,9 @@
       <p>Voce sempre vai poder voltar.</p>
     </div>
     <div class="cap-controles">
-      <button class="btn-narracao" data-cap="4" aria-label="Ouvir narracao do capitulo 4">
-        <span class="icone-play">&#9654;</span>
-        <span class="icone-pause" hidden>&#10074;&#10074;</span>
-        <span class="btn-narracao-label">Ouvir narracao</span>
-      </button>
       <button class="btn-proximo" data-proximo="5">Proximo capitulo &rarr;</button>
     </div>
   </div>
-  <audio class="audio-narracao" id="narracao-4" src="assets/audio/cap4.mp3" preload="none"></audio>
 </section>
 
 <section class="capitulo" id="cap-5" data-capitulo="5" aria-hidden="true">
@@ -184,15 +156,9 @@
       <p>E voce tem proposito. Tem alguma coisa nesse mundo que so voce pode fazer, do jeito que so voce sabe fazer. Eu nao sei ainda qual e. As vezes voce tambem nao sabe. Mas existe. E o tempo vai mostrar.</p>
     </div>
     <div class="cap-controles">
-      <button class="btn-narracao" data-cap="5" aria-label="Ouvir narracao do capitulo 5">
-        <span class="icone-play">&#9654;</span>
-        <span class="icone-pause" hidden>&#10074;&#10074;</span>
-        <span class="btn-narracao-label">Ouvir narracao</span>
-      </button>
       <button class="btn-proximo" data-proximo="6">Proximo capitulo &rarr;</button>
     </div>
   </div>
-  <audio class="audio-narracao" id="narracao-5" src="assets/audio/cap5.mp3" preload="none"></audio>
 </section>
 
 <section class="capitulo" id="cap-6" data-capitulo="6" aria-hidden="true">
@@ -212,15 +178,9 @@
       <p class="continua">E continua sendo, todo dia.</p>
     </div>
     <div class="cap-controles">
-      <button class="btn-narracao" data-cap="6" aria-label="Ouvir narracao do capitulo 6">
-        <span class="icone-play">&#9654;</span>
-        <span class="icone-pause" hidden>&#10074;&#10074;</span>
-        <span class="btn-narracao-label">Ouvir narracao</span>
-      </button>
       <button class="btn-proximo btn-final" data-proximo="final">Continuar &rarr;</button>
     </div>
   </div>
-  <audio class="audio-narracao" id="narracao-6" src="assets/audio/cap6.mp3" preload="none"></audio>
 </section>
 
 <!-- ============== TELA FINAL: ASSINATURA ============== -->
@@ -239,6 +199,6 @@
 <!-- Camada de fade preto entre transicoes -->
 <div id="fade-overlay" aria-hidden="true"></div>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>
