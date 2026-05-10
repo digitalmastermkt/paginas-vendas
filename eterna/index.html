@@ -434,6 +434,14 @@
     text-decoration-color: var(--gold-dim);
   }
   .aula-content a:hover { color: var(--gold); }
+  .aula-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
 
   .aula-foot {
     margin-top: 64px;
@@ -455,6 +463,11 @@
     .logout { position: static; display: inline-block; margin-bottom: 16px; }
     .aula-content { font-size: 16px; line-height: 1.7; }
     .aula-content blockquote { padding: 16px 18px; font-size: 16px; }
+    .aula-content img {
+      border-radius: 8px;
+      margin: 1rem auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
   }
 </style>
 </head>
@@ -1324,8 +1337,14 @@ function openAula(num) {
 
 /* ====== INIT ====== */
 document.addEventListener('DOMContentLoaded', () => {
-  // marked config
-  marked.setOptions({ gfm: true, breaks: false });
+  // marked config (renderer custom pra imagens responsivas + lazy loading)
+  const renderer = new marked.Renderer();
+  renderer.image = (href, title, text) => {
+    const altText = text || '';
+    const titleAttr = title ? ` title="${title}"` : '';
+    return `<img src="${href}" alt="${altText}"${titleAttr} loading="lazy" />`;
+  };
+  marked.setOptions({ gfm: true, breaks: false, renderer });
 
   // Preview banner (admin)
   if (PREVIEW_MODE) {
