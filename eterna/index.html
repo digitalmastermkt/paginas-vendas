@@ -6,7 +6,6 @@
 <title>Eterna Essência — Estudo Bíblico Musical</title>
 <meta name="description" content="12 encontros de formação espiritual e musical para a banda Eterna Essência. Por Salatiel Batista.">
 <meta name="theme-color" content="#0a0a0a">
-<meta name="robots" content="noindex,nofollow">
 
 <meta property="og:title" content="Eterna Essência — Estudo Bíblico Musical">
 <meta property="og:description" content="12 encontros de formação espiritual e musical.">
@@ -461,6 +460,11 @@
 </head>
 <body>
 
+<!-- ============== BANNER PREVIEW MODE (injetado via JS se ?preview=admin) ============== -->
+<div id="preview-banner" style="display:none; background:#c9a96e; color:#0a0a0a; padding:8px; text-align:center; font-size:12px; font-weight:600; position:sticky; top:0; z-index:9999;">
+  🔓 MODO PREVIEW — você está vendo conteúdo bloqueado pra alunos
+</div>
+
 <!-- ============== VIEW LOGIN ============== -->
 <div id="view-login" class="view">
   <div class="login-wrap">
@@ -522,6 +526,12 @@ const AULAS = [
   { num: 11, titulo: 'Voz própria',    status: 'locked' },
   { num: 12, titulo: 'Entrega',        status: 'locked' },
 ];
+
+/* ====== PREVIEW MODE (admin bypass via ?preview=admin) ====== */
+const PREVIEW_MODE = new URLSearchParams(window.location.search).get('preview') === 'admin';
+if (PREVIEW_MODE) {
+  console.log('🔓 Preview mode ativado — todas aulas desbloqueadas');
+}
 
 /* ====== CONTEUDO AULA 1 (markdown embedded) ====== */
 const AULA_01_MD = `# Aula 1 — ORIGEM
@@ -1271,18 +1281,20 @@ function renderGrid() {
   const grid = document.getElementById('cards-grid');
   grid.innerHTML = '';
   AULAS.forEach(a => {
+    // Em PREVIEW_MODE, todas as aulas aparecem como desbloqueadas (sem alterar a.status original)
+    const effectiveUnlocked = PREVIEW_MODE || a.status === 'unlocked';
     const card = document.createElement('div');
-    card.className = 'card ' + (a.status === 'unlocked' ? 'unlocked' : 'locked');
+    card.className = 'card ' + (effectiveUnlocked ? 'unlocked' : 'locked');
     card.innerHTML = `
       <div class="card-num">Aula ${String(a.num).padStart(2,'0')}</div>
       <div class="card-title">${a.titulo}</div>
       <div class="card-status">
-        ${a.status === 'unlocked'
+        ${effectiveUnlocked
           ? '<span class="lock-icon">→</span> Disponível'
           : '<span class="lock-icon">🔒</span> Em breve'}
       </div>
     `;
-    if (a.status === 'unlocked') {
+    if (effectiveUnlocked) {
       card.addEventListener('click', () => openAula(a.num));
     }
     grid.appendChild(card);
@@ -1298,9 +1310,10 @@ function openAula(num) {
   };
   const md = CONTEUDOS[num];
   if (!md) return;
-  // Verificar status no array AULAS (so abre se unlocked)
+  // Verificar status no array AULAS (so abre se unlocked, exceto em PREVIEW_MODE)
   const aula = AULAS.find(a => a.num === num);
-  if (!aula || aula.status !== 'unlocked') return;
+  if (!aula) return;
+  if (!PREVIEW_MODE && aula.status !== 'unlocked') return;
   const html = marked.parse(md);
   document.getElementById('aula-render').innerHTML = html;
   // Atualizar rodape com numero da aula
@@ -1313,6 +1326,12 @@ function openAula(num) {
 document.addEventListener('DOMContentLoaded', () => {
   // marked config
   marked.setOptions({ gfm: true, breaks: false });
+
+  // Preview banner (admin)
+  if (PREVIEW_MODE) {
+    const banner = document.getElementById('preview-banner');
+    if (banner) banner.style.display = 'block';
+  }
 
   // login
   document.getElementById('login-form').addEventListener('submit', (e) => {
