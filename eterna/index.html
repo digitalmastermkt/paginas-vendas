@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eterna Essência — Estudo Bíblico Musical</title>
+<meta name="description" content="12 encontros de formação espiritual e musical para a banda Eterna Essência. Por Salatiel Batista.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="noindex,nofollow">
+
+<meta property="og:title" content="Eterna Essência — Estudo Bíblico Musical">
+<meta property="og:description" content="12 encontros de formação espiritual e musical.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Eterna Essência">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0a0a0a;
+    --bg-soft: #14111a;
+    --bg-card: #1a1620;
+    --bg-card-hover: #221c2a;
+    --border: #2a2430;
+    --border-strong: #3a3245;
+    --paper: #f5f3ee;
+    --paper-dim: #cfccc4;
+    --paper-faint: #8a8780;
+    --gold: #c9a96e;
+    --gold-bright: #e2c088;
+    --gold-dim: #8a7547;
+    --purple: #4a1d5c;
+    --purple-bright: #7a3892;
+    --purple-dim: #2e1238;
+    --crimson: #c1452f;
+    --green: #4a8c5a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--paper);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(201, 169, 110, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 85% 100%, rgba(74, 29, 92, 0.18) 0%, transparent 50%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  /* ============== LOGIN ============== */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  .login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .login-card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 18px;
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 80px rgba(74, 29, 92, 0.15);
+  }
+  .login-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(74, 29, 92, 0.25);
+    color: var(--gold-bright);
+    border: 1px solid var(--purple);
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .login-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .login-sub {
+    color: var(--paper-dim);
+    font-size: 14px;
+    margin-bottom: 28px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .login-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    color: var(--paper);
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  .login-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.15);
+  }
+  .login-btn {
+    width: 100%;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold), var(--gold-bright));
+    border: none;
+    border-radius: 10px;
+    color: #0a0a0a;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+  .login-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201, 169, 110, 0.25); }
+  .login-btn:active { transform: translateY(0); }
+  .login-error {
+    color: #ef6a5a;
+    font-size: 13px;
+    min-height: 20px;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .login-foot {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--paper-faint);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.3px;
+  }
+
+  /* ============== GRID ============== */
+  header.grid-hero {
+    text-align: center;
+    padding: 40px 0 32px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .grid-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(74, 29, 92, 0.25);
+    color: var(--gold-bright);
+    border: 1px solid var(--purple);
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  h1.grid-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 700;
+    letter-spacing: -1.2px;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grid-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--paper-dim);
+    max-width: 620px;
+    margin: 0 auto 16px;
+  }
+  .grid-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--paper-faint);
+    letter-spacing: 0.5px;
+  }
+  .logout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--paper-faint);
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .logout:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .card.unlocked {
+    cursor: pointer;
+    border-color: var(--gold-dim);
+  }
+  .card.unlocked:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    box-shadow: 0 12px 32px rgba(201, 169, 110, 0.18);
+    background: var(--bg-card-hover);
+  }
+  .card.locked {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--purple-dim);
+  }
+  .card.unlocked::before {
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-bright));
+  }
+  .card-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--paper-faint);
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .card.unlocked .card-num { color: var(--gold); }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: var(--paper);
+  }
+  .card-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+  .card.unlocked .card-status { color: var(--gold); }
+  .card.locked .card-status { color: var(--paper-faint); }
+  .card-status .lock-icon { font-size: 14px; }
+
+  /* ============== AULA ============== */
+  .aula-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .aula-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--paper-dim);
+    padding: 10px 16px;
+    border-radius: 99px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+    transition: all 0.2s;
+  }
+  .aula-back:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateX(-2px);
+  }
+
+  .aula-content {
+    color: var(--paper);
+    line-height: 1.75;
+    font-size: 17px;
+  }
+  .aula-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .aula-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    color: var(--gold-bright);
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .aula-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.8vw, 24px);
+    font-weight: 700;
+    color: var(--paper);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+  .aula-content h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-top: 28px;
+    margin-bottom: 10px;
+    letter-spacing: 0.2px;
+  }
+  .aula-content p {
+    margin-bottom: 18px;
+    color: var(--paper);
+  }
+  .aula-content strong {
+    color: var(--gold-bright);
+    font-weight: 700;
+  }
+  .aula-content em {
+    color: var(--paper-dim);
+    font-style: italic;
+  }
+  .aula-content blockquote {
+    margin: 24px 0;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, rgba(201, 169, 110, 0.08) 0%, rgba(74, 29, 92, 0.08) 100%);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--gold-bright);
+    line-height: 1.7;
+  }
+  .aula-content blockquote strong {
+    color: var(--gold);
+    font-style: normal;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+  }
+  .aula-content blockquote p { margin-bottom: 8px; }
+  .aula-content blockquote p:last-child { margin-bottom: 0; }
+  .aula-content ul, .aula-content ol {
+    margin: 16px 0 22px 0;
+    padding-left: 28px;
+    color: var(--paper);
+  }
+  .aula-content li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+  .aula-content li::marker { color: var(--gold); }
+  .aula-content hr {
+    margin: 40px 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+  }
+  .aula-content code {
+    background: var(--bg-card);
+    color: var(--gold-bright);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+  }
+  .aula-content a {
+    color: var(--gold-bright);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--gold-dim);
+  }
+  .aula-content a:hover { color: var(--gold); }
+
+  .aula-foot {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--paper-faint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .container { padding: 20px 16px 60px; }
+    .login-card { padding: 32px 22px; }
+    .cards { grid-template-columns: 1fr; gap: 14px; }
+    header.grid-hero { padding: 24px 0 24px; margin-bottom: 28px; }
+    .logout { position: static; display: inline-block; margin-bottom: 16px; }
+    .aula-content { font-size: 16px; line-height: 1.7; }
+    .aula-content blockquote { padding: 16px 18px; font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== VIEW LOGIN ============== -->
+<div id="view-login" class="view">
+  <div class="login-wrap">
+    <div class="login-card">
+      <span class="login-badge">Acesso restrito</span>
+      <h1 class="login-title">Eterna Essência</h1>
+      <p class="login-sub">"Cantai-lhe um cântico novo; tocai bem e com júbilo." — Sl 33:3</p>
+      <form class="login-form" id="login-form" autocomplete="off">
+        <input id="login-pass" class="login-input" type="password" placeholder="Senha de acesso" autocomplete="current-password" required>
+        <button class="login-btn" type="submit">Entrar no estudo</button>
+        <div class="login-error" id="login-error"></div>
+      </form>
+      <div class="login-foot">12 encontros — Salatiel Batista</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============== VIEW GRID ============== -->
+<div id="view-grid" class="view">
+  <div class="container">
+    <header class="grid-hero">
+      <button class="logout" id="logout-btn" type="button">Sair</button>
+      <span class="grid-badge">Estudo bíblico musical</span>
+      <h1 class="grid-title">Eterna Essência</h1>
+      <p class="grid-sub">12 encontros de formação espiritual e musical para a banda</p>
+      <div class="grid-meta">Por Salatiel Batista — versão ARA</div>
+    </header>
+    <div class="cards" id="cards-grid"></div>
+  </div>
+</div>
+
+<!-- ============== VIEW AULA ============== -->
+<div id="view-aula" class="view">
+  <div class="container">
+    <div class="aula-wrap">
+      <button class="aula-back" id="aula-back-btn" type="button">← Voltar para o índice</button>
+      <article class="aula-content" id="aula-render"></article>
+      <div class="aula-foot">Eterna Essência — Aula 1</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ====== CONFIG ====== */
+const SENHA = 'essencia2026';
+const STORAGE_KEY = 'ee_auth_v1';
+
+const AULAS = [
+  { num: 1,  titulo: 'Origem',         status: 'unlocked' },
+  { num: 2,  titulo: 'Linguagem',      status: 'locked' },
+  { num: 3,  titulo: 'Tempo',          status: 'locked' },
+  { num: 4,  titulo: 'Pulso',          status: 'locked' },
+  { num: 5,  titulo: 'Construção',     status: 'locked' },
+  { num: 6,  titulo: 'Cor',            status: 'locked' },
+  { num: 7,  titulo: 'Sistema',        status: 'locked' },
+  { num: 8,  titulo: 'Função',         status: 'locked' },
+  { num: 9,  titulo: 'Cor avançada',   status: 'locked' },
+  { num: 10, titulo: 'Levada',         status: 'locked' },
+  { num: 11, titulo: 'Voz própria',    status: 'locked' },
+  { num: 12, titulo: 'Entrega',        status: 'locked' },
+];
+
+/* ====== CONTEUDO AULA 1 (markdown embedded) ====== */
+const AULA_01_MD = `# Aula 1 — ORIGEM
+## Estudo Eterna Essência | 12 Encontros de Formação Espiritual e Musical
+
+> **Tema espiritual:** Identidade do Levita — quem é o ministro de música pelo prisma bíblico
+> **Tema teórico:** O que é música — som, vibração, frequência e as 4 propriedades do som
+> **Duração:** 1h50min (com intervalo)
+> **Versão bíblica adotada na série:** Almeida Revista e Atualizada (ARA)
+
+---
+
+## 1. ABERTURA (10 min)
+
+### Boas-vindas
+
+Galera, hoje a gente começa uma jornada de 12 encontros que vai mudar a forma como vocês pisam no palco da igreja. Não é curso de música. Não é estudo bíblico. É os dois ao mesmo tempo, porque um sem o outro vira ou religiosidade sem técnica ou técnica sem alma. Eu não quero nenhum dos dois pra Eterna Essência.
+
+A proposta é simples: em cada encontro a gente passa **40 minutos no espiritual** e **40 minutos no teórico**. No fim, vocês vão entender quem vocês são diante de Deus quando seguram um instrumento, e vão entender o que está acontecendo fisicamente no ar quando vocês tocam uma nota. Os dois caminhos andam juntos. Sem um, o outro fica capenga.
+
+### Oração inicial (sugestão)
+
+> "Senhor, abre os nossos ouvidos e o nosso coração. A gente quer aprender, mas mais do que aprender, a gente quer Te servir melhor. Tira da gente qualquer vaidade de palco e qualquer preguiça de estudo. Em nome de Jesus, amém."
+
+### Leitura bíblica de abertura
+
+> **1 Crônicas 15:16** — "Davi ordenou aos chefes dos levitas que constituíssem a seus irmãos como cantores, com instrumentos musicais, com alaúdes, harpas e címbalos, para que se fizessem ouvir, levantando a voz com alegria."
+
+> **Salmo 33:3** — "Cantai-lhe um cântico novo; tocai bem e com júbilo."
+
+### Objetivo do dia em uma frase
+
+**Entender que somos LEVITAS antes de sermos músicos, e que música é uma realidade física antes de ser arte.**
+
+---
+
+## 2. BLOCO ESPIRITUAL — IDENTIDADE DO LEVITA (40 min)
+
+### 2.1 De onde vem o ministério levítico
+
+A gente precisa voltar pro Êxodo pra entender de onde sai essa figura do levita. Israel acabou de sair do Egito, Moisés tá no monte recebendo a Lei, e o povo lá embaixo faz o quê? Idolatria. Bezerro de ouro. Quando Moisés desce e vê a bagunça, ele faz uma pergunta que define tudo:
+
+> **Êxodo 32:26** — "Pôs-se Moisés em pé à entrada do arraial e disse: Quem é do SENHOR venha a mim. Então, se ajuntaram a ele todos os filhos de Levi."
+
+Presta atenção: **a tribo inteira de Levi se posicionou.** Não foi um ou dois. Foi todo mundo. E a partir desse momento, Deus separa essa tribo pra um serviço específico — não pra ser dona de terra como as outras tribos, mas pra cuidar das coisas santas.
+
+> **Números 3:6-7** — "Faze chegar a tribo de Levi e põe-na diante de Arão, o sacerdote, para que o sirvam e cumpram o seu dever para com ele e para com toda a congregação."
+
+> **Números 8:14** — "Assim, separarás os levitas dos filhos de Israel, para que os levitas sejam meus."
+
+📌 **Ponto-chave:** O levita não foi escolhido pela habilidade. Foi escolhido por **posicionamento**. Ele se colocou do lado certo num momento de crise. A unção veio depois. A função veio depois. Primeiro veio a postura.
+
+### 2.2 Davi organiza os levitas músicos
+
+Pula uns 400 anos. Davi é rei. Israel tá unido, a Arca tá voltando pra Jerusalém, e Davi faz uma coisa que ninguém tinha feito antes com esse nível de organização: ele monta uma **estrutura ministerial musical permanente**.
+
+> **1 Crônicas 23:5** — "Quatro mil porteiros e quatro mil para louvarem ao SENHOR com os instrumentos que eu fiz para o louvor."
+
+Quatro mil. Não é grupo de louvor de igreja, não. Era um exército ministerial. E Davi divide essa galera em três grandes famílias, lideradas por três caras que viraram referência:
+
+- **Asafe** — descendente de Gérson, ligado ao louvor profético. Vários salmos do livro de Salmos são dele (Salmo 50, 73-83).
+- **Hemã** — descendente de Coate, da linhagem de Samuel. Líder do louvor central diante da Arca.
+- **Jedutum** (também chamado Etã) — descendente de Merari, ligado ao louvor com instrumentos de corda.
+
+> **1 Crônicas 25:1** — "Davi, juntamente com os capitães do exército, separou para o ministério os filhos de Asafe, e de Hemã, e de Jedutum, para profetizarem com harpas, e com alaúdes, e com címbalos."
+
+Olha o verbo: **"profetizarem com harpas".** A música, na visão de Davi, não era entretenimento. Era profecia. Era voz de Deus saindo através de cordas e percussão.
+
+📌 **Ponto-chave:** Davi não pegou os melhores músicos de Israel pra montar a equipe. Ele pegou levitas — gente já consagrada — e ENSINOU música pra eles. A consagração veio antes da habilidade. Isso inverte tudo o que o mundo da música ensina.
+
+### 2.3 A diferença entre MÚSICO e LEVITA
+
+Aqui é onde eu quero que vocês prestem atenção dobrada, porque essa diferença define se a Eterna Essência vai ser uma banda gospel comum ou um ministério.
+
+**MÚSICO** é alguém que domina um instrumento. Ponto. Pode ser cristão, pode não ser. Pode tocar na igreja hoje e num bar amanhã. A identidade dele tá na técnica.
+
+**LEVITA** é alguém consagrado. A identidade dele tá em Deus. A técnica é uma ferramenta a serviço do chamado. Se você tirar o instrumento da mão dele, ele continua levita. Se você tirar a igreja de baixo dele, ele continua levita.
+
+Pergunta direta: **se a Eterna Essência acabasse amanhã, vocês continuariam adorando do mesmo jeito no quarto de vocês?** Se a resposta for sim, vocês são levitas. Se a resposta for "ah, sem palco fica meio sem graça", a gente tem trabalho a fazer.
+
+### 2.4 O ministério musical no Novo Testamento
+
+Tem gente que acha que isso de levita é coisa de Antigo Testamento e morreu com o Templo. Não morreu. Mudou de forma.
+
+> **Efésios 5:19** — "Falando entre vós com salmos, hinos e cânticos espirituais, cantando e salmodiando ao Senhor no vosso coração."
+
+> **Colossenses 3:16** — "Habite, ricamente, em vós a palavra de Cristo; instruí-vos e aconselhai-vos mutuamente em toda a sabedoria, louvando a Deus, com salmos, hinos e cânticos espirituais, com gratidão, em vosso coração."
+
+> **Apocalipse 5:9-10** — "E entoavam novo cântico, dizendo: Digno és de tomar o livro e de abrir-lhe os selos, porque foste morto e com o teu sangue compraste para Deus os que procedem de toda tribo, língua, povo e nação. E para o nosso Deus os constituíste reino e sacerdotes; e reinarão sobre a terra."
+
+No Novo Testamento, **todo crente é sacerdote** (1 Pedro 2:9). E se todo crente é sacerdote, quem se dedica ao ministério musical na igreja é levita por extensão. O templo agora é o corpo de Cristo. Os instrumentos agora são as vozes e as cordas que vocês seguram. Mas o princípio é o mesmo: consagração antes de técnica.
+
+### 2.5 Reflexão pra debate em grupo (10 min)
+
+Quero que a gente pare e converse sobre duas perguntas. Cada um responde, sem julgamento.
+
+1. **Hoje, quando você sobe no palco da Eterna Essência, você se vê mais como músico ou como levita?** Seja honesto. Não tem resposta certa, tem resposta verdadeira.
+2. **O que precisa mudar na sua rotina pessoal (oração, leitura da Palavra, vida em comunidade) pra que a sua identidade de levita fique mais forte que a sua identidade de músico?**
+
+### 2.6 Aplicação prática pessoal
+
+✅ Esta semana, antes de qualquer ensaio ou apresentação, separa **5 minutos sozinho com seu instrumento e Deus**. Sem afinador, sem partitura. Só toca o que vier no coração e fala com Ele. Isso é levita.
+
+✅ Lê o Salmo 150 todo dia até o próximo encontro. É o salmo-resumo de todo o ministério musical da Bíblia.
+
+✅ Identifica em qual das três escolas levíticas (Asafe — louvor profético, Hemã — louvor central, Jedutum — louvor instrumental de cordas) você se identifica mais hoje. Anota no caderno e a gente conversa no próximo encontro.
+
+---
+
+## 3. INTERVALO (10 min)
+
+Pega uma água, conversa com a galera, mas não vai pro celular. A gente volta inteiro pro segundo bloco.
+
+---
+
+## 4. BLOCO TEÓRICO — O QUE É MÚSICA (40 min)
+
+### 4.1 Definição amigável
+
+Música é **som organizado no tempo com intenção**. Essa é a definição mais limpa que existe. Vou destrinchar:
+
+- **Som** — a matéria-prima. Sem som, não tem música.
+- **Organizado** — tem estrutura, tem padrão, tem escolha. Barulho aleatório não é música.
+- **No tempo** — música acontece em sequência. Você não escuta uma música inteira de uma vez, você escuta ela passar.
+- **Com intenção** — alguém quis fazer aquilo. Tem propósito por trás.
+
+Quando a Eterna Essência toca "Lugar Secreto", isso é som (vozes, violão, teclado, bateria) organizado (acordes em sequência, ritmo definido) no tempo (a música dura 4 minutos) com intenção (adorar Deus). Isso é música.
+
+Quando o liquidificador da sua casa liga, é som no tempo, mas não é organizado e não tem intenção musical. Não é música.
+
+### 4.2 O fenômeno do SOM — o que tá rolando no ar
+
+Aqui muita gente trava, então vou simplificar até virar óbvio.
+
+**Som é vibração.** Ponto. Quando alguma coisa vibra (uma corda de violão, uma membrana de bateria, suas cordas vocais, o cone de uma caixa de som), essa vibração empurra as moléculas de ar que estão em volta. Essas moléculas empurram as próximas, que empurram as próximas, e isso vai criando uma **onda sonora** que se propaga pelo ar até chegar no seu ouvido.
+
+No ouvido, tem o tímpano, que é uma membraninha. A onda chega, faz o tímpano vibrar de volta, e essa vibração vira sinal elétrico que vai pro cérebro. O cérebro interpreta. Você "ouve".
+
+📌 **Ponto-chave:** Som não viaja sozinho. Som precisa de um meio (ar, água, parede). No vácuo do espaço, ninguém ouve nada — por isso filme de explosão no espaço com barulho é mentira.
+
+**Por que isso importa pra vocês?** Porque quando vocês tão no palco e o monitor de retorno tá ruim, ou o som tá embolado, vocês precisam entender que tá acontecendo uma **interferência de ondas** — várias ondas se somando ou se cancelando. Não é mágica. É física. E entendendo isso, vocês conversam melhor com o operador de som.
+
+### 4.3 As 4 propriedades do som
+
+Todo som tem 4 propriedades. Decora essas quatro porque elas vão voltar em TODA aula daqui pra frente.
+
+#### Propriedade 1: ALTURA (grave x agudo)
+
+**O que é:** se o som é grave (grosso) ou agudo (fino).
+**O que define:** a **frequência** da vibração, medida em **Hertz (Hz)**.
+**Como funciona:** quanto mais rápido a coisa vibra, mais agudo o som. Quanto mais devagar, mais grave.
+
+Exemplo prático da banda:
+- Corda mais grossa do contrabaixo (E1) vibra a aproximadamente **41 Hz** — som bem grave.
+- Corda mais fina do violão (E4) vibra a **329 Hz** — som mais agudo.
+- A nota Lá do diapasão (A4) que serve de referência pra afinação universal vibra a **440 Hz**.
+
+O ouvido humano saudável escuta de **20 Hz até 20.000 Hz**. Abaixo disso é infrassom (você sente, não ouve), acima é ultrassom (cachorro ouve, você não).
+
+#### Propriedade 2: INTENSIDADE (fraco x forte)
+
+**O que é:** se o som é baixinho ou alto, no sentido de volume.
+**O que define:** a **amplitude** da onda — o tamanho do "balanço" da vibração.
+**Como funciona:** vibração maior = som mais forte. Vibração menor = som mais fraco.
+
+Exemplo prático:
+- Você dedilha o violão suavemente: amplitude pequena, som baixo.
+- Você dá uma palhetada forte: amplitude grande, som alto.
+
+A unidade de medida é o **decibel (dB)**. Conversa normal é uns 60 dB. Igreja com banda tocando é uns 95-105 dB. Acima de 120 dB começa a doer no ouvido.
+
+📌 **Cuidado pastoral:** ouvido danificado não tem volta. Cantor ou instrumentista que ensaia em volume alto demais sem proteção tá comprometendo a carreira ministerial dele a longo prazo.
+
+#### Propriedade 3: DURAÇÃO (curto x longo)
+
+**O que é:** quanto tempo o som dura.
+**O que define:** o tempo entre o início da vibração e o silêncio.
+**Como funciona:** uma nota pode ser super curta (staccato) ou se sustentar por vários segundos (uma nota longa de teclado com pad).
+
+Exemplo prático:
+- Bateria — caixa e bumbo são sons MUITO curtos. Duração mínima.
+- Prato de condução com baqueta de vassoura — pode durar 4, 5 segundos sustentado.
+- Voz de cantor segurando uma nota no fim de uma música — duração longa.
+- Naipe de teclado fazendo "pad" — duração extremamente longa, várias notas seguradas em camada.
+
+Duração é o que dá **ritmo** pra música. Sem variação de duração, tudo soaria igual.
+
+#### Propriedade 4: TIMBRE (cor sonora)
+
+**O que é:** a "personalidade" do som. Por que um piano e um violão tocando a mesma nota soam diferentes?
+**O que define:** a forma da onda + os **harmônicos** que cada instrumento gera.
+**Como funciona:** quando você toca um Lá no piano e um Lá no violão, a frequência principal é a mesma (440 Hz). Mas cada instrumento gera **frequências secundárias** (harmônicos) diferentes, e isso cria a "cor" característica.
+
+É por isso que você reconhece a voz da sua mãe ao telefone mesmo sem ela dizer o nome. O timbre dela é único.
+
+Exemplo prático da Eterna Essência:
+- Voz feminina e voz masculina cantando a mesma nota têm timbres totalmente diferentes.
+- Violão de aço e violão de nylon, mesma afinação, soam diferentes — timbre.
+- Teclado simulando "strings" e violino real tocando a mesma nota: o ouvido treinado percebe na hora.
+
+### 4.4 Exercício prático em sala (10 min)
+
+Vamos fazer um exercício rápido. Vou tocar (ou pedir pra alguém da banda tocar) quatro pares de sons, e vocês vão identificar **qual propriedade está mudando** entre o primeiro e o segundo som de cada par.
+
+1. **Par 1:** mesma nota no violão, dedilhada fraca / dedilhada forte. → *Resposta: intensidade.*
+2. **Par 2:** nota grave do baixo / nota aguda do violão. → *Resposta: altura.*
+3. **Par 3:** mesma nota cantada por homem / mesma nota cantada por mulher. → *Resposta: timbre.*
+4. **Par 4:** uma nota curta de bateria (caixa) / uma nota longa de teclado (pad). → *Resposta: duração.*
+
+Se vocês erraram algum, sem problema — é exatamente pra isso que a gente tá aqui.
+
+### 4.5 Por que isso importa pro músico da Eterna Essência
+
+Sem entender as 4 propriedades, vocês não conseguem:
+
+- **Equilibrar a mistura no palco.** Se o teclado tá com timbre errado pra música, ou o baixo tá com intensidade alta demais, vocês precisam saber identificar e ajustar.
+- **Conversar com o operador de som.** "Tá faltando médio na voz" é uma frase sobre **altura/frequência**. Se você não entende isso, vira refém do operador.
+- **Escolher arranjo.** Saber que pad de teclado tem duração longa e dá "cama" sonora é essencial pra construir uma música de adoração que respira.
+- **Cuidar dos ouvidos da igreja.** Som muito alto (intensidade) ou muito agudo cansa, distrai e tira o foco da adoração.
+
+---
+
+## 5. FECHAMENTO (10 min)
+
+### 5.1 Conexão entre os dois blocos
+
+Olha que bonito. No primeiro bloco a gente viu que **levita é alguém que se posiciona antes de ter habilidade**. No segundo bloco a gente viu que **música é vibração organizada no ar com intenção**.
+
+Junta os dois e você tem a definição do que a Eterna Essência precisa ser:
+
+> **Pessoas consagradas (levitas) que entendem profundamente o som (técnica) e o organizam no tempo com intenção de adorar a Deus (música ministerial).**
+
+Sem o lado espiritual, vocês viram uma banda gospel que toca bem mas não move o céu. Sem o lado técnico, vocês viram um grupo de oração com instrumentos desafinados. Os dois andam juntos. Isso aqui é o fundamento. Os próximos 11 encontros vão construir em cima desse alicerce.
+
+### 5.2 Tarefa pro próximo encontro
+
+📌 **Tarefa espiritual:** Lê 1 Crônicas 25 inteiro durante a semana. Não é grande. Anota no caderno: "se eu vivesse no tempo de Davi, em qual escola levítica eu acho que serviria? Asafe, Hemã ou Jedutum? Por quê?"
+
+📌 **Tarefa teórica:** Durante a semana, em cada som que você ouvir (TV, rua, igreja, casa), tenta identificar mentalmente as 4 propriedades. "Esse som é grave ou agudo? Forte ou fraco? Curto ou longo? Que timbre é esse?". Treina o ouvido. No próximo encontro, cada um traz um som que chamou atenção e descreve as 4 propriedades dele.
+
+### 5.3 Música de encerramento sugerida
+
+> **"Eu Me Rendo" — Ministério Avivah** (ou versão Aline Barros)
+>
+> Letra que conecta perfeitamente com a aula: "Eu me rendo a Ti / Eu Te entrego a minha vida / Tudo o que sou agora és Tu". Levita é exatamente isso — entrega antes de habilidade.
+
+Música de abertura sugerida pra próxima aula: **"Lugar Secreto" — Gabriela Rocha**.
+
+### 5.4 Oração final
+
+> "Senhor, obrigado pelo que a gente aprendeu hoje. Faz da Eterna Essência um ministério levítico de verdade. Que a gente nunca confunda palco com altar. Que a técnica que a gente aprender daqui pra frente seja sempre serva da Tua glória, nunca dona dela. Em nome de Jesus, amém."
+
+---
+
+## 6. RECURSOS PRA APROFUNDAR (opcional)
+
+Pra quem quer ir além do encontro:
+
+1. **Livro:** *"Adoração: O Coração de Deus"* — A. W. Tozer. Curto, profundo, fala sobre a postura do adorador.
+2. **Livro:** *"Teoria da Música"* — Bohumil Med. É o livro-bíblia da teoria musical em português. Capítulos 1 e 2 cobrem som e propriedades com profundidade.
+3. **Vídeo:** Canal "Música e Adoração" (YouTube) — série sobre levitas no Antigo Testamento, episódios curtos de 10 min cada.
+
+---
+
+## 7. GLOSSÁRIO DA AULA
+
+- **Levita** — membro da tribo de Levi, separado por Deus para o serviço sagrado. No Novo Testamento, por extensão, todo cristão dedicado ao ministério da igreja, especialmente o musical.
+- **Frequência (Hz)** — número de vibrações por segundo. Define se o som é grave ou agudo.
+- **Amplitude** — tamanho da vibração da onda sonora. Define a intensidade (volume).
+- **Timbre** — "cor" característica de um som, que permite distinguir a fonte mesmo quando a nota é a mesma.
+- **Harmônico** — frequência secundária gerada junto com a frequência principal de um som. Responsável pelo timbre.
+- **Decibel (dB)** — unidade de medida da intensidade sonora.
+- **Onda sonora** — propagação da vibração através de um meio (ar, água, sólido) até chegar ao ouvido.
+
+---
+
+*Fim da Aula 1 — Origem.*
+*Próximo encontro: Aula 2 — Chamado e Notas Musicais.*
+`;
+
+/* ====== VIEWS ====== */
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+/* ====== AUTH ====== */
+function isAuthed() {
+  try { return localStorage.getItem(STORAGE_KEY) === 'ok'; }
+  catch (e) { return false; }
+}
+function setAuthed(v) {
+  try { localStorage.setItem(STORAGE_KEY, v ? 'ok' : ''); } catch(e){}
+}
+
+/* ====== GRID RENDER ====== */
+function renderGrid() {
+  const grid = document.getElementById('cards-grid');
+  grid.innerHTML = '';
+  AULAS.forEach(a => {
+    const card = document.createElement('div');
+    card.className = 'card ' + (a.status === 'unlocked' ? 'unlocked' : 'locked');
+    card.innerHTML = `
+      <div class="card-num">Aula ${String(a.num).padStart(2,'0')}</div>
+      <div class="card-title">${a.titulo}</div>
+      <div class="card-status">
+        ${a.status === 'unlocked'
+          ? '<span class="lock-icon">→</span> Disponível'
+          : '<span class="lock-icon">🔒</span> Em breve'}
+      </div>
+    `;
+    if (a.status === 'unlocked') {
+      card.addEventListener('click', () => openAula(a.num));
+    }
+    grid.appendChild(card);
+  });
+}
+
+/* ====== OPEN AULA ====== */
+function openAula(num) {
+  if (num !== 1) return;
+  const html = marked.parse(AULA_01_MD);
+  document.getElementById('aula-render').innerHTML = html;
+  showView('view-aula');
+}
+
+/* ====== INIT ====== */
+document.addEventListener('DOMContentLoaded', () => {
+  // marked config
+  marked.setOptions({ gfm: true, breaks: false });
+
+  // login
+  document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = document.getElementById('login-pass').value.trim();
+    const err = document.getElementById('login-error');
+    if (v === SENHA) {
+      setAuthed(true);
+      err.textContent = '';
+      renderGrid();
+      showView('view-grid');
+    } else {
+      err.textContent = 'senha incorreta';
+      document.getElementById('login-pass').value = '';
+    }
+  });
+
+  // logout
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    setAuthed(false);
+    showView('view-login');
+    document.getElementById('login-pass').value = '';
+  });
+
+  // back
+  document.getElementById('aula-back-btn').addEventListener('click', () => {
+    showView('view-grid');
+  });
+
+  // boot
+  if (isAuthed()) {
+    renderGrid();
+    showView('view-grid');
+  } else {
+    showView('view-login');
+  }
+});
+</script>
+</body>
+</html>
