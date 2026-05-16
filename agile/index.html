@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta Comercial · Agile + Agência no Bolso</title>
+<meta name="description" content="Automação operacional com Agentes IA + RPA Multi-Banco para a Agile Crédito Consignado. Proposta confidencial preparada por Salatiel Batista.">
+<meta name="theme-color" content="#0A0A0F">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0A0A0F;
+    --bg-soft: #11111A;
+    --bg-card: #161624;
+    --bg-card-hover: #1C1C2E;
+    --border: #23233A;
+    --border-strong: #353557;
+    --text: #EAEAF5;
+    --text-dim: #A4A4BC;
+    --text-faint: #6B6B85;
+    --cyan: #00D4FF;
+    --cyan-dim: #007FA3;
+    --purple: #A855F7;
+    --purple-dim: #6B2BAA;
+    --green: #2ECC71;
+    --orange: #FF9F43;
+    --red: #FF4757;
+    --gradient-1: linear-gradient(135deg, #00D4FF 0%, #A855F7 100%);
+    --gradient-2: linear-gradient(135deg, #A855F7 0%, #FF4757 100%);
+    --gradient-bg: radial-gradient(ellipse at top, rgba(168, 85, 247, 0.15) 0%, transparent 60%),
+                   radial-gradient(ellipse at bottom right, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
+                   var(--bg);
+    --shadow-neon-cyan: 0 0 32px rgba(0, 212, 255, 0.35);
+    --shadow-neon-purple: 0 0 32px rgba(168, 85, 247, 0.35);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .container-narrow { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  nav.topnav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    background: rgba(10, 10, 15, 0.7);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+  nav.topnav .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .nav-links { display: none; gap: 28px; }
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-cta {
+    background: var(--gradient-1);
+    color: #0A0A0F;
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-neon-cyan); }
+  @media (min-width: 900px) { .nav-links { display: flex; } }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (min-width: 980px) {
+    .hero-grid { grid-template-columns: 1.3fr 1fr; gap: 64px; }
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: rgba(0, 212, 255, 0.06);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .hero h1 .gradient {
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p.lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    color: var(--text-dim);
+    margin-bottom: 36px;
+    max-width: 580px;
+    line-height: 1.65;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 36px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .hero-meta-value {
+    font-size: 0.95rem;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.25s;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--gradient-1);
+    color: #0A0A0F;
+    box-shadow: var(--shadow-neon-cyan);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 48px rgba(0, 212, 255, 0.5); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border-strong);
+  }
+  .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* Hero foto */
+  .hero-photo {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-neon-purple);
+  }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(10, 10, 15, 0.85) 100%);
+    pointer-events: none;
+  }
+  .hero-photo-caption {
+    position: absolute;
+    left: 24px; right: 24px; bottom: 24px;
+    z-index: 2;
+  }
+  .hero-photo-caption .name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .hero-photo-caption .role {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== SECTION GENERIC ===== */
+  section.block { padding: 88px 0; position: relative; }
+  .section-eyebrow {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+    max-width: 800px;
+  }
+  .section-lede {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 720px;
+    margin-bottom: 48px;
+    line-height: 1.65;
+  }
+
+  /* ===== RESUMO 3 PILARES ===== */
+  .resumo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 760px) { .resumo-grid { grid-template-columns: repeat(3, 1fr); } }
+  .resumo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .resumo-card:hover { border-color: var(--cyan); transform: translateY(-4px); }
+  .resumo-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .resumo-card h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+  .resumo-card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.65; }
+
+  /* ===== DIAGNÓSTICO ===== */
+  .diag-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  @media (min-width: 760px) { .diag-grid { grid-template-columns: 1fr 1fr; } }
+  .diag-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .diag-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .diag-card h4 .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    background: var(--gradient-2);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .diag-card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.65; }
+  .diag-card ul { list-style: none; padding: 0; margin-top: 14px; }
+  .diag-card ul li {
+    padding-left: 24px;
+    position: relative;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    line-height: 1.55;
+  }
+  .diag-card ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+    font-weight: 700;
+  }
+
+  /* ===== FLUXO STEPS ===== */
+  .fluxo-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px 32px;
+    margin-top: 32px;
+  }
+  .fluxo-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 760px) {
+    .fluxo-steps { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  }
+  .fluxo-step {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    position: relative;
+  }
+  .fluxo-step-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--cyan);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .fluxo-step h5 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+  .fluxo-step p { font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; }
+
+  /* ===== FASES CARDS (3 colunas grandes) ===== */
+  .fases-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 980px) { .fases-grid { grid-template-columns: repeat(3, 1fr); } }
+  .fase-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .fase-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--gradient-1);
+  }
+  .fase-card.featured { border-color: var(--purple); box-shadow: var(--shadow-neon-purple); }
+  .fase-card.featured::before { background: var(--gradient-2); }
+  .fase-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--cyan);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .fase-card.featured .fase-tag { color: var(--purple); }
+  .fase-card h3 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .fase-prazo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    margin-bottom: 24px;
+  }
+  .fase-price {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .fase-price .currency {
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .fase-price-recurring {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--cyan);
+    margin-bottom: 24px;
+  }
+  .fase-card hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 8px 0 24px;
+  }
+  .fase-features { list-style: none; padding: 0; flex: 1; }
+  .fase-features li {
+    padding-left: 28px;
+    position: relative;
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .fase-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .fase-card.featured .fase-features li::before { color: var(--purple); }
+  .fase-footer {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    line-height: 1.5;
+  }
+
+  /* ===== CRONOGRAMA TIMELINE ===== */
+  .timeline-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px 32px;
+    margin-top: 32px;
+    overflow-x: auto;
+  }
+  .timeline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 720px;
+    position: relative;
+    padding: 24px 0 8px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+  }
+  .tl-node {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+  .tl-dot {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--cyan);
+    margin: 0 auto 16px;
+    box-shadow: 0 0 16px var(--cyan);
+    position: relative;
+    z-index: 2;
+  }
+  .tl-node:nth-child(even) .tl-dot { border-color: var(--purple); box-shadow: 0 0 16px var(--purple); }
+  .tl-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .tl-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  /* ===== STACK CHIPS ===== */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  @media (min-width: 760px) { .stack-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stack-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .stack-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 800;
+    color: #0A0A0F;
+    font-size: 0.85rem;
+  }
+  .stack-item h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .stack-item p {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+
+  /* ===== GARANTIAS ===== */
+  .garantia-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 32px;
+  }
+  @media (min-width: 760px) { .garantia-grid { grid-template-columns: repeat(2, 1fr); } }
+  .garantia-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--cyan);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .garantia-item:nth-child(even) { border-left-color: var(--purple); }
+  .garantia-item h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .garantia-item p { font-size: 0.92rem; color: var(--text-dim); line-height: 1.55; }
+
+  /* ===== EQUIPE ===== */
+  .equipe-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 32px;
+  }
+  @media (min-width: 760px) { .equipe-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1080px) { .equipe-grid { grid-template-columns: repeat(3, 1fr); } }
+  .equipe-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+  }
+  .equipe-card .avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    color: #0A0A0F;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+  .equipe-card.ia .avatar { background: var(--gradient-2); }
+  .equipe-card h5 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+  .equipe-card .equipe-role {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .equipe-card.ia .equipe-role { color: var(--purple); }
+  .equipe-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.55; }
+
+  /* ===== CASES ===== */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  @media (min-width: 760px) { .cases-grid { grid-template-columns: repeat(3, 1fr); } }
+  .case-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .case-card:hover { border-color: var(--cyan); transform: translateY(-4px); }
+  .case-card h5 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
+  .case-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.6; }
+
+  /* ===== INVESTIMENTO TABELA ===== */
+  .invest-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 36px 32px;
+    margin-top: 32px;
+    overflow-x: auto;
+  }
+  .invest-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 620px;
+  }
+  .invest-table th, .invest-table td {
+    text-align: left;
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .invest-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .invest-table td {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  .invest-table .row-fase { font-weight: 700; }
+  .invest-table .price-cell {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    color: var(--cyan);
+    font-size: 1rem;
+  }
+  .invest-table tr.row-total {
+    background: rgba(168, 85, 247, 0.06);
+  }
+  .invest-table tr.row-total td {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--text);
+    border-bottom: none;
+  }
+  .invest-table tr.row-total .price-cell { color: var(--purple); font-size: 1.1rem; }
+
+  .invest-resumo {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  @media (min-width: 760px) { .invest-resumo { grid-template-columns: repeat(3, 1fr); } }
+  .invest-resumo-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+  }
+  .invest-resumo-card .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .invest-resumo-card .value {
+    font-size: 1.6rem;
+    font-weight: 900;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 6px;
+  }
+  .invest-resumo-card .desc {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  /* ===== PROXIMOS PASSOS ===== */
+  .passos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+    counter-reset: step;
+  }
+  @media (min-width: 760px) { .passos-grid { grid-template-columns: repeat(2, 1fr); } }
+  .passo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+    position: relative;
+    padding-left: 80px;
+    counter-increment: step;
+  }
+  .passo-card::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 24px; top: 26px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .passo-card h5 { font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+  .passo-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.55; }
+
+  /* ===== CTA FINAL ===== */
+  .cta-final {
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+  }
+  .cta-final-inner {
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 32px;
+    padding: 64px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-final-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-final h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .cta-final h2 .gradient {
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .cta-final p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 620px;
+    margin: 0 auto 36px;
+    position: relative;
+  }
+  .cta-final .cta-row { justify-content: center; position: relative; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 48px 0 32px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  footer .confid {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  footer .small {
+    font-size: 0.82rem;
+    color: var(--text-faint);
+  }
+  footer .small a { color: var(--cyan); text-decoration: none; }
+
+  /* ===== UTILS ===== */
+  .bordao {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--cyan);
+    text-align: center;
+    margin: 32px 0;
+    letter-spacing: 0.02em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="topnav">
+  <div class="container">
+    <div class="brand">Agência no Bolso · Proposta</div>
+    <div class="nav-links">
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#solucao">Solução</a>
+      <a href="#fases">Fases</a>
+      <a href="#investimento">Investimento</a>
+      <a href="#passos">Próximos passos</a>
+    </div>
+    <a href="https://wa.me/5586999999999?text=Ol%C3%A1%20Salatiel%2C%20vamos%20conversar%20sobre%20a%20proposta%20da%20Ag%C3%AAncia%20no%20Bolso%20pra%20Agile."
+       class="nav-cta">Falar agora</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Proposta Comercial · Confidencial</div>
+        <h1>
+          Automação operacional com
+          <span class="gradient">Agentes IA + RPA Multi-Banco</span>
+          pra Agile Crédito Consignado.
+        </h1>
+        <p class="lede">
+          A camada inteligente que conecta o grupo dos parceiros aos 40 bancos consignados:
+          recebe a solicitação, consulta margem, simula, digita a proposta no banco escolhido
+          e devolve o ADE no Tutec — operando 24/7, sem inflar folha.
+        </p>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Preparada para</span>
+            <span class="hero-meta-value">Júlio · TI e Joana · Operacional</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Data</span>
+            <span class="hero-meta-value">16 de maio de 2026</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Validade</span>
+            <span class="hero-meta-value">15 dias corridos</span>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="#investimento" class="btn-primary">
+            Ver investimento
+            <span>→</span>
+          </a>
+          <a href="#fases" class="btn-secondary">Ver as 3 fases</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="assets/salatiel_hero.jpg" alt="Salatiel Batista, fundador da Agência no Bolso" loading="eager">
+        <div class="hero-photo-caption">
+          <div class="name">Salatiel Batista</div>
+          <div class="role">Fundador · Agência no Bolso</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== RESUMO EXECUTIVO ===== -->
+<section class="block" id="resumo">
+  <div class="container">
+    <div class="section-eyebrow">01 · Resumo Executivo</div>
+    <h2 class="section-title">Três frases que resumem por que essa proposta existe.</h2>
+
+    <div class="resumo-grid">
+      <div class="resumo-card">
+        <div class="resumo-num">PROBLEMA</div>
+        <h3>Escala da Agile depende de braço humano.</h3>
+        <p>
+          8 etapas manuais, 40 bancos com regras diferentes, Promocis instável.
+          Pra dobrar volume, precisa dobrar gente. Conhecimento operacional fica preso
+          na cabeça dos digitadores — meses pra treinar um novo.
+        </p>
+      </div>
+
+      <div class="resumo-card">
+        <div class="resumo-num">SOLUÇÃO</div>
+        <h3>Agente IA + RPA digita por você nos 40 bancos.</h3>
+        <p>
+          Bot lê o grupo dos parceiros, consulta margem no Promocis, simula, digita
+          no banco escolhido e atualiza o Tutec. Humano vira supervisor de exceção.
+          Roda 24/7 sem férias, sem aumento.
+        </p>
+      </div>
+
+      <div class="resumo-card">
+        <div class="resumo-num">VALOR</div>
+        <h3>Economia de 3 a 5 FTEs + payback em 3 a 6 meses.</h3>
+        <p>
+          R$ 15k a R$ 25k/mês de folha liberados. Capacidade de operar 5x a 10x
+          o volume atual sem contratar. Setup faseado e abatível (PoC em 7 dias úteis
+          antes do contrato grande).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIAGNÓSTICO ===== -->
+<section class="block" id="diagnostico">
+  <div class="container">
+    <div class="section-eyebrow">02 · Diagnóstico</div>
+    <h2 class="section-title">O que vimos na reunião de 12/05 com Joana e Júlio.</h2>
+    <p class="section-lede">
+      O processo atual da Agile funciona — e funciona bem. Mas tem três gargalos
+      estruturais que travam o crescimento e a previsibilidade da operação.
+    </p>
+
+    <div class="fluxo-wrap">
+      <div class="section-eyebrow" style="margin: 0 0 12px;">Fluxo atual · 8 etapas</div>
+      <div class="fluxo-steps">
+        <div class="fluxo-step">
+          <div class="fluxo-step-num">ETAPA 01</div>
+          <h5>Recepção</h5>
+          <p>Parceiro envia CPF, senha INSS e status no grupo do WhatsApp.</p>
+        </div>
+        <div class="fluxo-step">
+          <div class="fluxo-step-num">ETAPA 02</div>
+          <h5>Consulta margem</h5>
+          <p>Analista entra no INSS ou Promocis e verifica margem disponível.</p>
+        </div>
+        <div class="fluxo-step">
+          <div class="fluxo-step-num">ETAPA 03</div>
+          <h5>Simulação</h5>
+          <p>Calculadora interna com fator do dia ou simulação direta no banco.</p>
+        </div>
+        <div class="fluxo-step">
+          <div class="fluxo-step-num">ETAPA 04</div>
+          <h5>Retorno parceiro</h5>
+          <p>Analista responde com print, valor liberado e opções de banco.</p>
+        </div>
+        <div class="fluxo-step">
+          <div class="fluxo-step-num">ETAPA 05</div>
+          <h5>Coleta docs</h5>
+          <p>Parceiro envia RG, endereço, conta e indica banco escolhido via Tutec.</p>
+        </div>
+        <div class="fluxo-step">
+          <div class="fluxo-step-num">ETAPA 06</div>
+          <h5>E-mail digitação</h5>
+          <p>Analista baixa informações e envia pro e-mail geral da digitação.</p>
+        </div>
+        <div class="fluxo-step">
+          <div class="fluxo-step-num">ETAPA 07</div>
+          <h5>Digitação banco</h5>
+          <p>Digitador entra no portal do banco, preenche tudo e gera ADE.</p>
+        </div>
+        <div class="fluxo-step">
+          <div class="fluxo-step-num">ETAPA 08</div>
+          <h5>Atualiza Tutec</h5>
+          <p>Digitador registra contrato, banco, parceiro e atualiza planilha interna.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="diag-grid">
+      <div class="diag-card">
+        <h4>Escala travada na mão humana <span class="tag">GARGALO 01</span></h4>
+        <p>
+          Cada analista digita uma proposta por vez. Pra crescer 2x o volume,
+          precisa contratar 2x mais gente. Sem ganho de escala, sem margem operacional crescente.
+        </p>
+      </div>
+      <div class="diag-card">
+        <h4>Promocis instável <span class="tag">GARGALO 02</span></h4>
+        <p>
+          Observado ao vivo na reunião: sistema cai, força retrabalho e atrasa o parceiro.
+          Sem API pública confirmada — acesso só por interface humana, vulnerável a downtime.
+        </p>
+      </div>
+      <div class="diag-card">
+        <h4>Variação por banco <span class="tag">GARGALO 03</span></h4>
+        <p>
+          40 bancos, 40 regras diferentes (idade, prazo, espécie 32, analfabeto). Conhecimento
+          mora na cabeça dos digitadores. Treinar um novo leva meses — gargalo de onboarding.
+        </p>
+      </div>
+      <div class="diag-card">
+        <h4>Comunicação fragmentada <span class="tag">GARGALO 04</span></h4>
+        <ul>
+          <li>Grupo dos parceiros</li>
+          <li>E-mail geral da digitação</li>
+          <li>WhatsApp avulso</li>
+          <li>SMS dos bancos</li>
+          <li>Planilha interna + Tutec</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUÇÃO ===== -->
+<section class="block" id="solucao">
+  <div class="container">
+    <div class="section-eyebrow">03 · Solução · MAIA</div>
+    <h2 class="section-title">Uma camada de automação inteligente entre o parceiro e os bancos.</h2>
+    <p class="section-lede">
+      A Agência no Bolso opera sob arquitetura própria de orquestração de agentes
+      (a esteira <strong>MAIA</strong>, conhecida no nosso
+      <a href="https://agencianobolso.com.br" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:underline;">site institucional</a>).
+      Pra Agile, essa esteira combina três camadas técnicas comprovadas em produção.
+    </p>
+
+    <div class="stack-grid">
+      <div class="stack-item">
+        <div class="stack-icon">IA</div>
+        <div>
+          <h5>Agente IA conversacional</h5>
+          <p>
+            Monitora o grupo dos parceiros, identifica mensagens com CPF, senha e intenção.
+            Quando o parceiro escreve confuso, pede confirmação automática. Fine-tuning
+            no vocabulário do consignado (margem, espécie, refin, portabilidade).
+          </p>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">RPA</div>
+        <div>
+          <h5>RPA Multi-Banco</h5>
+          <p>
+            Robôs operam Promocis, Tutec e portais bancários como um digitador humano:
+            clicam, preenchem, leem respostas da tela. Necessário porque Promocis e a maioria
+            dos bancos consignados não expõem API pública.
+          </p>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">REG</div>
+        <div>
+          <h5>Motor de regras por banco</h5>
+          <p>
+            Os PDFs de roteiro internos da Agile viram regras estruturadas (idade,
+            prazo, espécies aceitas, analfabeto). Sistema valida elegibilidade
+            antes de digitar — zero proposta reprovada por regra básica.
+          </p>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">ALT</div>
+        <div>
+          <h5>Fallback humano automático</h5>
+          <p>
+            Quando o site do banco muda de layout, o robô não quebra em silêncio.
+            Dispara alerta pro nosso time, fluxo manual é acionado como fallback,
+            nenhuma proposta se perde. SLA de 4h úteis pra correção crítica.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bordao">Movimento gera resultado.</div>
+  </div>
+</section>
+
+<!-- ===== FASES ===== -->
+<section class="block" id="fases">
+  <div class="container">
+    <div class="section-eyebrow">04 · Três Fases</div>
+    <h2 class="section-title">Faseamento que controla seu risco e prova valor antes do contrato grande.</h2>
+    <p class="section-lede">
+      A Agile só assume o investimento maior depois de ver o robô funcionando.
+      PoC em 7 dias úteis. Se aprovado, o valor é abatido na Fase 1.
+    </p>
+
+    <div class="fases-grid">
+
+      <div class="fase-card">
+        <div class="fase-tag">Fase 0 · Prova de Conceito</div>
+        <h3>PoC</h3>
+        <div class="fase-prazo">7 dias úteis</div>
+
+        <div class="fase-price"><span class="currency">R$</span>7.500</div>
+        <div class="fase-price-recurring">À vista · 100% abatido na Fase 1</div>
+        <hr>
+        <ul class="fase-features">
+          <li>Bot lê grupo de teste (espelho)</li>
+          <li>Captura CPF, senha INSS, produto</li>
+          <li>Consulta margem no Promocis via RPA</li>
+          <li>Simulação básica com fator do dia</li>
+          <li>Início de digitação CCS + C6</li>
+          <li>Vídeo demonstrativo pro Júlio</li>
+          <li>Relatório técnico de viabilidade dos 40 bancos</li>
+        </ul>
+
+        <div class="fase-footer">Risco baixo · validação antes do contrato grande</div>
+      </div>
+
+      <div class="fase-card featured">
+        <div class="fase-tag">Fase 1 · Camada Inteligente</div>
+        <h3>Triagem + Simulação</h3>
+        <div class="fase-prazo">30 a 45 dias corridos</div>
+
+        <div class="fase-price"><span class="currency">R$</span>20.000</div>
+        <div class="fase-price-recurring">Setup único · R$ 4.000/mês operação</div>
+        <hr>
+        <ul class="fase-features">
+          <li>Bot 24/7 em todos os grupos de parceiros</li>
+          <li>Validação automática de CPF e senha INSS</li>
+          <li>Consulta Promocis com retry automático</li>
+          <li>Cálculo de simulação com fator do dia</li>
+          <li>Resposta padronizada ao parceiro no grupo</li>
+          <li>Fila organizada pro time humano de digitação</li>
+          <li>Dashboard em tempo real (volume, aprovação, tempo)</li>
+          <li>Alertas automáticos de queda do Promocis</li>
+        </ul>
+
+        <div class="fase-footer">50% assinatura + 50% entrega · ou 12x cartão · garantia 30 dias</div>
+      </div>
+
+      <div class="fase-card">
+        <div class="fase-tag">Fase 2 · Operação Completa</div>
+        <h3>Digitação Multi-Banco</h3>
+        <div class="fase-prazo">60 a 90 dias corridos</div>
+
+        <div class="fase-price"><span class="currency">R$</span>45.000</div>
+        <div class="fase-price-recurring">Setup único · R$ 12.000/mês (substitui Fase 1)</div>
+        <hr>
+        <ul class="fase-features">
+          <li>RPA dedicado pros 40 bancos parceiros</li>
+          <li>Roteiro por banco (idade, prazo, espécie, analfabeto)</li>
+          <li>Validação de elegibilidade pré-digitação</li>
+          <li>Integração com Tutec (ADE, banco, parceiro)</li>
+          <li>Atualização automática da planilha interna</li>
+          <li>Captura do link de assinatura digital</li>
+          <li>Escolha automática do banco com maior comissão do dia</li>
+          <li>Monitoramento 24/7 + SLA 2h crítico</li>
+        </ul>
+
+        <div class="fase-footer">40% / 30% / 30% por ondas · ou 12x cartão · garantia 60 dias</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CRONOGRAMA ===== -->
+<section class="block" id="cronograma">
+  <div class="container">
+    <div class="section-eyebrow">05 · Cronograma</div>
+    <h2 class="section-title">Do PoC à operação completa em ~4,5 meses.</h2>
+
+    <div class="timeline-wrap">
+      <div class="timeline">
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-label">Dia 00</div>
+          <div class="tl-title">Assinatura<br>PoC</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-label">Dia 07</div>
+          <div class="tl-title">Entrega PoC<br>+ validação</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-label">Dia 10</div>
+          <div class="tl-title">Assinatura<br>Fase 1</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-label">Dia 40</div>
+          <div class="tl-title">Fase 1 em<br>produção</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-label">Dia 45</div>
+          <div class="tl-title">Início<br>Fase 2</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-label">Dia 75</div>
+          <div class="tl-title">10 primeiros<br>bancos</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-label">Dia 105</div>
+          <div class="tl-title">25 bancos<br>acumulados</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-label">Dia 135</div>
+          <div class="tl-title">40 bancos<br>completos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STACK ===== -->
+<section class="block" id="stack">
+  <div class="container">
+    <div class="section-eyebrow">06 · Stack Tecnológico</div>
+    <h2 class="section-title">Ferramentas comprovadas em ambiente corporativo.</h2>
+
+    <div class="stack-grid">
+      <div class="stack-item">
+        <div class="stack-icon">LLM</div>
+        <div>
+          <h5>GPT-4 + Claude</h5>
+          <p>Interpretação conversacional com fine-tuning pro vocabulário do consignado.</p>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">PWG</div>
+        <div>
+          <h5>Playwright + Selenium</h5>
+          <p>Automação de portais bancários com camada de visão computacional pra captchas.</p>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">PY</div>
+        <div>
+          <h5>Python + FastAPI + Celery</h5>
+          <p>Orquestração de filas, retentativas, agendamento e tratamento de exceção.</p>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">PG</div>
+        <div>
+          <h5>PostgreSQL</h5>
+          <p>Histórico de propostas, regras por banco e auditoria completa por LGPD.</p>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">VPS</div>
+        <div>
+          <h5>Servidor dedicado + backup</h5>
+          <p>VPS com snapshot diário, redundância e isolamento da operação da Agile.</p>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-icon">OBS</div>
+        <div>
+          <h5>Grafana + alertas</h5>
+          <p>Dashboards técnicos + alertas via Telegram/WhatsApp pro Júlio e time técnico.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GARANTIAS ===== -->
+<section class="block" id="garantias">
+  <div class="container">
+    <div class="section-eyebrow">07 · Garantias</div>
+    <h2 class="section-title">Compromissos contratuais transparentes (e os riscos que assumimos com você).</h2>
+
+    <div class="garantia-grid">
+      <div class="garantia-item">
+        <h5>SLA de 95% de uptime mensal</h5>
+        <p>Abaixo disso, desconto proporcional na mensalidade do mês seguinte. Sem letra miúda.</p>
+      </div>
+      <div class="garantia-item">
+        <h5>Fallback humano automático</h5>
+        <p>Bot detectou inconsistência? Proposta vai direto pra fila humana com aviso destacado. Nenhuma proposta se perde.</p>
+      </div>
+      <div class="garantia-item">
+        <h5>Garantia técnica 30/60 dias</h5>
+        <p>30 dias na Fase 1, 60 dias na Fase 2 após entrega. Qualquer bug é corrigido sem custo.</p>
+      </div>
+      <div class="garantia-item">
+        <h5>Atualizações de layout absorvidas</h5>
+        <p>Até 6 mudanças de layout por banco por ano são absorvidas pela mensalidade.</p>
+      </div>
+      <div class="garantia-item">
+        <h5>LGPD compliant</h5>
+        <p>CPF, RG, conta bancária e senha INSS criptografados em repouso e em trânsito. Contrato anexo de tratamento de dados.</p>
+      </div>
+      <div class="garantia-item">
+        <h5>Riscos transparentes</h5>
+        <p>Captchas mais rígidos, biometria, mudanças do INSS — falamos antes, não escondemos depois. Você sabe o que está comprando.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EQUIPE ===== -->
+<section class="block" id="equipe">
+  <div class="container">
+    <div class="section-eyebrow">08 · Equipe</div>
+    <h2 class="section-title">Trio fundador humano + agentes IA especializados.</h2>
+    <p class="section-lede">
+      A Agência no Bolso opera sob arquitetura própria de orquestração de agentes IA
+      (Naia Master), que multiplica a capacidade de execução do trio humano sem inflar custos.
+    </p>
+
+    <div class="equipe-grid">
+      <div class="equipe-card">
+        <div class="avatar">SB</div>
+        <h5>Salatiel Batista</h5>
+        <div class="equipe-role">Fundador · Estratégia</div>
+        <p>Arquitetura geral da solução e ponto de contato sênior com Júlio. Mais de 10 anos em IA aplicada a negócios.</p>
+      </div>
+      <div class="equipe-card">
+        <div class="avatar">PH</div>
+        <h5>Paulo Henrique</h5>
+        <div class="equipe-role">Dev Full-Stack · CTO</div>
+        <p>Implementação técnica do RPA Multi-Banco e dos agentes IA. Responsável por deploy, infra e segurança.</p>
+      </div>
+      <div class="equipe-card">
+        <div class="avatar">JU</div>
+        <h5>Juliana</h5>
+        <div class="equipe-role">Coordenação · Operações</div>
+        <p>Garantia de prazo, comunicação semanal de status com a Agile e gestão da relação cliente.</p>
+      </div>
+      <div class="equipe-card ia">
+        <div class="avatar">JO</div>
+        <h5>Agente Jonathan</h5>
+        <div class="equipe-role">IA · Documentação</div>
+        <p>Roteiros operacionais, documentação técnica e manuais de operação por banco.</p>
+      </div>
+      <div class="equipe-card ia">
+        <div class="avatar">RA</div>
+        <h5>Agente Rafael</h5>
+        <div class="equipe-role">IA · Gestão Projetos</div>
+        <p>Cronograma, dependências entre fases e acompanhamento de entregáveis.</p>
+      </div>
+      <div class="equipe-card ia">
+        <div class="avatar">NM</div>
+        <h5>Naia Master</h5>
+        <div class="equipe-role">IA · Orquestradora</div>
+        <p>Coordena todos os agentes IA e humanos da Agência no Bolso. Centro nervoso da operação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASES ===== -->
+<section class="block" id="cases">
+  <div class="container">
+    <div class="section-eyebrow">09 · Cases em Produção</div>
+    <h2 class="section-title">Entregas recentes da Agência no Bolso, em três frentes diferentes.</h2>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <h5>Master Point Cursos</h5>
+        <p>Plataforma de educação online com automação de matrícula, certificação e comunicação com alunos. Mais de 12 meses em operação contínua.</p>
+      </div>
+      <div class="case-card">
+        <h5>WebTV Piauí</h5>
+        <p>Infraestrutura completa de transmissão ao vivo com agendamento, captura e distribuição multi-plataforma automatizados.</p>
+      </div>
+      <div class="case-card">
+        <h5>Davylla Styllus</h5>
+        <p>Sistema de gestão e captação de clientes com bot de WhatsApp integrado, dashboard de funil e automação de pré-venda.</p>
+      </div>
+    </div>
+
+    <p class="section-lede" style="margin-top: 32px;">
+      Demonstrações técnicas ao vivo dessas operações são disponibilizadas em reunião
+      de validação, se for do interesse de Júlio.
+    </p>
+  </div>
+</section>
+
+<!-- ===== INVESTIMENTO ===== -->
+<section class="block" id="investimento">
+  <div class="container">
+    <div class="section-eyebrow">10 · Investimento</div>
+    <h2 class="section-title">Quadro consolidado, sem letra miúda.</h2>
+
+    <div class="invest-wrap">
+      <table class="invest-table">
+        <thead>
+          <tr>
+            <th>Fase</th>
+            <th>Escopo</th>
+            <th>Setup único</th>
+            <th>Mensal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-fase">PoC</td>
+            <td>Bot CCS + C6 + simulação · 7 dias úteis</td>
+            <td class="price-cell">R$ 7.500</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="row-fase">Fase 1</td>
+            <td>Triagem + Simulação + Captura do grupo</td>
+            <td class="price-cell">R$ 20.000</td>
+            <td class="price-cell">R$ 4.000</td>
+          </tr>
+          <tr>
+            <td class="row-fase">Fase 2</td>
+            <td>Digitação automática nos 40 bancos + Tutec</td>
+            <td class="price-cell">R$ 45.000</td>
+            <td class="price-cell">R$ 12.000<br><small style="color:var(--text-faint); font-size:0.72rem;">(substitui Fase 1)</small></td>
+          </tr>
+          <tr class="row-total">
+            <td>Total líquido</td>
+            <td>Com PoC abatido na Fase 1</td>
+            <td class="price-cell">R$ 65.000</td>
+            <td class="price-cell">R$ 12.000/mês</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="invest-resumo">
+      <div class="invest-resumo-card">
+        <div class="label">Setup total</div>
+        <div class="value">R$ 65k</div>
+        <div class="desc">Único, ao longo de 3 fases (PoC abatido)</div>
+      </div>
+      <div class="invest-resumo-card">
+        <div class="label">Operação 1º ano</div>
+        <div class="value">~R$ 110k</div>
+        <div class="desc">Mensal média ponderada Fase 1 → Fase 2</div>
+      </div>
+      <div class="invest-resumo-card">
+        <div class="label">Total ano 1</div>
+        <div class="value">~R$ 175k</div>
+        <div class="desc">Setup + operação completa</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 36px; padding: 24px 28px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 14px;">
+      <p style="font-size:0.95rem; color: var(--text-dim); line-height: 1.65;">
+        <strong style="color:var(--text);">Formas de pagamento:</strong> boleto, PIX, transferência bancária ou cartão de crédito parcelado em até 12x (juros da bandeira). Mensalidade recorrente vence dia 10. Reajuste anual pelo IPCA a partir do 13º mês. Setup não sofre reajuste. Validade desta proposta: 15 dias corridos.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRÓXIMOS PASSOS ===== -->
+<section class="block" id="passos">
+  <div class="container">
+    <div class="section-eyebrow">11 · Próximos Passos</div>
+    <h2 class="section-title">5 movimentos do "sim" ao robô rodando.</h2>
+
+    <div class="passos-grid">
+      <div class="passo-card">
+        <h5>Júlio aprova a proposta</h5>
+        <p>Por e-mail ou WhatsApp, confirmando o início pelo PoC (Fase 0).</p>
+      </div>
+      <div class="passo-card">
+        <h5>Contrato PoC enviado</h5>
+        <p>Agência no Bolso envia contrato de Fase 0 pra assinatura digital.</p>
+      </div>
+      <div class="passo-card">
+        <h5>Pagamento confirmado</h5>
+        <p>R$ 7.500 do PoC via PIX, boleto ou cartão. Já abatido na Fase 1 se aprovada.</p>
+      </div>
+      <div class="passo-card">
+        <h5>7 dias úteis depois</h5>
+        <p>Demonstração ao vivo: robô operando CCS e C6 com o caso real escolhido pelo Júlio.</p>
+      </div>
+      <div class="passo-card" style="grid-column: 1 / -1;">
+        <h5>Decisão Fase 1 + Fase 2</h5>
+        <p>Com base no PoC entregue. Sem PoC bem-sucedido, sem contrato grande — risco baixo do começo ao fim.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 36px; padding: 28px; background: var(--bg-card); border: 1px solid var(--border-strong); border-radius: 16px;">
+      <p style="font-size: 1rem; color: var(--text-dim); line-height: 1.7;">
+        Próxima ação combinada: <strong style="color:var(--text);">call de aprovação em 21/05/2026</strong>.
+        Após o ok do Júlio, contrato segue por e-mail no mesmo dia.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-final">
+  <div class="container-narrow">
+    <div class="cta-final-inner">
+      <h2>
+        A Agile já fez o difícil.
+        <span class="gradient">Falta liberar o time da parte mecânica.</span>
+      </h2>
+      <p>
+        Construir a operação com 40 bancos parceiros e um time que conhece o jogo é o maior degrau.
+        Agora é deixar a tecnologia carregar o peso — e escalar 5x sem dobrar folha.
+      </p>
+      <div class="cta-row">
+        <a href="https://wa.me/5586999999999?text=Ol%C3%A1%20Salatiel%2C%20aprovamos%20a%20proposta%20da%20Ag%C3%AAncia%20no%20Bolso%20pra%20Agile.%20Vamos%20come%C3%A7ar."
+           class="btn-primary">
+          Aceitar proposta · vamos começar
+          <span>→</span>
+        </a>
+        <a href="mailto:salatielbatista13@gmail.com?subject=Proposta%20Agile%20-%20Aprova%C3%A7%C3%A3o&body=Ol%C3%A1%20Salatiel%2C%20vamos%20iniciar%20o%20PoC%20da%20Fase%200."
+           class="btn-secondary">
+          Aprovar por e-mail
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container-narrow">
+    <div class="confid">Documento confidencial · Uso exclusivo Agile Crédito Consignado</div>
+    <p class="small">
+      Salatiel Batista · Fundador, Agência no Bolso ·
+      <a href="mailto:salatielbatista13@gmail.com">salatielbatista13@gmail.com</a> ·
+      Telegram @salatielbatista ·
+      <a href="https://agencianobolso.com.br" target="_blank" rel="noopener">agencianobolso.com.br</a>
+    </p>
+    <p class="small" style="margin-top:10px;">
+      Movimento gera resultado. · Proposta válida por 15 dias a contar de 16/05/2026.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
