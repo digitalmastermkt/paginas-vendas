@@ -7,11 +7,16 @@
 <meta name="description" content="Programa completo de transformação para PMEs a partir de 7 colaboradores. Três especialistas, um método integrado. Comece pela Sessão Raio X gratuita: um diagnóstico 360° do seu negócio." />
 <meta name="theme-color" content="#0A0A0F" />
 
+<!-- Favicon (Despertar Empresarial - Conceito 3) -->
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+<link rel="icon" type="image/png" href="images/favicon.png" />
+<link rel="apple-touch-icon" href="images/favicon.png" />
+
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Método Despertar Empresarial | Digital Master" />
 <meta property="og:description" content="Diagnóstico 360° gratuito do seu negócio em 5 pilares. A porta de entrada do programa que transforma o dono e o time juntos." />
-<meta property="og:image" content="images/logo-dm.png" />
+<meta property="og:image" content="images/favicon.png" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,9 +87,10 @@ header.nav{
   border-bottom:1px solid rgba(255,255,255,.05);
 }
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
-.brand{display:flex;align-items:center;gap:11px;font-family:'Exo 2';font-weight:800;font-size:1.05rem}
-.brand img{height:34px;width:34px;border-radius:8px}
-.brand small{display:block;font-size:.62rem;letter-spacing:.18em;color:var(--muted);font-weight:500;text-transform:uppercase}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand-logo{height:38px;width:auto;display:block}
+.brand-logo-footer{height:34px}
+@media(max-width:480px){.brand-logo{height:32px}}
 .nav-cta{font-size:.92rem;padding:11px 22px}
 .nav-links{display:none;gap:26px}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem;transition:color .15s}
@@ -323,9 +329,8 @@ footer a{color:var(--teal-3);text-decoration:none}
 <!-- NAV -->
 <header class="nav">
   <div class="wrap">
-    <a href="#topo" class="brand">
-      <img src="images/logo-dm.png" alt="Digital Master" />
-      <span>Despertar Empresarial<small>Digital Master</small></span>
+    <a href="#topo" class="brand" aria-label="Despertar Empresarial">
+      <img src="images/logo-despertar.svg" alt="Despertar Empresarial · Método Digital Master" class="brand-logo" />
     </a>
     <nav class="nav-links">
       <a href="#metodo">O Método</a>
@@ -779,9 +784,8 @@ footer a{color:var(--teal-3);text-decoration:none}
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <a href="#topo" class="brand">
-      <img src="images/logo-dm.png" alt="Digital Master" style="height:30px;width:30px;border-radius:7px" />
-      <span>Digital Master</span>
+    <a href="#topo" class="brand" aria-label="Despertar Empresarial">
+      <img src="images/logo-despertar.svg" alt="Despertar Empresarial · Método Digital Master" class="brand-logo brand-logo-footer" />
     </a>
     <p>Método Despertar Empresarial · SRJ — Batista &amp; Visgueira Ltda · CNPJ 12.472.917/0001-78</p>
     <p style="margin-top:8px">Joel Visgueira · Salatiel Batista · Raquel Batista · © 2026 Digital Master</p>
