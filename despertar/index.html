@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Método Despertar Empresarial | Digital Master</title>
+<meta name="description" content="Programa completo de transformação para PMEs a partir de 7 colaboradores. Três especialistas, um método integrado. Comece pela Sessão Raio X gratuita: um diagnóstico 360° do seu negócio." />
+<meta name="theme-color" content="#0A0A0F" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Método Despertar Empresarial | Digital Master" />
+<meta property="og:description" content="Diagnóstico 360° gratuito do seu negócio em 5 pilares. A porta de entrada do programa que transforma o dono e o time juntos." />
+<meta property="og:image" content="images/hero-bg.png" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Meta Pixel placeholder -->
+<!-- REPLACE: fb-pixel-id -->
+<!-- Google Ads tag placeholder -->
+<!-- REPLACE: google-ads-id -->
+<!-- GTM placeholder -->
+<!-- REPLACE: gtm-id -->
+
+<style>
+:root{
+  --teal:#2A9D8F; --teal-2:#3DBDAC; --teal-3:#52D4C2;
+  --dark:#0A0A0F; --surface:#111118; --surface-2:#1a1a24;
+  --text:#F0F0F8; --muted:#9097a8;
+  --border:rgba(82,212,194,.14);
+  --radius:18px;
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  background:var(--dark); color:var(--text);
+  line-height:1.6; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.title{font-family:'Exo 2',sans-serif;line-height:1.12;letter-spacing:-.01em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.teal{color:var(--teal-3)}
+.grad-text{background:linear-gradient(120deg,var(--teal-3),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+.muted{color:var(--muted)}
+.center{text-align:center}
+section{position:relative;padding:84px 0}
+.eyebrow{
+  display:inline-block;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--teal-3);font-weight:600;margin-bottom:18px;
+  border:1px solid var(--border);padding:7px 16px;border-radius:100px;
+  background:rgba(42,157,143,.06);
+}
+.h-sec{font-size:clamp(1.7rem,4.4vw,2.7rem);font-weight:800;margin-bottom:16px}
+.lead{font-size:clamp(1rem,2.2vw,1.18rem);color:var(--muted);max-width:760px;margin:0 auto}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;justify-content:center;
+  font-family:'Exo 2',sans-serif;font-weight:700;font-size:1.02rem;
+  padding:17px 34px;border-radius:100px;text-decoration:none;cursor:pointer;border:none;
+  transition:transform .18s ease,box-shadow .18s ease;text-align:center;
+}
+.btn-primary{
+  background:linear-gradient(120deg,var(--teal-3),var(--teal));color:#03110f;
+  box-shadow:0 10px 34px -8px rgba(61,189,172,.55);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px -8px rgba(61,189,172,.7)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--teal-3);color:var(--teal-3)}
+.btn-lg{padding:20px 44px;font-size:1.1rem}
+
+/* NAV */
+header.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  background:rgba(10,10,15,.72);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Exo 2';font-weight:800;font-size:1.05rem}
+.brand img{height:34px;width:34px;border-radius:8px}
+.brand small{display:block;font-size:.62rem;letter-spacing:.18em;color:var(--muted);font-weight:500;text-transform:uppercase}
+.nav-cta{font-size:.92rem;padding:11px 22px}
+.nav-links{display:none;gap:26px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem;transition:color .15s}
+.nav-links a:hover{color:var(--teal-3)}
+@media(min-width:980px){.nav-links{display:flex}}
+
+/* HERO */
+.hero{
+  padding:148px 0 90px;text-align:center;
+  background:
+    radial-gradient(900px 500px at 50% -8%,rgba(42,157,143,.20),transparent 60%),
+    linear-gradient(180deg,rgba(10,10,15,.55),rgba(10,10,15,.92) 70%,var(--dark)),
+    url('images/hero-bg.png') center/cover no-repeat fixed;
+}
+.hero h1{font-size:clamp(2.1rem,6.2vw,4.1rem);font-weight:900;max-width:980px;margin:0 auto 22px}
+.hero p.sub{font-size:clamp(1.05rem,2.6vw,1.3rem);color:var(--text);opacity:.9;max-width:720px;margin:0 auto 30px}
+.hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:26px}
+.hero-microcopy{font-size:.86rem;color:var(--muted)}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:40px}
+.pill{font-size:.8rem;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:8px 16px;background:rgba(17,17,24,.6)}
+.pill b{color:var(--teal-3);font-weight:600}
+
+/* generic card */
+.card{
+  background:linear-gradient(180deg,var(--surface),var(--surface-2));
+  border:1px solid var(--border);border-radius:var(--radius);padding:28px;
+  transition:transform .2s ease,border-color .2s ease;
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(82,212,194,.32)}
+.grid{display:grid;gap:20px}
+
+/* PROBLEM */
+.prob-list{display:grid;gap:14px;max-width:760px;margin:34px auto 0;text-align:left}
+.prob-item{display:flex;gap:14px;align-items:flex-start;background:rgba(17,17,24,.55);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:16px 18px}
+.prob-item .x{color:#ff6b6b;font-size:1.2rem;font-weight:700;flex-shrink:0;line-height:1.5}
+.named-pain{max-width:740px;margin:40px auto 0;text-align:center;font-size:1.2rem;border-left:3px solid var(--teal);padding:6px 0 6px 22px}
+
+/* WHAT IS */
+.split{display:grid;gap:40px;align-items:center}
+@media(min-width:900px){.split{grid-template-columns:1.1fr .9fr}}
+.split-img{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 70px -30px rgba(0,0,0,.8)}
+.split-img img{width:100%;display:block}
+
+/* PILARES */
+.pillars{grid-template-columns:1fr}
+@media(min-width:640px){.pillars{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.pillars{grid-template-columns:repeat(3,1fr)}}
+.pillar-num{font-family:'Exo 2';font-weight:900;font-size:2.2rem;line-height:1;color:transparent;-webkit-text-stroke:1.4px var(--teal-3);margin-bottom:14px;display:block}
+.pillar h3{font-size:1.22rem;font-weight:700;margin-bottom:6px}
+.pillar .owner{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-3);margin-bottom:14px;font-weight:600}
+.pillar ul{list-style:none;display:grid;gap:8px}
+.pillar li{font-size:.92rem;color:var(--muted);padding-left:20px;position:relative}
+.pillar li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--teal)}
+
+/* NIVEIS */
+.levels{grid-template-columns:1fr}
+@media(min-width:760px){.levels{grid-template-columns:repeat(3,1fr)}}
+.level{text-align:center;border-top:3px solid var(--teal)}
+.level h4{font-size:1.05rem;color:var(--teal-3);margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem}
+.level p{font-size:.92rem;color:var(--muted)}
+
+/* STEPS */
+.steps{grid-template-columns:1fr}
+@media(min-width:760px){.steps{grid-template-columns:1fr 1fr}}
+.step{position:relative;padding-left:64px}
+.step .n{position:absolute;left:24px;top:26px;font-family:'Exo 2';font-weight:900;font-size:1.4rem;color:#03110f;background:linear-gradient(120deg,var(--teal-3),var(--teal));width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;left:22px}
+.step h3{font-size:1.15rem;margin-bottom:4px}
+.step .tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--teal-3);font-weight:600}
+.step ul{list-style:none;margin-top:12px;display:grid;gap:7px}
+.step li{font-size:.9rem;color:var(--muted);padding-left:18px;position:relative}
+.step li::before{content:"→";position:absolute;left:0;color:var(--teal-3)}
+.step.free{border:1px solid rgba(82,212,194,.4);box-shadow:0 0 0 1px rgba(82,212,194,.12),0 20px 60px -30px rgba(42,157,143,.5)}
+.free-badge{display:inline-block;font-size:.72rem;font-weight:700;background:linear-gradient(120deg,var(--teal-3),var(--teal));color:#03110f;padding:4px 12px;border-radius:100px;margin-bottom:8px}
+
+/* TRILHAS */
+.tracks{grid-template-columns:1fr 1fr}
+@media(min-width:900px){.tracks{grid-template-columns:repeat(4,1fr)}}
+.track{text-align:center;padding:24px 18px}
+.track .lvl{font-family:'Exo 2';font-weight:800;font-size:1rem;color:var(--teal-3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.track .fat{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:500}
+.track .desc{font-size:.82rem;color:var(--muted)}
+
+/* SPECIALISTS */
+.experts{grid-template-columns:1fr}
+@media(min-width:760px){.experts{grid-template-columns:repeat(3,1fr)}}
+.expert{text-align:center;padding:0;overflow:hidden}
+.expert .photo{height:300px;overflow:hidden;background:var(--surface-2)}
+.expert .photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:saturate(1.02)}
+.expert .body{padding:24px}
+.expert h3{font-size:1.3rem;margin-bottom:4px}
+.expert .role{color:var(--teal-3);font-size:.85rem;font-weight:600;margin-bottom:14px;text-transform:uppercase;letter-spacing:.04em}
+.expert ul{list-style:none;display:grid;gap:6px}
+.expert li{font-size:.86rem;color:var(--muted)}
+
+/* RECEBE / STACK */
+.stack-table{max-width:840px;margin:0 auto;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.stack-row{display:flex;justify-content:space-between;gap:16px;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,.05);align-items:center}
+.stack-row:last-child{border-bottom:none}
+.stack-row span.item{font-size:.95rem}
+.stack-row span.val{font-family:'Exo 2';font-weight:700;color:var(--teal-3);white-space:nowrap;font-size:.95rem}
+.stack-row.total{background:rgba(42,157,143,.1);padding:22px}
+.stack-row.total span.item{font-weight:800;font-family:'Exo 2';font-size:1.1rem}
+.stack-row.total span.val{font-size:1.35rem;color:var(--text)}
+.anchor-box{max-width:840px;margin:30px auto 0;text-align:center;background:linear-gradient(180deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-radius:var(--radius);padding:34px}
+.anchor-box .strike{font-size:1.2rem;color:var(--muted);text-decoration:line-through}
+.anchor-box .now{font-family:'Exo 2';font-weight:900;font-size:clamp(2.4rem,8vw,3.6rem);line-height:1;margin:6px 0 4px}
+.anchor-box .now small{font-size:1rem;color:var(--muted);font-weight:500}
+
+/* PROOF / ROSILDA */
+.proof{background:linear-gradient(180deg,var(--surface),var(--dark));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.quote{max-width:820px;margin:0 auto;text-align:center}
+.quote .mark{font-family:'Exo 2';font-size:3rem;color:var(--teal);line-height:.5;display:block;margin-bottom:14px}
+.quote p{font-size:clamp(1.15rem,2.8vw,1.5rem);font-weight:500;line-height:1.5}
+.quote .who{margin-top:22px;color:var(--teal-3);font-weight:600}
+
+/* PLANS */
+.plans{grid-template-columns:1fr}
+@media(min-width:860px){.plans{grid-template-columns:1.2fr 1fr 1fr}}
+.plan{display:flex;flex-direction:column}
+.plan.feature{border-color:var(--teal-3);box-shadow:0 0 0 1px rgba(82,212,194,.2),0 30px 70px -30px rgba(42,157,143,.5)}
+.plan .ptag{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-3);font-weight:600;margin-bottom:10px}
+.plan h3{font-size:1.3rem;margin-bottom:6px}
+.plan .price{font-family:'Exo 2';font-weight:900;font-size:1.9rem;margin:8px 0 2px}
+.plan .price small{font-size:.85rem;color:var(--muted);font-weight:500;display:block;margin-top:4px}
+.plan ul{list-style:none;display:grid;gap:9px;margin:18px 0 24px}
+.plan li{font-size:.9rem;color:var(--muted);padding-left:22px;position:relative}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--teal-3);font-weight:700}
+.plan .btn{margin-top:auto}
+.best{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,var(--teal-3),var(--teal));color:#03110f;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:100px}
+.cond-note{max-width:700px;margin:26px auto 0;text-align:center;font-size:.86rem;color:var(--muted);background:rgba(17,17,24,.6);border:1px dashed var(--border);border-radius:14px;padding:16px 20px}
+
+/* FAQ */
+.faq{max-width:800px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.faq summary{cursor:pointer;padding:20px 22px;font-family:'Exo 2';font-weight:600;font-size:1rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--teal-3);font-size:1.4rem;font-weight:400;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .ans{padding:0 22px 20px;color:var(--muted);font-size:.94rem}
+
+/* FINAL CTA */
+.final{
+  text-align:center;
+  background:
+    radial-gradient(700px 380px at 50% 120%,rgba(42,157,143,.22),transparent 60%),
+    linear-gradient(180deg,var(--dark),rgba(17,17,24,.6));
+}
+.final h2{font-size:clamp(1.9rem,5vw,3rem);font-weight:900;max-width:820px;margin:0 auto 18px}
+.ps{max-width:680px;margin:30px auto 0;text-align:left;color:var(--muted);font-size:.92rem;background:rgba(17,17,24,.5);border:1px solid var(--border);border-radius:14px;padding:20px 24px}
+.ps b{color:var(--text)}
+
+/* FOOTER */
+footer{padding:46px 0;border-top:1px solid rgba(255,255,255,.06);text-align:center;color:var(--muted);font-size:.82rem}
+footer .brand{justify-content:center;margin-bottom:14px;color:var(--text)}
+footer a{color:var(--teal-3);text-decoration:none}
+
+/* sticky mobile CTA */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;
+  background:rgba(10,10,15,.92);backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);padding:12px 16px;
+  display:flex;gap:12px;align-items:center;justify-content:space-between;
+  transform:translateY(120%);transition:transform .3s ease;
+}
+.sticky-cta.show{transform:translateY(0)}
+.sticky-cta .txt{font-size:.8rem;color:var(--muted)}
+.sticky-cta .txt b{color:var(--text);font-family:'Exo 2';display:block;font-size:.92rem}
+.sticky-cta .btn{padding:13px 22px;font-size:.92rem;flex-shrink:0}
+@media(min-width:980px){.sticky-cta{display:none}}
+
+/* whatsapp float */
+.wa{position:fixed;right:18px;bottom:84px;z-index:50;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px -6px rgba(37,211,102,.6);transition:transform .2s}
+.wa:hover{transform:scale(1.08)}
+@media(min-width:980px){.wa{bottom:24px}}
+.wa svg{width:30px;height:30px;fill:#fff}
+
+/* LGPD */
+.lgpd{position:fixed;left:16px;right:16px;bottom:16px;z-index:70;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:16px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;max-width:760px;margin:0 auto;box-shadow:0 20px 50px -20px #000}
+.lgpd p{font-size:.82rem;color:var(--muted);flex:1;min-width:220px}
+.lgpd .btn{padding:10px 22px;font-size:.85rem}
+.lgpd.hide{display:none}
+
+.divider-glow{height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);max-width:200px;margin:0 auto 26px;opacity:.6}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#topo" class="brand">
+      <img src="images/logo-dm.png" alt="Digital Master" />
+      <span>Despertar Empresarial<small>Digital Master</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#metodo">O Método</a>
+      <a href="#pilares">5 Pilares</a>
+      <a href="#especialistas">Especialistas</a>
+      <a href="#investimento">Investimento</a>
+    </nav>
+    <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary nav-cta">Raio X grátis</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="topo">
+  <div class="wrap">
+    <span class="eyebrow">Programa flagship · PMEs a partir de 7 colaboradores</span>
+    <h1>Sua empresa não precisa de <span class="grad-text">mais trabalho</span>. Precisa <span class="grad-text">despertar</span>.</h1>
+    <p class="sub">O Método Despertar Empresarial une três especialistas — mentalidade, vendas e IA, marketing — em um único programa que transforma o dono e o time juntos. Tudo começa com um diagnóstico honesto do seu negócio.</p>
+    <div class="hero-cta-row">
+      <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary btn-lg">Fazer minha Sessão Raio X grátis</a>
+      <a href="#metodo" class="btn btn-ghost btn-lg">Entender o método</a>
+    </div>
+    <p class="hero-microcopy">Diagnóstico 360° em 5 pilares · Sem compromisso · Você sai com mais clareza do que entrou</p>
+    <div class="hero-pills">
+      <span class="pill"><b>5</b> pilares integrados</span>
+      <span class="pill"><b>3</b> especialistas</span>
+      <span class="pill"><b>12</b> meses de acompanhamento</span>
+      <span class="pill">Do <b>estratégico</b> ao <b>operacional</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM (PASTOR: Problem + Amplify) -->
+<section id="problema">
+  <div class="wrap center">
+    <span class="eyebrow">O problema real</span>
+    <h2 class="h-sec">Você é o gargalo do próprio negócio — e talvez nem perceba</h2>
+    <p class="lead">A empresa cresceu, mas a vida não melhorou. Você virou o profissional mais ocupado da sua própria empresa: resolve tudo, decide tudo, e sem você nada anda. Isso não é sinal de sucesso. É sinal de um negócio que depende 100% de uma pessoa só.</p>
+    <div class="prob-list">
+      <div class="prob-item"><span class="x">✕</span><div>Você trabalha mais do que qualquer funcionário e ainda sente que está sempre apagando incêndio.</div></div>
+      <div class="prob-item"><span class="x">✕</span><div>As vendas dependem de você. Sem um processo claro, o time não vende sozinho.</div></div>
+      <div class="prob-item"><span class="x">✕</span><div>A empresa não tem presença digital de verdade — e quem não é visto, não é lembrado nem comprado.</div></div>
+      <div class="prob-item"><span class="x">✕</span><div>O time não tem cultura, processo nem autonomia. Tudo trava na sua mesa.</div></div>
+      <div class="prob-item"><span class="x">✕</span><div>Você sabe que existe tecnologia e IA pra escalar, mas não sabe por onde começar.</div></div>
+    </div>
+    <p class="named-pain">Isso tem nome: <b>falta de clareza</b>. Não falta capacidade. Falta enxergar onde o negócio está travado — e o que precisa mudar primeiro.</p>
+  </div>
+</section>
+
+<!-- WHAT IS (Story / Transformation) -->
+<section id="metodo" style="background:linear-gradient(180deg,var(--dark),var(--surface),var(--dark))">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="eyebrow">O que é o Despertar</span>
+        <h2 class="h-sec">Não é consultoria avulsa. Não é treinamento isolado. É uma jornada estruturada.</h2>
+        <p class="muted" style="margin-bottom:16px">O Método Despertar Empresarial é um programa completo de aceleração para pequenas e médias empresas. Ele começa com um diagnóstico honesto e termina com uma empresa funcionando com mais autonomia, mais vendas e mais presença no mercado.</p>
+        <p class="muted" style="margin-bottom:16px">A transformação não acontece primeiro na empresa. Ela começa dentro do empresário — e se irradia para tudo ao redor dele: o time, as vendas, a cultura, o mercado.</p>
+        <p style="color:var(--text);font-weight:500;border-left:3px solid var(--teal);padding-left:18px">Por que "Despertar"? Porque o que mais encontramos nos clientes não é falta de capacidade. É falta de clareza. O programa desperta o que você não estava enxergando.</p>
+        <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary" style="margin-top:26px">Começar pelo diagnóstico grátis</a>
+      </div>
+      <div class="split-img">
+        <img src="images/ctx-radar.png" alt="Diagnóstico 360° — gráfico radar de maturidade do negócio em 5 pilares" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 PILARES -->
+<section id="pilares">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:42px">
+      <span class="eyebrow">A metodologia</span>
+      <h2 class="h-sec">Os 5 Pilares da transformação</h2>
+      <p class="lead">O programa atua em 5 dimensões integradas do negócio, com o empresário no centro. Cada pilar tem um especialista responsável — mas os três trabalham juntos o tempo todo.</p>
+    </div>
+    <div class="grid pillars">
+      <div class="card pillar">
+        <span class="pillar-num">01</span>
+        <h3>Mentalidade e Liderança</h3>
+        <div class="owner">Joel Visgueira</div>
+        <ul>
+          <li>Clareza de propósito, valores e visão de futuro</li>
+          <li>Código de cultura documentado e implementado</li>
+          <li>Comportamentos que precisam mudar pra crescer</li>
+          <li>Liderança consciente: gerir sem ser o operacional</li>
+          <li>Equilíbrio e bem-estar como base da liderança</li>
+        </ul>
+      </div>
+      <div class="card pillar">
+        <span class="pillar-num">02</span>
+        <h3>Vendas e Crescimento</h3>
+        <div class="owner">Salatiel Batista</div>
+        <ul>
+          <li>Processo de vendas estruturado e replicável</li>
+          <li>Treinamento contínuo do time comercial</li>
+          <li>Scripts, contorno de objeções e fechamento</li>
+          <li>Metas claras, indicadores e acompanhamento</li>
+          <li>Estratégia de crescimento alinhada ao momento</li>
+        </ul>
+      </div>
+      <div class="card pillar">
+        <span class="pillar-num">03</span>
+        <h3>Marketing e Presença</h3>
+        <div class="owner">Raquel Batista</div>
+        <ul>
+          <li>Posicionamento da marca e do empresário</li>
+          <li>Presença digital: redes, conteúdo e autoridade</li>
+          <li>Marketing integrado ao processo de vendas</li>
+          <li>Identidade visual e comunicação consistente</li>
+          <li>Crescimento orgânico e pago estratégico</li>
+        </ul>
+      </div>
+      <div class="card pillar">
+        <span class="pillar-num">04</span>
+        <h3>Cultura e Time</h3>
+        <div class="owner">Joel Visgueira</div>
+        <ul>
+          <li>Código de cultura vivido na rotina</li>
+          <li>Processos com divisão clara de responsabilidades</li>
+          <li>Seleção, onboarding e desenvolvimento de pessoas</li>
+          <li>Convivência saudável entre colaboradores</li>
+          <li>O empresário saindo do operacional com segurança</li>
+        </ul>
+      </div>
+      <div class="card pillar">
+        <span class="pillar-num">05</span>
+        <h3>Tecnologia e IA</h3>
+        <div class="owner">Salatiel Batista</div>
+        <ul>
+          <li>Automação pra escalar vendas e atendimento</li>
+          <li>IA aplicada: prospecção, conteúdo e dados</li>
+          <li>Sistemas de gestão adequados ao porte</li>
+          <li>Redução de trabalho manual, mais produtividade</li>
+          <li>Integração das ferramentas em um fluxo coerente</li>
+        </ul>
+      </div>
+      <div class="card pillar" style="display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,rgba(42,157,143,.16),var(--surface-2));border-color:rgba(82,212,194,.35)">
+        <h3 style="margin-bottom:10px">Três níveis, ao mesmo tempo</h3>
+        <p class="muted" style="font-size:.92rem">A transformação acontece de cima pra baixo: <b style="color:var(--teal-3)">Estratégico</b> (o empresário como líder), <b style="color:var(--teal-3)">Tático</b> (gestão, cultura e processos) e <b style="color:var(--teal-3)">Operacional</b> (o time que gera resultado no dia a dia).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 PASSOS -->
+<section id="passos" style="background:linear-gradient(180deg,var(--dark),var(--surface),var(--dark))">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:42px">
+      <span class="eyebrow">Como funciona</span>
+      <h2 class="h-sec">Os 4 passos do programa</h2>
+      <p class="lead">Do diagnóstico gratuito ao acompanhamento mensal. Um caminho claro, sem conteúdo genérico.</p>
+    </div>
+    <div class="grid steps">
+      <div class="card step free">
+        <span class="free-badge">Grátis · Porta de entrada</span>
+        <span class="n" style="top:60px">1</span>
+        <div style="margin-left:0">
+          <div class="tag">Passo 1</div>
+          <h3>Sessão Raio X — Diagnóstico 360°</h3>
+          <ul>
+            <li>Avaliação dos 5 pilares com nota de 0 a 10</li>
+            <li>Gráfico radar de maturidade + nota final A, B, C ou D</li>
+            <li>Identificação dos pontos críticos que travam o crescimento</li>
+            <li>Plano de ação preliminar personalizado</li>
+            <li>Você sai com mais clareza — contratando ou não</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card step">
+        <span class="n">2</span>
+        <div class="tag">Passo 2</div>
+        <h3>Plano de Ação Personalizado</h3>
+        <ul>
+          <li>Prioridades definidas por impacto e urgência</li>
+          <li>Ações práticas por pilar, com responsáveis e prazos</li>
+          <li>Coaching, vendas, IA e marketing em uma estratégia única</li>
+          <li>Metas mensais com indicadores claros</li>
+        </ul>
+      </div>
+      <div class="card step">
+        <span class="n">3</span>
+        <div class="tag">Passo 3</div>
+        <h3>Encontros e Treinamento do Time</h3>
+        <ul>
+          <li>Encontros online semanais com os especialistas</li>
+          <li>Matinal de vendas ao vivo pro time comercial</li>
+          <li>2 encontros presenciais de imersão</li>
+          <li>Trilhas por nível + gravações de todas as sessões</li>
+        </ul>
+      </div>
+      <div class="card step">
+        <span class="n">4</span>
+        <div class="tag">Passo 4</div>
+        <h3>Acompanhamento e Sucesso do Cliente</h3>
+        <ul>
+          <li>Acompanhamento mensal de metas e indicadores</li>
+          <li>Suporte contínuo entre as sessões</li>
+          <li>Ajustes de rota conforme o negócio evolui</li>
+          <li>Grupo exclusivo de network com outros empresários</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRILHAS -->
+<section id="trilhas">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:42px">
+      <span class="eyebrow">Adaptado ao seu momento</span>
+      <h2 class="h-sec">Trilhas por nível de faturamento</h2>
+      <p class="lead">O conteúdo e as ações se ajustam ao estágio real do seu negócio — do primeiro processo à expansão.</p>
+    </div>
+    <div class="grid tracks">
+      <div class="card track">
+        <div class="lvl">Iniciante</div>
+        <div class="fat">Até R$ 50 mil/mês</div>
+        <div class="desc">Estruturação básica, primeiros processos e mentalidade empreendedora.</div>
+      </div>
+      <div class="card track">
+        <div class="lvl">Em Crescimento</div>
+        <div class="fat">R$ 50 a 200 mil/mês</div>
+        <div class="desc">Vendas com método, marketing digital e formação de time.</div>
+      </div>
+      <div class="card track">
+        <div class="lvl">Avançado</div>
+        <div class="fat">R$ 200 a 500 mil/mês</div>
+        <div class="desc">Escala, tecnologia, IA e gestão de alta performance.</div>
+      </div>
+      <div class="card track">
+        <div class="lvl">Especialista</div>
+        <div class="fat">Acima de R$ 500 mil/mês</div>
+        <div class="desc">Expansão, network estratégico e posicionamento de mercado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALISTAS -->
+<section id="especialistas" style="background:linear-gradient(180deg,var(--dark),var(--surface),var(--dark))">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:42px">
+      <span class="eyebrow">Quem entrega</span>
+      <h2 class="h-sec">Três especialistas. Um método integrado.</h2>
+      <p class="lead">Não é consultoria de um especialista só. São três competências complementares atuando juntas em cada cliente — do dono ao time, do mercado à operação.</p>
+    </div>
+    <div class="grid experts">
+      <div class="card expert">
+        <div class="photo"><img src="images/joel.jpg" alt="Joel Visgueira" loading="lazy" /></div>
+        <div class="body">
+          <h3>Joel Visgueira</h3>
+          <div class="role">Mentalidade · Liderança · Cultura</div>
+          <ul>
+            <li>Coach, palestrante e consultor</li>
+            <li>Mentalidade e comportamento</li>
+            <li>Liderança, propósito e cultura organizacional</li>
+            <li>Espiritualidade e equilíbrio</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card expert">
+        <div class="photo"><img src="images/salatiel.jpg" alt="Salatiel Batista" loading="lazy" /></div>
+        <div class="body">
+          <h3>Salatiel Batista</h3>
+          <div class="role">Vendas · Tecnologia · IA</div>
+          <ul>
+            <li>Especialista em vendas e IA</li>
+            <li>Processo e método de vendas</li>
+            <li>Treinamento de times comerciais</li>
+            <li>Inteligência Artificial e automação aplicadas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card expert">
+        <div class="photo"><img src="images/raquel.jpg" alt="Raquel Batista" loading="lazy" /></div>
+        <div class="body">
+          <h3>Raquel Batista</h3>
+          <div class="role">Marketing · Presença Digital</div>
+          <ul>
+            <li>Gestora de marketing digital</li>
+            <li>Redes sociais e conteúdo</li>
+            <li>Posicionamento de marca</li>
+            <li>Presença e autoridade digital</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE RECEBE + ANCORAGEM -->
+<section id="recebe">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:42px">
+      <span class="eyebrow">O pacote completo</span>
+      <h2 class="h-sec">O que você recebe no Programa Completo</h2>
+      <p class="lead">Um pacote de transformação integrada — com o valor de mercado de cada item.</p>
+    </div>
+    <div class="stack-table">
+      <div class="stack-row"><span class="item">Mentoria e acompanhamento 12 meses com os 3 especialistas</span><span class="val">R$ 18.000</span></div>
+      <div class="stack-row"><span class="item">Plano de Ação Personalizado para o seu negócio</span><span class="val">R$ 4.000</span></div>
+      <div class="stack-row"><span class="item">Encontros semanais online com os três especialistas</span><span class="val">R$ 5.000</span></div>
+      <div class="stack-row"><span class="item">Treinamento de vendas pro time — Matinal de Vendas</span><span class="val">R$ 3.500</span></div>
+      <div class="stack-row"><span class="item">Acompanhamento mensal de metas — Sucesso do Cliente</span><span class="val">R$ 2.400</span></div>
+      <div class="stack-row"><span class="item">Estratégia de marketing e presença digital</span><span class="val">R$ 4.800</span></div>
+      <div class="stack-row"><span class="item">Implementação de IA e automação no negócio</span><span class="val">R$ 3.300</span></div>
+      <div class="stack-row"><span class="item">2 encontros presenciais de imersão</span><span class="val">R$ 2.000</span></div>
+      <div class="stack-row"><span class="item">Plataforma com todos os treinamentos gravados</span><span class="val">R$ 2.000</span></div>
+      <div class="stack-row"><span class="item">Caixa de Ferramentas: scripts, modelos, checklists e processos</span><span class="val">R$ 1.500</span></div>
+      <div class="stack-row"><span class="item">Comunidade exclusiva de network</span><span class="val">R$ 500</span></div>
+      <div class="stack-row"><span class="item">BÔNUS: Sessão Raio X — Diagnóstico 360°</span><span class="val">R$ 1.000</span></div>
+      <div class="stack-row total"><span class="item">Valor total do pacote</span><span class="val">R$ 47.000</span></div>
+    </div>
+    <div class="anchor-box">
+      <div class="strike">Valor de mercado: R$ 47.000</div>
+      <div class="now">R$ 28.000<small>no Programa Completo de 12 meses</small></div>
+      <p class="muted" style="margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto">Você acessa todo o pacote por uma fração do seu valor de mercado. E começa pela Sessão Raio X — que é gratuita.</p>
+      <a href="#investimento" class="btn btn-primary" style="margin-top:22px">Ver condições de investimento</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA / ROSILDA -->
+<section class="proof">
+  <div class="wrap">
+    <div class="quote">
+      <span class="mark">“</span>
+      <p>A Rosilda não precisava de mais trabalho. Ela precisava enxergar que precisava sair do operacional, criar um código de cultura, estruturar a gestão e reposicionar o negócio. <span class="teal">Isso é o despertar.</span></p>
+      <div class="who">Caso Rosilda · Cliente Digital Master</div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section id="investimento">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:46px">
+      <span class="eyebrow">Investimento</span>
+      <h2 class="h-sec">Escolha como começar</h2>
+      <p class="lead">A Sessão Raio X é o ponto de partida — e é gratuita. Os planos abaixo são para quem decide avançar na transformação completa.</p>
+    </div>
+    <div class="grid plans">
+      <div class="card plan feature">
+        <span class="best">Mais escolhido</span>
+        <div class="ptag">Programa Completo · 12 meses</div>
+        <h3>Despertar Completo</h3>
+        <div class="price">R$ 22.400 <small>à vista (20% de desconto) via Pix ou transferência</small></div>
+        <ul>
+          <li>Os 5 pilares com os 3 especialistas</li>
+          <li>12 meses de mentoria e acompanhamento</li>
+          <li>Encontros semanais + 2 imersões presenciais</li>
+          <li>Treinamento de vendas pro time</li>
+          <li>Implementação de IA e marketing digital</li>
+          <li>Plataforma, caixa de ferramentas e network</li>
+        </ul>
+        <p class="muted" style="font-size:.84rem;margin-bottom:16px">Cartão: 12x de R$ 2.500 (total R$ 30.000) · Boleto: entrada R$ 3.000 + 12x R$ 2.750</p>
+        <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary">Começar pelo Raio X grátis</a>
+      </div>
+      <div class="card plan">
+        <div class="ptag">Programa Base · 6 meses</div>
+        <h3>Despertar Base</h3>
+        <div class="price">A partir de R$ 8.500 <small>ou 6x de R$ 1.600</small></div>
+        <ul>
+          <li>3 pilares prioritários do seu diagnóstico</li>
+          <li>Acompanhamento bimestral</li>
+          <li>Plano de ação personalizado</li>
+          <li>Acesso à plataforma e ferramentas</li>
+        </ul>
+        <a href="https://raiox.salatielbatista.com.br" class="btn btn-ghost">Avaliar no Raio X grátis</a>
+      </div>
+      <div class="card plan" style="border-color:rgba(82,212,194,.3)">
+        <div class="ptag">Porta de entrada</div>
+        <h3>Sessão Raio X</h3>
+        <div class="price grad-text">Gratuita <small style="color:var(--muted)">Diagnóstico 360° + plano preliminar</small></div>
+        <ul>
+          <li>Avaliação completa dos 5 pilares</li>
+          <li>Gráfico radar + nota final A, B, C ou D</li>
+          <li>Pontos críticos que travam o crescimento</li>
+          <li>Sem compromisso de contratação</li>
+        </ul>
+        <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary">Fazer agora, grátis</a>
+      </div>
+    </div>
+    <div class="cond-note">
+      <b style="color:var(--text)">Condição especial de fechamento:</b> quem decide no mesmo dia da Sessão Raio X pode parcelar em 12x de R$ 2.500 no boleto com entrada de apenas R$ 2.000 — disponível só na sessão diagnóstica.
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:linear-gradient(180deg,var(--dark),var(--surface),var(--dark))">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:42px">
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2 class="h-sec">Antes de você decidir</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>A Sessão Raio X é mesmo gratuita?</summary>
+        <div class="ans">É. A Sessão Raio X é um diagnóstico 360° gratuito do seu negócio nos 5 pilares. Você sai com um mapa real da sua empresa e um plano de ação preliminar — independente de contratar ou não o programa. É a nossa porta de entrada.</div>
+      </details>
+      <details>
+        <summary>Para qual tipo de empresa o Despertar é feito?</summary>
+        <div class="ans">Para pequenas e médias empresas a partir de 7 colaboradores que querem sair da dependência do dono, estruturar vendas, organizar o time e crescer com presença de mercado. As trilhas se ajustam ao seu faturamento — de até R$ 50 mil/mês a acima de R$ 500 mil/mês.</div>
+      </details>
+      <details>
+        <summary>É consultoria, curso ou mentoria?</summary>
+        <div class="ans">É um programa integrado de transformação. Não é consultoria avulsa nem treinamento isolado. São três especialistas trabalhando juntos no seu negócio por 12 meses (ou 6, no plano Base), com diagnóstico, plano de ação, encontros, treinamento do time e acompanhamento mensal de metas.</div>
+      </details>
+      <details>
+        <summary>O programa atende só o dono ou também o time?</summary>
+        <div class="ans">Os dois. A transformação acontece em três níveis simultâneos: estratégico (o empresário como líder), tático (gestão, cultura e processos) e operacional (o time de vendas e operação). Inclui treinamento de vendas pro time e implementação de cultura na rotina.</div>
+      </details>
+      <details>
+        <summary>Quanto tempo até ver resultado?</summary>
+        <div class="ans">Já na Sessão Raio X você ganha clareza imediata sobre onde o negócio está forte e onde está sangrando. A partir do plano de ação, a implementação é feita junto, com metas mensais e ajustes de rota conforme o negócio evolui. Não entregamos um documento e sumimos — acompanhamos mês a mês.</div>
+      </details>
+      <details>
+        <summary>Como funciona o investimento?</summary>
+        <div class="ans">O Programa Completo (12 meses) sai por R$ 22.400 à vista (20% de desconto), 12x de R$ 2.500 no cartão ou parcelado no boleto. Há também o Programa Base de 6 meses a partir de R$ 8.500. Tudo começa pela Sessão Raio X gratuita, onde você entende exatamente o que faz sentido pro seu momento.</div>
+      </details>
+      <details>
+        <summary>E se eu fizer o Raio X e não quiser seguir?</summary>
+        <div class="ans">Sem problema. A Sessão Raio X é gratuita e sem compromisso. Você sai com mais clareza do que entrou, com o diagnóstico e o plano preliminar em mãos. Se fizer sentido seguir, a gente conversa. Se não, o diagnóstico já é seu.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="cta-final">
+  <div class="wrap">
+    <div class="divider-glow"></div>
+    <span class="eyebrow">O primeiro passo</span>
+    <h2>O despertar do seu negócio começa com <span class="grad-text">uma única decisão</span></h2>
+    <p class="lead" style="margin-bottom:30px">Não é sobre trabalhar mais. É sobre enxergar com clareza onde você está travado — e ter um método e três especialistas pra te tirar dali. Comece pelo diagnóstico. É grátis.</p>
+    <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary btn-lg">Fazer minha Sessão Raio X grátis</a>
+    <div class="ps">
+      <p><b>P.S.</b> A Sessão Raio X é gratuita e você não tem nada a perder. Em poucos minutos você recebe um gráfico de maturidade do seu negócio nos 5 pilares e um plano de ação preliminar. Mesmo que não contrate nada, você sai sabendo exatamente onde sua empresa está forte e onde está sangrando.</p>
+      <p style="margin-top:12px"><b>P.P.S.</b> Quem decide avançar no mesmo dia da sessão garante a condição especial: 12x de R$ 2.500 no boleto com entrada de R$ 2.000. Essa condição só existe dentro da Sessão Raio X.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <a href="#topo" class="brand">
+      <img src="images/logo-dm.png" alt="Digital Master" style="height:30px;width:30px;border-radius:7px" />
+      <span>Digital Master</span>
+    </a>
+    <p>Método Despertar Empresarial · SRJ — Batista &amp; Visgueira Ltda · CNPJ 12.472.917/0001-78</p>
+    <p style="margin-top:8px">Joel Visgueira · Salatiel Batista · Raquel Batista · © 2026 Digital Master</p>
+    <p style="margin-top:14px"><a href="https://raiox.salatielbatista.com.br">Fazer a Sessão Raio X</a> · <a href="#" onclick="return false">Política de Privacidade</a></p>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/?text=Quero%20saber%20mais%20sobre%20o%20M%C3%A9todo%20Despertar%20Empresarial" class="wa" aria-label="Fale no WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.215zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<!-- Sticky mobile CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="txt"><b>Sessão Raio X grátis</b>Diagnóstico 360° do seu negócio</div>
+  <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary">Fazer agora</a>
+</div>
+
+<!-- LGPD -->
+<div class="lgpd" id="lgpd">
+  <p>Usamos cookies para melhorar sua experiência e medir resultados das nossas ações. Ao continuar, você concorda com nossa política de privacidade.</p>
+  <button class="btn btn-primary" onclick="document.getElementById('lgpd').classList.add('hide');localStorage.setItem('lgpd_ok','1')">Aceitar</button>
+</div>
+
+<script>
+// LGPD persist
+if(localStorage.getItem('lgpd_ok')){document.getElementById('lgpd').classList.add('hide')}
+// Sticky CTA on scroll past hero
+var sticky=document.getElementById('stickyCta');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>700){sticky.classList.add('show')}else{sticky.classList.remove('show')}
+},{passive:true});
+</script>
+</body>
+</html>
