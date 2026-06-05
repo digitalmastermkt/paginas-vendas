@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Método Despertar Empresarial | Digital Master" />
 <meta property="og:description" content="Diagnóstico 360° gratuito do seu negócio em 5 pilares. A porta de entrada do programa que transforma o dono e o time juntos." />
-<meta property="og:image" content="images/hero-bg.png" />
+<meta property="og:image" content="images/logo-dm.png" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,15 +48,16 @@ h1,h2,h3,h4,.title{font-family:'Exo 2',sans-serif;line-height:1.12;letter-spacin
 .grad-text{background:linear-gradient(120deg,var(--teal-3),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
 .muted{color:var(--muted)}
 .center{text-align:center}
-section{position:relative;padding:84px 0}
+section{position:relative;padding:100px 0}
 .eyebrow{
-  display:inline-block;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--teal-3);font-weight:600;margin-bottom:18px;
-  border:1px solid var(--border);padding:7px 16px;border-radius:100px;
-  background:rgba(42,157,143,.06);
+  display:inline-flex;align-items:center;gap:9px;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--teal-3);font-weight:600;margin-bottom:22px;
+  border:1px solid var(--border);padding:8px 18px;border-radius:100px;
+  background:rgba(42,157,143,.05);
 }
-.h-sec{font-size:clamp(1.7rem,4.4vw,2.7rem);font-weight:800;margin-bottom:16px}
-.lead{font-size:clamp(1rem,2.2vw,1.18rem);color:var(--muted);max-width:760px;margin:0 auto}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal-3);box-shadow:0 0 10px var(--teal-3)}
+.h-sec{font-size:clamp(1.75rem,4.4vw,2.75rem);font-weight:800;margin-bottom:18px;letter-spacing:-.018em}
+.lead{font-size:clamp(1.02rem,2.2vw,1.18rem);color:var(--muted);max-width:740px;margin:0 auto;line-height:1.72}
 
 /* Buttons */
 .btn{
@@ -90,16 +91,31 @@ header.nav{
 .nav-links a:hover{color:var(--teal-3)}
 @media(min-width:980px){.nav-links{display:flex}}
 
-/* HERO */
+/* HERO — premium layered gradient + fine grid (no AI stock art) */
 .hero{
-  padding:148px 0 90px;text-align:center;
+  padding:160px 0 96px;text-align:center;position:relative;overflow:hidden;
   background:
-    radial-gradient(900px 500px at 50% -8%,rgba(42,157,143,.20),transparent 60%),
-    linear-gradient(180deg,rgba(10,10,15,.55),rgba(10,10,15,.92) 70%,var(--dark)),
-    url('images/hero-bg.png') center/cover no-repeat fixed;
+    radial-gradient(1100px 620px at 50% -12%,rgba(42,157,143,.22),transparent 62%),
+    radial-gradient(700px 700px at 82% 8%,rgba(61,189,172,.10),transparent 60%),
+    radial-gradient(640px 640px at 14% 30%,rgba(42,157,143,.08),transparent 60%),
+    linear-gradient(180deg,#0c0c12,#0a0a0f 72%,var(--dark));
 }
-.hero h1{font-size:clamp(2.1rem,6.2vw,4.1rem);font-weight:900;max-width:980px;margin:0 auto 22px}
-.hero p.sub{font-size:clamp(1.05rem,2.6vw,1.3rem);color:var(--text);opacity:.9;max-width:720px;margin:0 auto 30px}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(82,212,194,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(82,212,194,.045) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(800px 520px at 50% 30%,#000,transparent 78%);
+  mask-image:radial-gradient(800px 520px at 50% 30%,#000,transparent 78%);
+}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:160px;z-index:0;
+  pointer-events:none;background:linear-gradient(180deg,transparent,var(--dark));
+}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(2.15rem,6.2vw,4.05rem);font-weight:900;max-width:980px;margin:0 auto 24px;letter-spacing:-.03em;line-height:1.06}
+.hero p.sub{font-size:clamp(1.05rem,2.4vw,1.28rem);color:var(--text);opacity:.86;max-width:700px;margin:0 auto 32px;line-height:1.66}
 .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:26px}
 .hero-microcopy{font-size:.86rem;color:var(--muted)}
 .hero-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:40px}
@@ -126,6 +142,21 @@ header.nav{
 @media(min-width:900px){.split{grid-template-columns:1.1fr .9fr}}
 .split-img{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 70px -30px rgba(0,0,0,.8)}
 .split-img img{width:100%;display:block}
+.radar-card{
+  border-radius:var(--radius);border:1px solid var(--border);
+  background:
+    radial-gradient(420px 320px at 50% 12%,rgba(42,157,143,.10),transparent 70%),
+    linear-gradient(180deg,#101019,#0c0c12);
+  box-shadow:0 30px 80px -34px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.03);
+  padding:24px 24px 22px;
+}
+.radar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.radar-tag{font-family:'Space Grotesk',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-3)}
+.radar-grade{font-size:.82rem;color:var(--muted)}
+.radar-grade b{font-family:'Exo 2';font-weight:900;color:var(--teal-3);font-size:1.05rem;margin-left:4px}
+.radar-svg{width:100%;height:auto;display:block;max-width:340px;margin:0 auto}
+.radar-foot{text-align:center;font-size:.82rem;color:var(--muted);margin-top:6px}
+.radar-foot b{color:var(--text);font-weight:600}
 
 /* PILARES */
 .pillars{grid-template-columns:1fr}
@@ -215,6 +246,24 @@ header.nav{
 .best{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,var(--teal-3),var(--teal));color:#03110f;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:100px}
 .cond-note{max-width:700px;margin:26px auto 0;text-align:center;font-size:.86rem;color:var(--muted);background:rgba(17,17,24,.6);border:1px dashed var(--border);border-radius:14px;padding:16px 20px}
 
+/* RAIO X FEATURE (porta de entrada gratuita) */
+.raiox-feature{
+  max-width:620px;margin:0 auto;text-align:center;
+  background:
+    radial-gradient(520px 360px at 50% -10%,rgba(42,157,143,.16),transparent 70%),
+    linear-gradient(180deg,var(--surface),var(--surface-2));
+  border:1px solid rgba(82,212,194,.4);border-radius:var(--radius);
+  box-shadow:0 0 0 1px rgba(82,212,194,.12),0 40px 90px -40px rgba(42,157,143,.55);
+  padding:42px 36px;
+}
+.raiox-badge{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:linear-gradient(120deg,var(--teal-3),var(--teal));color:#03110f;padding:6px 16px;border-radius:100px;margin-bottom:18px}
+.raiox-feature h3{font-size:clamp(1.3rem,3.5vw,1.7rem);font-weight:800;margin-bottom:22px}
+.raiox-list{list-style:none;display:grid;gap:11px;max-width:440px;margin:0 auto 28px;text-align:left}
+.raiox-list li{font-size:.96rem;color:var(--muted);padding-left:26px;position:relative}
+.raiox-list li b{color:var(--text);font-weight:600}
+.raiox-list li::before{content:"✓";position:absolute;left:0;color:var(--teal-3);font-weight:700}
+.raiox-note{font-size:.82rem;color:var(--muted);margin-top:16px}
+
 /* FAQ */
 .faq{max-width:800px;margin:0 auto;display:grid;gap:12px}
 .faq details{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
@@ -282,7 +331,7 @@ footer a{color:var(--teal-3);text-decoration:none}
       <a href="#metodo">O Método</a>
       <a href="#pilares">5 Pilares</a>
       <a href="#especialistas">Especialistas</a>
-      <a href="#investimento">Investimento</a>
+      <a href="#passos">Como funciona</a>
     </nav>
     <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary nav-cta">Raio X grátis</a>
   </div>
@@ -337,8 +386,49 @@ footer a{color:var(--teal-3);text-decoration:none}
         <p style="color:var(--text);font-weight:500;border-left:3px solid var(--teal);padding-left:18px">Por que "Despertar"? Porque o que mais encontramos nos clientes não é falta de capacidade. É falta de clareza. O programa desperta o que você não estava enxergando.</p>
         <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary" style="margin-top:26px">Começar pelo diagnóstico grátis</a>
       </div>
-      <div class="split-img">
-        <img src="images/ctx-radar.png" alt="Diagnóstico 360° — gráfico radar de maturidade do negócio em 5 pilares" loading="lazy" />
+      <div class="radar-card" role="img" aria-label="Diagnóstico 360° — gráfico radar de maturidade do negócio em 5 pilares">
+        <div class="radar-head">
+          <span class="radar-tag">Sessão Raio X</span>
+          <span class="radar-grade">Nota <b>C</b></span>
+        </div>
+        <svg class="radar-svg" viewBox="-12 0 344 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="rfill" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#52D4C2" stop-opacity=".42"/>
+              <stop offset="100%" stop-color="#2A9D8F" stop-opacity=".16"/>
+            </radialGradient>
+          </defs>
+          <g transform="translate(160,158)" fill="none" stroke="rgba(82,212,194,.16)" stroke-width="1">
+            <polygon points="0,-118 112.2,-36.5 69.4,95.5 -69.4,95.5 -112.2,-36.5"/>
+            <polygon points="0,-88.5 84.1,-27.3 52,71.6 -52,71.6 -84.1,-27.3"/>
+            <polygon points="0,-59 56.1,-18.2 34.7,47.7 -34.7,47.7 -56.1,-18.2"/>
+            <polygon points="0,-29.5 28,-9.1 17.3,23.9 -17.3,23.9 -28,-9.1"/>
+            <line x1="0" y1="0" x2="0" y2="-118"/>
+            <line x1="0" y1="0" x2="112.2" y2="-36.5"/>
+            <line x1="0" y1="0" x2="69.4" y2="95.5"/>
+            <line x1="0" y1="0" x2="-69.4" y2="95.5"/>
+            <line x1="0" y1="0" x2="-112.2" y2="-36.5"/>
+          </g>
+          <g transform="translate(160,158)">
+            <polygon points="0,-82.6 78.5,-25.5 27.8,38.2 -45.8,63 -67.3,-21.9"
+              fill="url(#rfill)" stroke="#52D4C2" stroke-width="2.2" stroke-linejoin="round"/>
+            <g fill="#52D4C2">
+              <circle cx="0" cy="-82.6" r="3.4"/>
+              <circle cx="78.5" cy="-25.5" r="3.4"/>
+              <circle cx="27.8" cy="38.2" r="3.4"/>
+              <circle cx="-45.8" cy="63" r="3.4"/>
+              <circle cx="-67.3" cy="-21.9" r="3.4"/>
+            </g>
+          </g>
+          <g font-family="'Space Grotesk',sans-serif" font-size="11" fill="#9097a8">
+            <text x="160" y="28" text-anchor="middle">Mentalidade</text>
+            <text x="304" y="120" text-anchor="end">Vendas</text>
+            <text x="240" y="302" text-anchor="middle">Marketing</text>
+            <text x="80" y="302" text-anchor="middle">Cultura</text>
+            <text x="16" y="120" text-anchor="start">Tecnologia</text>
+          </g>
+        </svg>
+        <p class="radar-foot">Cada pilar avaliado de <b>0 a 10</b> · nota final <b>A, B, C ou D</b></p>
       </div>
     </div>
   </div>
@@ -567,34 +657,31 @@ footer a{color:var(--teal-3);text-decoration:none}
   </div>
 </section>
 
-<!-- O QUE RECEBE + ANCORAGEM -->
+<!-- O QUE RECEBE (sem preço — foco no valor entregue) -->
 <section id="recebe">
   <div class="wrap">
     <div class="center" style="margin-bottom:42px">
-      <span class="eyebrow">O pacote completo</span>
-      <h2 class="h-sec">O que você recebe no Programa Completo</h2>
-      <p class="lead">Um pacote de transformação integrada — com o valor de mercado de cada item.</p>
+      <span class="eyebrow">O programa completo</span>
+      <h2 class="h-sec">O que faz parte da jornada</h2>
+      <p class="lead">Tudo o que você e seu time recebem ao longo do programa — uma estrutura de transformação integrada do dono à operação.</p>
     </div>
     <div class="stack-table">
-      <div class="stack-row"><span class="item">Mentoria e acompanhamento 12 meses com os 3 especialistas</span><span class="val">R$ 18.000</span></div>
-      <div class="stack-row"><span class="item">Plano de Ação Personalizado para o seu negócio</span><span class="val">R$ 4.000</span></div>
-      <div class="stack-row"><span class="item">Encontros semanais online com os três especialistas</span><span class="val">R$ 5.000</span></div>
-      <div class="stack-row"><span class="item">Treinamento de vendas pro time — Matinal de Vendas</span><span class="val">R$ 3.500</span></div>
-      <div class="stack-row"><span class="item">Acompanhamento mensal de metas — Sucesso do Cliente</span><span class="val">R$ 2.400</span></div>
-      <div class="stack-row"><span class="item">Estratégia de marketing e presença digital</span><span class="val">R$ 4.800</span></div>
-      <div class="stack-row"><span class="item">Implementação de IA e automação no negócio</span><span class="val">R$ 3.300</span></div>
-      <div class="stack-row"><span class="item">2 encontros presenciais de imersão</span><span class="val">R$ 2.000</span></div>
-      <div class="stack-row"><span class="item">Plataforma com todos os treinamentos gravados</span><span class="val">R$ 2.000</span></div>
-      <div class="stack-row"><span class="item">Caixa de Ferramentas: scripts, modelos, checklists e processos</span><span class="val">R$ 1.500</span></div>
-      <div class="stack-row"><span class="item">Comunidade exclusiva de network</span><span class="val">R$ 500</span></div>
-      <div class="stack-row"><span class="item">BÔNUS: Sessão Raio X — Diagnóstico 360°</span><span class="val">R$ 1.000</span></div>
-      <div class="stack-row total"><span class="item">Valor total do pacote</span><span class="val">R$ 47.000</span></div>
+      <div class="stack-row"><span class="item">Mentoria e acompanhamento de 12 meses com os 3 especialistas</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">Plano de Ação Personalizado para o seu negócio</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">Encontros semanais online com os três especialistas</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">Treinamento de vendas pro time — Matinal de Vendas</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">Acompanhamento mensal de metas — Sucesso do Cliente</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">Estratégia de marketing e presença digital</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">Implementação de IA e automação no negócio</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">2 encontros presenciais de imersão</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">Plataforma com todos os treinamentos gravados</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">Caixa de Ferramentas: scripts, modelos, checklists e processos</span><span class="val">Incluso</span></div>
+      <div class="stack-row"><span class="item">Comunidade exclusiva de network</span><span class="val">Incluso</span></div>
+      <div class="stack-row total"><span class="item">Tudo começa pela Sessão Raio X</span><span class="val">Gratuita</span></div>
     </div>
     <div class="anchor-box">
-      <div class="strike">Valor de mercado: R$ 47.000</div>
-      <div class="now">R$ 28.000<small>no Programa Completo de 12 meses</small></div>
-      <p class="muted" style="margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto">Você acessa todo o pacote por uma fração do seu valor de mercado. E começa pela Sessão Raio X — que é gratuita.</p>
-      <a href="#investimento" class="btn btn-primary" style="margin-top:22px">Ver condições de investimento</a>
+      <p class="muted" style="max-width:560px;margin:0 auto 6px;font-size:1.05rem">A porta de entrada do programa é o diagnóstico — e ele é <b style="color:var(--teal-3)">100% gratuito</b>. Você descobre exatamente onde seu negócio está travado antes de decidir qualquer coisa.</p>
+      <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary btn-lg" style="margin-top:22px">Fazer minha Sessão Raio X grátis</a>
     </div>
   </div>
 </section>
@@ -610,58 +697,26 @@ footer a{color:var(--teal-3);text-decoration:none}
   </div>
 </section>
 
-<!-- INVESTIMENTO -->
-<section id="investimento">
+<!-- COMO COMEÇAR (sem preço — só o Raio X grátis) -->
+<section id="comecar">
   <div class="wrap">
     <div class="center" style="margin-bottom:46px">
-      <span class="eyebrow">Investimento</span>
-      <h2 class="h-sec">Escolha como começar</h2>
-      <p class="lead">A Sessão Raio X é o ponto de partida — e é gratuita. Os planos abaixo são para quem decide avançar na transformação completa.</p>
+      <span class="eyebrow">Como começar</span>
+      <h2 class="h-sec">O ponto de partida é o diagnóstico — e ele é grátis</h2>
+      <p class="lead">Antes de qualquer decisão, você faz a Sessão Raio X: um diagnóstico 360° do seu negócio nos 5 pilares. Sai com clareza real do que está travando o crescimento — contratando ou não.</p>
     </div>
-    <div class="grid plans">
-      <div class="card plan feature">
-        <span class="best">Mais escolhido</span>
-        <div class="ptag">Programa Completo · 12 meses</div>
-        <h3>Despertar Completo</h3>
-        <div class="price">R$ 22.400 <small>à vista (20% de desconto) via Pix ou transferência</small></div>
-        <ul>
-          <li>Os 5 pilares com os 3 especialistas</li>
-          <li>12 meses de mentoria e acompanhamento</li>
-          <li>Encontros semanais + 2 imersões presenciais</li>
-          <li>Treinamento de vendas pro time</li>
-          <li>Implementação de IA e marketing digital</li>
-          <li>Plataforma, caixa de ferramentas e network</li>
-        </ul>
-        <p class="muted" style="font-size:.84rem;margin-bottom:16px">Cartão: 12x de R$ 2.500 (total R$ 30.000) · Boleto: entrada R$ 3.000 + 12x R$ 2.750</p>
-        <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary">Começar pelo Raio X grátis</a>
-      </div>
-      <div class="card plan">
-        <div class="ptag">Programa Base · 6 meses</div>
-        <h3>Despertar Base</h3>
-        <div class="price">A partir de R$ 8.500 <small>ou 6x de R$ 1.600</small></div>
-        <ul>
-          <li>3 pilares prioritários do seu diagnóstico</li>
-          <li>Acompanhamento bimestral</li>
-          <li>Plano de ação personalizado</li>
-          <li>Acesso à plataforma e ferramentas</li>
-        </ul>
-        <a href="https://raiox.salatielbatista.com.br" class="btn btn-ghost">Avaliar no Raio X grátis</a>
-      </div>
-      <div class="card plan" style="border-color:rgba(82,212,194,.3)">
-        <div class="ptag">Porta de entrada</div>
-        <h3>Sessão Raio X</h3>
-        <div class="price grad-text">Gratuita <small style="color:var(--muted)">Diagnóstico 360° + plano preliminar</small></div>
-        <ul>
-          <li>Avaliação completa dos 5 pilares</li>
-          <li>Gráfico radar + nota final A, B, C ou D</li>
-          <li>Pontos críticos que travam o crescimento</li>
-          <li>Sem compromisso de contratação</li>
-        </ul>
-        <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary">Fazer agora, grátis</a>
-      </div>
-    </div>
-    <div class="cond-note">
-      <b style="color:var(--text)">Condição especial de fechamento:</b> quem decide no mesmo dia da Sessão Raio X pode parcelar em 12x de R$ 2.500 no boleto com entrada de apenas R$ 2.000 — disponível só na sessão diagnóstica.
+    <div class="raiox-feature">
+      <div class="raiox-badge">Porta de entrada · Gratuita</div>
+      <h3>Sessão Raio X — Diagnóstico 360°</h3>
+      <ul class="raiox-list">
+        <li>Avaliação completa dos <b>5 pilares</b> do seu negócio</li>
+        <li>Gráfico radar de maturidade + nota final <b>A, B, C ou D</b></li>
+        <li>Os pontos críticos que travam o seu crescimento</li>
+        <li>Plano de ação preliminar personalizado</li>
+        <li>Sem compromisso — você sai com mais clareza do que entrou</li>
+      </ul>
+      <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary btn-lg">Fazer minha Sessão Raio X grátis</a>
+      <p class="raiox-note">Leva poucos minutos · sem custo · sem compromisso de contratação</p>
     </div>
   </div>
 </section>
@@ -684,7 +739,7 @@ footer a{color:var(--teal-3);text-decoration:none}
       </details>
       <details>
         <summary>É consultoria, curso ou mentoria?</summary>
-        <div class="ans">É um programa integrado de transformação. Não é consultoria avulsa nem treinamento isolado. São três especialistas trabalhando juntos no seu negócio por 12 meses (ou 6, no plano Base), com diagnóstico, plano de ação, encontros, treinamento do time e acompanhamento mensal de metas.</div>
+        <div class="ans">É um programa integrado de transformação. Não é consultoria avulsa nem treinamento isolado. São três especialistas trabalhando juntos no seu negócio ao longo de 12 meses, com diagnóstico, plano de ação, encontros, treinamento do time e acompanhamento mensal de metas.</div>
       </details>
       <details>
         <summary>O programa atende só o dono ou também o time?</summary>
@@ -695,8 +750,8 @@ footer a{color:var(--teal-3);text-decoration:none}
         <div class="ans">Já na Sessão Raio X você ganha clareza imediata sobre onde o negócio está forte e onde está sangrando. A partir do plano de ação, a implementação é feita junto, com metas mensais e ajustes de rota conforme o negócio evolui. Não entregamos um documento e sumimos — acompanhamos mês a mês.</div>
       </details>
       <details>
-        <summary>Como funciona o investimento?</summary>
-        <div class="ans">O Programa Completo (12 meses) sai por R$ 22.400 à vista (20% de desconto), 12x de R$ 2.500 no cartão ou parcelado no boleto. Há também o Programa Base de 6 meses a partir de R$ 8.500. Tudo começa pela Sessão Raio X gratuita, onde você entende exatamente o que faz sentido pro seu momento.</div>
+        <summary>E o investimento no programa?</summary>
+        <div class="ans">As condições do programa são apresentadas individualmente, depois da Sessão Raio X — porque o caminho se ajusta ao diagnóstico e ao momento do seu negócio. O primeiro passo, o diagnóstico 360°, é gratuito e sem compromisso. É nele que você entende exatamente o que faz sentido pra sua empresa antes de qualquer decisão.</div>
       </details>
       <details>
         <summary>E se eu fizer o Raio X e não quiser seguir?</summary>
@@ -716,7 +771,7 @@ footer a{color:var(--teal-3);text-decoration:none}
     <a href="https://raiox.salatielbatista.com.br" class="btn btn-primary btn-lg">Fazer minha Sessão Raio X grátis</a>
     <div class="ps">
       <p><b>P.S.</b> A Sessão Raio X é gratuita e você não tem nada a perder. Em poucos minutos você recebe um gráfico de maturidade do seu negócio nos 5 pilares e um plano de ação preliminar. Mesmo que não contrate nada, você sai sabendo exatamente onde sua empresa está forte e onde está sangrando.</p>
-      <p style="margin-top:12px"><b>P.P.S.</b> Quem decide avançar no mesmo dia da sessão garante a condição especial: 12x de R$ 2.500 no boleto com entrada de R$ 2.000. Essa condição só existe dentro da Sessão Raio X.</p>
+      <p style="margin-top:12px"><b>P.P.S.</b> O diagnóstico é o ponto de partida de todo o programa. Faça o seu hoje e descubra, com clareza, qual é o próximo passo certo pra sua empresa despertar.</p>
     </div>
   </div>
 </section>
