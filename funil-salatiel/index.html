@@ -19,6 +19,7 @@
     --panel:#17171A;
     --panel-2:#1F1F23;
     --line:#2C2C31;
+    --line-soft:#26262B;
     --text:#F3F1EC;
     --text-soft:#C7C5BE;
     --muted:#9A988F;
@@ -43,11 +44,11 @@
       radial-gradient(700px 500px at 85% 110%, rgba(42,157,143,.08), transparent 60%);
     pointer-events:none;z-index:var(--z-base);
   }
-  .wrap{max-width:1120px;margin:0 auto;padding:0 22px;position:relative;z-index:var(--z-flow)}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px;position:relative;z-index:var(--z-flow)}
 
   /* ---------- HEADER ---------- */
   header.site{
-    padding:64px 0 28px;
+    padding:66px 0 26px;
     text-align:center;
   }
   .badge{
@@ -64,7 +65,7 @@
   header.site h1{
     font-family:"Playfair Display",serif;
     font-weight:800;
-    font-size:clamp(2.3rem,5.6vw,4rem);
+    font-size:clamp(2.4rem,5.8vw,4.1rem);
     line-height:1.04;
     letter-spacing:-.02em;
     text-wrap:balance;
@@ -72,58 +73,98 @@
   }
   header.site h1 .accent{color:var(--gold)}
   header.site .lede{
-    max-width:62ch;margin:0 auto;
+    max-width:64ch;margin:0 auto;
     color:var(--text-soft);
-    font-size:clamp(1.02rem,1.6vw,1.18rem);
+    font-size:clamp(1.04rem,1.6vw,1.2rem);
     text-wrap:pretty;
   }
   .meta-row{
     display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
-    margin-top:28px;
+    margin-top:30px;
   }
   .chip{
     font-family:"Plus Jakarta Sans",sans-serif;
-    font-size:.82rem;font-weight:600;
+    font-size:.84rem;font-weight:600;
     color:var(--text-soft);
     background:var(--panel);
     border:1px solid var(--line);
-    padding:8px 14px;border-radius:10px;
+    padding:9px 15px;border-radius:11px;
   }
   .chip b{color:var(--gold)}
 
   /* ---------- LEGEND ---------- */
   .legend{
     display:flex;flex-wrap:wrap;gap:18px;justify-content:center;
-    margin:38px auto 8px;
-    padding:16px 20px;
+    margin:34px auto 8px;
+    padding:15px 22px;
     border:1px solid var(--line);border-radius:14px;
     background:rgba(23,23,26,.6);
-    max-width:760px;
+    max-width:820px;
   }
-  .legend .item{display:flex;align-items:center;gap:9px;font-size:.86rem;color:var(--text-soft)}
-  .legend .swatch{width:16px;height:16px;border-radius:5px;flex:none}
+  .legend .item{display:flex;align-items:center;gap:9px;font-size:.86rem;color:var(--text-soft);font-weight:500}
+  .legend .swatch{width:15px;height:15px;border-radius:5px;flex:none}
   .sw-attract{background:var(--teal)}
   .sw-front{background:var(--gold)}
-  .sw-back{background:var(--gold-deep)}
+  .sw-bump{background:var(--gold-deep)}
+  .sw-back{background:linear-gradient(135deg,var(--gold),var(--gold-deep))}
   .sw-premise{background:repeating-linear-gradient(45deg,#3a3a40,#3a3a40 4px,#54545c 4px,#54545c 8px)}
 
   /* ---------- SECTION TITLES ---------- */
-  .section-head{margin:62px 0 8px;text-align:center}
+  .section-head{margin:64px 0 8px;text-align:center}
+  .section-head .kicker{
+    font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:600;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--teal);
+    display:block;margin-bottom:12px;
+  }
   .section-head h2{
     font-family:"Plus Jakarta Sans",sans-serif;
     font-weight:800;
-    font-size:clamp(1.5rem,3vw,2.1rem);
+    font-size:clamp(1.55rem,3vw,2.15rem);
     letter-spacing:-.01em;
   }
-  .section-head p{color:var(--muted);max-width:60ch;margin:10px auto 0;font-size:.96rem}
+  .section-head p{color:var(--muted);max-width:62ch;margin:11px auto 0;font-size:.98rem}
 
-  /* ---------- FUNNEL ---------- */
+  /* ======================================================= */
+  /*  GRAPHICAL FUNNEL DIAGRAM (SVG infographic)             */
+  /* ======================================================= */
+  .diagram{
+    margin:34px auto 0;
+    max-width:900px;
+    position:relative;
+  }
+  .diagram svg{display:block;width:100%;height:auto;overflow:visible}
+  /* the SVG text uses brand fonts; keep crisp on dark */
+  .diagram svg text{font-family:"Plus Jakarta Sans","Inter",sans-serif}
+  .fnl-stage-label{font-family:"JetBrains Mono",monospace;letter-spacing:.13em;text-transform:uppercase}
+  .fnl-title{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800}
+  .fnl-ticket{font-family:"Anton",sans-serif;letter-spacing:.01em}
+  .fnl-sub{font-family:"Inter",sans-serif}
+
+  /* SVG reveal: band rises in */
+  @media (prefers-reduced-motion:no-preference){
+    .band{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .diagram.in .band{opacity:1;transform:none}
+    .diagram.in .band:nth-of-type(2){transition-delay:.08s}
+    .diagram.in .band:nth-of-type(3){transition-delay:.16s}
+    .diagram.in .band:nth-of-type(4){transition-delay:.24s}
+    .flow-arrow{opacity:0;transition:opacity .6s var(--ease)}
+    .diagram.in .flow-arrow{opacity:1;transition-delay:.34s}
+    .branch{opacity:0;transition:opacity .7s var(--ease)}
+    .diagram.in .branch{opacity:1;transition-delay:.42s}
+  }
+
+  .diagram-caption{
+    text-align:center;color:var(--muted);font-size:.86rem;
+    margin-top:20px;max-width:64ch;margin-left:auto;margin-right:auto;
+  }
+  .diagram-caption b{color:var(--text-soft);font-weight:600}
+
+  /* ---------- DETAIL STAGES (companion cards) ---------- */
   .funnel{
-    margin:30px auto 10px;
+    margin:18px auto 10px;
     display:flex;flex-direction:column;align-items:center;
     gap:0;
   }
-  /* connector arrow between stages */
   .connector{
     width:2px;height:46px;
     background:linear-gradient(var(--gold-deep),rgba(201,151,31,.15));
@@ -152,24 +193,34 @@
     padding:26px 28px;
     position:relative;
     overflow:hidden;
+    box-shadow:0 1px 0 rgba(255,255,255,.02) inset, 0 18px 40px -28px rgba(0,0,0,.8);
   }
   .stage::before{
     content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
   }
-  /* funnel taper: widths shrink top->bottom */
   .w-100{max-width:100%}
-  .w-86{max-width:86%}
-  .w-72{max-width:72%}
-  .w-58{max-width:58%}
+  .w-86{max-width:88%}
+  .w-72{max-width:74%}
+  .w-58{max-width:60%}
 
   .stage.attract::before{background:var(--teal)}
   .stage.front::before{background:var(--gold)}
-  .stage.back::before{background:var(--gold-deep)}
+  .stage.bump::before{background:var(--gold-deep)}
+  .stage.back::before{background:linear-gradient(var(--gold),var(--gold-deep))}
 
   .stage-top{
     display:flex;align-items:flex-start;justify-content:space-between;
     gap:18px;flex-wrap:wrap;margin-bottom:6px;
   }
+  .stage-head-l{display:flex;align-items:flex-start;gap:16px;min-width:0;flex:1}
+  .stage-ico{
+    width:48px;height:48px;flex:none;border-radius:13px;
+    display:grid;place-items:center;margin-top:2px;
+    background:rgba(240,200,130,.10);border:1px solid rgba(240,200,130,.30);
+    color:var(--gold);
+  }
+  .stage.attract .stage-ico{background:rgba(42,157,143,.12);border-color:rgba(42,157,143,.38);color:var(--teal)}
+  .stage-ico svg{width:24px;height:24px;display:block}
   .stage-label{
     font-family:"JetBrains Mono",monospace;
     font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;
@@ -182,9 +233,7 @@
     letter-spacing:-.01em;line-height:1.15;
   }
   .stage .role{color:var(--text-soft);font-size:.96rem;margin-top:8px;max-width:60ch}
-  .ticket{
-    flex:none;text-align:right;
-  }
+  .ticket{flex:none;text-align:right}
   .ticket .val{
     font-family:"Anton",sans-serif;
     font-size:clamp(1.6rem,3.4vw,2.3rem);
@@ -198,7 +247,6 @@
     letter-spacing:.08em;text-transform:uppercase;margin-top:6px;
   }
 
-  /* sub-blocks inside a stage (NOT nested cards: flat rows with dividers) */
   .rows{margin-top:18px;border-top:1px solid var(--line)}
   .row{
     display:flex;align-items:center;gap:16px;
@@ -226,7 +274,6 @@
   }
   .row.tealic .pill{color:var(--teal);background:rgba(42,157,143,.08);border-color:rgba(42,157,143,.28)}
 
-  /* lots grid for front-end */
   .lots{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
     gap:12px;margin-top:18px;
@@ -243,7 +290,7 @@
   .lot.founder .ln{color:var(--gold)}
 
   .note{
-    display:inline-flex;align-items:center;gap:8px;
+    display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;
     margin-top:16px;font-size:.84rem;color:var(--muted);
     font-style:normal;
   }
@@ -256,7 +303,6 @@
     padding:3px 9px;border-radius:6px;
   }
 
-  /* split for the two attract sub-paths */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
   @media(max-width:620px){.split{grid-template-columns:1fr}}
   .lane{border:1px solid var(--line);border-radius:13px;padding:16px 16px;background:var(--panel-2)}
@@ -265,6 +311,14 @@
   .lane ul{list-style:none;display:flex;flex-direction:column;gap:7px}
   .lane li{font-size:.9rem;color:var(--text-soft);padding-left:18px;position:relative}
   .lane li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+
+  .model-badge{
+    font-family:"JetBrains Mono",monospace;font-size:.64rem;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;
+    padding:3px 9px;border-radius:6px;white-space:nowrap;
+  }
+  .model-diy{color:var(--teal);border:1px solid rgba(42,157,143,.4);background:rgba(42,157,143,.08)}
+  .model-dwy{color:var(--gold);border:1px solid rgba(240,200,130,.4);background:rgba(240,200,130,.08)}
 
   /* ---------- BRAND ARCHITECTURE ---------- */
   .brands{
@@ -275,11 +329,13 @@
     border:1px solid var(--line);border-radius:16px;
     padding:22px 20px;background:var(--panel);
     position:relative;
+    box-shadow:0 16px 36px -30px rgba(0,0,0,.8);
   }
   .brand .tier{
     font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.1em;
     text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:10px;
   }
+  .brand.person{border-color:rgba(240,200,130,.4)}
   .brand.person .tier,.brand.person h3{color:var(--gold)}
   .brand h3{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.18rem;margin-bottom:8px}
   .brand p{font-size:.9rem;color:var(--text-soft)}
@@ -287,7 +343,7 @@
 
   /* ---------- FOOTER ---------- */
   footer.site{
-    margin-top:72px;padding:34px 0 56px;
+    margin-top:74px;padding:34px 0 56px;
     border-top:1px solid var(--line);
     text-align:center;color:var(--muted);
   }
@@ -302,7 +358,7 @@
     color:var(--muted);border:1px solid var(--line);padding:6px 13px;border-radius:8px;
   }
 
-  /* ---------- REVEAL (enhances already-visible) ---------- */
+  /* ---------- REVEAL ---------- */
   @media (prefers-reduced-motion:no-preference){
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
     .reveal.in{opacity:1;transform:none}
@@ -328,6 +384,7 @@
   <div class="legend reveal">
     <div class="item"><span class="swatch sw-attract"></span>Atração (topo)</div>
     <div class="item"><span class="swatch sw-front"></span>Front-end (isca)</div>
+    <div class="item"><span class="swatch sw-bump"></span>Order bump</div>
     <div class="item"><span class="swatch sw-back"></span>Back-end (esteira)</div>
     <div class="item"><span class="swatch sw-premise"></span>Premissa / a confirmar</div>
   </div>
@@ -335,9 +392,180 @@
 
 <main class="wrap">
 
+  <!-- ============================================================ -->
+  <!--  THE GRAPHICAL FUNNEL DIAGRAM                                -->
+  <!-- ============================================================ -->
   <div class="section-head reveal">
-    <h2>O funil, de cima para baixo</h2>
-    <p>Quanto mais largo o bloco, mais gente e mais barato. Quanto mais estreito, menos gente e maior o ticket.</p>
+    <span class="kicker">Visão de uma olhada</span>
+    <h2>O funil, desenhado</h2>
+    <p>Cada faixa afunila de cima (muita gente, baixo ticket) para baixo (poucas vagas, alto ticket). As setas mostram o fluxo; as linhas à direita ligam a esteira às marcas que a sustentam.</p>
+  </div>
+
+  <div class="diagram" id="diagram">
+    <!-- viewBox 0..900 wide, 0..760 tall. Funnel occupies left ~620px; brand branches on the right. -->
+    <svg viewBox="0 0 900 770" role="img" aria-labelledby="diagTitle diagDesc" preserveAspectRatio="xMidYMin meet">
+      <title id="diagTitle">Diagrama do funil de vendas do ecossistema Salatiel Batista</title>
+      <desc id="diagDesc">Funil em quatro faixas afuniladas: Atração no topo (orgânico mais tráfego pago, custo zero para o lead), Imersão Máquina de Vendas como isca de R$47 a 197, order bump de R$67 a 97 no checkout, e back-end com Comunidade Digital Master a R$997 por ano e Mentoria a R$15.000 para 5 vagas. À direita, ramificações para as marcas Master Point Cursos e Agência no Bolso.</desc>
+
+      <defs>
+        <!-- gradients per band, within brand palette (gold / teal), no purple -->
+        <linearGradient id="gAttract" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2A9D8F"/>
+          <stop offset="1" stop-color="#1F7268"/>
+        </linearGradient>
+        <linearGradient id="gFront" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#F0C882"/>
+          <stop offset="1" stop-color="#DBA945"/>
+        </linearGradient>
+        <linearGradient id="gBump" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#D8A845"/>
+          <stop offset="1" stop-color="#C9971F"/>
+        </linearGradient>
+        <linearGradient id="gBack" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#C9971F"/>
+          <stop offset="1" stop-color="#A87C14"/>
+        </linearGradient>
+        <!-- soft depth shadow -->
+        <filter id="depth" x="-20%" y="-20%" width="140%" height="160%">
+          <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.55"/>
+        </filter>
+        <!-- subtle inner sheen overlay -->
+        <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+          <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.02"/>
+          <stop offset="1" stop-color="#000000" stop-opacity="0.18"/>
+        </linearGradient>
+        <marker id="arrowGold" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#C9971F"/>
+        </marker>
+        <marker id="arrowLine" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#6E6E76"/>
+        </marker>
+      </defs>
+
+      <!-- ===== central flow spine (drawn behind bands) ===== -->
+      <g class="flow-arrow" stroke="#C9971F" stroke-width="2.4" fill="none" opacity=".9">
+        <line x1="310" y1="150" x2="310" y2="186" marker-end="url(#arrowGold)"/>
+        <line x1="310" y1="310" x2="310" y2="346" marker-end="url(#arrowGold)"/>
+        <line x1="310" y1="452" x2="310" y2="488" marker-end="url(#arrowGold)"/>
+      </g>
+
+      <!-- ===== BAND 1: ATRAÇÃO (widest) ===== -->
+      <g class="band">
+        <path d="M40,20 L580,20 L524,150 L96,150 Z" fill="url(#gAttract)" filter="url(#depth)"/>
+        <path d="M40,20 L580,20 L524,150 L96,150 Z" fill="url(#sheen)"/>
+        <!-- icon: megaphone -->
+        <g transform="translate(78,76)" fill="none" stroke="#06302B" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="-12" y="-3" width="6" height="14" rx="1.5" fill="#06302B" stroke="none"/>
+          <path d="M-6,-6 L14,-15 L14,21 L-6,12 Z" fill="#06302B" stroke="none"/>
+          <path d="M-3,11 L-3,20 L2,20 L0,11" fill="#06302B" stroke="none"/>
+          <path d="M19,-4 q7,7 0,14" stroke="#06302B" stroke-width="2.6"/>
+        </g>
+        <text x="108" y="56" class="fnl-stage-label" font-size="12.5" fill="#06302B" font-weight="600" opacity=".82">Etapa 1 · Topo do funil</text>
+        <text x="108" y="83" class="fnl-title" font-size="23" fill="#06302B">Atração &amp; audiência</text>
+        <text x="108" y="108" class="fnl-sub" font-size="12.5" fill="#0a3a33" opacity=".9">Orgânico (Instagram · Reels · TikTok) + tráfego pago Meta Ads</text>
+        <!-- ticket badge (top-right corner of the wide band) -->
+        <g transform="translate(500,52)">
+          <rect x="-2" y="-16" width="78" height="40" rx="9" fill="#06302B" opacity=".22"/>
+          <text x="37" y="6" text-anchor="middle" class="fnl-ticket" font-size="23" fill="#06302B">R$0</text>
+          <text x="37" y="19" text-anchor="middle" class="fnl-sub" font-size="8.5" fill="#06302B" opacity=".82" letter-spacing="0.05em">CUSTO P/ O LEAD</text>
+        </g>
+      </g>
+
+      <!-- ===== BAND 2: FRONT-END / IMERSÃO ===== -->
+      <g class="band">
+        <path d="M96,186 L524,186 L476,310 L144,310 Z" fill="url(#gFront)" filter="url(#depth)"/>
+        <path d="M96,186 L524,186 L476,310 L144,310 Z" fill="url(#sheen)"/>
+        <!-- icon: magnet (isca) -->
+        <g transform="translate(138,242)">
+          <path d="M-11,-9 a11,11 0 0 1 22,0 L11,9 L4,9 L4,-7 a4,4 0 0 0 -8,0 L-4,9 L-11,9 Z" fill="#3a2a05"/>
+          <rect x="-11" y="9" width="7" height="6" fill="#8a1212"/>
+          <rect x="4" y="9" width="7" height="6" fill="#8a1212"/>
+        </g>
+        <text x="168" y="222" class="fnl-stage-label" font-size="12.5" fill="#3a2a05" font-weight="600" opacity=".82">Etapa 2 · Isca / front-end</text>
+        <text x="168" y="249" class="fnl-title" font-size="22" fill="#241a03">Imersão Máquina de Vendas</text>
+        <text x="168" y="273" class="fnl-sub" font-size="12.5" fill="#3a2a05" opacity=".92">Evento ao vivo de 1 dia · 27/06/2026</text>
+        <text x="168" y="296" class="fnl-ticket" font-size="20" fill="#241a03">R$47–197 <tspan class="fnl-sub" font-size="11" opacity=".82" dx="4">· 4 lotes crescentes</tspan></text>
+      </g>
+
+      <!-- ===== BAND 3: ORDER BUMP ===== -->
+      <g class="band">
+        <path d="M144,346 L476,346 L436,452 L184,452 Z" fill="url(#gBump)" filter="url(#depth)"/>
+        <path d="M144,346 L476,346 L436,452 L184,452 Z" fill="url(#sheen)"/>
+        <!-- icon: cart -->
+        <g transform="translate(186,400)" fill="none" stroke="#2a2008" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M-12,-9 L-8,-9 L-5,7 L11,7 M-6,-3 L13,-3 L11,3 L-5,3"/>
+          <circle cx="-4" cy="13" r="2.2" fill="#2a2008" stroke="none"/>
+          <circle cx="9" cy="13" r="2.2" fill="#2a2008" stroke="none"/>
+        </g>
+        <text x="216" y="384" class="fnl-stage-label" font-size="11.5" fill="#2a2008" font-weight="600" opacity=".82">Etapa 2b · Order bump</text>
+        <text x="216" y="408" class="fnl-title" font-size="18" fill="#1f1804">Acesso vitalício à gravação</text>
+        <text x="216" y="431" class="fnl-ticket" font-size="17" fill="#1f1804">R$67–97 <tspan class="fnl-sub" font-size="10.5" opacity=".82" dx="3">· add-on (premissa)</tspan></text>
+      </g>
+
+      <!-- ===== BAND 4: BACK-END (narrowest) ===== -->
+      <g class="band">
+        <path d="M184,488 L436,488 L398,628 L222,628 Z" fill="url(#gBack)" filter="url(#depth)"/>
+        <path d="M184,488 L436,488 L398,628 L222,628 Z" fill="url(#sheen)"/>
+        <!-- icon: crown -->
+        <g transform="translate(228,548)">
+          <path d="M-13,9 L-15,-9 L-6,-1 L0,-12 L6,-1 L15,-9 L13,9 Z" fill="#fff" opacity=".95"/>
+          <rect x="-13" y="10" width="26" height="4.5" rx="1.5" fill="#fff" opacity=".95"/>
+        </g>
+        <text x="256" y="530" class="fnl-stage-label" font-size="11.5" fill="#fff" font-weight="600" opacity=".92">Etapa 3 · Back-end</text>
+        <text x="256" y="554" class="fnl-title" font-size="19" fill="#fff">Esteira de 2 níveis</text>
+        <text x="310" y="582" text-anchor="middle" class="fnl-sub" font-size="12" fill="#fff" opacity=".92">Comunidade R$997/ano · Mentoria R$15k (5 vagas)</text>
+        <text x="310" y="602" text-anchor="middle" class="fnl-sub" font-size="11" fill="#fff" opacity=".78" font-style="italic">É aqui que está o lucro.</text>
+      </g>
+
+      <!-- ===== BRAND BRANCHES (right side) ===== -->
+      <g class="branch">
+        <!-- dashed connectors from funnel edge out to the brand boxes -->
+        <path d="M500,248 C580,248 600,250 640,250" fill="none" stroke="#6E6E76" stroke-width="1.8" stroke-dasharray="2 5" marker-end="url(#arrowLine)"/>
+        <path d="M456,400 C560,400 600,400 640,400" fill="none" stroke="#6E6E76" stroke-width="1.8" stroke-dasharray="2 5" marker-end="url(#arrowLine)"/>
+        <path d="M410,560 C540,560 600,560 640,560" fill="none" stroke="#6E6E76" stroke-width="1.8" stroke-dasharray="2 5" marker-end="url(#arrowLine)"/>
+
+        <!-- mãe -->
+        <g transform="translate(648,228)">
+          <rect x="0" y="0" width="212" height="46" rx="11" fill="#17171A" stroke="#3a3a40"/>
+          <rect x="0" y="0" width="4" height="46" rx="2" fill="#C9971F"/>
+          <text x="16" y="20" class="fnl-stage-label" font-size="9.5" fill="#9A988F" letter-spacing="0.1em">EMPRESA-MÃE · B2B</text>
+          <text x="16" y="36" class="fnl-title" font-size="14.5" fill="#F3F1EC">Digital Master</text>
+        </g>
+        <!-- B2C -->
+        <g transform="translate(648,378)">
+          <rect x="0" y="0" width="212" height="46" rx="11" fill="#17171A" stroke="#3a3a40"/>
+          <rect x="0" y="0" width="4" height="46" rx="2" fill="#2A9D8F"/>
+          <text x="16" y="20" class="fnl-stage-label" font-size="9.5" fill="#9A988F" letter-spacing="0.1em">SEGMENTO · B2C</text>
+          <text x="16" y="36" class="fnl-title" font-size="14.5" fill="#F3F1EC">Master Point Cursos</text>
+        </g>
+        <!-- startup -->
+        <g transform="translate(648,538)">
+          <rect x="0" y="0" width="212" height="46" rx="11" fill="#17171A" stroke="#3a3a40"/>
+          <rect x="0" y="0" width="4" height="46" rx="2" fill="#2A9D8F"/>
+          <text x="16" y="20" class="fnl-stage-label" font-size="9.5" fill="#9A988F" letter-spacing="0.1em">STARTUP · FEITO-POR-VOCÊ</text>
+          <text x="16" y="36" class="fnl-title" font-size="14.5" fill="#F3F1EC">Agência no Bolso</text>
+        </g>
+      </g>
+
+      <!-- authority anchor under the funnel -->
+      <g class="branch">
+        <line x1="310" y1="628" x2="310" y2="672" stroke="#C9971F" stroke-width="2.4" marker-end="url(#arrowGold)" opacity=".75"/>
+        <rect x="150" y="678" width="320" height="58" rx="13" fill="#17171A" stroke="rgba(240,200,130,.45)"/>
+        <text x="310" y="703" text-anchor="middle" class="fnl-stage-label" font-size="10" fill="#F0C882" letter-spacing="0.11em">MARCA PESSOAL · AUTORIDADE QUE ABASTECE TUDO</text>
+        <text x="310" y="724" text-anchor="middle" class="fnl-title" font-size="16" fill="#F3F1EC">Salatiel Batista</text>
+      </g>
+    </svg>
+  </div>
+  <p class="diagram-caption">Quanto mais larga a faixa, <b>mais gente e mais barato</b>; quanto mais estreita, <b>menos vagas e maior o ticket</b>. O front-end paga o tráfego; o back-end traz o lucro.</p>
+
+  <!-- ============================================================ -->
+  <!--  DETAILED COMPANION CARDS                                   -->
+  <!-- ============================================================ -->
+  <div class="section-head reveal">
+    <span class="kicker">Detalhe etapa por etapa</span>
+    <h2>O funil, por dentro</h2>
+    <p>A mesma jornada do diagrama, agora com os números, lotes e premissas de cada etapa.</p>
   </div>
 
   <div class="funnel">
@@ -345,10 +573,15 @@
     <!-- STAGE 1: ATRAÇÃO -->
     <section class="stage attract w-100 reveal">
       <div class="stage-top">
-        <div>
-          <div class="stage-label">Etapa 1 · Topo do funil</div>
-          <h3>Atração &amp; geração de audiência</h3>
-          <p class="role">Onde o público frio descobre o Salatiel. Conteúdo orgânico cria autoridade e prova social; o tráfego pago amplifica e leva ao cadastro da Imersão.</p>
+        <div class="stage-head-l">
+          <div class="stage-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h3l8 5V5L7 10H4a1 1 0 0 0-1 1Z"/><path d="M18 8a4 4 0 0 1 0 8"/></svg>
+          </div>
+          <div>
+            <div class="stage-label">Etapa 1 · Topo do funil</div>
+            <h3>Atração &amp; geração de audiência</h3>
+            <p class="role">Onde o público frio descobre o Salatiel. Conteúdo orgânico cria autoridade e prova social; o tráfego pago amplifica e leva ao cadastro da Imersão.</p>
+          </div>
         </div>
         <div class="ticket teal">
           <div class="val">R$0</div>
@@ -383,10 +616,15 @@
     <!-- STAGE 2: FRONT-END -->
     <section class="stage front w-86 reveal">
       <div class="stage-top">
-        <div>
-          <div class="stage-label">Etapa 2 · Isca / front-end</div>
-          <h3>Imersão Máquina de Vendas (MV)</h3>
-          <p class="role">Evento online ao vivo de 1 dia, baixo ticket. Não é o lucro: é o que paga o tráfego e qualifica quem entra na sala para o pitch do back-end.</p>
+        <div class="stage-head-l">
+          <div class="stage-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3a6 6 0 0 1 12 0v6a6 6 0 0 1-12 0V3Z"/><path d="M6 9v0M18 9v0"/><path d="M6 9v3M18 9v3"/></svg>
+          </div>
+          <div>
+            <div class="stage-label">Etapa 2 · Isca / front-end</div>
+            <h3>Imersão Máquina de Vendas (MV)</h3>
+            <p class="role">Evento online ao vivo de 1 dia, baixo ticket. Não é o lucro: é o que paga o tráfego e qualifica quem entra na sala para o pitch do back-end.</p>
+          </div>
         </div>
         <div class="ticket">
           <div class="val">R$47–197</div>
@@ -422,12 +660,17 @@
     <div class="connector"><span class="tag">no checkout</span></div>
 
     <!-- STAGE 2b: ORDER BUMP -->
-    <section class="stage front w-72 reveal">
+    <section class="stage bump w-72 reveal">
       <div class="stage-top">
-        <div>
-          <div class="stage-label">Etapa 2b · Order bump</div>
-          <h3>Acesso vitalício à gravação</h3>
-          <p class="role">Oferta de 1 clique dentro do checkout da Imersão. Aumenta o ticket médio sem novo esforço de venda.</p>
+        <div class="stage-head-l">
+          <div class="stage-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 12.2a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+          </div>
+          <div>
+            <div class="stage-label">Etapa 2b · Order bump</div>
+            <h3>Acesso vitalício à gravação</h3>
+            <p class="role">Oferta de 1 clique dentro do checkout da Imersão. Aumenta o ticket médio sem novo esforço de venda.</p>
+          </div>
         </div>
         <div class="ticket">
           <div class="val">R$67–97</div>
@@ -442,27 +685,32 @@
     <!-- STAGE 3: BACK-END -->
     <section class="stage back w-58 reveal">
       <div class="stage-top">
-        <div>
-          <div class="stage-label">Etapa 3 · Back-end (esteira)</div>
-          <h3>Esteira de 2 níveis</h3>
-          <p class="role">Ofertada no pitch do evento, organizada por quem faz o trabalho: faça você mesmo &rarr; faço com você. É aqui que está o lucro.</p>
+        <div class="stage-head-l">
+          <div class="stage-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M4 18 2 8l5 4 5-7 5 7 5-4-2 10Z"/></svg>
+          </div>
+          <div>
+            <div class="stage-label">Etapa 3 · Back-end (esteira)</div>
+            <h3>Esteira de 2 níveis</h3>
+            <p class="role">Ofertada no pitch do evento, organizada por quem faz o trabalho: faça você mesmo &rarr; faço com você. É aqui que está o lucro.</p>
+          </div>
         </div>
       </div>
 
       <div class="rows">
-        <div class="row">
+        <div class="row tealic">
           <div class="ic">1</div>
           <div class="body">
-            <div class="h">Comunidade Digital Master</div>
-            <div class="s">Faça você mesmo (DIY guiado). Oferta principal do dia, ascende o volume.</div>
+            <div class="h">Comunidade Digital Master <span class="model-badge model-diy">faça você</span></div>
+            <div class="s">DIY guiado. Oferta principal do dia, ascende o volume.</div>
           </div>
           <div class="pill">R$997/ano</div>
         </div>
         <div class="row">
           <div class="ic">2</div>
           <div class="body">
-            <div class="h">Mentoria</div>
-            <div class="s">Faço com você (done-with-you). ~5 vagas. Carrega ~2/3 do faturamento do lançamento.</div>
+            <div class="h">Mentoria <span class="model-badge model-dwy">faço com você</span></div>
+            <div class="s">Done-with-you. ~5 vagas. Carrega ~2/3 do faturamento do lançamento.</div>
           </div>
           <div class="pill">R$15.000 · 5 vagas</div>
         </div>
@@ -474,7 +722,8 @@
 
   <!-- BRAND ARCHITECTURE -->
   <div class="section-head reveal">
-    <h2>Arquitetura de marcas que alimenta o funil</h2>
+    <span class="kicker">Quem sustenta o funil</span>
+    <h2>Arquitetura de marcas</h2>
     <p>O mesmo funil roda sustentado por marcas com papéis distintos. A marca pessoal é a autoridade que abastece tudo.</p>
   </div>
 
@@ -518,8 +767,11 @@
 <script>
   (function(){
     var els = document.querySelectorAll('.reveal');
-    if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var diagram = document.getElementById('diagram');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!('IntersectionObserver' in window) || reduce){
       els.forEach(function(e){e.classList.add('in')});
+      if(diagram) diagram.classList.add('in');
       return;
     }
     var io = new IntersectionObserver(function(entries){
@@ -528,6 +780,14 @@
       });
     },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(e){io.observe(e)});
+    if(diagram){
+      var io2 = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){en.target.classList.add('in');io2.unobserve(en.target)}
+        });
+      },{threshold:.2});
+      io2.observe(diagram);
+    }
   })();
 </script>
 
