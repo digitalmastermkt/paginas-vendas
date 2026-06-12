@@ -155,17 +155,17 @@
   .proof-list .ck{width:30px;height:30px;border-radius:8px;background:rgba(22,160,133,.22);color:#5fe3c2;display:flex;align-items:center;justify-content:center;flex:none;font-weight:800}
   .proof-list b{color:#fff;font-family:'Plus Jakarta Sans',sans-serif}
 
-  /* DEPOIMENTOS placeholder */
-  .depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
-  @media(max-width:860px){.depo-grid{grid-template-columns:1fr}}
-  .depo-card{background:var(--bg-soft);border:1px dashed var(--line);border-radius:var(--radius);padding:26px 24px}
-  .depo-card .stars{color:var(--gold);font-size:16px;margin-bottom:12px;letter-spacing:2px}
-  .depo-card p{font-size:16px;color:var(--slate);font-style:italic;margin-bottom:16px}
-  .depo-card .who2{display:flex;align-items:center;gap:12px}
-  .depo-card .av{width:42px;height:42px;border-radius:50%;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;color:var(--teal-dark);font-weight:800;flex:none}
-  .depo-card .who2 b{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;display:block}
-  .depo-card .who2 span{font-size:13px;color:var(--slate)}
-  .depo-soon{font-size:12.5px;color:#9aa7a3;text-align:center;margin-top:22px}
+  /* FORMANDOS / PROVA REAL */
+  .depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
+  @media(max-width:860px){.depo-grid{grid-template-columns:1fr;max-width:420px;margin:8px auto 0}}
+  .depo-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .depo-card .photo{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--bg-soft)}
+  .depo-card .photo img{width:100%;height:100%;object-fit:cover}
+  .depo-card .cap{padding:18px 20px}
+  .depo-card .cap .badge{display:inline-flex;align-items:center;gap:7px;background:var(--teal-soft);color:var(--teal-dark);font-weight:700;font-size:12.5px;padding:6px 12px;border-radius:999px;margin-bottom:10px}
+  .depo-card .cap b{font-family:'Plus Jakarta Sans',sans-serif;font-size:15.5px;display:block;color:var(--ink);margin-bottom:3px}
+  .depo-card .cap span{font-size:13.5px;color:var(--slate)}
+  .depo-soon{font-size:13px;color:#7a8884;text-align:center;margin-top:24px}
 
   /* FAQ */
   .faq-wrap{max-width:760px;margin:0 auto}
@@ -389,32 +389,47 @@
   </div>
 </section>
 
-<!-- DEPOIMENTOS (placeholder) -->
+<!-- FORMANDOS / PROVA REAL -->
 <section class="depo">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Quem passou por aqui</span>
-      <h2>Histórias de quem deu o primeiro passo.</h2>
-      <p class="lead">Em breve, as histórias reais de alunos de Castelo que se qualificaram e conseguiram emprego.</p>
+      <span class="eyebrow">Prova real</span>
+      <h2>Alunos formados e certificados pela Master Point.</h2>
+      <p class="lead">Gente de Castelo do Piauí que começou aqui, concluiu a trilha e saiu com o certificado na mão.</p>
     </div>
     <div class="depo-grid">
       <div class="depo-card">
-        <div class="stars">★★★★★</div>
-        <p>"Espaço reservado para o depoimento de um aluno da Master Point."</p>
-        <div class="who2"><span class="av">A</span><span><b>Aluno Master Point</b><span>Castelo do Piauí</span></span></div>
+        <div class="photo">
+          <img src="images/formando-1.jpg" alt="Aluno formado segurando o certificado de conclusão da Master Point em Castelo do Piauí" loading="lazy" width="825" height="1100">
+        </div>
+        <div class="cap">
+          <span class="badge">🎓 Certificado</span>
+          <b>Aluno certificado</b>
+          <span>Master Point · Castelo do Piauí</span>
+        </div>
       </div>
       <div class="depo-card">
-        <div class="stars">★★★★★</div>
-        <p>"Espaço reservado para o depoimento de um aluno da Master Point."</p>
-        <div class="who2"><span class="av">A</span><span><b>Aluno Master Point</b><span>Castelo do Piauí</span></span></div>
+        <div class="photo">
+          <img src="images/formando-2.jpg" alt="Aluna formada segurando o certificado de conclusão da Master Point em Castelo do Piauí" loading="lazy" width="825" height="1100">
+        </div>
+        <div class="cap">
+          <span class="badge">🎓 Certificado</span>
+          <b>Aluna certificada</b>
+          <span>Master Point · Castelo do Piauí</span>
+        </div>
       </div>
       <div class="depo-card">
-        <div class="stars">★★★★★</div>
-        <p>"Espaço reservado para o depoimento de um aluno da Master Point."</p>
-        <div class="who2"><span class="av">A</span><span><b>Aluno Master Point</b><span>Castelo do Piauí</span></span></div>
+        <div class="photo">
+          <img src="images/turma-3.jpg" alt="Turma da Master Point em aula de informática em Castelo do Piauí" loading="lazy" width="825" height="1100">
+        </div>
+        <div class="cap">
+          <span class="badge">🎓 Turma</span>
+          <b>Turma em formação</b>
+          <span>Master Point · Castelo do Piauí</span>
+        </div>
       </div>
     </div>
-    <p class="depo-soon">Os depoimentos reais (texto, print ou vídeo) entram aqui assim que forem confirmados.</p>
+    <p class="depo-soon">Fotos reais de alunos formados e da estrutura da Master Point em Castelo do Piauí.</p>
   </div>
 </section>
 
