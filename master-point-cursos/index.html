@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Point Cursos | Informática Profissionalizante em Castelo do Piauí</title>
+<meta name="description" content="Aprenda a usar o computador de verdade aqui em Castelo do Piauí e saia pronto pro emprego que você quer. Mais de 8 mil alunos formados, 25 anos de mercado. Presencial e online. Matrícula aberta, início imediato.">
+<meta property="og:title" content="Master Point Cursos | Do zero ao mercado de trabalho">
+<meta property="og:description" content="Curso de informática profissionalizante presencial em Castelo do Piauí (e online). Do básico à inteligência artificial. Certificado, parcelado, início imediato.">
+<meta property="og:type" content="website">
+
+<!-- REPLACE: fb-pixel-id -->
+<!-- REPLACE: google-ads-id -->
+<!-- REPLACE: gtm-id -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --teal:#16a085;
+    --teal-dark:#0e7a64;
+    --teal-soft:#e8f7f3;
+    --ink:#13211e;
+    --slate:#54635f;
+    --line:#e3e9e7;
+    --bg:#ffffff;
+    --bg-soft:#f5f9f8;
+    --gold:#d4a843;
+    --shadow:0 14px 38px rgba(16,67,55,.10);
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.18;letter-spacing:-.01em}
+  img{max-width:100%;display:block}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 22px}
+  .accent{color:var(--teal)}
+  .gold{color:var(--gold)}
+
+  /* BUTTONS */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:var(--teal);color:#fff;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;
+    padding:18px 32px;border-radius:14px;text-decoration:none;font-size:18px;
+    box-shadow:0 10px 26px rgba(22,160,133,.30);transition:transform .15s ease,box-shadow .15s ease;
+    border:none;cursor:pointer;text-align:center;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(22,160,133,.40)}
+  .btn-lg{padding:21px 40px;font-size:19px}
+  .btn-ghost{background:#fff;color:var(--teal);border:2px solid var(--teal);box-shadow:none}
+  .btn-ghost:hover{background:var(--teal-soft)}
+
+  /* HEADER */
+  header.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.02em}
+  .logo .dot{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#3fd0ad,var(--teal));display:inline-block;position:relative;flex:none}
+  .logo .dot::after{content:"";position:absolute;inset:6px;border-radius:50%;background-image:radial-gradient(#fff 1.1px,transparent 1.2px);background-size:5px 5px;opacity:.55}
+  .logo small{display:block;font-size:11px;font-weight:600;color:var(--slate);letter-spacing:.04em}
+  .nav-cta{font-size:15px;padding:11px 20px}
+  @media(max-width:560px){.nav-cta{display:none}}
+
+  /* HERO */
+  .hero{background:linear-gradient(180deg,var(--bg-soft),#fff);padding:54px 0 30px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:30px}}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--teal-soft);color:var(--teal-dark);font-weight:700;font-size:13.5px;padding:8px 15px;border-radius:999px;margin-bottom:20px;letter-spacing:.01em}
+  .pill .live{width:9px;height:9px;border-radius:50%;background:#23c483;box-shadow:0 0 0 0 rgba(35,196,131,.6);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(35,196,131,.6)}70%{box-shadow:0 0 0 9px rgba(35,196,131,0)}100%{box-shadow:0 0 0 0 rgba(35,196,131,0)}}
+  .hero h1{font-size:clamp(30px,5.2vw,49px);font-weight:800;margin-bottom:18px}
+  .hero p.sub{font-size:clamp(17px,2.3vw,20px);color:var(--slate);margin-bottom:28px;max-width:560px}
+  .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .hero-img{position:relative}
+  .hero-img img{border-radius:var(--radius);box-shadow:var(--shadow);width:100%;object-fit:cover;aspect-ratio:4/5}
+  .hero-badge{position:absolute;left:-14px;bottom:22px;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:14px 18px;display:flex;align-items:center;gap:12px}
+  @media(max-width:900px){.hero-badge{left:14px}}
+  .hero-badge b{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;display:block;line-height:1}
+  .hero-badge span{font-size:12.5px;color:var(--slate)}
+  .hero-badge .ic{width:42px;height:42px;border-radius:11px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:21px;flex:none}
+
+  /* TRUST STRIP */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;margin-top:30px}
+  .trust-in{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:22px 0;text-align:center}
+  @media(max-width:760px){.trust-in{grid-template-columns:repeat(2,1fr);gap:22px}}
+  .trust-it b{font-family:'Plus Jakarta Sans',sans-serif;font-size:25px;display:block;color:var(--teal-dark)}
+  .trust-it span{font-size:13.5px;color:var(--slate)}
+
+  /* SECTIONS */
+  section{padding:62px 0}
+  .eyebrow{display:inline-block;color:var(--teal);font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  .sec-head{max-width:720px;margin:0 auto 40px;text-align:center}
+  .sec-head.left{margin-left:0;text-align:left}
+  h2{font-size:clamp(26px,4vw,38px);font-weight:800;margin-bottom:14px}
+  .lead{font-size:18px;color:var(--slate)}
+
+  /* PAIN */
+  .pain{background:var(--bg-soft)}
+  .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:920px;margin:0 auto}
+  @media(max-width:720px){.pain-grid{grid-template-columns:1fr}}
+  .pain-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px;display:flex;gap:14px;align-items:flex-start}
+  .pain-card .x{width:30px;height:30px;border-radius:50%;background:#fdecea;color:#e05a47;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;font-size:16px}
+  .pain-card p{font-size:16px;color:var(--ink)}
+  .pain-note{text-align:center;max-width:660px;margin:30px auto 0;font-size:18px;color:var(--slate)}
+  .pain-note b{color:var(--ink)}
+
+  /* TURN / STORY */
+  .turn-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:46px;align-items:center}
+  @media(max-width:900px){.turn-grid{grid-template-columns:1fr;gap:28px}}
+  .turn-img img{border-radius:var(--radius);box-shadow:var(--shadow);width:100%;aspect-ratio:4/5;object-fit:cover}
+  .turn-list{list-style:none;margin-top:22px;display:grid;gap:16px}
+  .turn-list li{display:flex;gap:14px;align-items:flex-start;font-size:16.5px}
+  .turn-list .ck{width:28px;height:28px;border-radius:8px;background:var(--teal-soft);color:var(--teal-dark);display:flex;align-items:center;justify-content:center;flex:none;font-weight:800}
+  .turn-list b{font-family:'Plus Jakarta Sans',sans-serif}
+
+  /* TRILHAS */
+  .trilhas{background:linear-gradient(180deg,#fff,var(--bg-soft))}
+  .trilhas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  @media(max-width:980px){.trilhas-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+  .tcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;display:flex;flex-direction:column;position:relative;transition:transform .18s ease,box-shadow .18s ease}
+  .tcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .tcard.feat{border:2px solid var(--teal);box-shadow:0 18px 44px rgba(22,160,133,.16)}
+  .tcard .tag{position:absolute;top:-13px;left:24px;background:var(--teal);color:#fff;font-weight:700;font-size:12.5px;padding:6px 14px;border-radius:999px;font-family:'Plus Jakarta Sans',sans-serif}
+  .tcard h3{font-size:23px;font-weight:800;margin-bottom:4px;margin-top:4px}
+  .tcard .who{font-size:14.5px;color:var(--teal-dark);font-weight:600;margin-bottom:18px;min-height:42px}
+  .tcard .price{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:34px;color:var(--ink);line-height:1}
+  .tcard .price small{font-size:15px;font-weight:600;color:var(--slate)}
+  .tcard .parc{font-size:14.5px;color:var(--slate);margin:6px 0 18px}
+  .tcard ul{list-style:none;display:grid;gap:9px;margin-bottom:20px;border-top:1px solid var(--line);padding-top:18px}
+  .tcard ul li{display:flex;gap:9px;align-items:flex-start;font-size:15px}
+  .tcard ul li::before{content:"✓";color:var(--teal);font-weight:800;flex:none}
+  .tcard .dur{font-size:13.5px;color:var(--slate);margin-bottom:18px;display:flex;align-items:center;gap:7px}
+  .tcard .btn{margin-top:auto;width:100%}
+  .pay-note{text-align:center;color:var(--slate);font-size:15px;margin-top:30px}
+
+  /* PROOF / FACHADA */
+  .proof{background:var(--ink);color:#fff}
+  .proof h2{color:#fff}
+  .proof .lead{color:#b9c7c2}
+  .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:10px}
+  @media(max-width:860px){.proof-grid{grid-template-columns:1fr;gap:26px}}
+  .proof-img img{border-radius:var(--radius);width:100%;aspect-ratio:3/4;object-fit:cover;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+  .proof-list{list-style:none;display:grid;gap:18px}
+  .proof-list li{display:flex;gap:14px;align-items:flex-start;font-size:16.5px;color:#dbe6e2}
+  .proof-list .ck{width:30px;height:30px;border-radius:8px;background:rgba(22,160,133,.22);color:#5fe3c2;display:flex;align-items:center;justify-content:center;flex:none;font-weight:800}
+  .proof-list b{color:#fff;font-family:'Plus Jakarta Sans',sans-serif}
+
+  /* DEPOIMENTOS placeholder */
+  .depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
+  @media(max-width:860px){.depo-grid{grid-template-columns:1fr}}
+  .depo-card{background:var(--bg-soft);border:1px dashed var(--line);border-radius:var(--radius);padding:26px 24px}
+  .depo-card .stars{color:var(--gold);font-size:16px;margin-bottom:12px;letter-spacing:2px}
+  .depo-card p{font-size:16px;color:var(--slate);font-style:italic;margin-bottom:16px}
+  .depo-card .who2{display:flex;align-items:center;gap:12px}
+  .depo-card .av{width:42px;height:42px;border-radius:50%;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;color:var(--teal-dark);font-weight:800;flex:none}
+  .depo-card .who2 b{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;display:block}
+  .depo-card .who2 span{font-size:13px;color:var(--slate)}
+  .depo-soon{font-size:12.5px;color:#9aa7a3;text-align:center;margin-top:22px}
+
+  /* FAQ */
+  .faq-wrap{max-width:760px;margin:0 auto}
+  .faq-item{border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden;background:#fff}
+  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 22px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:17px;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq-q .sign{flex:none;width:26px;height:26px;border-radius:50%;background:var(--teal-soft);color:var(--teal-dark);display:flex;align-items:center;justify-content:center;font-size:18px;transition:transform .2s ease}
+  .faq-item.open .faq-q .sign{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .28s ease;color:var(--slate);font-size:16px}
+  .faq-a p{padding:0 22px 20px}
+  .faq-item.open .faq-a{max-height:300px}
+
+  /* FINAL CTA */
+  .final{background:linear-gradient(140deg,var(--teal),var(--teal-dark));color:#fff;text-align:center}
+  .final h2{color:#fff;max-width:760px;margin:0 auto 18px}
+  .final p{color:#e3f6f1;font-size:18.5px;max-width:620px;margin:0 auto 30px}
+  .final .btn{background:#fff;color:var(--teal-dark);box-shadow:0 14px 34px rgba(0,0,0,.22)}
+  .final .btn:hover{background:#f3fffb}
+  .final .ps{margin-top:24px;font-size:15.5px;color:#eafaf5;font-weight:500}
+  .final .online-note{margin-top:14px;font-size:15px;color:#e3f6f1;background:rgba(255,255,255,.12);display:inline-block;padding:10px 18px;border-radius:999px}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#9fb0ab;padding:40px 0 110px;font-size:14px}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+  footer .logo{color:#fff}
+  footer .logo small{color:#8a9c97}
+  footer a{color:#cfded9;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .foot-contact{display:grid;gap:7px}
+  .foot-legal{margin-top:26px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font-size:12.5px;color:#7d8e89;line-height:1.7}
+
+  /* STICKY MOBILE CTA */
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;border-top:1px solid var(--line);padding:11px 16px;display:none;box-shadow:0 -6px 22px rgba(0,0,0,.08)}
+  .sticky-cta .btn{width:100%;padding:15px}
+  @media(max-width:760px){.sticky-cta{display:block}body{padding-bottom:74px}}
+
+  /* WHATSAPP FLOAT */
+  .wa-float{position:fixed;right:18px;bottom:90px;z-index:55;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.45);transition:transform .15s ease}
+  .wa-float:hover{transform:scale(1.07)}
+  .wa-float svg{width:32px;height:32px;fill:#fff}
+  @media(max-width:760px){.wa-float{bottom:84px;right:14px;width:54px;height:54px}}
+
+  /* LGPD */
+  .lgpd{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;background:var(--ink);color:#dbe6e2;border-radius:14px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 14px 40px rgba(0,0,0,.3);font-size:13.5px;max-width:520px}
+  .lgpd.hide{display:none}
+  .lgpd button{background:var(--teal);color:#fff;border:none;border-radius:9px;padding:9px 18px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+  .lgpd a{color:#7fe3c8}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="logo">
+      <span class="dot"></span>
+      <span>Master Point<small>Cursos · Castelo do Piauí</small></span>
+    </div>
+    <a class="btn nav-cta" href="https://wa.me/5586998046242?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20cursos%20da%20Master%20Point." target="_blank" rel="noopener">Matricule-se</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="pill"><span class="live"></span> Matrícula aberta · Começa já</span>
+      <h1>Aprenda a usar o computador <span class="accent">de verdade</span> aqui em Castelo e saia pronto pro emprego que você quer.</h1>
+      <p class="sub">Do zero ao mercado de trabalho, no seu ritmo, com professor do seu lado ou de casa pela internet. Mais de 8 mil alunos já passaram pela Master Point. Agora é a sua vez.</p>
+      <div class="hero-cta-row">
+        <a class="btn btn-lg" href="https://wa.me/5586998046242?text=Ol%C3%A1!%20Quero%20garantir%20minha%20vaga%20na%20Master%20Point." target="_blank" rel="noopener">Quero garantir minha vaga</a>
+        <a class="btn btn-ghost btn-lg" href="#trilhas">Ver as trilhas</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="images/turma-1.jpg" alt="Turma de alunos da Master Point estudando no computador em Castelo do Piauí" loading="eager" width="960" height="1280">
+      <div class="hero-badge">
+        <span class="ic">🎓</span>
+        <span><b>8 mil+</b><span>alunos formados</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-it"><b>25 anos</b><span>de mercado</span></div>
+    <div class="trust-it"><b>8 mil+</b><span>alunos formados</span></div>
+    <div class="trust-it"><b>Presencial</b><span>em Castelo (e online)</span></div>
+    <div class="trust-it"><b>Certificado</b><span>ao concluir</span></div>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Se você se reconhece aqui, continue lendo</span>
+      <h2>Tem coisa que te trava, e você sabe qual é.</h2>
+      <p class="lead">Não é falta de vontade. É que ninguém nunca te ensinou do jeito certo.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card"><span class="x">✕</span><p>Você já fechou um anúncio de vaga porque pedia "conhecimento em informática"?</p></div>
+      <div class="pain-card"><span class="x">✕</span><p>Já sentiu aquele aperto quando alguém te pediu pra fazer algo simples no computador?</p></div>
+      <div class="pain-card"><span class="x">✕</span><p>Vê todo mundo ao redor se qualificando e bate o medo de ficar pra trás?</p></div>
+      <div class="pain-card"><span class="x">✕</span><p>Sabe que um emprego melhor depende de uma qualificação que você ainda não tem?</p></div>
+      <div class="pain-card"><span class="x">✕</span><p>A conta não fecha no fim do mês e você sente que precisa mudar de página?</p></div>
+      <div class="pain-card"><span class="x">✕</span><p>E agora tem a inteligência artificial mudando tudo, e bate o receio de ficar ultrapassado?</p></div>
+    </div>
+    <p class="pain-note"><b>Não é culpa sua.</b> Ninguém te ensinou. Mas isso pode mudar, e mais rápido do que você imagina.</p>
+  </div>
+</section>
+
+<!-- TURN / STORY -->
+<section class="turn">
+  <div class="wrap turn-grid">
+    <div class="turn-img">
+      <img src="images/turma-2.jpg" alt="Alunos reais aprendendo informática na Master Point em Castelo do Piauí" loading="lazy" width="899" height="1599">
+    </div>
+    <div class="turn-copy">
+      <span class="eyebrow">A virada</span>
+      <h2>Aprender informática não é dom. É método.</h2>
+      <p class="lead">Quem te ensina do jeito certo, começando do começo, faz você dar conta. E aqui em Castelo já são mais de <b>8 mil pessoas</b> que provaram isso.</p>
+      <ul class="turn-list">
+        <li><span class="ck">✓</span><span>Gente que chegou <b>sem saber ligar o computador</b> e saiu com certificado, disputando vaga e mudando de vida.</span></li>
+        <li><span class="ck">✓</span><span>Aqui é <b>presencial, na sua cidade</b>, com professor do seu lado. Você não fica sozinho na frente de um vídeo.</span></li>
+        <li><span class="ck">✓</span><span>E se você não puder vir, tem a <b>opção online</b>, com a mesma qualidade e no horário que dá pra você.</span></li>
+        <li><span class="ck">✓</span><span>Em poucos meses você sai de "eu não sei" pra <b>"eu sei, tenho certificado e estou pronto pro mercado"</b>.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TRILHAS -->
+<section class="trilhas" id="trilhas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Escolha por onde começar</span>
+      <h2>Tem um caminho certo pra você.</h2>
+      <p class="lead">Não importa se você nunca mexeu num computador ou se já manja do básico. Tem uma trilha pro seu ponto de partida.</p>
+    </div>
+    <div class="trilhas-grid">
+
+      <!-- INICIAL -->
+      <div class="tcard">
+        <h3>Trilha Inicial</h3>
+        <p class="who">Pra quem começa do zero, ou mexe muito pouco no computador.</p>
+        <div class="price">R$600 <small>à vista</small></div>
+        <p class="parc">ou até <b>3x sem juros</b> de R$200 no cartão</p>
+        <div class="dur">🕒 Duração: cerca de 4 meses</div>
+        <ul>
+          <li>Introdução à Informática</li>
+          <li>Windows 11</li>
+          <li>Digitação</li>
+          <li>Word</li>
+          <li>PowerPoint</li>
+          <li>Excel (fast)</li>
+        </ul>
+        <a class="btn" href="https://wa.me/5586998046242?text=Ol%C3%A1!%20Quero%20a%20Trilha%20Inicial%20da%20Master%20Point." target="_blank" rel="noopener">Quero essa trilha</a>
+      </div>
+
+      <!-- INTERMEDIARIA -->
+      <div class="tcard feat">
+        <span class="tag">Mais procurada</span>
+        <h3>Trilha Intermediária</h3>
+        <p class="who">Pra quem já sabe o básico e quer se profissionalizar pro mercado.</p>
+        <div class="price">R$800 <small>à vista</small></div>
+        <p class="parc">ou até <b>4x sem juros</b> de R$200 no cartão</p>
+        <div class="dur">🕒 Duração: cerca de 6 meses</div>
+        <ul>
+          <li>Windows 11</li>
+          <li>Digitação</li>
+          <li>Word</li>
+          <li>PowerPoint</li>
+          <li>Excel</li>
+        </ul>
+        <a class="btn" href="https://wa.me/5586998046242?text=Ol%C3%A1!%20Quero%20a%20Trilha%20Intermedi%C3%A1ria%20da%20Master%20Point." target="_blank" rel="noopener">Quero essa trilha</a>
+      </div>
+
+      <!-- AVANCADA -->
+      <div class="tcard">
+        <h3>Trilha Avançada</h3>
+        <p class="who">Pra quem já tem bom conhecimento e quer se atualizar e se destacar.</p>
+        <div class="price">R$1.200 <small>à vista</small></div>
+        <p class="parc">ou até <b>6x sem juros</b> de R$200 no cartão</p>
+        <div class="dur">🕒 Duração: até 10 meses</div>
+        <ul>
+          <li>Excel Fundamental</li>
+          <li>Excel Avançado</li>
+          <li>Power BI</li>
+          <li>Inteligência Artificial</li>
+        </ul>
+        <a class="btn" href="https://wa.me/5586998046242?text=Ol%C3%A1!%20Quero%20a%20Trilha%20Avan%C3%A7ada%20da%20Master%20Point." target="_blank" rel="noopener">Quero essa trilha</a>
+      </div>
+
+    </div>
+    <p class="pay-note">Pagamento no cartão ou à vista. Você começa a se qualificar a partir de R$200 por mês.</p>
+  </div>
+</section>
+
+<!-- PROOF / FACHADA -->
+<section class="proof">
+  <div class="wrap">
+    <div class="proof-grid">
+      <div class="proof-img">
+        <img src="images/fachada-1.jpg" alt="Fachada da unidade Master Point em Castelo do Piauí" loading="lazy" width="1200" height="1600">
+      </div>
+      <div class="proof-copy">
+        <span class="eyebrow">Por que confiar na Master Point</span>
+        <h2>A gente tá aqui, na sua cidade. Pode vir conhecer.</h2>
+        <p class="lead">Não é curso de gente de fora que some depois que você paga. É aqui em Castelo, com porta aberta, professor por perto e muita gente conhecida que já estudou com a gente.</p>
+        <ul class="proof-list">
+          <li><span class="ck">✓</span><span><b>25 anos de mercado.</b> Não é promessa nova, é história de quem já formou muita gente.</span></li>
+          <li><span class="ck">✓</span><span><b>Mais de 8 mil alunos formados.</b> Pergunte aos seus conhecidos. Muita gente daqui já passou pela Master Point.</span></li>
+          <li><span class="ck">✓</span><span><b>Presencial em Castelo do Piauí.</b> Você pode vir, ver a estrutura e falar com quem estuda aqui. E quem não pode vir, faz online.</span></li>
+          <li><span class="ck">✓</span><span><b>Certificado ao concluir</b> cada trilha, pra você colocar no currículo.</span></li>
+          <li><span class="ck">✓</span><span><b>Início imediato.</b> Matrícula aberta. Você não precisa esperar a próxima turma, começa já.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS (placeholder) -->
+<section class="depo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Quem passou por aqui</span>
+      <h2>Histórias de quem deu o primeiro passo.</h2>
+      <p class="lead">Em breve, as histórias reais de alunos de Castelo que se qualificaram e conseguiram emprego.</p>
+    </div>
+    <div class="depo-grid">
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p>"Espaço reservado para o depoimento de um aluno da Master Point."</p>
+        <div class="who2"><span class="av">A</span><span><b>Aluno Master Point</b><span>Castelo do Piauí</span></span></div>
+      </div>
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p>"Espaço reservado para o depoimento de um aluno da Master Point."</p>
+        <div class="who2"><span class="av">A</span><span><b>Aluno Master Point</b><span>Castelo do Piauí</span></span></div>
+      </div>
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p>"Espaço reservado para o depoimento de um aluno da Master Point."</p>
+        <div class="who2"><span class="av">A</span><span><b>Aluno Master Point</b><span>Castelo do Piauí</span></span></div>
+      </div>
+    </div>
+    <p class="depo-soon">Os depoimentos reais (texto, print ou vídeo) entram aqui assim que forem confirmados.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Tirando suas dúvidas</span>
+      <h2>O que você precisa saber antes de decidir.</h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q">Será que eu consigo aprender, mesmo nunca tendo mexido num computador?<span class="sign">+</span></button>
+        <div class="faq-a"><p>Sim. A Trilha Inicial começa literalmente do zero, no seu ritmo, com professor do seu lado. Aqui ninguém te julga por não saber. Todo mundo um dia começou sem saber nada.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">É muito caro?<span class="sign">+</span></button>
+        <div class="faq-a"><p>Você parcela. A partir de R$200 por mês você já começa a se qualificar. Pense que um emprego melhor, ou um salário melhor, paga esse investimento de volta bem rápido.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Não tenho tempo, trabalho o dia todo.<span class="sign">+</span></button>
+        <div class="faq-a"><p>A gente tem turmas em horários diferentes e também a opção 100% online, pra você estudar quando der, sem perder a qualidade.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Moro em outra cidade, fica longe de Castelo.<span class="sign">+</span></button>
+        <div class="faq-a"><p>Você pode fazer online, com a mesma qualidade, sem precisar se deslocar. Chame no WhatsApp que a gente te explica como funciona.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">O curso dá certificado?<span class="sign">+</span></button>
+        <div class="faq-a"><p>Sim. Você recebe certificado ao concluir, pra colocar no currículo e provar sua qualificação.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quanto tempo até eu estar pronto pro mercado?<span class="sign">+</span></button>
+        <div class="faq-a"><p>Na Trilha Inicial, em cerca de 4 meses você já sai com uma base sólida. A Intermediária, em cerca de 6 meses, te deixa profissionalizado com o que o mercado mais pede.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Como faço pra me matricular?<span class="sign">+</span></button>
+        <div class="faq-a"><p>É só chamar no WhatsApp. A gente tira suas dúvidas, te explica as trilhas e garante sua vaga. A matrícula está aberta e você pode começar já.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Daqui a um ano, onde você quer estar?</h2>
+    <p>Você pode estar exatamente onde está hoje, ou empregado, ganhando melhor e orgulhoso de ter ido à luta. A diferença começa numa decisão simples: chamar a gente no WhatsApp.</p>
+    <a class="btn btn-lg" href="https://wa.me/5586998046242?text=Ol%C3%A1!%20Quero%20garantir%20minha%20vaga%20agora%20na%20Master%20Point." target="_blank" rel="noopener">Quero garantir minha vaga agora</a>
+    <div><span class="online-note">Não é de Castelo ou não pode vir? Faça online. Chame no WhatsApp.</span></div>
+    <p class="ps">Mais de 8 mil pessoas já deram esse passo. A próxima pode ser você.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><span class="dot"></span><span>Master Point<small>Cursos · Castelo do Piauí</small></span></div>
+        <p style="margin-top:12px;max-width:340px">Informática profissionalizante presencial em Castelo do Piauí e região, e online. Do básico à inteligência artificial.</p>
+      </div>
+      <div class="foot-contact">
+        <strong style="color:#fff">Fale com a gente</strong>
+        <a href="https://wa.me/5586998046242" target="_blank" rel="noopener">WhatsApp: (86) 99804-6242</a>
+        <span>Castelo do Piauí, PI</span>
+        <span>Matrícula aberta · Início imediato</span>
+      </div>
+    </div>
+    <p class="foot-legal">
+      SRJ - Batista &amp; Visgueira LTDA · CNPJ 12.472.917/0001-78. Master Point Cursos. Castelo do Piauí, PI.<br>
+      Os resultados de empregabilidade dependem do empenho de cada aluno e das condições do mercado de trabalho. Não garantimos emprego ou salário específico. Certificado de conclusão emitido pela Master Point Cursos.
+      <a href="#">Política de Privacidade</a>.
+    </p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/5586998046242?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20cursos%20da%20Master%20Point." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.788-.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+</a>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <a class="btn" href="https://wa.me/5586998046242?text=Ol%C3%A1!%20Quero%20garantir%20minha%20vaga%20na%20Master%20Point." target="_blank" rel="noopener">Quero garantir minha vaga</a>
+</div>
+
+<!-- LGPD -->
+<div class="lgpd" id="lgpd">
+  <span>A gente usa cookies pra melhorar sua experiência. Ao continuar, você concorda com isso. <a href="#">Saiba mais</a>.</span>
+  <button onclick="document.getElementById('lgpd').classList.add('hide');try{localStorage.setItem('mp_lgpd','1')}catch(e){}">Entendi</button>
+</div>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(function(b){
+    b.addEventListener('click',function(){
+      var item=b.parentElement;
+      var open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});
+      if(!open)item.classList.add('open');
+    });
+  });
+  // LGPD persist
+  try{if(localStorage.getItem('mp_lgpd')){document.getElementById('lgpd').classList.add('hide');}}catch(e){}
+</script>
+
+</body>
+</html>
