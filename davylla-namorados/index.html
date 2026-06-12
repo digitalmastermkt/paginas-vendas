@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dávylla Styllus — Presentes de Dia dos Namorados</title>
+<meta name="description" content="Cestas e kits românticos de Dia dos Namorados da Dávylla Styllus, em Teresina-PI. Escolha o seu e peça pelo WhatsApp.">
+<meta property="og:title" content="Dávylla Styllus — Presentes de Dia dos Namorados">
+<meta property="og:description" content="Cestas e kits românticos prontos para entregar. Escolha o seu e peça pelo WhatsApp.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vinho:#8a1f2b;
+    --vinho-escuro:#5e141c;
+    --rosa:#c64b63;
+    --rosa-claro:#fbeef0;
+    --creme:#fffaf7;
+    --tinta:#2a1b1d;
+    --tinta-suave:#5b4a4c;
+    --dourado:#b08243;
+    --borda:#f0dada;
+    --verde-zap:#1f8f4e;
+    --verde-zap-escuro:#15693a;
+    --sombra:0 8px 28px rgba(90,20,28,.10);
+    --sombra-forte:0 14px 40px rgba(90,20,28,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Plus Jakarta Sans',system-ui,Arial,sans-serif;
+    color:var(--tinta);
+    background:var(--creme);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    text-align:center;
+    padding:64px 22px 56px;
+    background:
+      radial-gradient(120% 90% at 50% 0%, rgba(198,75,99,.16), rgba(255,250,247,0) 60%),
+      linear-gradient(180deg,#fff5f3 0%, var(--creme) 100%);
+    border-bottom:1px solid var(--borda);
+    overflow:hidden;
+  }
+  .hero .selo{
+    display:inline-block;
+    font-size:.78rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:#fff;
+    background:var(--vinho);
+    padding:7px 16px;
+    border-radius:100px;
+    margin-bottom:22px;
+  }
+  .hero .marca{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:clamp(2.5rem,9vw,4rem);
+    line-height:1.04;
+    color:var(--vinho-escuro);
+    letter-spacing:.01em;
+  }
+  .hero .sub{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:clamp(1.15rem,4.6vw,1.6rem);
+    color:var(--rosa);
+    margin-top:6px;
+  }
+  .hero p.lead{
+    max-width:540px;
+    margin:22px auto 0;
+    font-size:1.02rem;
+    color:var(--tinta-suave);
+  }
+  .hero .data{
+    margin-top:18px;
+    font-weight:600;
+    color:var(--vinho);
+    font-size:.95rem;
+  }
+  .hero .cta-topo{
+    display:inline-flex;align-items:center;gap:9px;
+    margin-top:26px;
+    background:var(--verde-zap);
+    color:#fff;
+    font-weight:700;
+    font-size:1rem;
+    text-decoration:none;
+    padding:14px 26px;
+    border-radius:100px;
+    box-shadow:var(--sombra);
+    transition:transform .18s ease, background-color .18s ease;
+  }
+  .hero .cta-topo:hover{background:var(--verde-zap-escuro);transform:translateY(-2px)}
+  .hero .cta-topo:focus-visible{outline:3px solid var(--vinho);outline-offset:3px}
+
+  /* ===== SECAO KITS ===== */
+  .secao{
+    max-width:1120px;
+    margin:0 auto;
+    padding:52px 18px 40px;
+  }
+  .secao h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.7rem,6vw,2.3rem);
+    text-align:center;
+    color:var(--vinho-escuro);
+    font-weight:700;
+  }
+  .secao .intro{
+    text-align:center;
+    max-width:560px;
+    margin:12px auto 36px;
+    color:var(--tinta-suave);
+    font-size:1rem;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:24px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--borda);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:var(--sombra);
+    display:flex;
+    flex-direction:column;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--sombra-forte)}
+  .card .foto{
+    position:relative;
+    aspect-ratio:3/4;
+    background:#f6ecec;
+    overflow:hidden;
+  }
+  .card .foto img{
+    width:100%;height:100%;
+    object-fit:cover;
+  }
+  .card .corpo{
+    padding:18px 18px 20px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .card h3{
+    font-family:'Playfair Display',serif;
+    font-size:1.18rem;
+    font-weight:600;
+    color:var(--tinta);
+    line-height:1.25;
+  }
+  .card .desc{
+    margin-top:7px;
+    font-size:.9rem;
+    color:var(--tinta-suave);
+    flex:1;
+  }
+  .card .linha-preco{
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+    margin:16px 0 14px;
+  }
+  .card .preco{
+    font-size:1.45rem;
+    font-weight:700;
+    color:var(--vinho);
+  }
+  .card .preco.consultar{
+    font-size:1.05rem;
+    font-weight:700;
+    color:var(--rosa);
+    letter-spacing:.01em;
+  }
+  .card .moeda{font-size:.95rem;font-weight:600;color:var(--vinho)}
+  .card .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    background:var(--verde-zap);
+    color:#fff;
+    font-weight:700;
+    font-size:.98rem;
+    text-decoration:none;
+    padding:13px 16px;
+    border-radius:12px;
+    transition:background-color .18s ease, transform .18s ease;
+  }
+  .card .btn:hover{background:var(--verde-zap-escuro);transform:translateY(-1px)}
+  .card .btn:focus-visible{outline:3px solid var(--vinho);outline-offset:3px}
+  .card .btn svg{flex:none}
+
+  /* ===== RODAPE ===== */
+  footer{
+    background:var(--vinho-escuro);
+    color:#fdeef0;
+    text-align:center;
+    padding:46px 22px 40px;
+    margin-top:30px;
+  }
+  footer .marca-pe{
+    font-family:'Playfair Display',serif;
+    font-size:1.7rem;
+    font-weight:700;
+    color:#fff;
+  }
+  footer .tag-pe{
+    font-style:italic;
+    color:#f4c6cd;
+    margin-top:4px;
+    font-family:'Playfair Display',serif;
+  }
+  footer .contatos{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    align-items:center;
+    margin-top:24px;
+  }
+  footer .contatos a{
+    display:inline-flex;align-items:center;gap:10px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    background:rgba(255,255,255,.10);
+    padding:11px 20px;
+    border-radius:100px;
+    transition:background-color .18s ease;
+  }
+  footer .contatos a:hover{background:rgba(255,255,255,.20)}
+  footer .contatos a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  footer .local{
+    margin-top:22px;
+    font-size:.88rem;
+    color:#e7b9c0;
+  }
+  footer .credito{
+    margin-top:8px;
+    font-size:.78rem;
+    color:#c98e97;
+  }
+
+  /* ===== BOTAO FLUTUANTE ===== */
+  .float-zap{
+    position:fixed;
+    right:18px;bottom:18px;
+    z-index:50;
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--verde-zap);
+    color:#fff;
+    font-weight:700;
+    text-decoration:none;
+    padding:14px 20px;
+    border-radius:100px;
+    box-shadow:0 10px 26px rgba(31,143,78,.42);
+    transition:background-color .18s ease, transform .18s ease;
+  }
+  .float-zap:hover{background:var(--verde-zap-escuro);transform:translateY(-2px)}
+  .float-zap:focus-visible{outline:3px solid var(--vinho);outline-offset:3px}
+  .float-zap .txt{display:inline}
+  @media (max-width:430px){
+    .float-zap{padding:14px}
+    .float-zap .txt{display:none}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;scroll-behavior:auto !important}
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <span class="selo">Dia dos Namorados</span>
+    <h1 class="marca">Dávylla Styllus</h1>
+    <p class="sub">Presentes que falam o que o coração sente</p>
+    <p class="lead">Escolha a cesta ou o kit perfeito para surpreender quem você ama. Cada presente é montado com carinho, pronto para entregar e arrancar um sorriso.</p>
+    <p class="data">Faça seu pedido hoje e garanta a entrega no Dia dos Namorados</p>
+    <a class="cta-topo" href="#kits">Ver os presentes</a>
+  </header>
+
+  <main class="secao" id="kits">
+    <h2>Nossos Kits Românticos</h2>
+    <p class="intro">Toque no botão do presente que você quer e fale direto com a gente pelo WhatsApp. Simples assim.</p>
+    <div class="grid" id="grid-kits" aria-live="polite"></div>
+  </main>
+
+  <footer>
+    <div class="marca-pe">Dávylla Styllus</div>
+    <div class="tag-pe">moda &amp; presentes — Teresina-PI</div>
+    <div class="contatos">
+      <a id="zap-rodape" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2m0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.25 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01a.93.93 0 0 0-.67.31c-.23.25-.88.86-.88 2.07 0 1.22.9 2.4 1.02 2.56.13.17 1.77 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29"/></svg>
+        WhatsApp (86) 98141-3358
+      </a>
+      <a href="https://instagram.com/davylla.stylus" target="_blank" rel="noopener" aria-label="Instagram da Dávylla Styllus">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.12 1.38C1.36 2.67.95 3.34.63 4.14c-.3.76-.5 1.64-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13.66.66 1.33 1.07 2.12 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.12A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0m0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84m0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4m6.41-10.41a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44"/></svg>
+        @davylla.stylus
+      </a>
+    </div>
+    <p class="local">Teresina — Piauí · Entregamos com amor 💝</p>
+    <p class="credito">Dávylla Styllus · Dia dos Namorados 2026</p>
+  </footer>
+
+  <a class="float-zap" id="float-zap" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2m0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.25 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01a.93.93 0 0 0-.67.31c-.23.25-.88.86-.88 2.07 0 1.22.9 2.4 1.02 2.56.13.17 1.77 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29"/></svg>
+    <span class="txt">Pedir pelo WhatsApp</span>
+  </a>
+
+<script>
+  // ===========================================================
+  //  DADOS DOS KITS — EDITE AQUI PARA INJETAR OS PRECOS
+  //  Quando os precos chegarem, troque "preco: null" pelo valor
+  //  em reais (numero, sem aspas). Ex: preco: 89.90
+  //  Deixe null para exibir "Consultar". So mexa neste array.
+  // ===========================================================
+  const WHATSAPP = "558681413358";
+
+  const KITS = [
+    { id: "9520", foto: "img/9520.jpg", nome: "Cesta Ursinho & Coração de Bombons", desc: "Ursinho de pelúcia, coração de Sonho de Valsa e Ferrero Rocher em cesta de vime com laço de corações.", preco: null },
+    { id: "9521", foto: "img/9521.jpg", nome: "Cesta Vermelho Paixão", desc: "Hidratante perfumado vermelho com relevo floral em cesta de bambu, laço acetinado e flores secas.", preco: null },
+    { id: "9522", foto: "img/9522.jpg", nome: "Cesta Natura Ília Secreto", desc: "Perfume Natura Ília Secreto 50ml em cesta de vime com forração e mini buquê.", preco: null },
+    { id: "9523", foto: "img/9523.jpg", nome: "Box O Meu Amor é Teu — Eudora & Snacks", desc: "Caneca \"Amor\", perfume Eudora, Pringles e Bis na caixa decorada de corações.", preco: null },
+    { id: "9524", foto: "img/9524.jpg", nome: "Box Aqui Tem Amor — Eudora & Chocolates", desc: "Caneca \"Amor\", perfumes Eudora, Ferrero Rocher e Bis na caixa \"Aqui tem amor\".", preco: null },
+    { id: "9525", foto: "img/9525.jpg", nome: "Cesta Te Amo — Ursinho & Sonho de Valsa", desc: "Ursinho de pelúcia e coração recheado de Sonho de Valsa com plaquinha \"Te Amo\", em tons de rosa.", preco: null },
+    { id: "9526", foto: "img/9526.jpg", nome: "Cesta Natura Tododia Flores", desc: "Creme, body splash e sabonete Natura Tododia Flores em cesta floral com laço delicado.", preco: null },
+    { id: "9527", foto: "img/9527.jpg", nome: "Caixa Dourada Natura Tododia & Söfte", desc: "Creme Natura Tododia Flores e hidratante Söfte em caixa dourada com laço vermelho e dourado.", preco: null },
+    { id: "9528", foto: "img/9528.jpg", nome: "Box O Meu Amor é Teu — Vinho & Ferrero", desc: "Mini vinho, Ferrero Rocher, buquê de rosas e coração \"Te Amo\" na caixa de corações.", preco: null },
+    { id: "9529", foto: "img/9529.jpg", nome: "Box Aqui Tem Amor — Ursinho & Perfume", desc: "Ursinho com coração \"Eu te Amo\", rosa vermelha e perfume na caixa \"Aqui tem amor\".", preco: null },
+    { id: "9530", foto: "img/9530.jpg", nome: "Cesta I Love You — Caneca & Chocolates", desc: "Caneca \"I Love You\", Bis, Lacta e rosinhas em cesta de vime rosa.", preco: null },
+    { id: "9531", foto: "img/9531.jpg", nome: "Box Coração — Ursinho, Natura & KitKat", desc: "Ursinho, kit Natura Cuide-se Bem Deleite, KitKat e balão coração com cartãozinho de amor.", preco: null },
+    { id: "9532", foto: "img/9532.jpg", nome: "Box Amor — Ursinho & Cremes", desc: "Ursinho, Lacta, Ferrero Rocher e cremes Uranta na caixa rosa \"Amor\".", preco: null },
+    { id: "9533", foto: "img/9533.jpg", nome: "Cesta Coração — Ursinho, Rosa & KitKat", desc: "Cesta em formato de coração com ursinho, rosa vermelha, KitKat e bombons Nestlé.", preco: null },
+    { id: "9534", foto: "img/9534.jpg", nome: "Box O Meu Amor é Teu — Ursinho & Eudora", desc: "Ursinho com coração \"Te Amo\", rosa vermelha e perfumes Eudora na caixa de corações.", preco: null },
+    { id: "9535", foto: "img/9535.jpg", nome: "Cesta Natura Tododia Flores Premium", desc: "Body splash e creme Natura Tododia Flores em cesta floral com laço sofisticado.", preco: null },
+    { id: "9536", foto: "img/9536.jpg", nome: "Cesta Lilás — Natura Amora & Jabuticaba", desc: "Body splash Natura Tododia Amora Vermelha e Jabuticaba com creme e sabonete em cesta lilás.", preco: null },
+    { id: "9537", foto: "img/9537.jpg", nome: "Caixa Te Amo — Eudora Pulse", desc: "Shower gel e perfume Eudora Pulse em caixa de madeira gravada \"Te Amo\" com laço preto.", preco: null },
+    { id: "9538", foto: "img/9538.jpg", nome: "Cesta Coração — Ursinho & Caneca Gratidão", desc: "Ursinho, caneca de corações e Sonho de Valsa em cesta de madeira em formato de coração.", preco: null },
+    { id: "9539", foto: "img/9539.jpg", nome: "Caixa Te Amo — Ursinho & Eudora Imensi", desc: "Ursinho fofo e perfume Eudora Imensi dourado em caixa de madeira gravada \"Te Amo\".", preco: null },
+    { id: "9540", foto: "img/9540.jpg", nome: "Ursinho Eu Te Amo & Duo Ferrero Rocher", desc: "Ursinho segurando coração \"Eu Te Amo\" com duas caixas de Ferrero Rocher e laço vermelho.", preco: null },
+    { id: "9541", foto: "img/9541.jpg", nome: "Ursinho & Duo Ferrero Rocher", desc: "Ursinho creme com coração e duas caixas de Ferrero Rocher amarradas com laço vinho.", preco: null },
+    { id: "9542", foto: "img/9542.jpg", nome: "Sacola Eudora Pulse — Perfume & Ferrero", desc: "Perfume e shower gel Eudora Pulse com Ferrero Rocher e cartãozinho em sacola presente.", preco: null }
+  ];
+
+  function formataPreco(v){
+    return "R$ " + v.toFixed(2).replace(".", ",");
+  }
+
+  function linkWhats(nome){
+    const msg = "Olá! Vi o catálogo de Dia dos Namorados e quero o " + nome + " 💝";
+    return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+  }
+
+  const zapSvg = '<svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2m0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.25 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01a.93.93 0 0 0-.67.31c-.23.25-.88.86-.88 2.07 0 1.22.9 2.4 1.02 2.56.13.17 1.77 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29"/></svg>';
+
+  function montaGrid(){
+    const grid = document.getElementById("grid-kits");
+    grid.innerHTML = KITS.map(function(k){
+      const precoHtml = (k.preco === null || k.preco === undefined)
+        ? '<span class="preco consultar">Consultar valor</span>'
+        : '<span class="moeda">por</span><span class="preco">' + formataPreco(k.preco) + '</span>';
+      return ''
+        + '<article class="card">'
+        +   '<div class="foto"><img src="' + k.foto + '" alt="' + k.nome + '" loading="lazy" width="669" height="892"></div>'
+        +   '<div class="corpo">'
+        +     '<h3>' + k.nome + '</h3>'
+        +     '<p class="desc">' + k.desc + '</p>'
+        +     '<div class="linha-preco">' + precoHtml + '</div>'
+        +     '<a class="btn" href="' + linkWhats(k.nome) + '" target="_blank" rel="noopener" aria-label="Pedir ' + k.nome + ' pelo WhatsApp">'
+        +        zapSvg + 'Quero este presente'
+        +     '</a>'
+        +   '</div>'
+        + '</article>';
+    }).join("");
+  }
+
+  function montaLinksGerais(){
+    const geral = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Olá! Vi o catálogo de Dia dos Namorados da Dávylla Styllus e quero saber mais 💝");
+    document.getElementById("float-zap").href = geral;
+    document.getElementById("zap-rodape").href = geral;
+  }
+
+  montaGrid();
+  montaLinksGerais();
+</script>
+</body>
+</html>
