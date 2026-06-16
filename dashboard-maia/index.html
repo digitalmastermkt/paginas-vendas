@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maia Política — Assessoria Política com Inteligência Artificial</title>
+<meta name="description" content="Maia Política: ecossistema de assessoria política com IA, multi-candidato, ancorado em metodologia consagrada de marketing político, das maiores referências do país. 10 skills, 9 agentes especialistas, 12 pilares de metodologia.">
+<meta property="og:title" content="Maia Política — Assessoria Política com IA">
+<meta property="og:description" content="Estratégia, narrativa e posicionamento que elegem e constroem reputação. Um time de 9 especialistas orquestrado pela Maia.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-950:#070e1a;
+  --navy-900:#0a1322;
+  --navy-850:#0b1525;
+  --navy-800:#0e1b2e;
+  --navy-750:#11203544;
+  --navy-700:#13243b;
+  --line:#1c3147;
+  --line-soft:#162539;
+  --ink:#f2f6fb;
+  --ink-soft:#bccadb;
+  --ink-mute:#7c91a8;
+  --ink-faint:#7e91a8;
+  --gold:#e3b24a;
+  --gold-soft:#eecb84;
+  --gold-deep:#b88c2e;
+  --teal:#39c9b8;
+  --teal-deep:#1f9d8f;
+  --radius:16px;
+  --radius-lg:22px;
+  --radius-sm:11px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4), 0 4px 14px -8px rgba(0,0,0,.55);
+  --shadow:0 24px 60px -28px rgba(0,0,0,.7), 0 8px 24px -16px rgba(0,0,0,.55);
+  --maxw:1200px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--navy-950);
+  color:var(--ink);
+  line-height:1.62;
+  letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:rgba(227,178,74,.28);color:#fff}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 22px}}
+.serif{font-family:'Fraunces',Georgia,serif}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal)}
+
+/* ---------- ambient background ---------- */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(120% 80% at 8% -10%, rgba(57,201,184,.08), transparent 55%),
+  radial-gradient(100% 70% at 100% 0%, rgba(227,178,74,.07), transparent 50%),
+  linear-gradient(180deg, var(--navy-950), var(--navy-900) 40%, var(--navy-950));}
+.content{position:relative;z-index:1}
+
+/* ---------- nav ---------- */
+header.nav{position:sticky;top:0;z-index:50;
+  background:rgba(7,14,26,.72);backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--line-soft);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:17px;letter-spacing:.01em}
+.brand .mark{width:34px;height:34px;border-radius:9px;flex:none;position:relative;
+  background:linear-gradient(140deg,#142235,#0d1827);border:1px solid var(--line);
+  display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--gold)}
+.brand .mark::after{content:"";position:absolute;inset:0;border-radius:9px;
+  background:linear-gradient(140deg,rgba(227,178,74,.14),transparent 60%)}
+.brand b{font-weight:600;color:var(--ink)}
+.brand .sep{color:var(--gold)}
+.nav-links{display:flex;gap:34px;font-size:14.5px;color:var(--ink-soft);font-weight:450}
+.nav-links a{position:relative;transition:color .25s var(--ease)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:1.5px;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:96px 0 40px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+@media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero{padding:64px 0 24px}}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:500;
+  color:var(--ink-soft);border:1px solid var(--line);background:rgba(255,255,255,.015);
+  padding:8px 16px;border-radius:999px;margin-bottom:30px}
+.kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);
+  box-shadow:0 0 0 3px rgba(57,201,184,.16)}
+.hero h1{font-family:'Fraunces',Georgia,serif;font-weight:500;
+  font-size:clamp(42px,6.4vw,74px);line-height:1.02;letter-spacing:-.018em}
+.hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
+.hero p.lead{margin-top:28px;font-size:clamp(17px,2.1vw,20px);color:var(--ink-soft);max-width:530px;font-weight:450;line-height:1.6}
+.hero .source{margin-top:30px;padding-top:24px;border-top:1px solid var(--line-soft);
+  font-size:14.5px;color:var(--ink-mute);display:flex;align-items:flex-start;gap:12px;max-width:480px}
+.hero .source svg{flex:none;margin-top:2px;color:var(--gold)}
+.hero .source strong{color:var(--ink-soft);font-weight:600}
+.hero-visual{position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow);aspect-ratio:4/5;
+  background:linear-gradient(160deg,var(--navy-800),var(--navy-700));}
+.hero-visual img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02)}
+.hero-visual::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(7,14,26,.55));pointer-events:none}
+.hero-visual .tag{position:absolute;left:20px;bottom:20px;z-index:2;
+  font-size:12.5px;color:var(--ink-soft);background:rgba(7,14,26,.6);backdrop-filter:blur(8px);
+  border:1px solid var(--line);padding:8px 14px;border-radius:999px;letter-spacing:.01em}
+.hero-visual .tag b{color:var(--gold);font-weight:600}
+@media(max-width:920px){.hero-visual{aspect-ratio:16/11;max-height:420px}}
+
+/* ---------- stats strip ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:64px;
+  border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,.018),transparent)}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:30px 28px;border-right:1px solid var(--line-soft);position:relative}
+.stat:last-child{border-right:none}
+@media(max-width:720px){.stat{border-bottom:1px solid var(--line-soft)}
+  .stat:nth-child(2){border-right:none}.stat:nth-last-child(-n+2){border-bottom:none}}
+.stat .num{font-family:'Fraunces',serif;font-size:46px;font-weight:500;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.stat .num span{color:var(--gold)}
+.stat .lbl{margin-top:11px;font-size:13.5px;color:var(--ink-mute);font-weight:450;line-height:1.4}
+
+/* ---------- section base ---------- */
+section.block{padding:104px 0;position:relative}
+@media(max-width:720px){section.block{padding:72px 0}}
+.sec-head{max-width:640px;margin-bottom:60px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head .eyebrow{display:block;margin-bottom:18px}
+.sec-head h2{font-family:'Fraunces',Georgia,serif;font-weight:500;
+  font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-.015em}
+.sec-head h2 em{font-style:italic;color:var(--gold)}
+.sec-head p{margin-top:18px;color:var(--ink-soft);font-size:17px;font-weight:450;line-height:1.6}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+
+/* ---------- flow (editorial stepped list) ---------- */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  border-top:1px solid var(--line-soft)}
+@media(max-width:980px){.flow{grid-template-columns:1fr;border-top:none}}
+.flow-step{padding:34px 26px 34px 0;border-right:1px solid var(--line-soft);position:relative;
+  transition:background .3s var(--ease)}
+.flow-step{padding:34px 24px}
+.flow-step:first-child{padding-left:0}
+.flow-step:last-child{border-right:none;padding-right:0}
+@media(max-width:980px){.flow-step{border-right:none;border-bottom:1px solid var(--line-soft);padding:26px 0}}
+.flow-step .step-n{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--gold);
+  letter-spacing:.04em;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.flow-step .step-n::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.flow-step h3{font-size:18px;font-weight:600;margin-bottom:9px;letter-spacing:-.01em}
+.flow-step p{font-size:14px;color:var(--ink-mute);line-height:1.55}
+.flow-step .skl{margin-top:16px;font-size:11.5px;color:var(--teal);font-weight:500;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-.01em}
+.flow-step:hover h3{color:var(--gold-soft)}
+
+/* ---------- skills grid ---------- */
+.grid{display:grid;gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden}
+.skills-grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:820px){.skills-grid{grid-template-columns:1fr}}
+.skill-card{background:var(--navy-900);padding:30px 30px;display:flex;gap:20px;
+  transition:background .3s var(--ease)}
+.skill-card:hover{background:var(--navy-850)}
+.skill-ico{width:44px;height:44px;flex:none;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(150deg,rgba(57,201,184,.1),rgba(57,201,184,.02));
+  border:1px solid var(--line);color:var(--teal);transition:border-color .3s var(--ease),color .3s var(--ease)}
+.skill-card:hover .skill-ico{border-color:rgba(227,178,74,.4);color:var(--gold-soft)}
+.skill-body h3{font-size:17.5px;font-weight:600;letter-spacing:-.012em;display:flex;align-items:center;gap:10px}
+.skill-body .desc{margin-top:10px;font-size:14px;color:var(--ink-soft);line-height:1.6}
+.skill-body .meta{margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  font-size:12px;color:var(--ink-faint)}
+.skill-body .op{color:var(--ink-mute);font-weight:450}
+.skill-body .op b{color:var(--gold);font-weight:600}
+.skill-body code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;
+  color:var(--ink-faint);background:rgba(255,255,255,.03);padding:2px 8px;border-radius:6px;border:1px solid var(--line-soft)}
+.veto-badge{font-size:10px;font-weight:700;letter-spacing:.1em;
+  color:var(--gold);border:1px solid rgba(227,178,74,.4);padding:2px 8px;border-radius:5px}
+
+/* ---------- team grid ---------- */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:1040px){.team-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.team-grid{grid-template-columns:1fr}}
+.agent{position:relative;border:1px solid var(--line-soft);border-radius:var(--radius);
+  overflow:hidden;background:var(--navy-900);transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.agent:hover{transform:translateY(-5px);border-color:var(--line);box-shadow:var(--shadow)}
+.agent-photo{position:relative;aspect-ratio:1/1;overflow:hidden;background:linear-gradient(150deg,var(--navy-700),var(--navy-800))}
+.agent-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .4s var(--ease);filter:saturate(.96)}
+.agent:hover .agent-photo img{transform:scale(1.045);filter:saturate(1.04)}
+.agent-photo .ph{position:absolute;inset:0;display:grid;place-items:center;
+  font-family:'Fraunces',serif;font-weight:600;font-size:42px;color:var(--gold)}
+.agent-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 45%,rgba(8,15,27,.82))}
+.agent-veto{position:absolute;top:12px;right:12px;z-index:2;font-size:10px;font-weight:700;
+  letter-spacing:.1em;color:var(--gold);background:rgba(7,14,26,.7);backdrop-filter:blur(6px);
+  border:1px solid rgba(227,178,74,.4);padding:4px 9px;border-radius:6px}
+.agent-id{position:absolute;left:18px;right:18px;bottom:14px;z-index:2}
+.agent-name{font-family:'Fraunces',serif;font-size:22px;font-weight:600;letter-spacing:-.01em;line-height:1.1}
+.agent-role{font-size:12.5px;font-weight:500;color:var(--teal);margin-top:4px;letter-spacing:.01em}
+.agent-body{padding:18px 20px 20px}
+.agent-body p{font-size:13.5px;color:var(--ink-soft);line-height:1.58}
+.agent-skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line-soft)}
+.chip{font-size:11px;font-weight:500;color:var(--ink-mute);
+  background:rgba(255,255,255,.02);border:1px solid var(--line-soft);padding:4px 10px;border-radius:7px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.chip.gold{color:var(--gold);border-color:rgba(227,178,74,.28)}
+/* lead = Maia em destaque editorial assimetrico */
+.agent.lead{grid-column:span 2;display:grid;grid-template-columns:1fr 1.1fr}
+@media(max-width:760px){.agent.lead{grid-column:span 2;grid-template-columns:1fr}}
+@media(max-width:460px){.agent.lead{grid-column:span 1;grid-template-columns:1fr}}
+.agent.lead .agent-photo{aspect-ratio:auto;height:100%;min-height:260px}
+.agent.lead .agent-photo .agent-id{display:none}
+.agent.lead .agent-body{padding:28px 28px;display:flex;flex-direction:column;justify-content:center}
+.agent.lead .agent-name{font-size:28px}
+.agent.lead .lead-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.agent.lead .agent-body p{font-size:14.5px;margin-top:6px}
+
+/* ---------- architecture ---------- */
+.arch-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.arch-grid{grid-template-columns:1fr}}
+.layer{border-radius:var(--radius-lg);padding:38px 34px;border:1px solid var(--line-soft);position:relative;overflow:hidden}
+.layer.shared{background:linear-gradient(160deg,#0d1e31,#0a1525)}
+.layer.client{background:linear-gradient(160deg,#15212e,#0d1825)}
+.layer::before{content:"";position:absolute;top:0;left:34px;right:34px;height:1px}
+.layer.shared::before{background:linear-gradient(90deg,var(--teal),transparent)}
+.layer.client::before{background:linear-gradient(90deg,var(--gold),transparent)}
+.layer .tagbox{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:20px}
+.layer.shared .tagbox{color:var(--teal)}
+.layer.client .tagbox{color:var(--gold)}
+.layer h3{font-family:'Fraunces',serif;font-size:24px;font-weight:600;margin-bottom:12px;letter-spacing:-.01em}
+.layer>p{font-size:15px;color:var(--ink-soft);line-height:1.65}
+.layer ul{margin-top:24px;list-style:none;display:flex;flex-direction:column;gap:13px}
+.layer li{font-size:14px;color:var(--ink-soft);display:flex;gap:13px;align-items:flex-start;line-height:1.5}
+.layer li svg{flex:none;margin-top:2px;color:var(--teal)}
+.layer.client li svg{color:var(--gold)}
+.layer code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--gold-soft);background:rgba(0,0,0,.25);padding:1px 7px;border-radius:5px}
+.rules{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:820px){.rules{grid-template-columns:1fr}}
+.rulecard{padding:28px 26px;border:1px solid var(--line-soft);border-radius:var(--radius);
+  background:var(--navy-900);transition:border-color .3s var(--ease)}
+.rulecard:hover{border-color:var(--line)}
+.rulecard .ri{color:var(--gold);display:grid;place-items:center;width:40px;height:40px;border-radius:11px;
+  background:linear-gradient(150deg,rgba(227,178,74,.1),transparent);border:1px solid var(--line-soft);margin-bottom:18px}
+.rulecard h4{font-size:16.5px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
+.rulecard p{font-size:13.8px;color:var(--ink-mute);line-height:1.6}
+
+/* ---------- closing ---------- */
+.closing{text-align:center;max-width:720px;margin:0 auto;padding:30px 0}
+.closing h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-.015em}
+.closing h2 em{font-style:italic;color:var(--gold)}
+.closing p{margin-top:20px;color:var(--ink-soft);font-size:17px;line-height:1.6}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line-soft);padding:52px 0;margin-top:40px}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.foot-inner p{font-size:13px;color:var(--ink-faint);max-width:440px;line-height:1.55}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.06s}.reveal[data-d="2"]{transition-delay:.12s}
+.reveal[data-d="3"]{transition-delay:.18s}.reveal[data-d="4"]{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}
+  .agent:hover,.flow-step:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="content">
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand"><span class="mark">M</span> Maia <span class="sep">·</span> <b>Política</b></div>
+    <nav class="nav-links">
+      <a href="#fluxo">O método</a>
+      <a href="#skills">Capacidades</a>
+      <a href="#time">O time</a>
+      <a href="#arquitetura">Arquitetura</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal in">
+        <span class="kicker"><span class="dot"></span> Assessoria política com IA · multi-candidato</span>
+        <h1>Estratégia que <em>elege</em> e constrói reputação.</h1>
+        <p class="lead">A Maia Política é um ecossistema de assessoria com inteligência artificial: um time de nove especialistas, orquestrado por uma estrategista, que transforma método em posicionamento, narrativa e defesa para cada candidato.</p>
+        <p class="source">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Ancorada em <strong>metodologia consagrada de marketing político</strong>, das maiores referências do país, destilada em <strong>12 pilares estratégicos</strong>.</span>
+        </p>
+      </div>
+      <div class="hero-visual reveal in" data-d="1">
+        <img id="heroImg" alt="Equipe de assessores políticos da Maia Política em ambiente editorial sofisticado" width="1200" height="1500" src="assets/img/hero.webp" onerror="this.style.display='none'">
+        <span class="tag">Time orquestrado por <b>Maia</b></span>
+      </div>
+    </div>
+
+    <div class="stats reveal" data-d="2">
+      <div class="stat"><div class="num">24<span>/7</span></div><div class="lbl">disponível, sem faltar ou vazar</div></div>
+      <div class="stat"><div class="num">10</div><div class="lbl">skills operacionais</div></div>
+      <div class="stat"><div class="num">9<span>+1</span></div><div class="lbl">agentes especialistas + Maia</div></div>
+      <div class="stat"><div class="num">12</div><div class="lbl">pilares de metodologia</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FLUXO -->
+<section class="block" id="fluxo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">O método</span>
+      <h2>Do intake à <em>defesa</em>.</h2>
+      <p>Cada passo é um agente operando uma skill, puxando metodologia comum somada ao dossiê do candidato. O posicionamento é o norte — nada estratégico vem antes dele.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step reveal" data-d="0">
+        <div class="step-n">01</div><h3>Intake</h3>
+        <p>Questionário de 8 blocos que gera o dossiê isolado do candidato.</p>
+        <div class="skl">skill-dossie-candidato</div>
+      </div>
+      <div class="flow-step reveal" data-d="1">
+        <div class="step-n">02</div><h3>Posicionamento</h3>
+        <p>DNA eleitoral e arquétipo de imagem. O norte estratégico de tudo.</p>
+        <div class="skl">skill-posicionamento</div>
+      </div>
+      <div class="flow-step reveal" data-d="2">
+        <div class="step-n">03</div><h3>Planos</h3>
+        <p>Plano de campanha ou mandato, com calendário de pauta.</p>
+        <div class="skl">campanha · mandato</div>
+      </div>
+      <div class="flow-step reveal" data-d="3">
+        <div class="step-n">04</div><h3>Execução</h3>
+        <p>Conteúdo, tráfego e mobilização rodando de forma recorrente.</p>
+        <div class="skl">narrativa · tráfego</div>
+      </div>
+      <div class="flow-step reveal" data-d="4">
+        <div class="step-n">05</div><h3>Defesa</h3>
+        <p>Crise, fake news e jurídico de prontidão. Beatriz tem veto.</p>
+        <div class="skl">crise · jurídico</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- SKILLS -->
+<section class="block" id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Capacidades</span>
+      <h2>As dez <em>skills</em>.</h2>
+      <p>Skill é o que a Maia faz: um procedimento repetível que pega metodologia somada ao dossiê e produz um entregável. Cada skill é operada por um agente do time.</p>
+    </div>
+    <div class="grid skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- TIME -->
+<section class="block" id="time">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">O time</span>
+      <h2>Nove especialistas, <em>uma estrategista</em>.</h2>
+      <p>Cada agente tem uma lente de conhecimento e opera skills específicas. A Maia coordena tudo; a Beatriz tem precedência jurídica sobre toda tática.</p>
+    </div>
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ARQUITETURA -->
+<section class="block" id="arquitetura">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Arquitetura</span>
+      <h2>Duas camadas, <em>isolamento total</em>.</h2>
+      <p>Uma metodologia compartilhada e candidato-agnóstica, sobre a qual cada candidato recebe um dossiê isolado. A personalização vem do dossiê; o método é comum.</p>
+    </div>
+    <div class="arch-grid">
+      <div class="layer shared reveal">
+        <span class="tagbox">Compartilhada · read-only</span>
+        <h3>Conhecimento padrão</h3>
+        <p>Metodologia consagrada de marketing político, candidato-agnóstica, consultada por busca semântica. É o que a Maia sabe.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Base de conhecimento estratégica indexada</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Documento-mestre com 12 pilares destilados</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Busca semântica em tempo real</li>
+        </ul>
+      </div>
+      <div class="layer client reveal" data-d="1">
+        <span class="tagbox">Por candidato · isolada</span>
+        <h3>Camada do cliente</h3>
+        <p>O dossiê de cada candidato: dados, posicionamento, entregas e histórico. Estanque em <code>clientes/&lt;slug&gt;/</code>.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Dossiê e entregáveis por candidato</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Isolamento total (LGPD e dado estratégico)</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Nenhum dado cruza entre candidatos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rules">
+      <div class="rulecard reveal">
+        <span class="ri"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+        <h4>Isolamento entre candidatos</h4>
+        <p>Cada slug é estanque. Dado, narrativa, base e arte de um candidato nunca vão para outro.</p>
+      </div>
+      <div class="rulecard reveal" data-d="1">
+        <span class="ri"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></span>
+        <h4>Nunca dois concorrentes</h4>
+        <p>O produto jamais atende dois concorrentes do mesmo cargo ou território. Conflito é vazamento.</p>
+      </div>
+      <div class="rulecard reveal" data-d="2">
+        <span class="ri"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h4>Jurídico tem veto</h4>
+        <p>A Beatriz tem precedência sobre qualquer tática. Vermelho não sobe, por mais que performe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section class="block">
+  <div class="wrap">
+    <div class="closing reveal">
+      <h2>Método que sabe. Time que <em>executa</em>. Reputação que se constrói.</h2>
+      <p>Um produto padrão multi-candidato, com a disciplina de uma agência e a escala da inteligência artificial.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="brand"><span class="mark">M</span> Maia <span class="sep">·</span> <b>Política</b></div>
+    <p>Produto padrão multi-candidato · metodologia consagrada de marketing político · destilada em 12 pilares.</p>
+  </div>
+</footer>
+
+</div>
+
+<script>
+const SKILLS=[
+ {n:"skill-dossie-candidato",ico:"clip",t:"Dossiê do candidato",d:"Intake e onboarding: o questionário de 8 blocos coleta os dados e gera o dossiê isolado do candidato — a camada cliente.",who:"Maia"},
+ {n:"skill-posicionamento-politico",ico:"compass",t:"Posicionamento político",d:"O norte estratégico: DNA eleitoral, arquétipo de imagem, arquétipo cultural regional e o posicionamento-síntese. Tudo depende dele.",who:"Maia · Helena"},
+ {n:"skill-planejamento-campanha",ico:"map",t:"Planejamento de campanha",d:"Plano de comunicação de campanha: eixos de mensagem, as três fases, cronograma até a eleição e metas.",who:"Otávio"},
+ {n:"skill-planejamento-mandato",ico:"flag",t:"Planejamento de mandato",d:"Comunicação de mandato com planejamento reverso de legado, marcos a criar, prestação de contas e os três julgamentos.",who:"Otávio"},
+ {n:"skill-calendario-pauta",ico:"cal",t:"Calendário de pauta",d:"Calendário editorial político: grade por canal que equilibra pauta fria perene e pauta quente de reação ao noticiário.",who:"Téo"},
+ {n:"skill-narrativa-conteudo",ico:"pen",t:"Narrativa e conteúdo",d:"O texto das peças: Reels, legenda, carrossel, Stories, post e mensagem de lista. Jornada do Herói, gancho pelo problema, P.A.S.C.",who:"Téo"},
+ {n:"skill-trafego-politico-eleitoral",ico:"target",t:"Tráfego político-eleitoral",d:"Meta e Google Ads político: camada eleitoral, métricas territoriais, janelas TSE, financiamento e rótulos.",who:"Nina"},
+ {n:"skill-gestao-crise",ico:"shield",t:"Gestão de crise",d:"War room. O modo preventivo gera o plano de crise; o reativo gera a resposta a um evento concreto, ancorada no posicionamento.",who:"Clara"},
+ {n:"skill-combate-fakenews",ico:"eye",t:"Combate a fake news",d:"Social listening e classificação de boatos por alcance e dano, protocolo de decisão, contra-narrativa e prebunking.",who:"Clara · Helena"},
+ {n:"skill-juridico-eleitoral",ico:"scale",t:"Jurídico eleitoral",d:"O gate de compliance: parecer com semáforo verde, amarelo ou vermelho em 8 eixos (TSE, LGPD, teto de gastos, conduta vedada).",who:"Beatriz",veto:true},
+];
+
+const TEAM=[
+ {id:"maia",name:"Maia",role:"Orquestradora e Estrategista",lead:true,d:"Coordena todo o ecossistema. Dona da reputação, do arquétipo e do posicionamento. Decide a delegação e mantém a estratégia coerente — nada estratégico anda sem o norte que ela guarda.",skills:["coordena o time","posicionamento","reputação"]},
+ {id:"teo",name:"Téo",role:"Narrativa e Conteúdo",d:"Transforma o posicionamento em texto: roteiros, legendas, carrosséis, Stories e posts. O elo entre estratégia e peça publicada.",skills:["narrativa","calendário"]},
+ {id:"helena",name:"Helena",role:"Inteligência e Dados",d:"A camada factual: DNA eleitoral, pesquisa, métricas e social listening. Abastece o time com evidência em vez de achismo.",skills:["dados","listening"]},
+ {id:"vitor",name:"Vitor",role:"Design e Audiovisual",d:"Materializa o conteúdo em peça: carrosséis, Stories, vídeos editados e documentos. Zela pela identidade visual do candidato.",skills:["carrossel","vídeo","docx"]},
+ {id:"nina",name:"Nina",role:"Mídia Paga",d:"Planeja e opera o tráfego pago político: públicos, criativos e segmentação por território — sempre com compliance da Beatriz antes de subir.",skills:["tráfego"]},
+ {id:"otavio",name:"Otávio",role:"Gestão de Campanha",d:"O arquiteto do plano: as três fases, o cronograma até a eleição ou o planejamento reverso de legado, e o acionamento do time por fase.",skills:["campanha","mandato"]},
+ {id:"sergio",name:"Sérgio",role:"Mobilização e Território",d:"O agente do chão: base militante, lideranças locais, grupos de WhatsApp e ação de campo. Consolida a operação de mobilização.",skills:["território","base"]},
+ {id:"clara",name:"Clara",role:"Monitoramento e Crise",d:"A defesa da reputação. Em modo preventivo prepara o war room; em modo reativo responde a ataques e boatos com velocidade e ancoragem.",skills:["crise","fake news"]},
+ {id:"ravi",name:"Ravi",role:"Imprensa",d:"A relação com a mídia: releases, notas, pauta para veículos, relacionamento com jornalistas e preparo para os três julgamentos.",skills:["release","pauta"]},
+ {id:"beatriz",name:"Beatriz",role:"Jurídico Eleitoral",d:"O gate de compliance e guardiã da legalidade. Toda tática que toca lei eleitoral passa por ela. Tem precedência sobre todo o time.",skills:["jurídico"],veto:true},
+];
+
+const I={
+ clip:'<path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>',
+ compass:'<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>',
+ map:'<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>',
+ flag:'<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>',
+ cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+ pen:'<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/>',
+ target:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+ shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+ eye:'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+ scale:'<path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/><path d="M8 21h8"/>',
+};
+function svg(name){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+(I[name]||'')+'</svg>'}
+
+document.getElementById('skillsGrid').innerHTML=SKILLS.map((s,i)=>`
+  <div class="skill-card reveal" data-d="${i%2?1:0}">
+    <div class="skill-ico">${svg(s.ico)}</div>
+    <div class="skill-body">
+      <h3>${s.t}${s.veto?'<span class="veto-badge">VETO</span>':''}</h3>
+      <div class="desc">${s.d}</div>
+      <div class="meta"><span class="op">Opera <b>${s.who}</b></span><code>${s.n}</code></div>
+    </div>
+  </div>`).join('');
+
+function initials(n){return n.replace(/[^A-Za-zÀ-ú]/g,'').slice(0,1).toUpperCase()}
+document.getElementById('teamGrid').innerHTML=TEAM.map((a,i)=>`
+  <div class="agent${a.lead?' lead':''} reveal" data-d="${i%4}">
+    <div class="agent-photo">
+      ${a.veto?'<span class="agent-veto">VETO</span>':''}
+      <img alt="Retrato de ${a.name}, ${a.role}" width="600" height="600" loading="lazy" src="assets/img/agent_${a.id}.webp" onerror="this.style.display='none';this.parentElement.querySelector('.ph').style.display='grid'">
+      <div class="ph" style="display:none">${initials(a.name)}</div>
+      <div class="agent-id">
+        <div class="agent-name">${a.name}</div>
+        <div class="agent-role">${a.role}</div>
+      </div>
+    </div>
+    <div class="agent-body">
+      ${a.lead?'<div class="lead-eyebrow">A orquestradora</div><div class="agent-name">'+a.name+'</div><div class="agent-role" style="margin-bottom:8px">'+a.role+'</div>':''}
+      <p>${a.d}</p>
+      <div class="agent-skills">
+        ${a.skills.map(s=>`<span class="chip${a.veto?' gold':''}">${s}</span>`).join('')}
+      </div>
+    </div>
+  </div>`).join('');
+
+(function(){
+  const els=[...document.querySelectorAll('.reveal')];
+  const revealAll=()=>els.forEach(el=>el.classList.add('in'));
+  // Failsafe: if IO is unavailable, or in a headless/no-scroll context, content must never ship blank.
+  if(!('IntersectionObserver' in window)){revealAll();return;}
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -32px 0px'});
+  els.forEach(el=>io.observe(el));
+  // Safety net: anything still hidden after 2.5s (tab never focused, headless render) is forced visible.
+  setTimeout(()=>{els.forEach(el=>{if(!el.classList.contains('in'))el.classList.add('in');});},2500);
+})();
+</script>
+</body>
+</html>
