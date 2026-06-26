@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Área de Membros · Agência no Bolso</title>
+<meta name="description" content="Sua Agência no Bolso. Kit de Instalação da MAIA e a Comunidade Digital Master." />
+<style>
+/* ===================== FONTS ===================== */
+@font-face{font-family:'Jakarta';src:url('fonts/PlusJakartaSans-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Jakarta';src:url('fonts/PlusJakartaSans-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Jakarta';src:url('fonts/PlusJakartaSans-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Jakarta';src:url('fonts/PlusJakartaSans-ExtraBold.ttf') format('truetype');font-weight:800;font-display:swap}
+@font-face{font-family:'Inter';src:url('fonts/Inter-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url('fonts/Inter-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Inter';src:url('fonts/Inter-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'JBMono';src:url('fonts/JetBrainsMono-Variable.ttf') format('truetype');font-weight:400 700;font-display:swap}
+
+/* ===================== TOKENS ===================== */
+:root{
+  --bg:#0d0f12;
+  --bg-2:#12151a;
+  --panel:#15191f;
+  --panel-2:#1a1f27;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.14);
+  --ink:#f3f5f7;
+  --ink-2:#aeb6c0;
+  --ink-3:#7c8693;
+  --gold:#d9b169;
+  --gold-bright:#e8c889;
+  --gold-deep:#b8904a;
+  --gold-soft:rgba(217,177,105,.14);
+  --gold-line:rgba(217,177,105,.30);
+  --green:#5fcf80;
+  --radius:16px;
+  --radius-sm:11px;
+  --sidebar-w:286px;
+  --shadow:0 24px 60px -30px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 12% -8%, rgba(217,177,105,.10), transparent 60%),
+    radial-gradient(800px 600px at 100% 0%, rgba(70,90,120,.10), transparent 55%);
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold-soft);color:var(--gold-bright)}
+
+/* ===================== LAYOUT ===================== */
+.shell{display:flex;min-height:100vh;position:relative;z-index:1}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar{
+  width:var(--sidebar-w);flex-shrink:0;
+  position:sticky;top:0;align-self:flex-start;height:100vh;
+  background:linear-gradient(180deg,var(--bg-2),#0f1216);
+  border-right:1px solid var(--line);
+  display:flex;flex-direction:column;
+  padding:22px 16px 16px;
+}
+.brand{display:flex;align-items:center;gap:11px;padding:6px 8px 18px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.brand-mark{width:42px;height:42px;flex-shrink:0;border-radius:11px;
+  background:radial-gradient(120% 120% at 30% 20%,#23282f,#14171c);
+  border:1px solid var(--gold-line);
+  display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.brand-mark svg{width:24px;height:24px}
+.brand-txt .b-name{font-family:'Jakarta';font-weight:800;font-size:15px;letter-spacing:-.2px;line-height:1.05}
+.brand-txt .b-name span{color:var(--gold)}
+.brand-txt .b-sub{font-size:10.5px;color:var(--ink-3);letter-spacing:.6px;text-transform:uppercase;margin-top:3px;font-weight:600}
+
+.nav-section{margin-bottom:18px}
+.nav-label{font-size:10px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--ink-3);padding:0 10px 9px}
+.nav-item{
+  display:flex;align-items:center;gap:11px;width:100%;
+  padding:9px 10px;border-radius:10px;border:1px solid transparent;
+  color:var(--ink-2);font-size:13.5px;font-weight:500;cursor:pointer;
+  background:none;text-align:left;transition:.16s;line-height:1.25;font-family:inherit;
+}
+.nav-item:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.nav-item.active{background:var(--gold-soft);border-color:var(--gold-line);color:var(--gold-bright)}
+.nav-item .ix{width:22px;height:22px;flex-shrink:0;border-radius:7px;display:grid;place-items:center;
+  font-family:'JBMono';font-size:11px;font-weight:600;background:rgba(255,255,255,.05);color:var(--ink-3)}
+.nav-item.active .ix{background:rgba(217,177,105,.2);color:var(--gold-bright)}
+.nav-item .lock{margin-left:auto;color:var(--ink-3);display:flex}
+.nav-item.locked{opacity:.62}
+.nav-txt{flex:1;min-width:0}
+
+.side-spacer{flex:1}
+.user-card{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);margin-bottom:10px}
+.user-av{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--gold-deep),var(--gold-bright));display:grid;place-items:center;font-family:'Jakarta';font-weight:800;color:#1b1206;font-size:14px}
+.user-meta .u-name{font-size:12.5px;font-weight:600;line-height:1.1}
+.user-meta .u-tag{font-size:10.5px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:5px;margin-top:2px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(95,207,128,.18)}
+
+/* ---------- MAIN ---------- */
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;gap:14px;
+  padding:14px 32px;border-bottom:1px solid var(--line);
+  background:rgba(13,15,18,.82);backdrop-filter:blur(14px);
+}
+.hamb{display:none;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;place-items:center}
+.hamb svg{width:18px;height:18px}
+.crumb{font-size:12.5px;color:var(--ink-3);display:flex;align-items:center;gap:8px;font-weight:500}
+.crumb b{color:var(--ink);font-weight:600}
+.crumb .sep{color:var(--ink-3);opacity:.5}
+.topbar-cta{margin-left:auto;display:flex;gap:10px;align-items:center}
+.pill-live{font-family:'JBMono';font-size:11px;color:var(--gold-bright);background:var(--gold-soft);border:1px solid var(--gold-line);padding:6px 12px;border-radius:99px;display:flex;align-items:center;gap:7px;font-weight:600}
+
+.content{padding:38px 32px 70px;max-width:1080px;width:100%;margin:0 auto}
+
+/* ---------- HERO ---------- */
+.hero{margin-bottom:40px}
+.hero .eyebrow{font-family:'JBMono';font-size:11.5px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.hero h1{font-family:'Jakarta';font-weight:800;font-size:clamp(28px,4.4vw,44px);line-height:1.04;letter-spacing:-1px;margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--gold-bright)}
+.hero p{font-size:15.5px;color:var(--ink-2);max-width:640px;line-height:1.65}
+
+/* ---------- SECTION ---------- */
+.section{scroll-margin-top:90px;margin-bottom:54px}
+.sec-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:6px}
+.sec-badge{flex-shrink:0;display:inline-flex;align-items:center;gap:7px;font-family:'JBMono';font-size:11px;font-weight:600;padding:6px 11px;border-radius:99px;letter-spacing:.5px;margin-top:3px}
+.sec-badge.open{color:var(--green);background:rgba(95,207,128,.1);border:1px solid rgba(95,207,128,.28)}
+.sec-badge.locked{color:var(--gold-bright);background:var(--gold-soft);border:1px solid var(--gold-line)}
+.sec-head h2{font-family:'Jakarta';font-weight:800;font-size:clamp(22px,3vw,28px);letter-spacing:-.6px;line-height:1.1}
+.sec-sub{font-size:14.5px;color:var(--ink-2);margin:10px 0 26px;max-width:680px;line-height:1.6}
+.sec-sub b{color:var(--ink)}
+
+/* ---------- KIT CARDS ---------- */
+.kit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.kit-card{
+  display:flex;gap:14px;padding:18px;border-radius:var(--radius-sm);
+  background:linear-gradient(180deg,var(--panel),var(--bg-2));
+  border:1px solid var(--line);position:relative;transition:.18s;overflow:hidden;
+}
+.kit-card:hover{border-color:var(--gold-line);transform:translateY(-2px);box-shadow:var(--shadow)}
+.kit-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--gold-bright),var(--gold-deep));opacity:0;transition:.18s}
+.kit-card:hover::after{opacity:1}
+.kc-icon{width:42px;height:42px;flex-shrink:0;border-radius:11px;background:rgba(217,177,105,.1);border:1px solid var(--gold-line);display:grid;place-items:center;color:var(--gold-bright)}
+.kc-icon svg{width:21px;height:21px}
+.kc-body{flex:1;min-width:0}
+.kc-step{font-family:'JBMono';font-size:10.5px;color:var(--ink-3);font-weight:600;letter-spacing:.5px;margin-bottom:4px}
+.kc-title{font-family:'Jakarta';font-weight:700;font-size:15.5px;letter-spacing:-.2px;margin-bottom:5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.kc-desc{font-size:13px;color:var(--ink-2);line-height:1.5;margin-bottom:12px}
+.kc-link{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--gold-bright);font-family:'JBMono'}
+.kc-link svg{width:13px;height:13px;transition:.16s}
+.kit-card:hover .kc-link svg{transform:translate(2px,-2px)}
+.kc-coupon{font-family:'JBMono';font-size:10.5px;color:var(--gold);background:var(--gold-soft);border:1px dashed var(--gold-line);padding:2px 7px;border-radius:6px;font-weight:600}
+.kc-soon{font-family:'JBMono';font-size:11px;color:var(--ink-3);font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.tag-multi{display:inline-flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.tag-multi a{font-family:'JBMono';font-size:11px;color:var(--gold-bright);border-bottom:1px solid var(--gold-line);padding-bottom:1px}
+.tag-multi a:hover{color:var(--gold)}
+
+/* ---------- METHOD ---------- */
+.method{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.m-step{padding:20px;border-radius:var(--radius-sm);background:var(--bg-2);border:1px solid var(--line);position:relative}
+.m-num{font-family:'Jakarta';font-weight:800;font-size:13px;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--gold-soft);color:var(--gold-bright);border:1px solid var(--gold-line);margin-bottom:14px}
+.m-step h4{font-family:'Jakarta';font-weight:700;font-size:16px;letter-spacing:-.3px;margin-bottom:7px}
+.m-step p{font-size:13px;color:var(--ink-2);line-height:1.55}
+.m-arrow{position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--gold-line);z-index:2}
+.m-arrow svg{width:18px;height:18px}
+
+/* ---------- LOCKED MODULES ---------- */
+.lock-banner{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:20px 22px;border-radius:var(--radius);background:linear-gradient(110deg,rgba(217,177,105,.10),rgba(217,177,105,.02));border:1px solid var(--gold-line);margin-bottom:24px}
+.lock-banner .lb-icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(217,177,105,.16);border:1px solid var(--gold-line);color:var(--gold-bright);flex-shrink:0}
+.lock-banner .lb-icon svg{width:23px;height:23px}
+.lock-banner .lb-txt{flex:1;min-width:220px}
+.lock-banner .lb-txt b{font-family:'Jakarta';font-weight:700;font-size:15.5px;display:block;margin-bottom:3px}
+.lock-banner .lb-txt span{font-size:13px;color:var(--ink-2)}
+.lb-price{font-family:'Jakarta';font-weight:800;font-size:15px;color:var(--gold-bright);white-space:nowrap}
+.lb-price small{display:block;font-family:'Inter';font-weight:500;font-size:11px;color:var(--ink-3)}
+
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.mod-card{
+  position:relative;padding:20px 18px;border-radius:var(--radius-sm);
+  background:var(--bg-2);border:1px solid var(--line);overflow:hidden;min-height:140px;
+  display:flex;flex-direction:column;
+}
+.mod-card .mc-blur{filter:blur(.4px);opacity:.78}
+.mod-week{font-family:'JBMono';font-size:11px;color:var(--gold);font-weight:600;letter-spacing:.5px;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.mod-card h4{font-family:'Jakarta';font-weight:700;font-size:17px;letter-spacing:-.3px;line-height:1.18;margin-bottom:8px}
+.mod-card p{font-size:12.5px;color:var(--ink-3);line-height:1.5}
+.mod-lockchip{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-family:'JBMono';font-size:10.5px;font-weight:600;color:var(--ink-3);padding-top:14px}
+.mod-lockchip svg{width:12px;height:12px}
+.mod-card .corner-lock{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(13,15,18,.7);border:1px solid var(--gold-line);color:var(--gold-bright);backdrop-filter:blur(3px)}
+.mod-card .corner-lock svg{width:15px;height:15px}
+
+.year-note{margin-top:18px;padding:15px 18px;border-radius:var(--radius-sm);background:rgba(255,255,255,.025);border:1px solid var(--line);font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:11px}
+.year-note svg{width:18px;height:18px;color:var(--gold);flex-shrink:0}
+.year-note b{color:var(--ink)}
+
+/* ---------- CTA TIERS ---------- */
+.cta-tiers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.tier{padding:24px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg-2));display:flex;flex-direction:column}
+.tier.gold{border-color:var(--gold-line);box-shadow:0 0 0 1px rgba(217,177,105,.1),var(--shadow);background:linear-gradient(180deg,rgba(217,177,105,.07),var(--bg-2))}
+.tier-name{font-family:'Jakarta';font-weight:800;font-size:18px;letter-spacing:-.3px;margin-bottom:4px}
+.tier-price{font-family:'Jakarta';font-weight:800;font-size:26px;color:var(--gold-bright);margin-bottom:3px}
+.tier-price small{font-family:'Inter';font-weight:500;font-size:13px;color:var(--ink-3)}
+.tier-tag{font-size:12.5px;color:var(--ink-2);margin-bottom:16px}
+.tier ul{list-style:none;margin-bottom:20px;flex:1}
+.tier li{font-size:13px;color:var(--ink-2);padding:7px 0 7px 26px;position:relative;line-height:1.45}
+.tier li::before{content:"";position:absolute;left:0;top:9px;width:15px;height:15px;border-radius:50%;background:var(--gold-soft);border:1px solid var(--gold-line)}
+.tier li::after{content:"";position:absolute;left:5px;top:12px;width:5px;height:8px;border:solid var(--gold-bright);border-width:0 2px 2px 0;transform:rotate(40deg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:14px;border-radius:11px;font-family:'Jakarta';font-weight:700;font-size:14.5px;cursor:pointer;transition:.18s;border:1px solid var(--line);background:var(--panel-2);color:var(--ink)}
+.btn:hover{border-color:var(--line-strong);background:#20262f}
+.btn.primary{background:linear-gradient(180deg,var(--gold-bright),var(--gold-deep));color:#1b1206;border:none;box-shadow:0 10px 24px -14px rgba(0,0,0,.7)}
+.btn.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn svg{width:17px;height:17px}
+
+/* ---------- FOOTER ---------- */
+.foot{border-top:1px solid var(--line);margin-top:50px;padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;color:var(--ink-3);font-size:12.5px}
+.foot .f-brand{display:flex;align-items:center;gap:9px;font-family:'Jakarta';font-weight:700;color:var(--ink-2)}
+.foot .f-brand span{color:var(--gold)}
+.foot a{color:var(--ink-3)}.foot a:hover{color:var(--gold)}
+
+/* ---------- A11Y / MOTION ---------- */
+.hero h1,.sec-head h2,.mod-card h4,.m-step h4{text-wrap:balance}
+.hero p,.sec-sub,.kc-desc,.m-step p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px;border-radius:8px}
+.kit-card,.btn,.nav-item,.tier{transition:transform .2s cubic-bezier(.16,1,.3,1),border-color .2s,background .2s,box-shadow .2s,color .16s}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+
+/* ---------- MOBILE ---------- */
+.scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40;backdrop-filter:blur(2px)}
+@media(max-width:880px){
+  .sidebar{position:fixed;left:0;top:0;z-index:50;transform:translateX(-100%);transition:transform .26s ease;box-shadow:0 0 60px rgba(0,0,0,.6)}
+  body.nav-open .sidebar{transform:translateX(0)}
+  body.nav-open .scrim{display:block}
+  .hamb{display:grid}
+  .content{padding:26px 18px 60px}
+  .topbar{padding:12px 18px}
+  .method{grid-template-columns:1fr}
+  .m-arrow{display:none}
+  .cta-tiers{grid-template-columns:1fr}
+  .kit-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .topbar-cta .pill-live{display:none}
+  .hero h1{font-size:27px}
+}
+</style>
+</head>
+<body>
+<div class="scrim" id="scrim"></div>
+<div class="shell">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 19V6.5L8.2 13.2a1 1 0 0 0 1.6 0L15 6.5V19" stroke="#e8c889" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 5l1.1 2.4L21.5 8.5l-2.4 1.1L18 12l-1.1-2.4L14.5 8.5l2.4-1.1L18 5z" fill="#d9b169"/></svg>
+      </div>
+      <div class="brand-txt">
+        <div class="b-name">Agência <span>no Bolso</span></div>
+        <div class="b-sub">Área de Membros · MAIA</div>
+      </div>
+    </div>
+
+    <nav class="nav-section">
+      <div class="nav-label">Liberado pra você</div>
+      <button class="nav-item active" data-go="kit"><span class="ix">★</span><span class="nav-txt">Kit de Instalação</span></button>
+      <button class="nav-item" data-go="metodo"><span class="ix">→</span><span class="nav-txt">Método: Mapear · Instruir · Conectar</span></button>
+    </nav>
+
+    <nav class="nav-section">
+      <div class="nav-label">Comunidade Digital Master</div>
+      <button class="nav-item locked" data-go="comunidade"><span class="ix">01</span><span class="nav-txt">Fundamentos</span><span class="lock"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span></button>
+      <button class="nav-item locked" data-go="comunidade"><span class="ix">02</span><span class="nav-txt">SDR do Zero com OpenClaw</span><span class="lock"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span></button>
+      <button class="nav-item locked" data-go="comunidade"><span class="ix">03</span><span class="nav-txt">Funil de vendas</span><span class="lock"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span></button>
+      <button class="nav-item locked" data-go="comunidade"><span class="ix">04</span><span class="nav-txt">MAIA em produção</span><span class="lock"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span></button>
+      <button class="nav-item locked" data-go="comunidade"><span class="ix">05</span><span class="nav-txt">Escala e precificação</span><span class="lock"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span></button>
+      <button class="nav-item locked" data-go="comunidade"><span class="ix">06</span><span class="nav-txt">Automação e saída do operacional</span><span class="lock"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span></button>
+    </nav>
+
+    <div class="side-spacer"></div>
+
+    <div class="user-card">
+      <div class="user-av">A</div>
+      <div class="user-meta">
+        <div class="u-name">Aluno da Imersão</div>
+        <div class="u-tag"><span class="dot"></span> Acesso liberado</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <main class="main">
+    <header class="topbar">
+      <button class="hamb" id="hamb"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <div class="crumb"><span>Área de Membros</span><span class="sep">/</span><b id="crumb-end">Kit de Instalação</b></div>
+      <div class="topbar-cta">
+        <span class="pill-live"><span class="dot"></span> Imersão · 27 jun</span>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- HERO -->
+      <div class="hero">
+        <div class="eyebrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#d9b169" stroke-width="2"/><path d="M12 7v5l3 2" stroke="#d9b169" stroke-width="2" stroke-linecap="round"/></svg> Sua Agência no Bolso · ligada</div>
+        <h1>Bem-vindo à área onde a <em>MAIA</em> sai do papel.</h1>
+        <p>Aqui tem duas camadas. A primeira, <b>liberada agora pra você da Imersão</b>: o Kit de Instalação, com cada link pra você montar a sua máquina. A segunda é a <b>Comunidade Digital Master</b>, onde a gente constrói junto, semana a semana. Comece pelo Kit.</p>
+      </div>
+
+      <!-- ============ KIT (ABERTO) ============ -->
+      <section class="section" id="kit">
+        <div class="sec-head">
+          <span class="sec-badge open"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M7 11V8a5 5 0 0 1 9.5-2" stroke="#5fcf80" stroke-width="2" stroke-linecap="round"/><rect x="5" y="11" width="14" height="9" rx="2" stroke="#5fcf80" stroke-width="2"/></svg> Liberado</span>
+          <h2>Kit de Instalação</h2>
+        </div>
+        <p class="sec-sub">O passo a passo que a gente montou ao vivo. Cada card é uma peça da sua máquina, na ordem da montagem, com o link oficial pra você reproduzir sozinho, no seu negócio, na sua VPS. <b>Guarde esta página.</b> É o seu manual.</p>
+
+        <div class="kit-grid">
+
+          <!-- VPS -->
+          <a class="kit-card" href="https://www.hostinger.com/br?REFERRALCODE=DIGITALMASTER" target="_blank" rel="noopener">
+            <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="13" width="18" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="7.5" r="1" fill="currentColor"/><circle cx="7" cy="16.5" r="1" fill="currentColor"/></svg></div>
+            <div class="kc-body">
+              <div class="kc-step">PASSO 1 · O computador 24h</div>
+              <div class="kc-title">Comprar a VPS <span class="kc-coupon">cupom DIGITALMASTER</span></div>
+              <div class="kc-desc">O escritório da sua IA: ligada 24h, trabalha enquanto você dorme. Plano recomendado: KVM 2 (8 GB RAM).</div>
+              <span class="kc-link">Hostinger VPS <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <!-- CLAUDE -->
+          <div class="kit-card">
+            <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 1 0 9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="5" r="2" fill="currentColor"/></svg></div>
+            <div class="kc-body">
+              <div class="kc-step">PASSO 2 · O cérebro + combustível</div>
+              <div class="kc-title">Claude Code & assinatura</div>
+              <div class="kc-desc">O agente que executa as ordens dentro da VPS, em português. Precisa de uma assinatura Claude ativa (Pro · US$20/mês).</div>
+              <div class="tag-multi">
+                <a href="https://www.claude.com" target="_blank" rel="noopener">claude.com ↗</a>
+                <a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener">instalar Claude Code ↗</a>
+                <a href="https://claude.ai/upgrade" target="_blank" rel="noopener">assinar Pro ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- MEMORIA -->
+          <div class="kit-card">
+            <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="7" ry="3" stroke="currentColor" stroke-width="2"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" stroke="currentColor" stroke-width="2"/></svg></div>
+            <div class="kc-body">
+              <div class="kc-step">PASSO 3 · A memória</div>
+              <div class="kc-title">Postgres + PGVector</div>
+              <div class="kc-desc">Onde a MAIA guarda o contexto do negócio e busca por significado. Sem ela, a IA recomeça do zero a cada conversa.</div>
+              <div class="tag-multi">
+                <a href="https://www.postgresql.org/download/linux/ubuntu/" target="_blank" rel="noopener">PostgreSQL ↗</a>
+                <a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">PGVector ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- WHATSAPP -->
+          <div class="kit-card">
+            <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20l1.4-4A8 8 0 1 1 9 19.6L4 20z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="kc-body">
+              <div class="kc-step">PASSO 4 · A funcionária no WhatsApp</div>
+              <div class="kc-title">Evolution (WhatsApp)</div>
+              <div class="kc-desc">A ponte que coloca a Atendente e a Vendedora pra trabalhar no seu WhatsApp. Código aberto, roda na sua própria VPS.</div>
+              <div class="tag-multi">
+                <a href="https://github.com/evolution-foundation/evolution-api" target="_blank" rel="noopener">Repositório ↗</a>
+                <a href="https://doc.evolution-api.com" target="_blank" rel="noopener">Documentação ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- TELEGRAM -->
+          <div class="kit-card">
+            <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 5L3 12l5 2 2 5 3-4 4 3 4-13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+            <div class="kc-body">
+              <div class="kc-step">PASSO 5 · De onde VOCÊ comanda</div>
+              <div class="kc-title">Telegram (a orquestradora)</div>
+              <div class="kc-desc">O canal privado onde você fala com a MAIA. Manda texto ou áudio, ela aciona as funcionárias. Crie o bot no @BotFather.</div>
+              <div class="tag-multi">
+                <a href="https://telegram.org" target="_blank" rel="noopener">telegram.org ↗</a>
+                <a href="https://core.telegram.org/bots/api" target="_blank" rel="noopener">Bot API ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- INSTAGRAM -->
+          <div class="kit-card">
+            <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg></div>
+            <div class="kc-body">
+              <div class="kc-step">PASSO 6 · A funcionária no direct</div>
+              <div class="kc-title">Instagram / Meta</div>
+              <div class="kc-desc">A Prospectadora e a Atendente no direct. Cria-se um app no Meta for Developers e conecta a conta Profissional.</div>
+              <div class="tag-multi">
+                <a href="https://developers.facebook.com" target="_blank" rel="noopener">Meta for Developers ↗</a>
+                <a href="https://developers.facebook.com/docs/messenger-platform/instagram" target="_blank" rel="noopener">Docs direct ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- GITHUB DA MAIA -->
+          <div class="kit-card" style="grid-column:1/-1;background:linear-gradient(110deg,rgba(217,177,105,.07),var(--bg-2));border-color:var(--gold-line)">
+            <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-2c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-5a3.9 3.9 0 0 1 1-2.7c-.1-.3-.5-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.5 5 .3.3.6.9.6 1.8v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z" stroke="currentColor" stroke-width="1.6"/></svg></div>
+            <div class="kc-body">
+              <div class="kc-step">O CÓDIGO · o repositório de instalação</div>
+              <div class="kc-title">GitHub da MAIA</div>
+              <div class="kc-desc">O repositório com o esqueleto da sua MAIA pronto pra clonar na VPS. O link é liberado no evento.</div>
+              <span class="kc-soon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#7c8693" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#7c8693" stroke-width="2"/></svg> [ GITHUB DA MAIA · em breve ]</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============ MÉTODO ============ -->
+      <section class="section" id="metodo">
+        <div class="sec-head">
+          <span class="sec-badge open"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#5fcf80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Método</span>
+          <h2>Mapear · Instruir · Conectar</h2>
+        </div>
+        <p class="sec-sub">Montar a máquina são <b>três passos</b>, sempre nesta ordem. Não é tecnologia, é estratégia.</p>
+        <div class="method">
+          <div class="m-step">
+            <div class="m-num">1</div>
+            <h4>Mapear</h4>
+            <p>Ache o gargalo onde o negócio mais sangra dinheiro: atendimento lento, follow-up que ninguém faz, prospecção parada. Saber ONDE botar a IA primeiro.</p>
+            <span class="m-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <div class="m-step">
+            <div class="m-num">2</div>
+            <h4>Instruir</h4>
+            <p>Dê a ordem de serviço pra IA igual treinaria um funcionário novo: contexto do negócio, tom da marca, o que pode e o que não pode. Em português, conversando, não em código.</p>
+            <span class="m-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <div class="m-step">
+            <div class="m-num">3</div>
+            <h4>Conectar</h4>
+            <p>Plugue no WhatsApp, no Instagram e no funil. E deixe rodar. Você passa de operador a gestor: para de ser o gargalo e vira o dono que comanda a máquina.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ COMUNIDADE (TRAVADO) ============ -->
+      <section class="section" id="comunidade">
+        <div class="sec-head">
+          <span class="sec-badge locked"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#e8c889" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#e8c889" stroke-width="2"/></svg> Bloqueado</span>
+          <h2>Comunidade Digital Master</h2>
+        </div>
+        <p class="sec-sub">As <b>6 primeiras semanas</b> em que você estrutura a sua máquina passo a passo, com o Salatiel e o time. Conteúdo liberado pra quem entra na Comunidade.</p>
+
+        <div class="lock-banner">
+          <div class="lb-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4.5" y="10.5" width="15" height="10" rx="2.4" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor"/></svg></div>
+          <div class="lb-txt">
+            <b>Esses módulos estão prontos, mas trancados.</b>
+            <span>Entre na Comunidade Digital Master pra destravar as 6 semanas e os encontros do ano todo.</span>
+          </div>
+          <div class="lb-price">R$ 997<small>por ano · faça você mesmo</small></div>
+        </div>
+
+        <div class="mod-grid">
+          <div class="mod-card">
+            <span class="corner-lock"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div class="mc-blur">
+              <div class="mod-week">Semana 01</div>
+              <h4>Fundamentos</h4>
+              <p>A base do agente que executa: como a máquina pensa, decide e age.</p>
+            </div>
+            <span class="mod-lockchip"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg> disponível pra comunidade</span>
+          </div>
+          <div class="mod-card">
+            <span class="corner-lock"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div class="mc-blur">
+              <div class="mod-week">Semana 02</div>
+              <h4>SDR do Zero com OpenClaw</h4>
+              <p>Montar a Prospectadora que vai atrás de cliente novo enquanto você dorme.</p>
+            </div>
+            <span class="mod-lockchip"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg> disponível pra comunidade</span>
+          </div>
+          <div class="mod-card">
+            <span class="corner-lock"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div class="mc-blur">
+              <div class="mod-week">Semana 03</div>
+              <h4>Funil de vendas</h4>
+              <p>Conectar as funcionárias num funil que vende, do primeiro contato ao fechamento.</p>
+            </div>
+            <span class="mod-lockchip"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg> disponível pra comunidade</span>
+          </div>
+          <div class="mod-card">
+            <span class="corner-lock"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div class="mc-blur">
+              <div class="mod-week">Semana 04</div>
+              <h4>MAIA em produção</h4>
+              <p>Colocar a orquestradora pra rodar de verdade no seu negócio, com segurança.</p>
+            </div>
+            <span class="mod-lockchip"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg> disponível pra comunidade</span>
+          </div>
+          <div class="mod-card">
+            <span class="corner-lock"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div class="mc-blur">
+              <div class="mod-week">Semana 05</div>
+              <h4>Escala e precificação</h4>
+              <p>Empilhar a escada de valor com a IA executando, e cobrar pelo resultado.</p>
+            </div>
+            <span class="mod-lockchip"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg> disponível pra comunidade</span>
+          </div>
+          <div class="mod-card">
+            <span class="corner-lock"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div class="mc-blur">
+              <div class="mod-week">Semana 06</div>
+              <h4>Automação e saída do operacional</h4>
+              <p>A máquina rodando sozinha. Você sai de operador e vira o gestor que comanda.</p>
+            </div>
+            <span class="mod-lockchip"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg> disponível pra comunidade</span>
+          </div>
+        </div>
+
+        <div class="year-note">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Depois das 6 semanas, os encontros continuam o <b>ano todo</b>: Claude, construção de apps, SaaS. Uma comunidade de IA viva.</span>
+        </div>
+
+        <!-- CTA TIERS -->
+        <div class="cta-tiers">
+          <div class="tier gold">
+            <div class="tier-name">Comunidade Digital Master</div>
+            <div class="tier-price">R$ 997 <small>/ ano</small></div>
+            <div class="tier-tag">Faça você mesmo, perto de quem está aplicando.</div>
+            <ul>
+              <li>As 6 semanas de construção destravadas</li>
+              <li>O Kit completo e atualização constante</li>
+              <li>Encontros o ano todo (Claude, apps, SaaS)</li>
+              <li>Bastidores das máquinas que a gente monta</li>
+            </ul>
+            <button class="btn primary">Entrar na Comunidade <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="tier">
+            <div class="tier-name">Mentoria</div>
+            <div class="tier-price">R$ 15.000</div>
+            <div class="tier-tag">Faço com você: eu e meu time instalamos no seu negócio.</div>
+            <ul>
+              <li>Instalação e treino da sua equipe de agentes</li>
+              <li>Acompanhamento direto com o time</li>
+              <li>Só 5 vagas, capacidade real, sem perder qualidade</li>
+            </ul>
+            <button class="btn">Quero falar com o time</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="foot">
+        <div class="f-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 19V6.5L8.2 13.2a1 1 0 0 0 1.6 0L15 6.5V19" stroke="#e8c889" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Agência <span>no Bolso</span> · MAIA</div>
+        <div>Digital Master · Salatiel Batista · <a href="https://instagram.com/salatielbatistaoficial" target="_blank" rel="noopener">@salatielbatistaoficial</a></div>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  var body=document.body, hamb=document.getElementById('hamb'), scrim=document.getElementById('scrim');
+  function close(){body.classList.remove('nav-open')}
+  hamb.addEventListener('click',function(){body.classList.toggle('nav-open')});
+  scrim.addEventListener('click',close);
+
+  var items=document.querySelectorAll('.nav-item');
+  var crumbEnd=document.getElementById('crumb-end');
+  var labels={kit:'Kit de Instalação',metodo:'Método: Mapear · Instruir · Conectar',comunidade:'Comunidade Digital Master'};
+  items.forEach(function(it){
+    it.addEventListener('click',function(){
+      var go=it.getAttribute('data-go');
+      var el=document.getElementById(go);
+      if(el){el.scrollIntoView({behavior:'smooth',block:'start'});}
+      crumbEnd.textContent=labels[go]||crumbEnd.textContent;
+      close();
+    });
+  });
+
+  // active state on scroll
+  var sections=[].slice.call(document.querySelectorAll('.section'));
+  var nav=[].slice.call(items);
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var id=e.target.id;
+        nav.forEach(function(n){n.classList.toggle('active', n.getAttribute('data-go')===id && !n.classList.contains('locked')?true:(n.getAttribute('data-go')===id?false:n.classList.contains('active')&&false));});
+        // simpler: clear all then set matching non-locked
+        nav.forEach(function(n){n.classList.remove('active')});
+        nav.forEach(function(n){ if(n.getAttribute('data-go')===id){ n.classList.add('active'); } });
+        if(labels[id]) crumbEnd.textContent=labels[id];
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(function(s){obs.observe(s)});
+})();
+</script>
+</body>
+</html>
