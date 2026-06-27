@@ -236,10 +236,31 @@ a{color:inherit;text-decoration:none}
   *{transition:none!important;animation:none!important}
 }
 
+/* ---------- TOAST ---------- */
+.am-toast{
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+  z-index:120;max-width:88%;display:flex;align-items:center;gap:10px;
+  padding:13px 18px;border-radius:13px;
+  background:linear-gradient(180deg,var(--panel-2),var(--bg-2));
+  border:1px solid var(--gold-line);box-shadow:0 20px 50px -22px rgba(0,0,0,.85);
+  color:var(--ink);font-size:13.5px;font-weight:500;
+  opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s cubic-bezier(.16,1,.3,1);
+}
+.am-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.am-toast svg{width:17px;height:17px;color:var(--gold-bright);flex-shrink:0}
+.am-toast b{color:var(--gold-bright);font-weight:700}
+
+/* tap targets: card is fully tappable, nothing intercepts */
+.kit-card{-webkit-tap-highlight-color:transparent}
+.kit-card > *{pointer-events:none}
+.kit-card .tag-multi a{pointer-events:auto}
+.nav-item{-webkit-tap-highlight-color:transparent}
+.nav-item *{pointer-events:none}
+
 /* ---------- MOBILE ---------- */
 .scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40;backdrop-filter:blur(2px)}
 @media(max-width:880px){
-  .sidebar{position:fixed;left:0;top:0;z-index:50;transform:translateX(-100%);transition:transform .26s ease;box-shadow:0 0 60px rgba(0,0,0,.6)}
+  .sidebar{position:fixed;left:0;top:0;z-index:60;transform:translateX(-100%);transition:transform .26s ease;box-shadow:0 0 60px rgba(0,0,0,.6)}
   body.nav-open .sidebar{transform:translateX(0)}
   body.nav-open .scrim{display:block}
   .hamb{display:grid}
@@ -257,8 +278,8 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
-<div class="scrim" id="scrim"></div>
 <div class="shell">
+  <div class="scrim" id="scrim"></div>
 
   <!-- ================= SIDEBAR ================= -->
   <aside class="sidebar" id="sidebar">
@@ -572,39 +593,66 @@ a{color:inherit;text-decoration:none}
 <script>
 (function(){
   var body=document.body, hamb=document.getElementById('hamb'), scrim=document.getElementById('scrim');
-  function close(){body.classList.remove('nav-open')}
-  hamb.addEventListener('click',function(){body.classList.toggle('nav-open')});
-  scrim.addEventListener('click',close);
+  function closeNav(){body.classList.remove('nav-open');}
+  hamb.addEventListener('click',function(){body.classList.toggle('nav-open');});
+  scrim.addEventListener('click',closeNav);
 
-  var items=document.querySelectorAll('.nav-item');
   var crumbEnd=document.getElementById('crumb-end');
   var labels={kit:'Kit de Instalação',metodo:'Método: Mapear · Instruir · Conectar',comunidade:'Comunidade Digital Master'};
+
+  // ---- toast (feedback pros itens travados) ----
+  var toastEl=null,toastTimer=null;
+  function toast(msg){
+    if(!toastEl){
+      toastEl=document.createElement('div');
+      toastEl.className='am-toast';
+      document.body.appendChild(toastEl);
+    }
+    toastEl.innerHTML='<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg><span>'+msg+'</span>';
+    // force reflow so the transition fires every time
+    void toastEl.offsetWidth;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){toastEl.classList.remove('show');},2600);
+  }
+
+  var items=document.querySelectorAll('.nav-item');
   items.forEach(function(it){
     it.addEventListener('click',function(){
       var go=it.getAttribute('data-go');
+      var locked=it.classList.contains('locked');
+      if(locked){
+        // item travado: feedback + leva pro CTA da comunidade
+        toast('<b>Disponível pra quem entra na Comunidade.</b>');
+        var sec=document.getElementById('comunidade');
+        if(sec){sec.scrollIntoView({behavior:'smooth',block:'start'});}
+        crumbEnd.textContent=labels.comunidade;
+        closeNav();
+        return;
+      }
       var el=document.getElementById(go);
       if(el){el.scrollIntoView({behavior:'smooth',block:'start'});}
-      crumbEnd.textContent=labels[go]||crumbEnd.textContent;
-      close();
+      if(labels[go]) crumbEnd.textContent=labels[go];
+      closeNav();
     });
   });
 
   // active state on scroll
   var sections=[].slice.call(document.querySelectorAll('.section'));
   var nav=[].slice.call(items);
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        var id=e.target.id;
-        nav.forEach(function(n){n.classList.toggle('active', n.getAttribute('data-go')===id && !n.classList.contains('locked')?true:(n.getAttribute('data-go')===id?false:n.classList.contains('active')&&false));});
-        // simpler: clear all then set matching non-locked
-        nav.forEach(function(n){n.classList.remove('active')});
-        nav.forEach(function(n){ if(n.getAttribute('data-go')===id){ n.classList.add('active'); } });
-        if(labels[id]) crumbEnd.textContent=labels[id];
-      }
-    });
-  },{rootMargin:'-45% 0px -50% 0px'});
-  sections.forEach(function(s){obs.observe(s)});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var id=e.target.id;
+          nav.forEach(function(n){n.classList.remove('active');});
+          nav.forEach(function(n){ if(n.getAttribute('data-go')===id && !n.classList.contains('locked')){ n.classList.add('active'); } });
+          if(labels[id]) crumbEnd.textContent=labels[id];
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){obs.observe(s);});
+  }
 })();
 </script>
 </body>
