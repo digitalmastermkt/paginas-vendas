@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAIA · Multiagentes Articulados de Inteligência Aplicada</title>
+<meta name="description" content="A arquitetura da MAIA: uma assistente de IA white-label que mora na sua VPS, é comandada pelo Telegram e orquestra o seu negócio. Veja a estrutura real e tudo que ela faz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0d10;
+  --ink-2:#12151a;
+  --panel:#171b21;
+  --panel-2:#1c2129;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.14);
+  --text:#f4f1ea;
+  --muted:#a8a59c;
+  --muted-2:#8f8c82;
+  --gold:#d4af37;
+  --gold-soft:#e8cd76;
+  --gold-deep:#a8841f;
+  --radius:18px;
+  --maxw:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink);
+  color:var(--text);
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  letter-spacing:-.01em;
+  overflow-x:hidden;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+a{color:inherit;text-decoration:none}
+
+/* ---------- atmosphere ---------- */
+.bg-grain{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 540px at 78% -8%, rgba(212,175,55,.10), transparent 60%),
+    radial-gradient(760px 520px at 8% 18%, rgba(212,175,55,.05), transparent 60%);
+}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 0,black,transparent 78%);
+}
+main{position:relative;z-index:1}
+
+/* ---------- shared ---------- */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);
+  padding:7px 14px;border:1px solid var(--line-strong);border-radius:100px;
+  background:rgba(212,175,55,.04);
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+h2.section-title{
+  font-family:'Playfair Display',serif;
+  font-weight:700;font-size:clamp(30px,5vw,48px);line-height:1.08;
+  letter-spacing:-.02em;margin:20px 0 14px;
+}
+h2.section-title em{font-style:italic;color:var(--gold-soft)}
+.lead{color:var(--muted);font-size:clamp(16px,2.2vw,19px);max-width:60ch}
+section{padding:clamp(72px,11vw,128px) 0;position:relative}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line-strong),transparent);max-width:var(--maxw);margin:0 auto}
+
+/* ---------- header ---------- */
+.topbar{position:sticky;top:0;z-index:50;
+  backdrop-filter:saturate(140%) blur(14px);
+  background:rgba(11,13,16,.72);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brandmark{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em}
+.brandmark .glyph{
+  width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--gold-soft),var(--gold-deep));
+  color:#0b0d10;font-family:'Anton',sans-serif;font-size:17px;
+  box-shadow:0 4px 18px rgba(212,175,55,.3)}
+.brandmark span small{display:block;font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  letter-spacing:.18em;color:var(--muted-2);font-weight:400;margin-top:-2px}
+.topnav{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.topnav a:hover{color:var(--text)}
+.topnav .cta{color:var(--gold-soft)}
+@media(max-width:760px){.topnav{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(64px,9vw,104px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero h1{
+  font-family:'Anton',sans-serif;font-weight:400;
+  font-size:clamp(46px,9vw,92px);line-height:.92;letter-spacing:.005em;
+  text-transform:uppercase;margin:22px 0 18px;
+}
+.hero h1 .grad{
+  background:linear-gradient(120deg,var(--gold-soft) 0%,var(--gold) 40%,#fff 130%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.acronym{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--muted);
+  letter-spacing:.04em;margin:6px 0 26px;max-width:46ch}
+.acronym b{color:var(--gold-soft);font-weight:700}
+.hero-sub{font-size:clamp(17px,2.4vw,20px);color:var(--muted);max-width:50ch;margin-bottom:30px}
+.hero-sub strong{color:var(--text);font-weight:600}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;
+  padding:14px 24px;border-radius:12px;border:1px solid transparent;transition:.18s ease;cursor:pointer}
+.btn-gold{background:linear-gradient(140deg,var(--gold-soft),var(--gold-deep));color:#0b0d10;
+  box-shadow:0 8px 26px rgba(212,175,55,.26)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(212,175,55,.36)}
+.btn-ghost{border-color:var(--line-strong);color:var(--text);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+
+/* hero card · terminal */
+.term{
+  border:1px solid var(--line-strong);border-radius:16px;overflow:hidden;
+  background:linear-gradient(180deg,var(--panel),var(--ink-2));
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.04)}
+.term-bar{display:flex;align-items:center;gap:8px;padding:12px 15px;border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.02)}
+.term-bar i{width:11px;height:11px;border-radius:50%;display:block;background:#34373d}
+.term-bar i:nth-child(1){background:#e0686a}.term-bar i:nth-child(2){background:#e3b341}.term-bar i:nth-child(3){background:#57a05a}
+.term-bar span{margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted-2)}
+.term-body{padding:18px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.85}
+.term-body .u{color:var(--gold-soft)}
+.term-body .m{color:var(--text)}
+.term-body .c{color:var(--muted-2)}
+.term-body .tag{color:#7fb3ff}
+.term-body .ok{color:#7ec98a}
+
+/* ---------- stat strip ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);margin-top:64px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--ink-2);padding:24px 22px}
+.stat b{display:block;font-family:'Anton',sans-serif;font-size:32px;color:var(--gold-soft);letter-spacing:.01em}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* ---------- architecture diagram ---------- */
+.arch{
+  margin-top:48px;border:1px solid var(--line-strong);border-radius:24px;
+  background:
+    radial-gradient(600px 400px at 50% 40%, rgba(212,175,55,.06), transparent 70%),
+    linear-gradient(180deg,var(--ink-2),var(--ink));
+  padding:clamp(28px,5vw,56px);position:relative;overflow:hidden}
+.arch-grid{display:grid;grid-template-columns:1fr;gap:30px}
+/* core */
+.core{margin:0 auto;max-width:520px;text-align:center;
+  border:1px solid var(--gold-deep);border-radius:20px;padding:26px 28px;position:relative;
+  background:linear-gradient(180deg,rgba(212,175,55,.10),rgba(212,175,55,.02));
+  box-shadow:0 0 0 1px rgba(212,175,55,.12), 0 20px 60px -30px rgba(212,175,55,.5)}
+.core .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+.core h3{font-family:'Playfair Display',serif;font-size:26px;margin:6px 0 4px}
+.core p{font-size:14px;color:var(--muted);max-width:42ch;margin:0 auto}
+.core .pill{display:inline-block;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--gold-soft);border:1px solid var(--line-strong);border-radius:100px;padding:4px 12px;background:rgba(0,0,0,.25)}
+
+.lane{display:grid;gap:14px}
+.lane-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted-2);display:flex;align-items:center;gap:10px}
+.lane-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.row{display:grid;gap:14px}
+.row.r3{grid-template-columns:repeat(3,1fr)}
+.row.r4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:760px){.row.r3,.row.r4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.row.r3,.row.r4{grid-template-columns:1fr}}
+.node{
+  border:1px solid var(--line);border-radius:14px;padding:16px 16px;background:var(--panel);
+  transition:.18s ease;position:relative}
+.node:hover{border-color:var(--gold-deep);transform:translateY(-3px);background:var(--panel-2)}
+.node .ic{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-soft);letter-spacing:.08em}
+.node b{display:block;font-size:14.5px;font-weight:700;margin:6px 0 2px}
+.node small{font-size:12px;color:var(--muted);line-height:1.45;display:block}
+.node.up{border-style:dashed;opacity:.92}
+.node.up .badge{position:absolute;top:-9px;right:12px;font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:.12em;color:#0b0d10;background:var(--gold-soft);padding:2px 8px;border-radius:100px;text-transform:uppercase;font-weight:700}
+.flowtip{margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted-2);text-align:center}
+.flowtip b{color:var(--gold-soft)}
+
+/* ---------- capability cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+@media(max-width:880px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cards{grid-template-columns:1fr}}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;
+  background:linear-gradient(180deg,var(--panel),var(--ink-2));transition:.2s ease;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold-deep),transparent);opacity:0;transition:.2s}
+.card:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+.card:hover::before{opacity:1}
+.card .kind{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft)}
+.card h3{font-size:18px;font-weight:700;margin:12px 0 8px;letter-spacing:-.01em}
+.card p{font-size:14.5px;color:var(--muted);line-height:1.58}
+.card .tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.card .tags span{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gold-soft);
+  border:1px solid var(--line-strong);border-radius:6px;padding:3px 8px}
+
+/* ---------- skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+@media(max-width:880px){.skills{grid-template-columns:1fr}}
+.skill{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:var(--ink-2)}
+.skill .badge{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold-soft);border:1px solid var(--line-strong);border-radius:100px;padding:4px 11px;display:inline-block}
+.skill h3{font-size:17.5px;margin:14px 0 8px}
+.skill .slug{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted-2);margin-bottom:10px}
+.skill p{font-size:14px;color:var(--muted)}
+
+/* ---------- stack ---------- */
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+@media(max-width:760px){.stack-grid{grid-template-columns:repeat(2,1fr)}}
+.tech{border:1px solid var(--line);border-radius:14px;padding:18px 16px;background:var(--panel);text-align:left}
+.tech b{display:block;font-size:14.5px;font-weight:700}
+.tech small{font-size:12px;color:var(--muted);line-height:1.45;display:block;margin-top:3px}
+.tech .v{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-soft);margin-top:8px;display:block}
+
+/* ---------- install ---------- */
+.steps{margin-top:44px;display:grid;gap:0;border-left:1px solid var(--line-strong);margin-left:8px}
+.step{position:relative;padding:0 0 30px 30px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-7px;top:4px;width:13px;height:13px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--gold-deep)}
+.step.last::before{background:var(--gold-soft);box-shadow:0 0 14px var(--gold)}
+.step .n{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--gold-soft);text-transform:uppercase}
+.step h4{font-size:17px;margin:5px 0 6px}
+.step p{font-size:14.5px;color:var(--muted);max-width:62ch}
+.step code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--gold-soft);
+  background:rgba(212,175,55,.07);border:1px solid var(--line);border-radius:6px;padding:2px 7px}
+.codeblock{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--ink-2)}
+.codeblock .cb-bar{padding:8px 14px;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--muted-2);background:rgba(255,255,255,.02)}
+.codeblock pre{padding:16px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.8;color:var(--text)}
+.codeblock pre .c{color:var(--muted-2)}
+.codeblock pre .g{color:var(--gold-soft)}
+
+/* ---------- repo cta ---------- */
+.repo{margin-top:48px;border:1px solid var(--line-strong);border-radius:20px;
+  background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(212,175,55,.01));
+  padding:clamp(28px,5vw,44px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.repo h3{font-family:'Playfair Display',serif;font-size:24px}
+.repo p{color:var(--muted);font-size:14.5px;margin-top:4px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:48px 0 60px;position:relative;z-index:1}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot .slogan{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--gold-soft)}
+.foot small{color:var(--muted-2);font-size:12.5px;font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+<div class="bg-grain"></div>
+<div class="bg-grid"></div>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brandmark" href="#top">
+      <span class="glyph">M</span>
+      <span>MAIA<small>ESTRUTURA · ARQUITETURA</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="#arquitetura">Arquitetura</a>
+      <a href="#capacidades">O que faz</a>
+      <a href="#stack">Stack</a>
+      <a href="#instalar">Instalar</a>
+      <a class="cta" href="https://github.com/digitalmastermkt/maia-aluno" target="_blank" rel="noopener">Repositório ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span>Edição MAIA Aluno · cérebro Claude Code CLI</span>
+          <h1><span class="grad">MAIA</span></h1>
+          <p class="acronym"><b>M</b>ultiagentes <b>A</b>rticulados de <b>I</b>nteligência <b>A</b>plicada</p>
+          <p class="hero-sub">Uma assistente de IA <strong>white-label</strong> que mora na sua VPS, é comandada pelo seu <strong>Telegram</strong> e <strong>orquestra o seu negócio</strong>: entende o pedido, delega para subagentes e te devolve a entrega pronta.</p>
+          <div class="hero-cta">
+            <a class="btn btn-gold" href="#arquitetura">Ver a arquitetura ↓</a>
+            <a class="btn btn-ghost" href="https://github.com/digitalmastermkt/maia-aluno" target="_blank" rel="noopener">Abrir o repositório</a>
+          </div>
+        </div>
+        <div class="term" aria-hidden="true">
+          <div class="term-bar"><i></i><i></i><i></i><span>telegram · maia-master</span></div>
+          <div class="term-body">
+            <div class="c"># você manda "oi" no seu bot</div>
+            <div><span class="u">você ▸</span> <span class="m">oi</span></div>
+            <div><span class="u">MAIA ▸</span> <span class="m">Vamos configurar o cérebro do seu negócio. Como você prefere ser chamado?</span></div>
+            <div class="c"># onboarding aprende a sua marca → brand.json</div>
+            <div><span class="u">você ▸</span> <span class="m">me faz uma persona do meu cliente</span></div>
+            <div><span class="ok">✓ skill-persona-profunda</span> <span class="c">→ 30 camadas + ICP</span></div>
+            <div><span class="tag">[doc]</span> <span class="m">persona-cliente.md entregue no chat</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>1</b><span>orquestradora central no Telegram</span></div>
+        <div class="stat"><b>3</b><span>skills de valor já na 1ª sessão</span></div>
+        <div class="stat"><b>4</b><span>formatos: texto · áudio · imagem · doc</span></div>
+        <div class="stat"><b>∞</b><span>upgrades plugáveis sem reinstalar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ARQUITETURA -->
+  <section id="arquitetura">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>A estrutura real do repositório</span>
+      <h2 class="section-title">A <em>arquitetura</em> da MAIA</h2>
+      <p class="lead">No centro, a orquestradora (Claude Code). Ao redor, o bot do Telegram, as skills da base, a memória em arquivo e as integrações de IA. As bordas tracejadas são <strong>upgrades</strong> que plugam depois, sem tocar no núcleo.</p>
+
+      <div class="arch">
+        <div class="arch-grid">
+
+          <!-- canal -->
+          <div class="lane">
+            <div class="lane-label">Canal · daemon systemd <span class="mono" style="text-transform:none;letter-spacing:0">maia-telegram-bot</span></div>
+            <div class="row r3">
+              <div class="node"><span class="ic">bot/bot.py</span><b>Bot do Telegram</b><small>Recebe mensagens, escreve no inbox/, lê do outbox/ e responde via API.</small></div>
+              <div class="node"><span class="ic">inbox/ ▸ outbox/</span><b>Protocolo de arquivos</b><small>Toda resposta passa por um JSON no outbox/: ponto único de observabilidade.</small></div>
+              <div class="node"><span class="ic">tmux · send-keys</span><b>Ponte com o cérebro</b><small>Entrega a mensagem para a sessão tmux <span class="mono">maia-master</span> onde o Claude roda.</small></div>
+            </div>
+          </div>
+
+          <!-- core -->
+          <div class="core">
+            <div class="kicker">Orquestradora</div>
+            <h3>MAIA · Claude Code CLI</h3>
+            <p>Lê o <span class="mono">CLAUDE.md</span> (persona + protocolo de boot), entende o pedido, monta o brief e delega aos subagentes. Presidente do conselho, não estagiária.</p>
+            <span class="pill">CLAUDE.md · modo orquestrador</span>
+          </div>
+
+          <!-- contexto -->
+          <div class="lane">
+            <div class="lane-label">Contexto & marca</div>
+            <div class="row r3">
+              <div class="node"><span class="ic">brand/brand.json</span><b>Marca white-label</b><small>Fonte única de verdade da marca (nome, @, site, slogan, produtos). Lida por <span class="mono">brand_loader.py</span>.</small></div>
+              <div class="node"><span class="ic">memory/*.md</span><b>Memória em arquivo</b><small>decisions · projects · pending · lessons · people. "O que não está escrito, não existe."</small></div>
+              <div class="node up"><span class="badge">upgrade</span><span class="ic">porta 3007</span><b>Memória semântica</b><small>Busca por significado (sqlite-vec / pgvector). Pluga depois via upgrades-engine.</small></div>
+            </div>
+          </div>
+
+          <!-- skills -->
+          <div class="lane">
+            <div class="lane-label">Skills da base · <span class="mono" style="text-transform:none;letter-spacing:0">.claude/skills/</span></div>
+            <div class="row r4">
+              <div class="node"><span class="ic">skill</span><b>claude-md-builder</b><small>Onboarding guiado que monta o cérebro do negócio.</small></div>
+              <div class="node"><span class="ic">skill</span><b>persona-profunda</b><small>Persona Raio-X: 30 camadas + ICP + mapa de empatia.</small></div>
+              <div class="node"><span class="ic">skill</span><b>conteúdo-viral-vendas</b><small>Roteiro de Reel pronto pra gravar (12 formatos).</small></div>
+              <div class="node up"><span class="badge">upgrade</span><span class="ic">.claude/agents</span><b>Time de 7 agentes</b><small>Subagentes nomeados que plugam depois.</small></div>
+            </div>
+          </div>
+
+          <!-- ia -->
+          <div class="lane">
+            <div class="lane-label">Motor de IA & mídia</div>
+            <div class="row r4">
+              <div class="node"><span class="ic">gemini_image.py</span><b>Imagem</b><small>Geração e edição via Gemini / Imagen.</small></div>
+              <div class="node"><span class="ic">Gemini TTS</span><b>Voz</b><small>Resposta em áudio narrado (ou ElevenLabs).</small></div>
+              <div class="node"><span class="ic">lib/whisper</span><b>Transcrição</b><small>Áudio do dono → texto (Groq / OpenAI).</small></div>
+              <div class="node"><span class="ic">calendar_*.py</span><b>Agenda</b><small>Ponte com o Google Calendar.</small></div>
+            </div>
+          </div>
+
+          <!-- upgrades -->
+          <div class="lane">
+            <div class="lane-label">Motor de upgrades · <span class="mono" style="text-transform:none;letter-spacing:0">upgrades-engine/</span></div>
+            <div class="row r4">
+              <div class="node up"><span class="badge">engine</span><span class="ic">install-skill.sh</span><b>Instala skill</b><small>Idempotente, copia a pasta para <span class="mono">.claude/skills/</span>.</small></div>
+              <div class="node up"><span class="badge">engine</span><span class="ic">update.sh</span><b>Orquestra pacote</b><small>detect → backup → install → restart → validate.</small></div>
+              <div class="node up"><span class="badge">engine</span><span class="ic">rollback.sh</span><b>Reverte</b><small>Restaura o snapshot anterior se algo falhar.</small></div>
+              <div class="node up"><span class="badge">engine</span><span class="ic">manifest.json</span><b>Manifesto</b><small>Declara skills, subagentes e o que o pacote pluga.</small></div>
+            </div>
+          </div>
+
+        </div>
+        <p class="flowtip">Fluxo: <b>Telegram → inbox/ → tmux → MAIA (Claude) → delega ao subagente → outbox/ → resposta</b></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CAPACIDADES -->
+  <section id="capacidades">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>O que ela faz</span>
+      <h2 class="section-title">Não é chatbot de FAQ. <em>É orquestradora.</em></h2>
+      <p class="lead">Ela organiza, executa tarefas e devolve a entrega pronta direto no seu Telegram, em qualquer formato.</p>
+
+      <div class="cards">
+        <div class="card"><span class="kind">resposta</span><h3>Responde por texto</h3><p>Conversa natural em português, entende o pedido e devolve a resposta sempre pelo canal oficial (outbox), nunca pela API direta.</p><div class="tags"><span>outbox</span><span>pt-BR</span></div></div>
+        <div class="card"><span class="kind">resposta</span><h3>Responde por áudio</h3><p>Resposta em voz narrada (Gemini TTS por padrão, ElevenLabs opcional) para confirmações e conversas curtas.</p><div class="tags"><span>Gemini TTS</span><span>voice</span></div></div>
+        <div class="card"><span class="kind">mídia</span><h3>Gera imagem na hora</h3><p>"Me faz uma arte 1:1 sobre X": geração e edição de imagem via Gemini / Imagen, devolvida no chat.</p><div class="tags"><span>Imagen</span><span>gemini-2.5-flash-image</span></div></div>
+        <div class="card"><span class="kind">entrega</span><h3>Entrega documentos</h3><p>Envia arquivos prontos no chat: <span class="mono" style="color:var(--gold-soft)">.md</span>, <span class="mono" style="color:var(--gold-soft)">.pdf</span>, <span class="mono" style="color:var(--gold-soft)">.docx</span>, <span class="mono" style="color:var(--gold-soft)">.json</span> via sendDocument.</p><div class="tags"><span>sendDocument</span><span>.md / .pdf</span></div></div>
+        <div class="card"><span class="kind">entrada</span><h3>Entende seu áudio</h3><p>Você manda um áudio, ela transcreve (Groq / OpenAI Whisper, ou faster-whisper local) e responde como se fosse texto.</p><div class="tags"><span>Whisper</span><span>Groq</span></div></div>
+        <div class="card"><span class="kind">contexto</span><h3>Aprende o seu negócio</h3><p>No primeiro "oi", ela entrevista e descobre marca, produtos, preços, público e tom de voz, e grava em <span class="mono" style="color:var(--gold-soft)">brand.json</span>. A partir daí, a saída sai com a SUA marca.</p><div class="tags"><span>onboarding</span><span>white-label</span></div></div>
+        <div class="card"><span class="kind">núcleo</span><h3>Orquestra subagentes</h3><p>Entende o pedido, monta o brief completo e delega ao subagente certo, em background, para nunca travar o seu atendimento.</p><div class="tags"><span>Modo Orquestrador</span><span>background</span></div></div>
+        <div class="card"><span class="kind">skills</span><h3>Entrega valor na 1ª sessão</h3><p>3 skills leves prontas: configura a IA, gera persona profunda do cliente e um roteiro de vídeo pronto pra gravar.</p><div class="tags"><span>persona</span><span>roteiro</span></div></div>
+        <div class="card"><span class="kind">evolução</span><h3>Recebe upgrades sem reinstalar</h3><p>Motor de upgrades embutido: novas skills, memória semântica, time de agentes, tudo pluga em 1 comando, sem mexer no núcleo.</p><div class="tags"><span>upgrades-engine</span><span>idempotente</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>Skills incluídas na base</span>
+      <h2 class="section-title">3 entregas <em>de valor</em> já na primeira conversa</h2>
+      <p class="lead">Leves e text-only (zero dependência pesada), autodescobertas pelo Claude Code em <span class="mono" style="color:var(--gold-soft)">.claude/skills/</span>.</p>
+
+      <div class="skills">
+        <div class="skill">
+          <span class="badge">Onboarding</span>
+          <h3>Configura a IA</h3>
+          <p class="slug">skill-claude-md-builder</p>
+          <p>Entrevista guiada, uma pergunta por vez com exemplo pronto, e no fim grava o <span class="mono" style="color:var(--gold-soft)">CLAUDE.md</span> completo: o manual que a IA lê toda vez para entender o negócio de ponta a ponta.</p>
+        </div>
+        <div class="skill">
+          <span class="badge">Estratégia</span>
+          <h3>Persona Raio-X</h3>
+          <p class="slug">skill-persona-profunda</p>
+          <p>Persona completa pelo Método Raio-X: 30 camadas da mente do cliente (300+ insights), Buyer Persona, ICP, Mapa de Empatia e Anti-Persona, pronta para copy, anúncio e lançamento.</p>
+        </div>
+        <div class="skill">
+          <span class="badge">Conteúdo</span>
+          <h3>Roteiro que vende</h3>
+          <p class="slug">skill-conteudo-viral-vendas</p>
+          <p>Roteiro de Reel pronto pra gravar (9:16, até 60s) com 12 formatos validados: gancho → desenvolvimento → virada → CTA. Na voz do próprio dono do negócio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>Como ela roda</span>
+      <h2 class="section-title">A <em>stack</em> da base enxuta</h2>
+      <p class="lead">Deliberadamente leve: instala rápido, sem fricção. O pesado (Whisper local, embeddings, vídeo) entra só como upgrade.</p>
+
+      <div class="stack-grid">
+        <div class="tech"><b>VPS Ubuntu / Debian</b><small>Onde a MAIA mora (acesso root). Swap de 2GB provisionado pelo instalador.</small><span class="v">/opt/MAIA · user maia</span></div>
+        <div class="tech"><b>Claude Code CLI</b><small>O cérebro da assistente, rodando numa sessão tmux dedicada.</small><span class="v">tmux maia-master</span></div>
+        <div class="tech"><b>Node 22</b><small>Runtime do Claude Code CLI (via NodeSource).</small><span class="v">@anthropic-ai/claude-code</span></div>
+        <div class="tech"><b>Python 3.12</b><small>Bot do Telegram em venv próprio. Deps: requests, google-genai, pillow, openai.</small><span class="v">bot/venv</span></div>
+        <div class="tech"><b>systemd</b><small>O bot é um daemon (<span class="mono">maia-telegram-bot</span>), independente do Claude Code.</small><span class="v">Restart=always</span></div>
+        <div class="tech"><b>Gemini API</b><small>Voz (TTS), imagem (Imagen) e recursos de IA do bot. Chave obrigatória.</small><span class="v">GEMINI_API_KEY</span></div>
+        <div class="tech"><b>ffmpeg · tmux · sqlite3 · jq</b><small>Utilitários de mídia, sessão, dados e parsing instalados na base.</small><span class="v">apt · noninteractive</span></div>
+        <div class="tech"><b>Memória em arquivo</b><small>Base usa <span class="mono">memory/*.md</span>. PGVector/sqlite-vec na porta 3007 é upgrade.</small><span class="v">upgrade opcional</span></div>
+      </div>
+
+      <p class="lead" style="margin-top:26px;font-size:14px;color:var(--muted-2)">
+        Variáveis obrigatórias no <span class="mono">.env</span>: <span class="mono" style="color:var(--gold-soft)">TELEGRAM_BOT_TOKEN</span>, <span class="mono" style="color:var(--gold-soft)">ALLOWED_USERS</span>, <span class="mono" style="color:var(--gold-soft)">ADMIN_CHAT_ID</span>, <span class="mono" style="color:var(--gold-soft)">GEMINI_API_KEY</span>. Opcionais: <span class="mono">GROQ_API_KEY</span>, <span class="mono">OPENAI_API_KEY</span>, <span class="mono">ELEVENLABS_API_KEY</span>.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- INSTALAR -->
+  <section id="instalar">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>Como instalar</span>
+      <h2 class="section-title">Da VPS ao <em>"oi"</em> em 5 passos</h2>
+      <p class="lead">O instalador é idempotente: pode rodar de novo sem quebrar nada. Passo a passo completo no <span class="mono" style="color:var(--gold-soft)">INSTALL-CLAUDE.md</span>.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="n">Passo 01</div>
+          <h4>Clone na sua VPS</h4>
+          <p>VPS Ubuntu/Debian limpa, com acesso root.</p>
+          <div class="codeblock"><div class="cb-bar">bash</div><pre><span class="c"># clonar a base</span>
+git clone <span class="g">https://github.com/digitalmastermkt/maia-aluno.git</span>
+cd maia-aluno</pre></div>
+        </div>
+        <div class="step">
+          <div class="n">Passo 02</div>
+          <h4>Rode o instalador</h4>
+          <p>Cuida de timezone, pacotes (Node 22, Claude Code CLI, Python 3.12, ffmpeg, tmux), swap, usuário <code>maia</code>, copia tudo pra <code>/opt/MAIA</code>, cria o venv e instala a unit systemd <strong>desabilitada</strong>.</p>
+          <div class="codeblock"><div class="cb-bar">bash</div><pre>sudo bash <span class="g">install.sh</span></pre></div>
+        </div>
+        <div class="step">
+          <div class="n">Passo 03</div>
+          <h4>Preencha as credenciais</h4>
+          <p>Obrigatórios: <code>TELEGRAM_BOT_TOKEN</code>, <code>ALLOWED_USERS</code>, <code>ADMIN_CHAT_ID</code>, <code>GEMINI_API_KEY</code>. Lista completa comentada no <span class="mono">bot/.env.TEMPLATE</span>.</p>
+          <div class="codeblock"><div class="cb-bar">bash</div><pre>nano <span class="g">/opt/MAIA/bot/.env</span></pre></div>
+        </div>
+        <div class="step">
+          <div class="n">Passo 04</div>
+          <h4>Login na conta Claude + suba o bot</h4>
+          <p>Faça o <code>/login</code> OAuth na sessão tmux e habilite o serviço.</p>
+          <div class="codeblock"><div class="cb-bar">bash</div><pre>sudo -u maia tmux new -s <span class="g">maia-master</span>
+cd /opt/MAIA && claude --dangerously-skip-permissions
+<span class="c"># /login pela URL, depois Ctrl-b d</span>
+systemctl enable --now <span class="g">maia-telegram-bot</span></pre></div>
+        </div>
+        <div class="step last">
+          <div class="n">Passo 05</div>
+          <h4>Mande "oi" no seu bot do Telegram</h4>
+          <p>A MAIA conduz o onboarding de marca: pergunta sobre você, o negócio, produtos, tom de voz e canais, e grava tudo em <code>brand/brand.json</code>. A partir daí, ela é a sua IA.</p>
+        </div>
+      </div>
+
+      <div class="repo">
+        <div>
+          <h3>Repositório público</h3>
+          <p>Toda a base white-label, o instalador e o motor de upgrades.</p>
+        </div>
+        <a class="btn btn-gold" href="https://github.com/digitalmastermkt/maia-aluno" target="_blank" rel="noopener">github.com/digitalmastermkt/maia-aluno ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="brandmark">
+      <span class="glyph">M</span>
+      <span>MAIA<small>MULTIAGENTES ARTICULADOS DE INTELIGÊNCIA APLICADA</small></span>
+    </div>
+    <div style="text-align:right">
+      <div class="slogan">"Movimento gera resultado."</div>
+      <small>Salatiel Batista · Agência no Bolso</small>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
