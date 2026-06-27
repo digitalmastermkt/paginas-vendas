@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Timer · Imersão IA que Executa</title>
+<meta name="theme-color" content="#0e1014">
+<meta name="robots" content="noindex">
+<style>
+  /* ===== Fontes da marca (auto-hospedadas) ===== */
+  @font-face{
+    font-family:'JetBrains Mono';
+    src:url('fonts/JetBrainsMono.woff2') format('woff2');
+    font-weight:100 800;font-style:normal;font-display:swap;
+  }
+  @font-face{
+    font-family:'Anton';
+    src:url('fonts/Anton-Regular.woff2') format('woff2');
+    font-weight:400;font-style:normal;font-display:swap;
+  }
+  @font-face{
+    font-family:'Plus Jakarta Sans';
+    src:url('fonts/PlusJakartaSans-Medium.woff2') format('woff2');
+    font-weight:500;font-style:normal;font-display:swap;
+  }
+  @font-face{
+    font-family:'Plus Jakarta Sans';
+    src:url('fonts/PlusJakartaSans-SemiBold.woff2') format('woff2');
+    font-weight:600;font-style:normal;font-display:swap;
+  }
+  @font-face{
+    font-family:'Plus Jakarta Sans';
+    src:url('fonts/PlusJakartaSans-Bold.woff2') format('woff2');
+    font-weight:700;font-style:normal;font-display:swap;
+  }
+
+  :root{
+    --bg:#0e1014;
+    --bg-2:#13161c;
+    --ink:#f4f1ea;
+    --muted:#8b9099;
+    --gold:#f0c882;
+    --gold-deep:#d9b25f;
+    --gold-line:rgba(240,200,130,.18);
+    --gold-soft:rgba(240,200,130,.08);
+    --panel:rgba(255,255,255,.035);
+    --panel-line:rgba(255,255,255,.08);
+    --shadow:0 18px 60px rgba(0,0,0,.55);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    min-height:100dvh;
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    display:flex;flex-direction:column;
+  }
+
+  /* ===== Fundo tema IA: grid + glow dourado ===== */
+  .bg-grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--gold-soft) 1px,transparent 1px),
+      linear-gradient(90deg,var(--gold-soft) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 75% 70% at 50% 45%,#000 30%,transparent 85%);
+            mask-image:radial-gradient(ellipse 75% 70% at 50% 45%,#000 30%,transparent 85%);
+    opacity:.55;
+  }
+  .bg-glow{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60% 55% at 50% 42%,rgba(217,178,95,.10),transparent 70%),
+      radial-gradient(40% 40% at 80% 90%,rgba(217,178,95,.05),transparent 70%),
+      radial-gradient(120% 120% at 50% 0%,#15181f,var(--bg) 60%);
+  }
+  /* partículas douradas sutis */
+  .bg-particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6;}
+
+  /* ===== Layout ===== */
+  .stage{
+    position:relative;z-index:2;
+    flex:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:clamp(16px,3vw,40px);
+    text-align:center;
+  }
+
+  /* Marca canto */
+  .brand{
+    position:fixed;z-index:3;
+    top:clamp(14px,2.4vw,26px);left:clamp(16px,2.6vw,32px);
+    display:flex;flex-direction:column;gap:3px;
+    pointer-events:none;
+  }
+  .brand .b1{
+    font-weight:700;letter-spacing:.04em;font-size:clamp(12px,1.05vw,15px);
+    color:var(--ink);
+  }
+  .brand .b1 b{color:var(--gold);}
+  .brand .b2{
+    font-size:clamp(10px,.85vw,12px);color:var(--muted);
+    letter-spacing:.02em;
+  }
+
+  /* Rótulo editável */
+  .label-row{
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:clamp(14px,2.4vh,30px);
+  }
+  .dot{
+    width:9px;height:9px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 0 5px var(--gold-soft);flex:none;
+  }
+  .label{
+    font-family:'Plus Jakarta Sans';
+    font-weight:600;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    font-size:clamp(13px,1.55vw,22px);
+    color:var(--gold);
+    background:transparent;border:none;text-align:center;
+    width:min(90vw,820px);
+    outline:none;
+    caret-color:var(--gold);
+    text-shadow:0 0 24px rgba(240,200,130,.18);
+  }
+  .label::placeholder{color:rgba(240,200,130,.4);}
+
+  /* ===== Display do tempo ===== */
+  .clock-wrap{
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    padding:clamp(10px,2vw,30px);
+  }
+  /* anel/órbita ao redor do tempo */
+  .ring{
+    position:absolute;inset:50% auto auto 50%;
+    transform:translate(-50%,-50%);
+    width:min(116%,1180px);aspect-ratio:1/.46;
+    border:1px solid var(--gold-line);
+    border-radius:50%;
+    pointer-events:none;
+    box-shadow:inset 0 0 80px rgba(240,200,130,.05);
+  }
+  .ring.r2{width:min(132%,1320px);border-color:rgba(240,200,130,.08);}
+
+  .time{
+    font-family:'JetBrains Mono','Anton',monospace;
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+    font-feature-settings:"tnum" 1,"zero" 1;
+    letter-spacing:.01em;
+    font-size:clamp(96px,26vw,420px);
+    line-height:.92;
+    color:var(--ink);
+    text-shadow:0 0 60px rgba(240,200,130,.12);
+    user-select:none;
+    transition:color .25s ease;
+  }
+  .time .sep{
+    color:var(--gold-deep);
+    margin:0 .02em;
+  }
+  /* warning < 60s */
+  body.warn .time{color:#fff;}
+  body.warn .time .sep{color:var(--gold);}
+
+  /* mensagem final */
+  .done-msg{
+    font-family:'Anton','Plus Jakarta Sans',sans-serif;
+    text-transform:uppercase;letter-spacing:.04em;
+    font-size:clamp(64px,18vw,300px);
+    line-height:.92;
+    color:var(--gold);
+    text-shadow:0 0 80px rgba(240,200,130,.45);
+    display:none;
+    user-select:none;
+  }
+  body.done .clock-wrap{display:none;}
+  body.done .done-msg{display:flex;align-items:center;justify-content:center;gap:.18em;animation:pulse 1.05s ease-in-out infinite;}
+  .done-msg .rocket{width:.62em;height:.62em;flex:none;transform:translateY(-.03em);}
+  body.done{background:var(--bg);}
+  body.done::after{
+    content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(60% 60% at 50% 45%,rgba(240,200,130,.16),transparent 70%);
+    animation:flash 1.05s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);opacity:1;text-shadow:0 0 60px rgba(240,200,130,.35);}
+    50%{transform:scale(1.045);opacity:.92;text-shadow:0 0 110px rgba(240,200,130,.7);}
+  }
+  @keyframes flash{0%,100%{opacity:.35;}50%{opacity:.9;}}
+
+  /* ===== Controles ===== */
+  .controls{
+    position:relative;z-index:3;
+    width:100%;
+    display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2vh,20px);
+    padding:clamp(14px,2vw,26px) clamp(16px,3vw,40px) clamp(20px,3vh,40px);
+  }
+
+  .presets{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;}
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:600;font-size:14px;letter-spacing:.02em;
+    color:var(--ink);
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:11px;
+    padding:9px 15px;cursor:pointer;
+    transition:.16s ease;
+    min-width:52px;
+  }
+  .chip:hover{border-color:var(--gold-line);color:var(--gold);background:var(--gold-soft);}
+  .chip:active{transform:translateY(1px);}
+
+  .stepper{
+    display:flex;align-items:center;gap:8px;
+    background:var(--panel);border:1px solid var(--panel-line);
+    border-radius:13px;padding:5px;
+  }
+  .step{
+    width:42px;height:42px;border-radius:9px;
+    background:transparent;border:1px solid transparent;
+    color:var(--ink);font-size:22px;font-weight:600;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;line-height:1;
+    transition:.15s ease;
+  }
+  .step:hover{background:var(--gold-soft);color:var(--gold);}
+  .step:active{transform:scale(.94);}
+  #minInput{
+    width:74px;height:42px;
+    background:transparent;border:none;outline:none;
+    color:var(--ink);text-align:center;
+    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:22px;
+    -moz-appearance:textfield;
+  }
+  #minInput::-webkit-outer-spin-button,#minInput::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+  .stepper .unit{font-size:12px;color:var(--muted);padding-right:10px;letter-spacing:.08em;text-transform:uppercase;}
+
+  .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .btn{
+    font-family:'Plus Jakarta Sans';font-weight:700;
+    letter-spacing:.04em;font-size:15px;text-transform:uppercase;
+    border-radius:13px;padding:14px 30px;cursor:pointer;
+    border:1px solid var(--panel-line);background:var(--panel);color:var(--ink);
+    transition:.16s ease;display:flex;align-items:center;gap:9px;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn:active{transform:translateY(0);}
+  .btn svg{width:16px;height:16px;}
+  .btn-primary{
+    background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);
+    color:#1a1206;border-color:transparent;
+    box-shadow:0 10px 30px rgba(217,178,95,.28);
+  }
+  .btn-primary:hover{box-shadow:0 14px 38px rgba(217,178,95,.4);}
+  .btn-ghost{color:var(--muted);}
+  .btn-ghost:hover{color:var(--ink);border-color:var(--gold-line);}
+
+  /* dica de atalhos */
+  .hint{
+    font-size:11.5px;color:var(--muted);letter-spacing:.04em;
+    display:flex;gap:14px;flex-wrap:wrap;justify-content:center;opacity:.8;
+  }
+  .hint kbd{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;
+    background:var(--panel);border:1px solid var(--panel-line);
+    border-radius:5px;padding:2px 6px;color:var(--ink);
+  }
+
+  /* botão fullscreen */
+  .fs{
+    position:fixed;z-index:4;top:clamp(14px,2.4vw,26px);right:clamp(16px,2.6vw,32px);
+    width:42px;height:42px;border-radius:10px;
+    background:var(--panel);border:1px solid var(--panel-line);
+    color:var(--muted);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:.15s ease;
+  }
+  .fs:hover{color:var(--gold);border-color:var(--gold-line);}
+  .fs svg{width:18px;height:18px;}
+
+  /* esconder controles em modo palco quando rodando (move pra baixo, discreto) */
+  body.running .controls{opacity:.5;transition:opacity .3s ease;}
+  body.running .controls:hover{opacity:1;}
+
+  @media (max-width:560px){
+    .brand .b2{display:none;}
+    .hint{display:none;}
+    .ring{display:none;}
+    .label{letter-spacing:.18em;}
+  }
+  @media (max-height:480px) and (orientation:landscape){
+    .label-row{margin-bottom:6px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    body.done .done-msg{animation:none;}
+    body.done::after{animation:none;opacity:.5;}
+  }
+</style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="bg-grid"></div>
+  <canvas class="bg-particles" id="particles"></canvas>
+
+  <div class="brand">
+    <div class="b1">Agência no Bolso · <b>MAIA</b></div>
+    <div class="b2">Imersão · Inteligência Artificial que Executa</div>
+  </div>
+
+  <button class="fs" id="fsBtn" title="Tela cheia" aria-label="Tela cheia">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3"/></svg>
+  </button>
+
+  <main class="stage">
+    <div class="label-row">
+      <span class="dot"></span>
+      <input class="label" id="label" value="PAUSA PARA IMPLEMENTAÇÃO"
+             spellcheck="false" maxlength="48" aria-label="Rótulo da pausa">
+    </div>
+
+    <div class="clock-wrap">
+      <div class="ring r2"></div>
+      <div class="ring"></div>
+      <div class="time" id="time" role="timer" aria-live="off">10<span class="sep">:</span>00</div>
+    </div>
+
+    <div class="done-msg" id="doneMsg">VOLTAMOS!<svg class="rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+  </main>
+
+  <div class="controls">
+    <div class="presets" id="presets">
+      <button class="chip" data-min="5">5 min</button>
+      <button class="chip" data-min="10">10 min</button>
+      <button class="chip" data-min="15">15 min</button>
+      <button class="chip" data-min="20">20 min</button>
+      <button class="chip" data-min="30">30 min</button>
+      <div class="stepper">
+        <button class="step" id="minus" aria-label="Menos um minuto">−</button>
+        <input id="minInput" type="number" min="0" max="180" step="1" value="10" inputmode="numeric" aria-label="Minutos">
+        <button class="step" id="plus" aria-label="Mais um minuto">+</button>
+        <span class="unit">min</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="startPause">
+        <svg id="spIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <span id="spText">Iniciar</span>
+      </button>
+      <button class="btn btn-ghost" id="reset">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        Resetar
+      </button>
+    </div>
+
+    <div class="hint">
+      <span><kbd>Espaço</kbd> iniciar / pausar</span>
+      <span><kbd>R</kbd> resetar</span>
+      <span><kbd>F</kbd> tela cheia</span>
+    </div>
+  </div>
+
+<script>
+(() => {
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const timeEl    = $('#time');
+  const doneMsg   = $('#doneMsg');
+  const minInput  = $('#minInput');
+  const startPause= $('#startPause');
+  const spText    = $('#spText');
+  const spIcon    = $('#spIcon');
+  const resetBtn  = $('#reset');
+  const labelEl   = $('#label');
+  const fsBtn     = $('#fsBtn');
+
+  const PLAY  = '<path d="M8 5v14l11-7z"/>';
+  const PAUSE = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+  const LS_MIN   = 'maia_timer_minutes';
+  const LS_LABEL = 'maia_timer_label';
+
+  let totalMs   = 10*60*1000;   // duração configurada
+  let remaining = totalMs;      // ms restantes
+  let endTime   = 0;            // timestamp (ms) do fim quando rodando
+  let running   = false;
+  let rafId      = null;
+  let lastShown = -1;           // último segundo renderizado (evita repaint à toa)
+
+  // ---------- localStorage ----------
+  function loadPrefs(){
+    const m = parseInt(localStorage.getItem(LS_MIN),10);
+    if(Number.isFinite(m) && m>=0 && m<=180){
+      minInput.value = m;
+      totalMs = remaining = m*60*1000;
+    }
+    const l = localStorage.getItem(LS_LABEL);
+    if(l !== null) labelEl.value = l;
+  }
+  function savePrefs(){
+    localStorage.setItem(LS_MIN, String(getMinutes()));
+    localStorage.setItem(LS_LABEL, labelEl.value);
+  }
+
+  // ---------- helpers ----------
+  function getMinutes(){
+    let m = parseInt(minInput.value,10);
+    if(!Number.isFinite(m)) m = 0;
+    m = Math.max(0, Math.min(180, m));
+    return m;
+  }
+  function fmt(ms){
+    if(ms < 0) ms = 0;
+    const totalSec = Math.ceil(ms/1000);          // ceil: mostra 10:00 até cruzar 9:59
+    const mm = Math.floor(totalSec/60);
+    const ss = totalSec % 60;
+    return [String(mm).padStart(2,'0'), String(ss).padStart(2,'0')];
+  }
+  function render(ms, force){
+    const sec = Math.ceil(ms/1000);
+    if(sec === lastShown && !force) return;
+    lastShown = sec;
+    const [mm,ss] = fmt(ms);
+    timeEl.innerHTML = mm + '<span class="sep">:</span>' + ss;
+    document.body.classList.toggle('warn', running && ms <= 60000 && ms > 0);
+  }
+
+  // ---------- beep (Web Audio, com fallback silencioso) ----------
+  let audioCtx = null;
+  function ensureAudio(){
+    if(audioCtx) return audioCtx;
+    try{
+      const C = window.AudioContext || window.webkitAudioContext;
+      if(C) audioCtx = new C();
+    }catch(e){ audioCtx = null; }
+    return audioCtx;
+  }
+  function beep(){
+    try{
+      const ctx = ensureAudio();
+      if(!ctx) return;
+      if(ctx.state === 'suspended') ctx.resume();
+      const now = ctx.currentTime;
+      // 3 bips curtos ascendentes
+      [880, 1175, 1568].forEach((freq, i) => {
+        const t = now + i*0.18;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, t);
+        gain.gain.setValueAtTime(0, t);
+        gain.gain.linearRampToValueAtTime(0.32, t+0.01);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t+0.16);
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(t); osc.stop(t+0.18);
+      });
+    }catch(e){ /* fallback silencioso */ }
+  }
+
+  // ---------- loop ----------
+  function tick(){
+    if(!running) return;
+    remaining = endTime - performance.now();
+    if(remaining <= 0){
+      remaining = 0;
+      render(0, true);
+      finish();
+      return;
+    }
+    render(remaining);
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function start(){
+    if(running) return;
+    if(remaining <= 0) remaining = getMinutes()*60*1000; // reinicia se zerado
+    if(remaining <= 0) return; // nada a contar
+    document.body.classList.remove('done');
+    ensureAudio();                       // desbloqueia áudio no gesto do usuário
+    running = true;
+    endTime = performance.now() + remaining;
+    document.body.classList.add('running');
+    spText.textContent = 'Pausar';
+    spIcon.innerHTML = PAUSE;
+    setControlsEnabled(false);
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function pause(){
+    if(!running) return;
+    running = false;
+    if(rafId) cancelAnimationFrame(rafId);
+    remaining = Math.max(0, endTime - performance.now());
+    render(remaining, true);
+    document.body.classList.remove('running');
+    document.body.classList.remove('warn');
+    spText.textContent = 'Continuar';
+    spIcon.innerHTML = PLAY;
+    setControlsEnabled(true);
+  }
+
+  function toggle(){ running ? pause() : start(); }
+
+  function reset(){
+    running = false;
+    if(rafId) cancelAnimationFrame(rafId);
+    totalMs = remaining = getMinutes()*60*1000;
+    endTime = 0;
+    document.body.classList.remove('running','warn','done');
+    spText.textContent = 'Iniciar';
+    spIcon.innerHTML = PLAY;
+    setControlsEnabled(true);
+    render(remaining, true);
+  }
+
+  function finish(){
+    running = false;
+    if(rafId) cancelAnimationFrame(rafId);
+    document.body.classList.remove('running','warn');
+    document.body.classList.add('done');
+    spText.textContent = 'Iniciar';
+    spIcon.innerHTML = PLAY;
+    setControlsEnabled(true);
+    beep();
+  }
+
+  function setControlsEnabled(on){
+    [minInput, ...document.querySelectorAll('.chip,.step')].forEach(el=>{
+      el.disabled = !on;
+      el.style.opacity = on ? '' : '.4';
+      el.style.pointerEvents = on ? '' : 'none';
+    });
+  }
+
+  // ---------- setar minutos (preset / stepper / input) ----------
+  function applyMinutes(m, render2=true){
+    m = Math.max(0, Math.min(180, m|0));
+    minInput.value = m;
+    if(!running){
+      totalMs = remaining = m*60*1000;
+      document.body.classList.remove('done');
+      if(render2) render(remaining, true);
+    }
+    savePrefs();
+  }
+
+  // ---------- eventos ----------
+  document.querySelectorAll('.chip').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyMinutes(parseInt(btn.dataset.min,10)));
+  });
+  $('#plus').addEventListener('click', ()=> applyMinutes(getMinutes()+1));
+  $('#minus').addEventListener('click', ()=> applyMinutes(getMinutes()-1));
+  minInput.addEventListener('input', ()=> applyMinutes(getMinutes()));
+  minInput.addEventListener('blur', ()=> { minInput.value = getMinutes(); applyMinutes(getMinutes()); });
+
+  startPause.addEventListener('click', toggle);
+  resetBtn.addEventListener('click', reset);
+  labelEl.addEventListener('input', savePrefs);
+
+  // teclado (ignora quando foco está em input de texto/rótulo)
+  document.addEventListener('keydown', (e)=>{
+    const tag = (e.target && e.target.tagName) || '';
+    const typing = (e.target === labelEl) || (e.target === minInput);
+    if(e.code === 'Space' && !typing){
+      e.preventDefault(); toggle();
+    } else if((e.key === 'r' || e.key === 'R') && !typing){
+      e.preventDefault(); reset();
+    } else if((e.key === 'f' || e.key === 'F') && !typing){
+      e.preventDefault(); toggleFullscreen();
+    } else if(e.key === 'Escape' && document.body.classList.contains('done')){
+      reset();
+    }
+  });
+
+  // fullscreen
+  function toggleFullscreen(){
+    if(!document.fullscreenElement){
+      (document.documentElement.requestFullscreen||(()=>{})).call(document.documentElement).catch(()=>{});
+    } else {
+      (document.exitFullscreen||(()=>{})).call(document).catch(()=>{});
+    }
+  }
+  fsBtn.addEventListener('click', toggleFullscreen);
+
+  // ---------- partículas douradas (canvas leve) ----------
+  (function particles(){
+    const cv = $('#particles');
+    if(!cv) return;
+    const ctx = cv.getContext('2d');
+    let w,h,pts,dpr;
+    function resize(){
+      dpr = Math.min(window.devicePixelRatio||1, 2);
+      w = cv.width = innerWidth*dpr;
+      h = cv.height = innerHeight*dpr;
+      cv.style.width = innerWidth+'px';
+      cv.style.height = innerHeight+'px';
+      const n = Math.min(46, Math.floor(innerWidth/34));
+      pts = Array.from({length:n}, ()=>({
+        x:Math.random()*w, y:Math.random()*h,
+        r:(Math.random()*1.6+0.5)*dpr,
+        vx:(Math.random()-.5)*0.12*dpr, vy:(Math.random()-.5)*0.12*dpr,
+        a:Math.random()*0.5+0.15
+      }));
+    }
+    function frame(){
+      ctx.clearRect(0,0,w,h);
+      for(const p of pts){
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0)p.x=w; if(p.x>w)p.x=0; if(p.y<0)p.y=h; if(p.y>h)p.y=0;
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(240,200,130,'+p.a+')';
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches){ cv.style.display='none'; return; }
+    addEventListener('resize', resize);
+    resize(); frame();
+  })();
+
+  // ---------- init ----------
+  loadPrefs();
+  render(remaining, true);
+})();
+</script>
+</body>
+</html>
