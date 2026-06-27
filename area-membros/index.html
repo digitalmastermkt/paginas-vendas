@@ -164,6 +164,24 @@ a{color:inherit;text-decoration:none}
 .tag-multi a{font-family:'JBMono';font-size:11px;color:var(--gold-bright);border-bottom:1px solid var(--gold-line);padding-bottom:1px}
 .tag-multi a:hover{color:var(--gold)}
 
+/* ---------- GITHUB CARD (full-width, com prompt) ---------- */
+.kit-card.kc-wide{grid-column:1/-1}
+.kc-title-link{display:inline-flex;align-items:center;gap:7px;color:var(--gold-bright);pointer-events:auto}
+.kc-title-link:hover{color:var(--gold)}
+.kc-title-link svg{width:14px;height:14px}
+.prompt-block{margin-top:14px;border:1px solid var(--gold-line);border-radius:var(--radius-sm);background:rgba(10,12,15,.6);overflow:hidden}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 13px;border-bottom:1px solid var(--line);background:rgba(217,177,105,.06)}
+.prompt-head .ph-label{font-family:'JBMono';font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px}
+.prompt-head .ph-label svg{width:14px;height:14px}
+.copy-btn{display:inline-flex;align-items:center;gap:7px;font-family:'JBMono';font-size:11.5px;font-weight:700;color:#1b1206;background:linear-gradient(180deg,var(--gold-bright),var(--gold-deep));border:none;border-radius:8px;padding:8px 14px;cursor:pointer;transition:.16s;pointer-events:auto;-webkit-tap-highlight-color:transparent;flex-shrink:0}
+.copy-btn:hover{filter:brightness(1.06)}
+.copy-btn:active{transform:translateY(1px)}
+.copy-btn.copied{background:linear-gradient(180deg,var(--green),#3fa862);color:#072013}
+.copy-btn svg{width:14px;height:14px}
+.prompt-pre{margin:0;padding:15px 16px;font-family:'JBMono',ui-monospace,monospace;font-size:12.5px;line-height:1.62;color:var(--ink);white-space:pre-wrap;word-break:break-word;max-height:280px;overflow-y:auto;background:rgba(0,0,0,.18)}
+.prompt-pre::-webkit-scrollbar{width:9px}
+.prompt-pre::-webkit-scrollbar-thumb{background:var(--gold-line);border-radius:9px}
+
 /* ---------- METHOD ---------- */
 .method{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
 .m-step{padding:20px;border-radius:var(--radius-sm);background:var(--bg-2);border:1px solid var(--line);position:relative}
@@ -223,6 +241,13 @@ a{color:inherit;text-decoration:none}
 .btn.primary{background:linear-gradient(180deg,var(--gold-bright),var(--gold-deep));color:#1b1206;border:none;box-shadow:0 10px 24px -14px rgba(0,0,0,.7)}
 .btn.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .btn svg{width:17px;height:17px}
+/* botao comunidade com trava */
+#communityBtn .cb-lock-ico{display:none}
+#communityBtn .cb-lock-ico svg{width:16px;height:16px}
+#communityBtn.locked{cursor:not-allowed;opacity:.66;filter:grayscale(.25);background:linear-gradient(180deg,#3a3a3a,#262626);color:#cfcfcf;box-shadow:none}
+#communityBtn.locked:hover{transform:none;filter:grayscale(.25)}
+#communityBtn.locked .cb-lock-ico{display:inline-flex}
+#communityBtn.locked .cb-arrow{display:none}
 
 /* ---------- FOOTER ---------- */
 .foot{border-top:1px solid var(--line);margin-top:50px;padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;color:var(--ink-3);font-size:12.5px}
@@ -258,6 +283,8 @@ a{color:inherit;text-decoration:none}
 .kit-card{-webkit-tap-highlight-color:transparent}
 .kit-card > *{pointer-events:none}
 .kit-card .tag-multi a{pointer-events:auto}
+.kit-card.kc-wide,.kit-card.kc-wide > *{pointer-events:auto}
+.kit-card.kc-wide:hover{transform:none}
 .nav-item{-webkit-tap-highlight-color:transparent}
 .nav-item *{pointer-events:none}
 
@@ -392,13 +419,23 @@ a{color:inherit;text-decoration:none}
           </div>
 
           <!-- GITHUB DA MAIA -->
-          <div class="kit-card" style="background:linear-gradient(110deg,rgba(217,177,105,.07),var(--bg-2));border-color:var(--gold-line)">
+          <div class="kit-card kc-wide" style="background:linear-gradient(110deg,rgba(217,177,105,.07),var(--bg-2));border-color:var(--gold-line)">
             <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-2c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-5a3.9 3.9 0 0 1 1-2.7c-.1-.3-.5-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.5 5 .3.3.6.9.6 1.8v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z" stroke="currentColor" stroke-width="1.6"/></svg></div>
             <div class="kc-body">
               <div class="kc-step">PASSO 4 · O código</div>
-              <div class="kc-title">GitHub da MAIA</div>
-              <div class="kc-desc">O repositório com o esqueleto da sua MAIA pronto pra clonar na VPS. O link é liberado no evento.</div>
-              <span class="kc-soon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#7c8693" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#7c8693" stroke-width="2"/></svg> [ GITHUB DA MAIA · em breve ]</span>
+              <div class="kc-title"><a class="kc-title-link" href="https://github.com/digitalmastermkt/maia-aluno" target="_blank" rel="noopener">GitHub da MAIA <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+              <div class="kc-desc">O repositório com o esqueleto da sua MAIA pronto pra clonar na VPS. Abra seu Claude Code, cole o prompt abaixo e deixe a IA instalar pra você.</div>
+
+              <div class="prompt-block">
+                <div class="prompt-head">
+                  <span class="ph-label"><svg viewBox="0 0 24 24" fill="none"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Abra seu Claude Code e cole</span>
+                  <button class="copy-btn" id="copyPromptBtn" type="button" aria-label="Copiar prompt">
+                    <svg viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span class="cb-label">COPIAR</span>
+                  </button>
+                </div>
+                <pre class="prompt-pre" id="promptText"></pre>
+              </div>
             </div>
           </div>
 
@@ -524,7 +561,11 @@ a{color:inherit;text-decoration:none}
               <li>Encontros o ano todo (Claude, apps, SaaS)</li>
               <li>Bastidores das máquinas que a gente monta</li>
             </ul>
-            <button class="btn primary">Entrar na Comunidade <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="btn primary" id="communityBtn" type="button">
+              <span class="cb-lock-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></span>
+              <span class="cb-text">Entrar na Comunidade</span>
+              <span class="cb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </button>
           </div>
           <div class="tier">
             <div class="tier-name">Mentoria</div>
@@ -596,6 +637,116 @@ a{color:inherit;text-decoration:none}
       closeNav();
     });
   });
+
+  // ===== PROMPT DE INSTALACAO (texto EXATO do arquivo) =====
+  var MAIA_PROMPT=[
+    'Quero instalar minha MAIA — meu agente autônomo de IA (Claude + Telegram) — numa VPS Ubuntu.',
+    '',
+    'Acessa o repositório público https://github.com/digitalmastermkt/maia-aluno e segue o passo a passo de SETUP-MAIA.md.',
+    '',
+    'Vou te dar as informações conforme você pedir:',
+    '- IP, usuário e senha da VPS',
+    '- Nome da minha MAIA (ex: Sofia, Bia, Helena — ou deixo "Maia")',
+    '- Meu nome',
+    '- Token do bot Telegram (eu crio no @BotFather quando você pedir)',
+    '- Meu user_id Telegram (eu pego no @userinfobot quando você pedir)',
+    '- Chave Gemini (pra gerar imagem — obrigatória)',
+    '- (Opcional) Chave OpenAI/Groq pra transcrever áudios',
+    '- (Opcional) Chave ElevenLabs pra voz',
+    '',
+    'Faz SSH na VPS por mim, instala o ambiente todo (install.sh), configura a MAIA, sobe o systemd, e me confirma quando estiver no ar. Depois eu mando "oi" no Telegram e ela conduz o onboarding da minha marca.',
+    ''
+  ].join('\n');
+
+  var promptEl=document.getElementById('promptText');
+  if(promptEl){promptEl.textContent=MAIA_PROMPT;}
+
+  var copyBtn=document.getElementById('copyPromptBtn');
+  if(copyBtn){
+    var cbLabel=copyBtn.querySelector('.cb-label');
+    var copyTimer=null;
+    function fallbackCopy(txt){
+      try{
+        var ta=document.createElement('textarea');
+        ta.value=txt;ta.setAttribute('readonly','');
+        ta.style.position='fixed';ta.style.top='0';ta.style.left='0';ta.style.opacity='0';
+        document.body.appendChild(ta);
+        ta.focus();ta.select();ta.setSelectionRange(0,txt.length);
+        var ok=document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+      }catch(e){return false;}
+    }
+    function flashCopied(){
+      copyBtn.classList.add('copied');
+      if(cbLabel) cbLabel.textContent='Copiado!';
+      clearTimeout(copyTimer);
+      copyTimer=setTimeout(function(){
+        copyBtn.classList.remove('copied');
+        if(cbLabel) cbLabel.textContent='COPIAR';
+      },2000);
+    }
+    copyBtn.addEventListener('click',function(){
+      var txt=(promptEl?promptEl.textContent:MAIA_PROMPT);
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(flashCopied,function(){
+          if(fallbackCopy(txt)) flashCopied();
+        });
+      }else{
+        if(fallbackCopy(txt)) flashCopied();
+      }
+    });
+  }
+
+  // ===== BOTAO COMUNIDADE com TRAVA de horario =====
+  var CHECKOUT_URL='https://pay.kiwify.com.br/hib9rAJ';
+  var UNLOCK_AT=Date.UTC(2026,5,27,14,0,0); // 2026-06-27T14:00:00Z = 11:00 BRT
+  var commBtn=document.getElementById('communityBtn');
+  if(commBtn){
+    var commText=commBtn.querySelector('.cb-text');
+    var params=new URLSearchParams(window.location.search);
+    var forceUnlock=params.get('unlock')==='1';
+    var forceLock=params.get('lock')==='1';
+    var commTick=null;
+    function commUnlocked(){
+      if(forceLock) return false;
+      if(forceUnlock) return true;
+      return Date.now()>=UNLOCK_AT;
+    }
+    function pad(n){return (n<10?'0':'')+n;}
+    function renderComm(){
+      if(commUnlocked()){
+        commBtn.classList.remove('locked');
+        commBtn.removeAttribute('aria-disabled');
+        if(commText) commText.textContent='Entrar na Comunidade';
+        if(commTick){clearInterval(commTick);commTick=null;}
+      }else{
+        commBtn.classList.add('locked');
+        commBtn.setAttribute('aria-disabled','true');
+        if(commText){
+          var remain=UNLOCK_AT-Date.now();
+          if(remain>0 && remain<60*60*1000){
+            var totS=Math.floor(remain/1000);
+            commText.textContent='Abre às 11h · faltam '+pad(Math.floor(totS/60))+':'+pad(totS%60);
+          }else{
+            commText.textContent='Abre às 11h';
+          }
+        }
+      }
+    }
+    commBtn.addEventListener('click',function(){
+      if(commUnlocked()){
+        window.open(CHECKOUT_URL,'_blank','noopener');
+      }else{
+        toast('<b>Abre às 11h (horário de Brasília).</b> Volte já já.');
+      }
+    });
+    renderComm();
+    // libera sozinho sem reload
+    if(!forceUnlock && !forceLock && Date.now()<UNLOCK_AT){
+      commTick=setInterval(renderComm,1000);
+    }
+  }
 
   // active state on scroll
   var sections=[].slice.call(document.querySelectorAll('.section'));
