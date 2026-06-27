@@ -182,6 +182,8 @@ a{color:inherit;text-decoration:none}
 .lock-banner .lb-txt span{font-size:13px;color:var(--ink-2)}
 .lb-price{font-family:'Jakarta';font-weight:800;font-size:15px;color:var(--gold-bright);white-space:nowrap}
 .lb-price small{display:block;font-family:'Inter';font-weight:500;font-size:11px;color:var(--ink-3)}
+.lb-cta-mini{font-family:'Jakarta';font-weight:700;font-size:13.5px;color:var(--gold-bright);white-space:nowrap;text-align:right}
+.lb-cta-mini small{display:block;font-family:'Inter';font-weight:500;font-size:11px;color:var(--ink-3);margin-top:2px}
 
 .mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
 .mod-card{
@@ -209,6 +211,8 @@ a{color:inherit;text-decoration:none}
 .tier-name{font-family:'Jakarta';font-weight:800;font-size:18px;letter-spacing:-.3px;margin-bottom:4px}
 .tier-price{font-family:'Jakarta';font-weight:800;font-size:26px;color:var(--gold-bright);margin-bottom:3px}
 .tier-price small{font-family:'Inter';font-weight:500;font-size:13px;color:var(--ink-3)}
+.tier-kicker{display:inline-flex;align-items:center;align-self:flex-start;gap:7px;font-family:'JBMono';font-weight:600;font-size:12px;letter-spacing:.4px;color:var(--gold-bright);background:var(--gold-soft);border:1px solid var(--gold-line);padding:6px 12px;border-radius:99px;margin:2px 0 14px}
+.tier:not(.gold) .tier-kicker{color:var(--ink-2);background:rgba(255,255,255,.04);border-color:var(--line)}
 .tier-tag{font-size:12.5px;color:var(--ink-2);margin-bottom:16px}
 .tier ul{list-style:none;margin-bottom:20px;flex:1}
 .tier li{font-size:13px;color:var(--ink-2);padding:7px 0 7px 26px;position:relative;line-height:1.45}
@@ -443,7 +447,7 @@ a{color:inherit;text-decoration:none}
             <b>Esses módulos estão prontos, mas trancados.</b>
             <span>Entre na Comunidade Digital Master pra destravar as 6 semanas e os encontros do ano todo.</span>
           </div>
-          <div class="lb-price">R$ 997<small>por ano · faça você mesmo</small></div>
+          <div class="lb-cta-mini">faça você mesmo<small>na Comunidade Digital Master</small></div>
         </div>
 
         <div class="mod-grid">
@@ -512,8 +516,8 @@ a{color:inherit;text-decoration:none}
         <div class="cta-tiers">
           <div class="tier gold">
             <div class="tier-name">Comunidade Digital Master</div>
-            <div class="tier-price">R$ 997 <small>/ ano</small></div>
-            <div class="tier-tag">Faça você mesmo, perto de quem está aplicando.</div>
+            <div class="tier-kicker">Faça você mesmo</div>
+            <div class="tier-tag">Construa a sua máquina perto de quem está aplicando.</div>
             <ul>
               <li>As 6 semanas de construção destravadas</li>
               <li>O Kit completo e atualização constante</li>
@@ -524,8 +528,8 @@ a{color:inherit;text-decoration:none}
           </div>
           <div class="tier">
             <div class="tier-name">Mentoria</div>
-            <div class="tier-price">R$ 15.000</div>
-            <div class="tier-tag">Faço com você: eu e meu time instalamos no seu negócio.</div>
+            <div class="tier-kicker">Faço com você</div>
+            <div class="tier-tag">Eu e meu time instalamos a máquina no seu negócio.</div>
             <ul>
               <li>Instalação e treino da sua equipe de agentes</li>
               <li>Acompanhamento direto com o time</li>
