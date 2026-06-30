@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta de Parceria · Edivaldo · Agência no Bolso</title>
+<meta name="description" content="Proposta de parceria de crescimento entre Edivaldo e a Agência no Bolso. A MAIA roda por você: prospecção ativa e gestão de conteúdo, operadas pelo nosso time.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0A0A0F;
+    --card:#13131A;
+    --card2:#191921;
+    --cyan:#00D4FF;
+    --purple:#A855F7;
+    --smoke:#E5E5E5;
+    --muted:#9CA3AF;
+    --border:#23232E;
+    --border2:#2c2c3a;
+    --green:#34D399;
+    --amber:#FBBF24;
+    --maxw:1120px;
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    background:var(--void);
+    color:var(--smoke);
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+  h1,h2,h3{font-family:'Inter',sans-serif;font-weight:700;line-height:1.2;letter-spacing:-0.02em}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{padding:84px 0;border-top:1px solid var(--border)}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--cyan);
+    margin-bottom:18px;
+    display:inline-block;
+  }
+  h2.title{font-size:clamp(28px,4.4vw,40px);margin-bottom:14px}
+  .lead{color:var(--muted);font-size:clamp(16px,2.2vw,19px);max-width:680px}
+
+  /* ===== TOP NAV (sticky) ===== */
+  .nav{
+    position:fixed;top:0;left:0;width:100%;z-index:1000;
+    background:rgba(10,10,15,0.82);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease,background .3s ease;
+  }
+  .nav.scrolled{border-bottom-color:var(--border)}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .nav img{height:30px;width:auto;display:block}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--smoke)}
+  .nav-cta{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;
+    padding:9px 18px;border-radius:10px;text-decoration:none;
+    color:var(--void);background:var(--cyan);
+    transition:transform .2s ease,box-shadow .2s ease;white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(0,212,255,0.28)}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:148px 0 88px;
+    border-top:none;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(620px 380px at 78% -8%,rgba(168,85,247,0.16),transparent 70%),
+      radial-gradient(640px 420px at 8% 8%,rgba(0,212,255,0.13),transparent 70%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--muted);
+    border:1px solid var(--border2);border-radius:999px;
+    padding:7px 16px;margin-bottom:26px;
+  }
+  .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+  .hero h1{font-size:clamp(40px,8vw,72px);letter-spacing:-0.03em}
+  .hero h1 .name{
+    background:linear-gradient(100deg,var(--cyan),var(--purple));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .sub{
+    margin-top:22px;font-size:clamp(17px,2.6vw,21px);color:var(--muted);max-width:660px;line-height:1.6;
+  }
+  .hero .sub strong{color:var(--smoke);font-weight:600}
+  .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:600;font-size:16px;text-decoration:none;
+    padding:14px 26px;border-radius:12px;
+    color:var(--void);
+    background:linear-gradient(100deg,var(--cyan),#3ad0ff);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,212,255,0.3)}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:500;font-size:16px;text-decoration:none;
+    padding:14px 26px;border-radius:12px;
+    color:var(--smoke);border:1px solid var(--border2);
+    transition:border-color .2s ease,background .2s ease;
+  }
+  .btn-ghost:hover{border-color:var(--cyan);background:rgba(0,212,255,0.05)}
+
+  /* metrics */
+  .metrics{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:58px;
+  }
+  .metric{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:24px 20px;
+  }
+  .metric .num{
+    font-family:'IBM Plex Mono',monospace;font-weight:600;
+    font-size:clamp(22px,3vw,28px);
+    color:var(--smoke);line-height:1.1;
+  }
+  .metric .num .accent{color:var(--cyan)}
+  .metric .lab{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.45}
+  @media(max-width:860px){.metrics{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:420px){.metrics{grid-template-columns:1fr}}
+
+  /* ===== DIAGNÓSTICO ===== */
+  .diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:42px}
+  .diag-card{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+    padding:30px 28px;
+  }
+  .diag-card.works{border-top:3px solid var(--green)}
+  .diag-card.evolve{border-top:3px solid var(--purple)}
+  .diag-card h3{font-size:19px;margin-bottom:6px}
+  .diag-card .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    display:block;margin-bottom:14px;
+  }
+  .diag-card.works .tag{color:var(--green)}
+  .diag-card.evolve .tag{color:var(--purple)}
+  .diag-item{display:flex;gap:13px;align-items:flex-start;margin:15px 0;font-size:15.5px;color:var(--smoke);line-height:1.55}
+  .diag-item::before{
+    content:"";flex-shrink:0;width:8px;height:8px;border-radius:50%;margin-top:8px;
+  }
+  .works .diag-item::before{background:var(--green);box-shadow:0 0 8px rgba(52,211,153,.5)}
+  .evolve .diag-item::before{background:var(--purple);box-shadow:0 0 8px rgba(168,85,247,.5)}
+  .diag-item span b{color:var(--smoke);font-weight:600}
+  @media(max-width:760px){.diag-grid{grid-template-columns:1fr}}
+
+  /* ===== SOLUÇÃO (pilares) ===== */
+  .model-note{
+    margin-top:38px;margin-bottom:6px;
+    background:linear-gradient(180deg,rgba(0,212,255,0.06),rgba(168,85,247,0.05));
+    border:1px solid var(--border2);border-radius:var(--r);
+    padding:24px 26px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .model-note .ic{font-size:22px;line-height:1}
+  .model-note p{color:var(--smoke);font-size:16px}
+  .model-note p b{color:var(--cyan)}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  .pillar{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+    padding:28px 24px;transition:border-color .25s ease,transform .25s ease;
+  }
+  .pillar:hover{border-color:var(--border2);transform:translateY(-3px)}
+  .pillar .pico{
+    width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:22px;margin-bottom:18px;
+    background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.22);
+  }
+  .pillar.p2 .pico{background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.22)}
+  .pillar.p3 .pico{background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.22)}
+  .pillar h3{font-size:18px;margin-bottom:10px}
+  .pillar p{font-size:15px;color:var(--muted);line-height:1.6}
+  @media(max-width:860px){.pillars{grid-template-columns:1fr}}
+
+  /* ===== INCLUSOS (checkboxes) ===== */
+  .progress-box{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:20px 24px;margin-top:38px;margin-bottom:30px;
+  }
+  .progress-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+  .progress-head .t{font-size:14px;color:var(--muted)}
+  .progress-head .pct{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--cyan);font-weight:600}
+  .progress-track{height:10px;background:#0e0e16;border-radius:99px;overflow:hidden;border:1px solid var(--border)}
+  .progress-fill{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--purple));transition:width .5s ease}
+  .incl-group{margin-top:26px}
+  .incl-group > .gh{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--purple);margin-bottom:14px;display:flex;align-items:center;gap:10px;
+  }
+  .incl-group > .gh::after{content:"";flex:1;height:1px;background:var(--border)}
+  .check-row{
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--border);border-radius:12px;
+    padding:15px 18px;margin-bottom:10px;cursor:pointer;
+    transition:border-color .2s ease,background .2s ease;
+  }
+  .check-row:hover{border-color:var(--border2);background:var(--card2)}
+  .check-row input{
+    appearance:none;-webkit-appearance:none;flex-shrink:0;
+    width:20px;height:20px;border-radius:6px;border:1.5px solid var(--border2);
+    margin-top:2px;cursor:pointer;position:relative;transition:all .15s ease;
+  }
+  .check-row input:checked{background:var(--cyan);border-color:var(--cyan)}
+  .check-row input:checked::after{
+    content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+    border:solid var(--void);border-width:0 2.5px 2.5px 0;transform:rotate(45deg);
+  }
+  .check-row .ct{font-size:15.5px;color:var(--smoke);line-height:1.5}
+  .check-row .ct small{display:block;color:var(--muted);font-size:13.5px;margin-top:3px;line-height:1.5}
+
+  /* ===== INVESTIMENTO ===== */
+  .invest-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+  .istat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+  .istat .n{font-family:'IBM Plex Mono',monospace;font-size:20px;color:var(--cyan);font-weight:600}
+  .istat .l{font-size:13px;color:var(--muted);margin-top:6px}
+  @media(max-width:620px){.invest-stats{grid-template-columns:1fr}}
+
+  .piloto{
+    margin-top:34px;
+    background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--border2);border-radius:20px;
+    padding:38px 34px;position:relative;overflow:hidden;
+  }
+  .piloto::before{
+    content:"";position:absolute;top:-40%;right:-10%;width:380px;height:380px;
+    background:radial-gradient(circle,rgba(0,212,255,0.12),transparent 70%);pointer-events:none;
+  }
+  .piloto-badge{
+    position:relative;display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--green);border:1px solid rgba(52,211,153,0.3);border-radius:999px;padding:6px 14px;margin-bottom:18px;
+  }
+  .piloto-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+  .piloto h3{font-size:24px;position:relative;margin-bottom:6px}
+  .piloto .ptag{color:var(--muted);font-size:15px;position:relative;margin-bottom:26px}
+  .price-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px}
+  .price-cell{background:rgba(10,10,15,0.5);border:1px solid var(--border);border-radius:14px;padding:22px 22px}
+  .price-cell .pk{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .price-cell .pv{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:clamp(26px,5vw,34px);color:var(--smoke);line-height:1.1}
+  .price-cell .pv .cur{font-size:18px;color:var(--muted);font-weight:400}
+  .price-cell .pv .per{font-size:15px;color:var(--muted);font-weight:400}
+  .price-cell.recur .pv{color:var(--cyan)}
+  .price-cell .pd{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.5}
+  @media(max-width:560px){.price-grid{grid-template-columns:1fr}}
+  .piloto-incl{position:relative;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px}
+  .piloto-incl li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--smoke);line-height:1.5}
+  .piloto-incl li::before{content:"✓";flex-shrink:0;width:18px;height:18px;border-radius:50%;margin-top:2px;
+    background:rgba(0,212,255,0.12);border:1px solid var(--cyan);color:var(--cyan);
+    font-size:11px;display:flex;align-items:center;justify-content:center}
+  @media(max-width:560px){.piloto-incl{grid-template-columns:1fr}}
+
+  .addon{
+    margin-top:18px;position:relative;
+    background:var(--card);border:1px dashed var(--border2);border-radius:14px;
+    padding:20px 24px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .addon .ic{font-size:20px}
+  .addon .at{font-weight:600;color:var(--smoke);font-size:15.5px}
+  .addon p{color:var(--muted);font-size:14.5px;margin-top:3px;line-height:1.55}
+
+  /* escada */
+  .ladder{margin-top:48px;display:flex;flex-direction:column;gap:14px}
+  .ladder-head{font-size:19px;font-weight:600;color:var(--smoke);margin-bottom:4px}
+  .step{
+    display:flex;gap:20px;align-items:stretch;
+    background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  }
+  .step .snum{
+    flex-shrink:0;width:64px;display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:600;
+    color:var(--void);
+  }
+  .step.now .snum{background:linear-gradient(160deg,var(--cyan),#0fb6dd)}
+  .step.next .snum{background:linear-gradient(160deg,var(--purple),#8b3ce0);color:var(--smoke)}
+  .step .sbody{padding:22px 22px 22px 4px}
+  .step .stag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
+  .step h4{font-size:17px;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:15px;line-height:1.6}
+  @media(max-width:560px){.step .snum{width:50px;font-size:20px}.step .sbody{padding:18px 18px 18px 2px}}
+
+  .validade{
+    margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+    background:rgba(251,191,36,0.05);border:1px solid rgba(251,191,36,0.22);border-radius:14px;
+    padding:18px 24px;
+  }
+  .validade .vt{font-size:15px;color:var(--smoke)}
+  .validade .vt b{color:var(--amber)}
+  .validade .vp{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted)}
+
+  /* ===== PROVA ===== */
+  .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+  .proof{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px 24px}
+  .proof .pi{font-size:22px;margin-bottom:14px}
+  .proof h3{font-size:17px;margin-bottom:8px}
+  .proof p{font-size:14.5px;color:var(--muted);line-height:1.6}
+  @media(max-width:860px){.proof-grid{grid-template-columns:1fr}}
+
+  /* ===== CTA FINAL ===== */
+  .final{
+    text-align:center;position:relative;overflow:hidden;
+    background:linear-gradient(180deg,var(--card),var(--void));
+  }
+  .final::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(600px 300px at 50% 0%,rgba(0,212,255,0.12),transparent 70%);pointer-events:none;
+  }
+  .final .wrap{position:relative;z-index:1}
+  .final h2{font-size:clamp(28px,5vw,42px);margin-bottom:16px}
+  .final p{color:var(--muted);max-width:560px;margin:0 auto 32px;font-size:18px}
+  .steps-mini{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:0 auto 38px;max-width:760px}
+  .smini{
+    background:var(--card);border:1px solid var(--border);border-radius:12px;
+    padding:16px 20px;flex:1;min-width:200px;text-align:left;
+  }
+  .smini .sn{font-family:'IBM Plex Mono',monospace;color:var(--cyan);font-size:13px;font-weight:600}
+  .smini .sx{font-size:14.5px;color:var(--smoke);margin-top:6px;line-height:1.5}
+
+  /* ===== FOOTER ===== */
+  footer{border-top:1px solid var(--border);padding:48px 0 64px;text-align:center}
+  footer img{height:28px;opacity:.85;margin-bottom:18px}
+  footer .fline{color:var(--muted);font-size:14px;line-height:1.7}
+  footer .fcnpj{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);margin-top:14px;letter-spacing:.3px}
+
+  /* back to top */
+  .btt{
+    position:fixed;bottom:22px;right:22px;width:46px;height:46px;border-radius:50%;
+    background:var(--card2);border:1px solid var(--border2);color:var(--smoke);
+    display:none;align-items:center;justify-content:center;cursor:pointer;z-index:900;
+    transition:transform .2s ease,border-color .2s ease;font-size:18px;
+  }
+  .btt.show{display:flex}
+  .btt:hover{transform:translateY(-2px);border-color:var(--cyan)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:480px){
+    body{font-size:16px}
+    section{padding:62px 0}
+    .hero{padding:124px 0 64px}
+    .wrap{padding:0 18px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <img src="logo.png" alt="Agência no Bolso">
+    <div class="nav-links">
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#solucao">A solução</a>
+      <a href="#incluso">O que está incluso</a>
+      <a href="#investimento">Investimento</a>
+    </div>
+    <a class="nav-cta" href="https://wa.me/558681014338" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="hero-badge"><span class="dot"></span>Proposta de parceria · Agência no Bolso</span>
+    <h1>Edivaldo, sua agência cresce<br><span class="name">com IA operada por nós.</span></h1>
+    <p class="sub">Você já tem dez anos de estrada otimizando a presença de empresas no Google. O que falta é um braço que prospecta novos clientes para você todos os dias e cuida do seu conteúdo, sem você precisar instalar ou operar nada. <strong>A MAIA roda por você, conduzida pelo nosso time.</strong></p>
+    <div class="hero-cta-row">
+      <a class="btn-primary" href="#investimento">Ver o investimento</a>
+      <a class="btn-ghost" href="https://wa.me/558681014338" target="_blank" rel="noopener">Conversar no WhatsApp</a>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="num">10 <span class="accent">anos</span></div><div class="lab">de agência madura otimizando o Google</div></div>
+      <div class="metric"><div class="num"><span style="font-size:18px;color:var(--muted)">R$</span> 2.000</div><div class="lab">para começar pequeno, sem risco alto</div></div>
+      <div class="metric"><div class="num">IA <span class="accent">por você</span></div><div class="lab">operada pelo nosso time, modelo serviço</div></div>
+      <div class="metric"><div class="num">1 <span class="accent">foco</span></div><div class="lab">mais clientes entrando na sua agência</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- DIAGNÓSTICO -->
+<section id="diagnostico">
+  <div class="wrap reveal">
+    <span class="eyebrow">Diagnóstico</span>
+    <h2 class="title">Onde você está hoje, Edivaldo</h2>
+    <p class="lead">Você construiu uma operação sólida em Olímpia e na região de São José do Rio Preto. A base é forte. O gargalo está em escalar a entrada de clientes e ganhar um braço de IA para atender mais sem aumentar a equipe.</p>
+    <div class="diag-grid">
+      <div class="diag-card works">
+        <span class="tag">O que já funciona</span>
+        <h3>Uma agência madura e com lastro</h3>
+        <div class="diag-item"><span>Dez anos otimizando presença no Google: <b>Street View, Perfil de Empresa e orgânico</b>.</span></div>
+        <div class="diag-item"><span>Carteira ativa, com <b>muitos clientes</b> e entrega já validada no mercado.</span></div>
+        <div class="diag-item"><span>Autoridade local consolidada na região de Rio Preto, um ativo difícil de copiar.</span></div>
+        <div class="diag-item"><span>Serviço com resultado claro, fácil de demonstrar para um novo cliente.</span></div>
+      </div>
+      <div class="diag-card evolve">
+        <span class="tag">Onde a IA entra</span>
+        <h3>Crescer sem depender só do esforço manual</h3>
+        <div class="diag-item"><span>A prospecção hoje é manual e disputa tempo com a entrega. <b>Cada hora prospectando é uma hora a menos atendendo.</b></span></div>
+        <div class="diag-item"><span>Sem um braço de IA, <b>fica difícil atender mais clientes</b> sem contratar mais gente.</span></div>
+        <div class="diag-item"><span>O conteúdo da própria agência costuma ficar em segundo plano quando a operação aperta.</span></div>
+        <div class="diag-item"><span>Existe espaço para um modelo de revenda no futuro, levando IA para os seus próprios clientes.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section id="solucao">
+  <div class="wrap reveal">
+    <span class="eyebrow">A solução</span>
+    <h2 class="title">A MAIA trabalhando pela sua agência</h2>
+    <p class="lead">A MAIA é a nossa inteligência de prospecção e conteúdo. Você não instala nem opera nada. Nós colocamos ela para rodar a favor da sua agência e cuidamos da condução no dia a dia.</p>
+
+    <div class="model-note">
+      <span class="ic">🛈</span>
+      <p><b>Modelo serviço, simples assim:</b> a MAIA é nossa e roda por você, operada pelo nosso time. Você não precisa instalar uma MAIA própria, contratar técnico nem aprender ferramenta. Você recebe os leads qualificados e o conteúdo prontos, e foca no que faz bem, que é fechar e entregar.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar p1">
+        <div class="pico">🎯</div>
+        <h3>Prospecção ativa, todo dia</h3>
+        <p>A MAIA aborda, qualifica e agenda leads para a sua agência no WhatsApp e no Instagram. Você acorda com conversas já filtradas e reuniões marcadas, em vez de começar do zero toda manhã.</p>
+      </div>
+      <div class="pillar p2">
+        <div class="pico">📱</div>
+        <h3>Conteúdo e social media</h3>
+        <p>Cuidamos da presença da sua própria agência: posts, carrosséis e planejamento. A marca que vende otimização de Google passa a ter um conteúdo constante, sem você parar a operação para isso.</p>
+      </div>
+      <div class="pillar p3">
+        <div class="pico">🔗</div>
+        <h3>A ponte com a sua operação</h3>
+        <p>Mapeamos juntos quem é o cliente ideal que você quer atrair e ajustamos a abordagem ao seu jeito de vender. O lead chega pronto para você fechar, e o que já funciona na sua agência continua intacto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUSO -->
+<section id="incluso">
+  <div class="wrap reveal">
+    <span class="eyebrow">O que está incluso</span>
+    <h2 class="title">Tudo que entregamos no piloto</h2>
+    <p class="lead">Marque os itens conforme você lê. A sua leitura fica salva neste navegador, então você pode voltar depois ou mostrar para um sócio sem perder o progresso.</p>
+
+    <div class="progress-box">
+      <div class="progress-head">
+        <span class="t">Itens revisados por você</span>
+        <span class="pct" id="pct">0 de 0 (0%)</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
+    </div>
+
+    <div class="incl-group">
+      <div class="gh">Prospecção e SDR</div>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-1"><span class="ct">Abordagem ativa no WhatsApp e no Instagram<small>A MAIA inicia conversas com potenciais clientes da sua agência de forma consultiva.</small></span></label>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-2"><span class="ct">Qualificação dos leads<small>Filtra quem tem perfil e interesse real antes de chegar até você.</small></span></label>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-3"><span class="ct">Agendamento de reuniões<small>Marca a conversa de fechamento com o lead já aquecido.</small></span></label>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-4"><span class="ct">Acompanhamento e follow-up<small>Retoma contatos que esfriaram, sem você precisar lembrar de cada um.</small></span></label>
+    </div>
+
+    <div class="incl-group">
+      <div class="gh">Social media e conteúdo</div>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-5"><span class="ct">Planejamento de conteúdo da sua agência<small>Linha editorial mensal pensada para atrair os clientes que você quer.</small></span></label>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-6"><span class="ct">Produção de posts e carrosséis<small>Peças prontas para publicar, com a identidade da sua agência.</small></span></label>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-7"><span class="ct">Gestão da publicação<small>Conteúdo organizado e no ritmo certo, sem você parar a operação.</small></span></label>
+    </div>
+
+    <div class="incl-group">
+      <div class="gh">Implantação e integrações</div>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-8"><span class="ct">Definição de persona e abordagem<small>Construímos juntos o tom e o discurso que combinam com a sua agência.</small></span></label>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-9"><span class="ct">Integração de WhatsApp e Instagram<small>Conectamos os canais onde a MAIA vai trabalhar por você.</small></span></label>
+      <label class="check-row"><input type="checkbox" class="ck" id="ck-10"><span class="ct">Mapeamento do cliente ideal<small>Definimos o perfil de cliente alvo que você quer atrair na região.</small></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section id="investimento">
+  <div class="wrap reveal">
+    <span class="eyebrow">Investimento</span>
+    <h2 class="title">Comece pequeno, escale com resultado</h2>
+    <p class="lead">A proposta é de parceria de crescimento. Você começa enxuto, com um piloto, e só expande quando os números já estão na mesa. Sem custo fixo alto antes de ver retorno.</p>
+
+    <div class="invest-stats">
+      <div class="istat"><div class="n">Modelo serviço</div><div class="l">a MAIA roda por você, operada por nós</div></div>
+      <div class="istat"><div class="n">2 frentes</div><div class="l">prospecção ativa e conteúdo, juntas</div></div>
+      <div class="istat"><div class="n">60 a 90 dias</div><div class="l">janela para avaliar resultado e escalar</div></div>
+    </div>
+
+    <div class="piloto">
+      <span class="piloto-badge"><span class="dot"></span>Nível de entrada · Piloto</span>
+      <h3>Comece pequeno</h3>
+      <p class="ptag">A MAIA rodando pela sua agência: prospecção ativa mais gestão de conteúdo.</p>
+
+      <div class="price-grid">
+        <div class="price-cell">
+          <div class="pk">Setup e implantação</div>
+          <div class="pv"><span class="cur">R$</span> 2.000 <span class="per">uma vez</span></div>
+          <div class="pd">Configuramos a MAIA para a sua agência: persona e abordagem, integração de WhatsApp e Instagram e mapeamento do cliente ideal.</div>
+        </div>
+        <div class="price-cell recur">
+          <div class="pk">Mensalidade</div>
+          <div class="pv"><span class="cur">R$</span> 1.800 <span class="per">por mês</span></div>
+          <div class="pd">A MAIA rodando por você: prospecção ativa qualificando e agendando leads, mais a gestão de conteúdo e social media da sua agência.</div>
+        </div>
+      </div>
+
+      <ul class="piloto-incl">
+        <li>Prospecção ativa no WhatsApp e Instagram</li>
+        <li>Qualificação e agendamento de leads</li>
+        <li>Follow-up dos contatos</li>
+        <li>Planejamento de conteúdo mensal</li>
+        <li>Produção de posts e carrosséis</li>
+        <li>Condução pelo nosso time</li>
+      </ul>
+    </div>
+
+    <div class="addon">
+      <span class="ic">📈</span>
+      <div>
+        <div class="at">Tráfego pago é opcional, à parte</div>
+        <p>A verba de anúncios fica direto no seu gerenciador. A gestão de tráfego pode entrar depois como um adicional, quando fizer sentido para o ritmo de crescimento.</p>
+      </div>
+    </div>
+
+    <!-- ESCADA -->
+    <div class="ladder">
+      <div class="ladder-head">A escada de crescimento</div>
+      <div class="step now">
+        <div class="snum">1</div>
+        <div class="sbody">
+          <span class="stag">Você está aqui</span>
+          <h4>Piloto enxuto</h4>
+          <p>Setup de R$ 2.000 mais R$ 1.800 por mês. A MAIA prospecta e cuida do conteúdo da sua agência, com volume controlado para validar o resultado sem risco alto.</p>
+        </div>
+      </div>
+      <div class="step next">
+        <div class="snum">2</div>
+        <div class="sbody">
+          <span class="stag">Após 60 a 90 dias · com resultado</span>
+          <h4>Escala ou revenda</h4>
+          <p>Com os números na mesa, você escolhe o próximo passo: subir para a operação completa, com mais volume de prospecção, conteúdo, relatórios e atendimento. Ou abrir o modelo de revenda, onde você oferece a solução de IA para os seus próprios clientes e a Agência no Bolso entrega, por licença por cliente ou comissão.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="validade">
+      <div class="vt">Esta proposta tem validade de <b>7 dias</b>. Pagamento via PIX ou cartão.</div>
+      <div class="vp">Parceria de crescimento, não custo fixo alto</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA -->
+<section id="prova">
+  <div class="wrap reveal">
+    <span class="eyebrow">Por que a Agência no Bolso</span>
+    <h2 class="title">A gente vive o que entrega</h2>
+    <p class="lead">A nossa própria operação roda assim. A MAIA prospecta e atende dentro da Agência no Bolso antes de fazer isso por qualquer parceiro. Você contrata um método que já está em uso na nossa casa.</p>
+    <div class="proof-grid">
+      <div class="proof">
+        <div class="pi">⚡</div>
+        <h3>Resposta em segundos, 24 por 7</h3>
+        <p>O nosso SDR responde lead no momento em que ele chega, a qualquer hora. Velocidade de resposta é o que separa o contato que avança do que esfria.</p>
+      </div>
+      <div class="proof">
+        <div class="pi">🧠</div>
+        <h3>IA aplicada a vendas e operação</h3>
+        <p>Não é IA de vitrine. É um sistema que prospecta, qualifica e produz conteúdo de verdade, ajustado ao seu jeito de vender e à sua região.</p>
+      </div>
+      <div class="proof">
+        <div class="pi">🤝</div>
+        <h3>Parceria de empresário para empresário</h3>
+        <p>Começamos enxuto e crescemos junto com o seu resultado. O nosso interesse é você fechar mais e querer escalar, não te prender num custo fixo alto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final" id="proximos">
+  <div class="wrap reveal">
+    <span class="eyebrow">Próximos passos</span>
+    <h2>Vamos começar o piloto, Edivaldo?</h2>
+    <p>O caminho é simples e sem fricção. Você dá o sim, a gente implanta e a MAIA começa a trabalhar pela sua agência.</p>
+    <div class="steps-mini">
+      <div class="smini"><div class="sn">01</div><div class="sx">Você confirma o piloto e a gente alinha persona e cliente alvo.</div></div>
+      <div class="smini"><div class="sn">02</div><div class="sx">Implantamos: integramos WhatsApp e Instagram e configuramos a MAIA.</div></div>
+      <div class="smini"><div class="sn">03</div><div class="sx">A MAIA começa a prospectar e a cuidar do conteúdo da sua agência.</div></div>
+    </div>
+    <a class="btn-primary" href="https://wa.me/558681014338" target="_blank" rel="noopener" style="font-size:17px;padding:16px 32px">Falar no WhatsApp e começar</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <img src="logo.png" alt="Agência no Bolso">
+    <div class="fline">Proposta de parceria preparada para Edivaldo · Olímpia e região de São José do Rio Preto, SP</div>
+    <div class="fcnpj">AGÊNCIA NO BOLSO INOVA SIMPLES (I.S.) · CNPJ 63.598.117/0001-39</div>
+  </div>
+</footer>
+
+<button class="btt" id="btt" aria-label="Voltar ao topo">↑</button>
+
+<script>
+  // nav scroll state + back to top
+  var nav=document.getElementById('nav'), btt=document.getElementById('btt');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>40){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')}
+    if(window.scrollY>500){btt.classList.add('show')}else{btt.classList.remove('show')}
+  });
+  btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+
+  // checkboxes + progress + localStorage (chave com nome do cliente: edivaldo)
+  var KEY='prop-edivaldo-';
+  var boxes=Array.prototype.slice.call(document.querySelectorAll('.ck'));
+  var fill=document.getElementById('fill'), pct=document.getElementById('pct');
+  function refresh(){
+    var checked=boxes.filter(function(b){return b.checked}).length;
+    var total=boxes.length;
+    var p=total?Math.round(checked/total*100):0;
+    fill.style.width=p+'%';
+    pct.textContent=checked+' de '+total+' ('+p+'%)';
+  }
+  boxes.forEach(function(b){
+    var saved=localStorage.getItem(KEY+b.id);
+    if(saved==='true')b.checked=true;
+    b.addEventListener('change',function(){
+      localStorage.setItem(KEY+b.id,b.checked);
+      refresh();
+    });
+  });
+  refresh();
+
+  // reveal on scroll
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+</script>
+</body>
+</html>
