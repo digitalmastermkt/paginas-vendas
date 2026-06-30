@@ -36,6 +36,7 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
+  noscript .reveal,.no-js .reveal{opacity:1!important;transform:none!important}
   .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
   h1,h2,h3{font-family:'Inter',sans-serif;font-weight:700;line-height:1.2;letter-spacing:-0.02em}
   a{color:inherit}
@@ -359,6 +360,7 @@
   /* reveal */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
   @media(max-width:480px){
     body{font-size:16px}
@@ -661,11 +663,22 @@
   });
   refresh();
 
-  // reveal on scroll
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
-  },{threshold:0.12});
-  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+  // reveal on scroll (with safety fallbacks so content never stays hidden)
+  var reveals=Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  function showAll(){reveals.forEach(function(el){el.classList.add('in')})}
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+    },{threshold:0.08,rootMargin:'0px 0px -8% 0px'});
+    reveals.forEach(function(el){obs.observe(el)});
+    // safety: if anything is still hidden after 2.5s, reveal it
+    setTimeout(function(){
+      reveals.forEach(function(el){
+        var r=el.getBoundingClientRect();
+        if(r.top<window.innerHeight*1.1)el.classList.add('in');
+      });
+    },2500);
+  }else{showAll()}
 </script>
 </body>
 </html>
