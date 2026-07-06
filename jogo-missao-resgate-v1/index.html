@@ -164,6 +164,11 @@ img{max-width:100%;display:block}
   padding:calc(env(safe-area-inset-top) + 12px) 18px 12px;
   background:linear-gradient(180deg, rgba(8,9,11,.86), rgba(8,9,11,.45) 70%, transparent);
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transition:opacity .5s var(--ease), transform .5s var(--ease-expo);
+}
+/* cold open: the phone call is the very first thing — no mission HUD yet */
+#topbar.preanswer{
+  opacity:0;transform:translateY(-14px);pointer-events:none;
 }
 .brandline{
   display:flex;align-items:center;gap:8px;margin-bottom:9px;
@@ -945,8 +950,8 @@ h1.big .accent{
     <div class="grain"></div>
   </div>
 
-  <!-- ===== PERSISTENT TOP BAR (mission HUD) ===== -->
-  <div id="topbar">
+  <!-- ===== PERSISTENT TOP BAR (mission HUD) — hidden during cold-open call, revealed after answering ===== -->
+  <div id="topbar" class="preanswer">
     <div class="hud">
       <div class="brand">
         <span class="mark">MP</span>
@@ -954,7 +959,7 @@ h1.big .accent{
       </div>
       <span class="objcount" id="objCount">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15 8l6.5.9-4.7 4.6L18 20l-6-3.2L6 20l1.2-6.5L2.5 8.9 9 8z"/></svg>
-        <span class="cur" id="objNow">0</span>/6 objetivos
+        <span class="cur" id="objNow">0</span>/5 objetivos
       </span>
     </div>
     <div class="ptrack"><div class="pfill" id="pfill"></div></div>
@@ -964,7 +969,6 @@ h1.big .accent{
       <span class="slot" data-obj="3"><span class="ring"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
       <span class="slot" data-obj="4"><span class="ring"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
       <span class="slot" data-obj="5"><span class="ring"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-      <span class="slot" data-obj="6"><span class="ring"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
       <span class="lab" id="stepLab" style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></span>
     </div>
   </div>
@@ -978,13 +982,44 @@ h1.big .accent{
   <!-- ===== STAGE ===== -->
   <div id="stage">
 
-    <!-- 0 · START -->
-    <section class="screen active has-hero" id="s-start" data-progress="0">
+    <!-- COLD OPEN · INCOMING CALL (first thing the user sees — ringing) -->
+    <section class="screen active" id="s-call" data-progress="0">
+      <div class="call-wrap">
+        <div class="call-top">
+          <div class="call-status"><span class="live"></span>Chamada recebida</div>
+          <!-- LOGO: quando o Salatiel mandar a logo oficial da Master Point,
+               trocar o img abaixo (img/recruiter.webp) pela logo. Manter .photo-av. -->
+          <div class="call-avatar photo-av"><img src="img/recruiter.webp" alt="Recrutador da Master Point" width="122" height="122"></div>
+          <div class="call-name">Master Point</div>
+          <div class="call-sub">Oportunidade na sua região…</div>
+        </div>
+        <div class="call-actions">
+          <div class="call-btn decline" id="btnDecline">
+            <div class="circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1z" transform="rotate(135 12 12)"/></svg>
+            </div>
+            <span class="cl">Recusar</span>
+          </div>
+          <div class="call-btn answer" id="btnAnswer">
+            <div class="circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#08110F" stroke-width="2.2" stroke-linecap="round"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1z"/></svg>
+            </div>
+            <span class="cl">Atender</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ringtone / vibrate loop for the cold-open call (synthesized, CC0) -->
+    <audio id="ringAudio" preload="auto" loop src="assets/phone-vibrate.mp3"></audio>
+
+    <!-- 0 · START (após atender) -->
+    <section class="screen has-hero" id="s-start" data-progress="8">
       <div class="phase-hero"><img src="img/hero-hire.webp" alt="Pessoa sendo contratada em uma empresa" width="491" height="900" fetchpriority="high"></div>
       <div class="screen-inner">
-        <span class="start-badge"><span class="d"></span>Missão · leva ~3 min</span>
+        <span class="start-badge"><span class="d"></span>Chamada atendida · leva ~3 min</span>
         <h1 class="big">E se a próxima <span class="accent">vaga fosse sua?</span></h1>
-        <p class="lead">Apareceu uma oportunidade aqui na região. Sua missão: passar por 6 objetivos, descobrir a vaga certa pra você e resgatar um benefício pra começar.</p>
+        <p class="lead">Você atendeu. Apareceu uma oportunidade aqui na região. Sua missão: passar por 5 objetivos, descobrir a vaga certa pra você e resgatar um benefício pra começar.</p>
         <div class="start-meta">
           <span class="m"><b>25 anos</b> de mercado</span>
           <span class="m"><b>+8 mil</b> alunos</span>
@@ -1004,17 +1039,16 @@ h1.big .accent{
         <div class="brief-medal"><img src="img/medal.webp" alt="Medalha da missão" width="88" height="88"></div>
         <div class="eyebrow" style="text-align:center">Briefing da missão</div>
         <h1 class="big brief-title" style="margin:8px 0 4px">Garantir a<br><span class="accent">Vaga Certa</span></h1>
-        <p class="lead" style="text-align:center;max-width:340px;margin:8px auto 0">São 6 objetivos rápidos. A cada um cumprido, você desbloqueia um selo. Complete a missão e o benefício é seu.</p>
+        <p class="lead" style="text-align:center;max-width:340px;margin:8px auto 0">Você já atendeu a ligação. Agora são 5 objetivos rápidos. A cada um cumprido, você desbloqueia um selo. Complete a missão e o benefício é seu.</p>
 
         <div class="dossier">
-          <div class="dk">Seus 6 objetivos</div>
+          <div class="dk">Seus 5 objetivos</div>
           <ul class="obj-list">
-            <li><span class="oi">1</span><span class="ol"><b>Atender o chamado.</b> A Master Point vai te ligar.</span></li>
-            <li><span class="oi">2</span><span class="ol"><b>A oportunidade.</b> Veja a vaga que apareceu.</span></li>
-            <li><span class="oi">3</span><span class="ol"><b>Prove seu talento.</b> Converse com o recrutador.</span></li>
-            <li><span class="oi">4</span><span class="ol"><b>Encontre sua trilha.</b> Descubra o caminho ideal.</span></li>
-            <li><span class="oi">5</span><span class="ol"><b>Seja aprovado.</b> Receba sua Carta de Aprovação.</span></li>
-            <li><span class="oi">6</span><span class="ol"><b>Resgate a recompensa.</b> Abra seu benefício.</span></li>
+            <li><span class="oi">1</span><span class="ol"><b>A oportunidade.</b> Veja a vaga que apareceu.</span></li>
+            <li><span class="oi">2</span><span class="ol"><b>Prove seu talento.</b> Converse com o recrutador.</span></li>
+            <li><span class="oi">3</span><span class="ol"><b>Encontre sua trilha.</b> Descubra o caminho ideal.</span></li>
+            <li><span class="oi">4</span><span class="ol"><b>Seja aprovado.</b> Receba sua Carta de Aprovação.</span></li>
+            <li><span class="oi">5</span><span class="ol"><b>Resgate a recompensa.</b> Abra seu benefício.</span></li>
           </ul>
         </div>
 
@@ -1027,42 +1061,16 @@ h1.big .accent{
         </div>
 
         <button class="btn btn-gold" id="btnBrief">
-          Iniciar objetivo 1
+          Ouvir o recado do recrutador
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
       </div>
     </section>
 
-    <!-- 1 · INCOMING CALL -->
-    <section class="screen" id="s-call" data-progress="5">
-      <div class="call-wrap">
-        <div class="call-top">
-          <div class="call-status"><span class="live"></span>Objetivo 1 · Chamada recebida</div>
-          <div class="call-avatar photo-av"><img src="img/recruiter.webp" alt="Recrutador da Master Point" width="122" height="122"></div>
-          <div class="call-name">Master Point</div>
-          <div class="call-sub">Oportunidade na sua região…</div>
-        </div>
-        <div class="call-actions">
-          <div class="call-btn decline">
-            <div class="circle">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1z" transform="rotate(135 12 12)"/></svg>
-            </div>
-            <span class="cl">Recusar</span>
-          </div>
-          <div class="call-btn answer" id="btnAnswer">
-            <div class="circle">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#08110F" stroke-width="2.2" stroke-linecap="round"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1z"/></svg>
-            </div>
-            <span class="cl">Atender</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 1b · IN-CALL AUDIO -->
-    <section class="screen" id="s-audio" data-progress="15">
+    <!-- 1b · IN-CALL AUDIO (recado do recrutador, logo após atender) -->
+    <section class="screen" id="s-audio" data-progress="18">
       <div class="screen-inner">
-        <div class="obj-tag" style="margin:0 auto 16px"><span class="n">1</span><span class="tx">Objetivo 1 · <b>Atender o chamado</b></span></div>
+        <div class="obj-tag" style="margin:0 auto 16px"><span class="n">✓</span><span class="tx">Chamada atendida · <b>Recado do recrutador</b></span></div>
         <div class="audio-orb photo-av"><img src="img/recruiter.webp" alt="Recrutador da Master Point" width="98" height="98"></div>
         <div class="audio-bars" id="audioBars"><span></span><span></span><span></span><span></span><span></span><span></span></div>
         <div style="margin-bottom:14px"><span class="ph">[PH-AUDIO] recrutador · a gravar (voz humana)</span></div>
@@ -1147,7 +1155,7 @@ h1.big .accent{
     <section class="screen has-hero" id="s-trail" data-progress="70">
       <div class="phase-hero"><img src="img/hero-class.webp" alt="Alunos aprendendo informática" width="491" height="900"></div>
       <div class="screen-inner reveal-inner">
-        <div class="obj-tag" style="margin:0 auto 16px"><span class="n">4</span><span class="tx">Objetivo 4 · <b>Sua trilha</b></span></div>
+        <div class="obj-tag" style="margin:0 auto 16px"><span class="n">3</span><span class="tx">Objetivo 3 · <b>Sua trilha</b></span></div>
         <div class="trail-badge">
           <span class="lv">Sua trilha</span>
           <span class="nm" id="trailName">Inicial</span>
@@ -1186,7 +1194,7 @@ h1.big .accent{
         <div class="seal photo-seal">
           <img src="img/seal.webp" alt="Selo de aprovação" width="134" height="134">
         </div>
-        <div class="obj-tag" style="margin:0 auto 4px"><span class="n">5</span><span class="tx">Objetivo 5 · <b>Aprovado</b></span></div>
+        <div class="obj-tag" style="margin:0 auto 4px"><span class="n">4</span><span class="tx">Objetivo 4 · <b>Aprovado</b></span></div>
         <div class="carta">
           <div class="ct-seal"><img src="img/seal.webp" alt="Selo Master Point" width="54" height="54"></div>
           <div class="ct-k">Carta de Aprovação</div>
@@ -1213,7 +1221,7 @@ h1.big .accent{
     <section class="screen" id="s-reward" data-progress="90">
       <div class="screen-inner reward-inner">
         <div id="chestStage">
-          <div class="obj-tag" style="margin:0 auto 14px"><span class="n">6</span><span class="tx">Objetivo 6 · <b>Recompensa</b></span></div>
+          <div class="obj-tag" style="margin:0 auto 14px"><span class="n">5</span><span class="tx">Objetivo 5 · <b>Recompensa</b></span></div>
           <div class="chest" id="chest">
             <div class="glow"></div>
             <svg class="box" viewBox="0 0 24 24" width="104" height="104" fill="none" stroke="url(#gg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Baú de resgate">
@@ -1290,7 +1298,7 @@ const TRILHAS = {
 
 /* ---- SCREEN MANAGER ---- */
 const screens = Array.from(document.querySelectorAll('.screen'));
-let current = 's-start';
+let current = 's-call';   // cold open: a chamada é a primeira tela
 
 function setProgress(pct){
   pct = Math.max(0, Math.min(100, pct));
@@ -1302,28 +1310,30 @@ function setProgress(pct){
 }
 
 const STEP_LABELS = {
+  's-call':'Chamada recebida',
   's-start':'Aceite a missão',
   's-brief':'Briefing da missão',
-  's-call':'Obj. 1 · Atender o chamado',
-  's-audio':'Obj. 1 · Atender o chamado',
-  's-vsl':'Obj. 2 · A oportunidade',
-  's-chat':'Obj. 3 · Prove seu talento',
-  's-quiz':'Obj. 4 · Encontre sua trilha',
-  's-trail':'Obj. 4 · Sua trilha ideal',
-  's-name':'Obj. 5 · Seja aprovado',
-  's-approval':'Obj. 5 · Aprovado',
-  's-reward':'Obj. 6 · Resgate a recompensa',
+  's-audio':'Recado do recrutador',
+  's-vsl':'Obj. 1 · A oportunidade',
+  's-chat':'Obj. 2 · Prove seu talento',
+  's-quiz':'Obj. 3 · Encontre sua trilha',
+  's-trail':'Obj. 3 · Sua trilha ideal',
+  's-name':'Obj. 4 · Seja aprovado',
+  's-approval':'Obj. 4 · Aprovado',
+  's-reward':'Obj. 5 · Resgate a recompensa',
 };
 
 /* ---- MISSION objectives: which objective a screen belongs to + when it's DONE ---- */
+// A chamada (s-call) é o cold-open / abertura — NÃO é objetivo numerado.
+// s-start/s-brief/s-audio são intro pós-atendimento — também sem número.
 // objective is "completed" when the user LEAVES the screen that fulfills it
 const OBJ_OF = {          // screen -> objective number the user is currently on
-  's-call':1, 's-audio':1, 's-vsl':2, 's-chat':3,
-  's-quiz':4, 's-trail':4, 's-name':5, 's-approval':5, 's-reward':6,
+  's-vsl':1, 's-chat':2,
+  's-quiz':3, 's-trail':3, 's-name':4, 's-approval':4, 's-reward':5,
 };
 const OBJ_TITLES = {
-  1:'Chamado atendido', 2:'Oportunidade vista', 3:'Talento provado',
-  4:'Trilha encontrada', 5:'Você foi aprovado', 6:'Recompensa resgatada',
+  1:'Oportunidade vista', 2:'Talento provado',
+  3:'Trilha encontrada', 4:'Você foi aprovado', 5:'Recompensa resgatada',
 };
 let objDone = 0;
 function completeObjective(n){
@@ -1381,20 +1391,84 @@ function go(id, opts){
 }
 
 /* ============================================================================
-   PHASE 0 → 1: start + call
+   COLD OPEN → START → BRIEFING → AUDIO
+   Nova ordem: a CHAMADA é a primeira tela. Ao ATENDER, revela o HUD e segue
+   pro start/briefing; a chamada deixou de ser "Objetivo 1".
    ============================================================================ */
+
+/* ---- ringtone + vibration while the cold-open call is on screen ---- */
+const ringAudio = document.getElementById('ringAudio');
+const topbarEl  = document.getElementById('topbar');
+let ringOn = false;
+let vibrateTimer = null;
+// padrão de toque de celular: vibra ~0.4s, pausa ~0.2s, vibra ~0.4s, pausa ~1s (ciclo 2s)
+const VIB_PATTERN = [400, 200, 400, 1000];
+function startRing(){
+  if(ringOn) return;
+  ringOn = true;
+  // som (loop) — pode ser bloqueado por autoplay; tratamos no gate abaixo
+  try{ ringAudio.currentTime = 0; ringAudio.play().catch(()=>{}); }catch(e){}
+  // Vibration API real no mobile (fallback silencioso onde não houver suporte)
+  if('vibrate' in navigator){
+    const buzz = ()=>{ try{ navigator.vibrate(VIB_PATTERN); }catch(e){} };
+    buzz();
+    vibrateTimer = setInterval(buzz, 2000);
+  }
+}
+function stopRing(){
+  ringOn = false;
+  try{ ringAudio.pause(); ringAudio.currentTime = 0; }catch(e){}
+  if(vibrateTimer){ clearInterval(vibrateTimer); vibrateTimer = null; }
+  if('vibrate' in navigator){ try{ navigator.vibrate(0); }catch(e){} }
+}
+
+/* autoplay gate: navegadores mobile bloqueiam áudio sem interação.
+   Tentamos tocar no load; se falhar, o som entra no PRIMEIRO toque na tela
+   (a vibração só é permitida após interação de qualquer forma). */
+let ringPrimed = false;
+function primeRing(){
+  if(ringPrimed || !ringOn) return;   // só re-arma se ainda estamos na chamada
+  ringPrimed = true;
+  try{ ringAudio.play().catch(()=>{}); }catch(e){}
+}
+window.addEventListener('pointerdown', primeRing, {once:false});
+window.addEventListener('touchstart', primeRing, {once:false});
+
+// dispara a chamada assim que a página carrega (cold open)
+startRing();
+
+/* ATENDER → para o toque, revela o HUD, segue pro start */
+document.getElementById('btnAnswer').addEventListener('click', ()=>{
+  stopRing();
+  topbarEl.classList.remove('preanswer');   // revela a barra de missão
+  track('call_answered');
+  go('s-start', {progress:8});
+});
+
+/* RECUSAR → reinicia/insiste (mantém o caminho principal em Atender) */
+const btnDecline = document.getElementById('btnDecline');
+if(btnDecline){
+  btnDecline.addEventListener('click', ()=>{
+    stopRing();
+    track('call_declined');
+    // pequena insistência: a chamada "volta a tocar" após um instante
+    const sub = document.querySelector('#s-call .call-sub');
+    if(sub) sub.textContent = 'Perdeu a chamada… ligando de novo…';
+    setTimeout(()=>{
+      if(sub) sub.textContent = 'Oportunidade na sua região…';
+      startRing();
+    }, 1100);
+  });
+}
+
 document.getElementById('btnStart').addEventListener('click', ()=>{
   track('game_start');
-  go('s-brief', {progress:3});
+  go('s-brief', {progress:12});
 });
 
 document.getElementById('btnBrief').addEventListener('click', ()=>{
   track('briefing_accepted');
-  go('s-call', {progress:5});
-});
-
-document.getElementById('btnAnswer').addEventListener('click', ()=>{
-  go('s-audio', {progress:15});
+  go('s-audio', {progress:18});
 });
 
 /* ---- audio placeholder controls ---- */
@@ -1591,7 +1665,7 @@ function showQuizQuestion(){
   quizHost.innerHTML = '';
   const otag = document.createElement('div');
   otag.className = 'obj-tag';
-  otag.innerHTML = '<span class="n">4</span><span class="tx">Objetivo 4 · <b>Encontre sua trilha</b></span>';
+  otag.innerHTML = '<span class="n">3</span><span class="tx">Objetivo 3 · <b>Encontre sua trilha</b></span>';
   const lab = document.createElement('div');
   lab.className = 'quiz-step-lab';
   lab.textContent = 'Pergunta '+(quizIndex+1)+' de '+QUIZ.length;
@@ -1679,7 +1753,7 @@ function openChest(){
     document.getElementById('chestStage').style.display = 'none';
     document.getElementById('rewardStage').style.display = 'block';
     setProgress(100);
-    completeObjective(6);
+    completeObjective(5);
     document.getElementById('stepLab').textContent = 'Missão cumprida!';
     track('reward_claimed', {trilha:GAME.trilha, nome:GAME.nome});
     fireConfetti();
@@ -1723,7 +1797,7 @@ document.getElementById('btnWhatsApp').addEventListener('click', ()=>{
    ============================================================================ */
 const bgfx = document.getElementById('bgfx');
 // screens with their own full-bleed imagery (device UI or phase-hero) — dim the ambient bg
-const IMMERSIVE = new Set(['s-vsl','s-chat','s-start','s-quiz','s-trail','s-approval']);
+const IMMERSIVE = new Set(['s-call','s-vsl','s-chat','s-start','s-quiz','s-trail','s-approval']);
 function applyMood(id){
   if(!bgfx) return;
   bgfx.style.opacity = IMMERSIVE.has(id) ? '0.22' : '1';
@@ -1735,7 +1809,7 @@ const moodObserver = new MutationObserver(()=>{
   if(act) applyMood(act.id);
 });
 moodObserver.observe(stageEl, {subtree:true, attributes:true, attributeFilter:['class']});
-applyMood('s-start');
+applyMood('s-call');
 
 /* golden dust burst (canvas) — fires on chest open */
 const dust = document.getElementById('dust');
