@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0C0D0F">
+<title>Missão Resgate · Master Point Cursos</title>
+<!--
+  ============================================================================
+  MISSÃO RESGATE — V1 (build interno pra revisão, NÃO publicar)
+  Master Point Cursos · campanha B2C empregabilidade · Castelo do Piauí + online
+  SPA mobile-first, HTML+CSS+JS puro, sem backend.
+  Referência de conceito: CONCEITO_CAMPANHA_GAMIFICADA_2026-07-06.md
+  ----------------------------------------------------------------------------
+  PLACEHOLDERS (conteúdo real pendente — marcados também na tela com selo âmbar):
+    [PH-AUDIO]  áudios do recrutador / aprovação (gravar com voz humana, NÃO IA)
+    [PH-VSL]    vídeo da tela TikTok (mini-VSL curta)
+    [PH-DEPO]   depoimento real de ex-aluno (Yan coletando em Castelo)
+    [PH-VOUCHER] valor do voucher (a definir com o Salatiel)
+    [PH-NOME]   nome da campanha — usando "Missão Resgate" como placeholder
+  ============================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#F0C882;
+  --gold-deep:#C9971F;
+  --teal:#2A9D8F;
+  --teal-lite:#6fd8c9;
+  --wa:#25D366;
+  --wa-deep:#128C7E;
+  --ink:#0F0F0F;
+  --panel:#17181B;
+  --panel-2:#1E2024;
+  --panel-3:#242629;
+  --line:#2E3036;
+  --line-soft:#26282D;
+  --text:#F4F1EA;
+  --text-mut:#C7C2B7;
+  --text-dim:#A29E95;
+  --bg:#0C0D0F;
+  --danger:#E8705A;
+  --ok:#57C98A;
+  --shadow:0 20px 46px -26px rgba(0,0,0,.92);
+  --shadow-lift:0 26px 60px -28px rgba(0,0,0,.95);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-soft:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+  height:100dvh;
+}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* ==================== APP SHELL (phone frame on desktop, full on mobile) ==================== */
+#app{
+  position:relative;
+  width:100%;
+  max-width:440px;
+  height:100dvh;
+  margin:0 auto;
+  background:
+    radial-gradient(1000px 560px at 50% -12%, rgba(42,157,143,.12), transparent 58%),
+    radial-gradient(760px 460px at 92% 108%, rgba(240,200,130,.08), transparent 55%),
+    var(--bg);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+/* ---- progress bar (persistent top) ---- */
+#topbar{
+  position:relative;z-index:20;flex:none;
+  padding:calc(env(safe-area-inset-top) + 12px) 18px 12px;
+  background:linear-gradient(180deg, rgba(12,13,15,.9), rgba(12,13,15,.55) 70%, transparent);
+  backdrop-filter:blur(6px);
+}
+.brandline{
+  display:flex;align-items:center;gap:8px;margin-bottom:9px;
+}
+.brandline .mark{
+  width:24px;height:24px;border-radius:7px;flex:none;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--gold),var(--gold-deep));
+  color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;
+  box-shadow:0 4px 12px -5px rgba(0,0,0,.7);
+}
+.brandline .nm{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:12.5px;
+  color:var(--text-mut);letter-spacing:.01em;
+}
+.brandline .nm b{color:var(--text)}
+.brandline .pct{
+  margin-left:auto;font-family:'JetBrains Mono',monospace;font-weight:600;
+  font-size:12px;color:var(--teal);
+}
+.brandline .pct.done{color:var(--gold)}
+.ptrack{
+  height:8px;border-radius:99px;background:rgba(255,255,255,.06);
+  border:1px solid var(--line-soft);overflow:hidden;
+}
+.pfill{
+  height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--teal),var(--teal-lite));
+  transition:width .7s var(--ease);
+}
+.pfill.full{background:linear-gradient(90deg,var(--teal),var(--gold))}
+.psteps{
+  margin-top:7px;display:flex;align-items:center;gap:6px;
+}
+.psteps .lab{
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--text-dim);
+}
+
+/* ---- stage viewport ---- */
+#stage{
+  position:relative;flex:1;min-height:0;overflow:hidden;
+}
+.screen{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  padding:8px 20px calc(env(safe-area-inset-bottom) + 20px);
+  overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  opacity:0;
+  transform:translateX(28px);
+  pointer-events:none;
+  transition:opacity .45s var(--ease), transform .5s var(--ease);
+}
+.screen.active{opacity:1;transform:none;pointer-events:auto;z-index:2}
+.screen.leaving{opacity:0;transform:translateX(-24px);z-index:1}
+.screen-inner{margin:auto 0;width:100%;padding:16px 0}
+
+/* ---- placeholder marker ---- */
+.ph{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;
+  letter-spacing:.04em;color:#F0C882;
+  background:rgba(240,200,130,.1);border:1px dashed rgba(240,200,130,.45);
+  padding:4px 9px;border-radius:7px;
+}
+.ph::before{content:"◆";font-size:8px;opacity:.8}
+
+/* ==================== SHARED PIECES ==================== */
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--teal);
+}
+h1.big{
+  font-family:'Playfair Display',serif;font-weight:800;
+  font-size:clamp(1.9rem,7.6vw,2.5rem);line-height:1.05;letter-spacing:-.02em;
+  color:var(--text);text-wrap:balance;
+}
+h1.big .accent{color:var(--gold)}
+.lead{font-size:15px;color:var(--text-mut);line-height:1.6}
+
+/* buttons */
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px 20px;border-radius:14px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;
+  letter-spacing:.005em;transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
+}
+.btn:active{transform:scale(.975)}
+.btn-gold{background:linear-gradient(145deg,var(--gold),var(--gold-deep));color:var(--ink);box-shadow:0 16px 30px -16px rgba(0,0,0,.75)}
+.btn-teal{background:var(--teal);color:#08110F;box-shadow:0 16px 30px -16px rgba(0,0,0,.75)}
+.btn-wa{background:linear-gradient(145deg,var(--wa),var(--wa-deep));color:#07130D;box-shadow:0 16px 34px -16px rgba(0,0,0,.75)}
+.btn-ghost{background:var(--panel-2);color:var(--text);border:1px solid var(--line)}
+.btn svg{width:20px;height:20px;flex:none}
+
+.hint{
+  margin-top:14px;text-align:center;font-size:12.5px;color:var(--text-dim);
+}
+
+/* ==================== SCREEN 0: START ==================== */
+#s-start .screen-inner{text-align:center}
+.start-badge{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12.5px;
+  padding:7px 14px;border-radius:99px;color:var(--text-mut);
+  border:1px solid var(--line);background:var(--panel);
+}
+.start-badge .d{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(42,157,143,.2)}
+#s-start .lead{margin:16px auto 26px;max-width:340px}
+.start-meta{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:30px}
+.start-meta .m{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:11.5px;font-weight:600;
+  padding:6px 12px;border-radius:8px;color:var(--text-mut);
+  border:1px solid var(--line);background:var(--panel);
+}
+.start-meta .m b{color:var(--gold)}
+
+/* ==================== SCREEN 1: INCOMING CALL ==================== */
+#s-call{padding:0}
+#s-call .call-wrap{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:space-between;
+  padding:calc(env(safe-area-inset-top) + 54px) 28px calc(env(safe-area-inset-bottom) + 54px);
+  background:
+    radial-gradient(700px 500px at 50% 26%, rgba(42,157,143,.18), transparent 60%),
+    linear-gradient(180deg,#0C0D0F,#101418);
+  text-align:center;
+}
+.call-top{display:flex;flex-direction:column;align-items:center;gap:8px}
+.call-status{
+  font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--teal);
+}
+.call-status .live{
+  display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--teal);
+  margin-right:7px;animation:blink 1.1s var(--ease) infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.call-avatar{
+  width:118px;height:118px;border-radius:50%;margin:26px 0 4px;
+  display:grid;place-items:center;position:relative;
+  background:linear-gradient(150deg,var(--gold),var(--gold-deep));
+  color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:40px;
+  box-shadow:0 20px 44px -20px rgba(0,0,0,.75);
+}
+.call-avatar::after{
+  content:"";position:absolute;inset:-14px;border-radius:50%;
+  border:2px solid rgba(240,200,130,.35);
+  animation:ripple 1.8s var(--ease-soft) infinite;
+}
+.call-avatar::before{
+  content:"";position:absolute;inset:-14px;border-radius:50%;
+  border:2px solid rgba(240,200,130,.2);
+  animation:ripple 1.8s var(--ease-soft) infinite .9s;
+}
+@keyframes ripple{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.4);opacity:0}}
+.call-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:24px;color:var(--text)}
+.call-sub{font-size:14px;color:var(--text-mut);margin-top:4px}
+.call-actions{display:flex;align-items:center;justify-content:center;gap:56px;width:100%}
+.call-btn{display:flex;flex-direction:column;align-items:center;gap:11px}
+.call-btn .circle{
+  width:70px;height:70px;border-radius:50%;display:grid;place-items:center;
+  box-shadow:var(--shadow);
+}
+.call-btn .circle svg{width:30px;height:30px}
+.call-btn.decline .circle{background:#E8705A}
+.call-btn.answer .circle{background:var(--wa);position:relative}
+.call-btn.answer .circle::after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  box-shadow:0 0 0 0 rgba(37,211,102,.55);
+  animation:answerpulse 1.6s var(--ease-soft) infinite;
+}
+@keyframes answerpulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.call-btn .cl{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;color:var(--text-mut)}
+
+/* in-call audio panel (after answering) */
+#s-audio .screen-inner{text-align:center}
+.audio-orb{
+  width:96px;height:96px;border-radius:50%;margin:10px auto 22px;
+  display:grid;place-items:center;position:relative;
+  background:linear-gradient(150deg,var(--gold),var(--gold-deep));
+  color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:34px;
+}
+.audio-bars{display:flex;align-items:flex-end;gap:4px;justify-content:center;height:40px;margin:0 0 18px}
+.audio-bars span{width:5px;border-radius:3px;background:var(--teal);animation:eq 1s var(--ease) infinite}
+.audio-bars span:nth-child(2){animation-delay:.15s}
+.audio-bars span:nth-child(3){animation-delay:.3s}
+.audio-bars span:nth-child(4){animation-delay:.45s}
+.audio-bars span:nth-child(5){animation-delay:.6s}
+.audio-bars span:nth-child(6){animation-delay:.75s}
+.audio-bars.paused span{animation-play-state:paused;height:10px !important}
+@keyframes eq{0%,100%{height:12px}50%{height:34px}}
+.transcript{
+  text-align:left;background:var(--panel);border:1px solid var(--line);
+  border-radius:16px;padding:18px 18px 16px;margin:6px 0 18px;box-shadow:var(--shadow);
+}
+.transcript .th{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.transcript .th .who{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;color:var(--gold)}
+.transcript p{font-size:15px;color:var(--text);line-height:1.62}
+.audioctl{
+  display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:20px;
+}
+.audioctl .play{
+  width:52px;height:52px;border-radius:50%;background:var(--teal);color:#08110F;
+  display:grid;place-items:center;box-shadow:0 10px 24px -12px rgba(0,0,0,.7);
+  transition:transform .3s var(--ease);
+}
+.audioctl .play:active{transform:scale(.92)}
+.audioctl .play svg{width:22px;height:22px}
+.audioctl .meta{font-size:12.5px;color:var(--text-dim);text-align:left}
+
+/* ==================== SCREEN 2: TIKTOK / VSL ==================== */
+#s-vsl{padding:0}
+.tt-frame{
+  position:absolute;inset:0;background:#000;display:flex;flex-direction:column;
+}
+.tt-video{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(600px 700px at 50% 40%, rgba(42,157,143,.16), transparent 62%),
+    linear-gradient(160deg,#14171B,#0A0C0E);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 24px;
+}
+.tt-playbtn{
+  width:78px;height:78px;border-radius:50%;
+  background:rgba(255,255,255,.14);backdrop-filter:blur(4px);
+  border:1.5px solid rgba(255,255,255,.35);
+  display:grid;place-items:center;margin-bottom:22px;
+  transition:transform .3s var(--ease);
+}
+.tt-playbtn:active{transform:scale(.9)}
+.tt-playbtn svg{width:32px;height:32px;color:#fff;margin-left:4px}
+.tt-vsl-label{margin-bottom:12px}
+.tt-video .cap{font-size:13px;color:rgba(255,255,255,.55);max-width:240px;line-height:1.5}
+.tt-topbar{
+  position:absolute;top:0;left:0;right:0;z-index:4;
+  display:flex;align-items:center;justify-content:center;gap:22px;
+  padding:calc(env(safe-area-inset-top) + 14px) 16px 14px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;
+  background:linear-gradient(180deg,rgba(0,0,0,.55),transparent);
+}
+.tt-topbar .tab{color:rgba(255,255,255,.55)}
+.tt-topbar .tab.on{color:#fff;position:relative}
+.tt-topbar .tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2.5px;background:#fff;border-radius:2px}
+/* right rail */
+.tt-rail{
+  position:absolute;right:12px;bottom:150px;z-index:5;
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+}
+.tt-rail .rb{display:flex;flex-direction:column;align-items:center;gap:5px;color:#fff}
+.tt-rail .rb .ic{
+  width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.12);
+  display:grid;place-items:center;transition:transform .3s var(--ease);
+}
+.tt-rail .rb .ic svg{width:24px;height:24px}
+.tt-rail .rb.liked .ic{background:rgba(232,112,90,.25)}
+.tt-rail .rb.liked .ic svg{color:#E8705A;fill:#E8705A}
+.tt-rail .rb .n{font-size:11.5px;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif}
+.tt-rail .rb:active .ic{transform:scale(.86)}
+.tt-avatar{
+  width:44px;height:44px;border-radius:50%;border:2px solid #fff;
+  background:linear-gradient(145deg,var(--gold),var(--gold-deep));
+  display:grid;place-items:center;color:var(--ink);font-weight:800;font-size:16px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+/* bottom caption */
+.tt-caption{
+  position:absolute;left:0;right:64px;bottom:0;z-index:5;
+  padding:16px 16px calc(env(safe-area-inset-bottom) + 84px);
+  background:linear-gradient(0deg,rgba(0,0,0,.6),transparent);
+}
+.tt-caption .user{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px;color:#fff;margin-bottom:6px}
+.tt-caption .txt{font-size:13.5px;color:rgba(255,255,255,.9);line-height:1.5}
+.tt-caption .tag{color:var(--teal-lite);font-weight:600}
+.tt-caption .music{display:flex;align-items:center;gap:7px;margin-top:9px;font-size:12px;color:rgba(255,255,255,.8)}
+.tt-caption .music svg{width:14px;height:14px}
+/* continue CTA over tiktok */
+.tt-continue{
+  position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 18px);z-index:6;
+}
+
+/* ==================== SCREEN 3: WHATSAPP CHAT ==================== */
+#s-chat{padding:0}
+.wa-frame{position:absolute;inset:0;display:flex;flex-direction:column;background:#0B141A}
+.wa-head{
+  flex:none;display:flex;align-items:center;gap:12px;
+  padding:calc(env(safe-area-inset-top) + 12px) 16px 12px;
+  background:var(--wa-deep);color:#fff;z-index:3;
+}
+.wa-head .av{
+  width:40px;height:40px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--gold),var(--gold-deep));color:var(--ink);
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:16px;
+}
+.wa-head .who{min-width:0}
+.wa-head .who .nm{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15.5px;line-height:1.2}
+.wa-head .who .st{font-size:12px;color:rgba(255,255,255,.75);height:14px}
+.wa-body{
+  flex:1;min-height:0;overflow-y:auto;padding:16px 14px 12px;
+  display:flex;flex-direction:column;gap:8px;
+  background:
+    linear-gradient(180deg,rgba(11,20,26,.6),rgba(11,20,26,.6)),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.012) 0 2px,transparent 2px 20px);
+}
+.bubble{
+  max-width:82%;padding:9px 12px;border-radius:14px;font-size:14.5px;line-height:1.45;
+  opacity:0;transform:translateY(8px);animation:pop .34s var(--ease) forwards;
+  box-shadow:0 2px 6px -2px rgba(0,0,0,.4);
+}
+@keyframes pop{to{opacity:1;transform:none}}
+.bubble.them{align-self:flex-start;background:#1F2C33;color:#E9EDEF;border-top-left-radius:5px}
+.bubble.me{align-self:flex-end;background:#005C4B;color:#E9F7EF;border-top-right-radius:5px}
+.bubble .t{display:block;font-size:10px;color:rgba(255,255,255,.45);text-align:right;margin-top:3px}
+.typing{
+  align-self:flex-start;background:#1F2C33;border-radius:14px;border-top-left-radius:5px;
+  padding:12px 16px;display:inline-flex;gap:4px;
+}
+.typing span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);animation:td 1.2s var(--ease) infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+.wa-replies{
+  flex:none;padding:10px 12px calc(env(safe-area-inset-bottom) + 12px);
+  background:#0B141A;border-top:1px solid rgba(255,255,255,.06);
+  display:flex;flex-direction:column;gap:8px;
+}
+.qr{
+  padding:13px 15px;border-radius:12px;text-align:left;font-size:14.5px;font-weight:600;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:#17242C;color:#E9EDEF;border:1px solid rgba(37,211,102,.35);
+  display:flex;align-items:center;gap:10px;transition:transform .25s var(--ease),background .25s var(--ease);
+}
+.qr:active{transform:scale(.98);background:#1E2F38}
+.qr .rico{width:18px;height:18px;flex:none;color:var(--wa)}
+
+/* ==================== SCREEN 4: QUIZ (trilha) ==================== */
+.quiz-inner{width:100%}
+.quiz-step-lab{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:12px;
+}
+.quiz-q{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:clamp(1.35rem,5.6vw,1.7rem);line-height:1.2;letter-spacing:-.01em;
+  color:var(--text);margin-bottom:22px;text-wrap:balance;
+}
+.quiz-opts{display:flex;flex-direction:column;gap:11px}
+.opt{
+  display:flex;align-items:center;gap:14px;text-align:left;
+  padding:16px 16px;border-radius:14px;
+  background:var(--panel);border:1px solid var(--line);color:var(--text);
+  font-size:15.5px;font-weight:500;
+  transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease);
+}
+.opt:active{transform:scale(.98)}
+.opt.sel{border-color:var(--teal);background:rgba(42,157,143,.12)}
+.opt .letter{
+  width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;
+  background:var(--panel-3);color:var(--text-mut);
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px;
+  transition:background .25s var(--ease),color .25s var(--ease);
+}
+.opt.sel .letter{background:var(--teal);color:#08110F}
+.opt .ot{line-height:1.35}
+
+/* result reveal */
+.reveal-inner{text-align:center;width:100%}
+.trail-badge{
+  display:inline-flex;flex-direction:column;align-items:center;gap:4px;
+  margin:6px auto 20px;padding:22px 30px;border-radius:20px;
+  background:linear-gradient(160deg,rgba(240,200,130,.14),rgba(240,200,130,.03));
+  border:1px solid rgba(240,200,130,.4);box-shadow:var(--shadow);
+}
+.trail-badge .lv{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+.trail-badge .nm{font-family:'Playfair Display',serif;font-weight:800;font-size:2.1rem;color:var(--gold);line-height:1.05}
+.trail-badge .pr{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;color:var(--text-mut);margin-top:2px}
+.trail-desc{font-size:14.5px;color:var(--text-mut);max-width:320px;margin:0 auto 26px;line-height:1.6}
+
+/* seal pop (used on approval) */
+.seal{
+  width:132px;height:132px;border-radius:50%;margin:6px auto 20px;position:relative;
+  display:grid;place-items:center;
+  background:radial-gradient(circle at 38% 32%,var(--gold),var(--gold-deep));
+  color:var(--ink);box-shadow:0 20px 44px -20px rgba(0,0,0,.7);
+  animation:sealin .6s var(--ease) both;
+}
+@keyframes sealin{0%{transform:scale(.5) rotate(-14deg);opacity:0}100%{transform:none;opacity:1}}
+.seal svg{width:56px;height:56px}
+.seal::after{content:"";position:absolute;inset:8px;border-radius:50%;border:2px dashed rgba(15,15,15,.35)}
+
+/* ==================== SCREEN 5: NAME + APPROVAL + CARTA ==================== */
+.field{margin:6px 0 8px}
+.field label{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13.5px;color:var(--text-mut);margin-bottom:8px}
+.field input{
+  width:100%;padding:15px 16px;border-radius:13px;
+  background:var(--panel);border:1px solid var(--line);color:var(--text);
+  font-family:'Inter',sans-serif;font-size:16px;
+  transition:border-color .25s var(--ease);
+}
+.field input::placeholder{color:var(--text-dim)}
+.field input:focus{outline:none;border-color:var(--teal)}
+
+.carta{
+  position:relative;border-radius:18px;padding:26px 22px;margin:6px 0 22px;
+  background:
+    linear-gradient(180deg,rgba(240,200,130,.07),rgba(240,200,130,.02)),
+    var(--panel);
+  border:1px solid rgba(240,200,130,.4);box-shadow:var(--shadow-lift);
+  text-align:center;overflow:hidden;
+}
+.carta::before{
+  content:"";position:absolute;inset:9px;border-radius:12px;
+  border:1px solid rgba(240,200,130,.22);pointer-events:none;
+}
+.carta .ct-mark{
+  width:44px;height:44px;border-radius:12px;margin:0 auto 14px;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--gold),var(--gold-deep));color:var(--ink);
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;
+}
+.carta .ct-k{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+.carta .ct-title{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;color:var(--text);margin:6px 0 14px;line-height:1.15}
+.carta .ct-name{
+  font-family:'Playfair Display',serif;font-weight:800;font-style:italic;
+  font-size:1.7rem;color:var(--gold);margin:2px 0 14px;
+  border-bottom:1.5px solid rgba(240,200,130,.35);padding-bottom:10px;display:inline-block;min-width:60%;
+}
+.carta .ct-body{font-size:14px;color:var(--text-mut);line-height:1.6}
+.carta .ct-body b{color:var(--text)}
+.carta .ct-foot{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:.06em}
+
+.depo{
+  display:flex;align-items:center;gap:13px;padding:14px;border-radius:14px;
+  background:var(--panel);border:1px solid var(--line);margin:0 0 20px;text-align:left;
+}
+.depo .dav{
+  width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:var(--panel-3);border:1px dashed var(--line);color:var(--text-dim);font-size:20px;
+}
+.depo .dt{min-width:0}
+.depo .dt .dn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--text)}
+.depo .dt .dq{font-size:12.5px;color:var(--text-dim);line-height:1.45;margin-top:2px}
+
+/* ==================== SCREEN 6: TREASURE / RESGATE ==================== */
+.reward-inner{text-align:center;width:100%}
+.chest{
+  width:150px;height:150px;margin:6px auto 8px;position:relative;
+  display:grid;place-items:center;cursor:pointer;
+}
+.chest .glow{
+  position:absolute;inset:-20px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,200,130,.32),transparent 66%);
+  animation:pulse 2.2s var(--ease) infinite;
+}
+@keyframes pulse{0%,100%{opacity:.55;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
+.chest .box{font-size:96px;line-height:1;filter:drop-shadow(0 12px 24px rgba(0,0,0,.5));transition:transform .4s var(--ease)}
+.chest.shake .box{animation:shk .5s var(--ease)}
+@keyframes shk{0%,100%{transform:rotate(0)}20%{transform:rotate(-7deg)}40%{transform:rotate(6deg)}60%{transform:rotate(-4deg)}80%{transform:rotate(3deg)}}
+.chest-hint{font-size:13px;color:var(--text-dim);margin-bottom:8px}
+
+.voucher{
+  position:relative;border-radius:18px;padding:24px 22px;margin:6px 0 10px;
+  background:linear-gradient(150deg,rgba(240,200,130,.16),rgba(240,200,130,.04)),var(--panel);
+  border:1px solid rgba(240,200,130,.45);box-shadow:var(--shadow-lift);
+  animation:sealin .55s var(--ease) both;
+}
+.voucher .vk{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+.voucher .vval{font-family:'Playfair Display',serif;font-weight:900;font-size:2.4rem;color:var(--gold);line-height:1.05;margin:6px 0 2px}
+.voucher .vname{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14.5px;color:var(--text);margin-top:8px}
+.voucher .vname b{color:var(--gold)}
+.voucher .vexp{
+  display:inline-flex;align-items:center;gap:7px;margin-top:12px;
+  font-size:12.5px;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;
+  padding:6px 12px;border-radius:8px;color:var(--danger);
+  background:rgba(232,112,90,.1);border:1px solid rgba(232,112,90,.35);
+}
+.voucher .vexp svg{width:14px;height:14px}
+.locknote{
+  display:flex;align-items:center;gap:9px;justify-content:center;
+  font-size:12.5px;color:var(--text-mut);margin:14px 0 18px;
+}
+.locknote svg{width:15px;height:15px;color:var(--wa);flex:none}
+
+/* confetti */
+#confetti{position:absolute;inset:0;pointer-events:none;z-index:30;overflow:hidden}
+.conf{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px;opacity:.95;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.9}}
+
+/* ==================== FOOTER debug strip (build only) ==================== */
+#buildstrip{
+  position:absolute;bottom:0;left:0;right:0;z-index:40;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  color:var(--text-dim);background:rgba(12,13,15,.82);border-top:1px solid var(--line-soft);
+  letter-spacing:.03em;
+}
+#buildstrip b{color:var(--gold)}
+
+/* ==================== reduced motion ==================== */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important}
+  .screen{transition:opacity .2s linear;transform:none !important}
+  .pfill{transition:width .3s linear}
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== PERSISTENT TOP BAR (progress) ===== -->
+  <div id="topbar">
+    <div class="brandline">
+      <span class="mark">MP</span>
+      <span class="nm"><b>Master Point</b> · Missão Resgate</span>
+      <span class="pct" id="pctLabel">0%</span>
+    </div>
+    <div class="ptrack"><div class="pfill" id="pfill"></div></div>
+    <div class="psteps"><span class="lab" id="stepLab">Toque pra começar sua missão</span></div>
+  </div>
+
+  <!-- ===== STAGE ===== -->
+  <div id="stage">
+
+    <!-- 0 · START -->
+    <section class="screen active" id="s-start" data-progress="0">
+      <div class="screen-inner">
+        <span class="start-badge"><span class="d"></span>Experiência rápida · leva ~3 min</span>
+        <h1 class="big">E se a próxima <span class="accent">vaga fosse sua?</span></h1>
+        <p class="lead">Aqui na região apareceu uma oportunidade. A gente montou uma missão rápida pra você descobrir se essa vaga é sua e resgatar um benefício pra começar.</p>
+        <div class="start-meta">
+          <span class="m"><b>25 anos</b> de mercado</span>
+          <span class="m"><b>+8 mil</b> alunos</span>
+          <span class="m">Castelo + <b>online</b></span>
+        </div>
+        <button class="btn btn-gold" id="btnStart">
+          Começar minha missão
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="hint">Não é prova nem pegadinha. É pra você sentir que consegue.</p>
+      </div>
+    </section>
+
+    <!-- 1 · INCOMING CALL -->
+    <section class="screen" id="s-call" data-progress="5">
+      <div class="call-wrap">
+        <div class="call-top">
+          <div class="call-status"><span class="live"></span>Chamada recebida</div>
+          <div class="call-avatar">MP</div>
+          <div class="call-name">Master Point</div>
+          <div class="call-sub">Oportunidade na sua região…</div>
+        </div>
+        <div class="call-actions">
+          <div class="call-btn decline">
+            <div class="circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1z" transform="rotate(135 12 12)"/></svg>
+            </div>
+            <span class="cl">Recusar</span>
+          </div>
+          <div class="call-btn answer" id="btnAnswer">
+            <div class="circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#08110F" stroke-width="2.2" stroke-linecap="round"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1z"/></svg>
+            </div>
+            <span class="cl">Atender</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1b · IN-CALL AUDIO -->
+    <section class="screen" id="s-audio" data-progress="15">
+      <div class="screen-inner">
+        <div class="audio-orb">MP</div>
+        <div class="audio-bars" id="audioBars"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div style="margin-bottom:14px"><span class="ph">[PH-AUDIO] recrutador · a gravar (voz humana)</span></div>
+        <div class="transcript">
+          <div class="th"><span class="who">Recrutador · Master Point</span></div>
+          <p>"Oi! Aqui é da Master Point. Apareceu uma oportunidade aqui na região e a gente lembrou de você. Quer ver se essa vaga é sua? É rapidinho."</p>
+        </div>
+        <div class="audioctl">
+          <button class="play" id="btnPlayAudio" aria-label="Tocar áudio">
+            <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="meta">Áudio do recrutador<br>0:12 · toque pra ouvir</div>
+        </div>
+        <audio id="callAudio" preload="none" src="assets/placeholder-silence.wav"></audio>
+        <button class="btn btn-teal" id="btnSeeVaga">
+          Quero ver a vaga
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2 · TIKTOK / VSL -->
+    <section class="screen" id="s-vsl" data-progress="30">
+      <div class="tt-frame">
+        <div class="tt-topbar">
+          <span class="tab">Seguindo</span>
+          <span class="tab on">Pra você</span>
+        </div>
+        <div class="tt-video" id="ttVideo">
+          <div class="tt-playbtn" id="ttPlay" aria-label="Assistir vídeo">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="tt-vsl-label"><span class="ph">[PH-VSL] mini-VSL · vídeo a inserir</span></div>
+          <p class="cap">Aqui toca um vídeo curto (formato TikTok nativo) que mostra o que muda quando você se qualifica. Toque pra assistir.</p>
+        </div>
+        <div class="tt-rail">
+          <div class="tt-avatar">MP</div>
+          <button class="tt-rail rb" id="ttLike" style="all:unset;display:flex;flex-direction:column;align-items:center;gap:5px;color:#fff">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21l8.8-8.3a5 5 0 0 0 0-7.1z"/></svg></span>
+            <span class="n" id="likeCount">2.847</span>
+          </button>
+          <div class="rb"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-11.6 7.9L3 21l1.6-6.4A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span class="n" style="color:#fff">312</span></div>
+          <div class="rb"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12v8h16v-8M12 3v13M7 8l5-5 5 5"/></svg></span><span class="n" style="color:#fff">Enviar</span></div>
+        </div>
+        <div class="tt-caption">
+          <div class="user">@masterpointcursos</div>
+          <div class="txt">De aluno travado no computador a empregado. <span class="tag">#vagacerta</span> <span class="tag">#casteloDoPiaui</span> <span class="tag">#primeiroemprego</span></div>
+          <div class="music"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg> som original · Master Point</div>
+        </div>
+        <div class="tt-continue">
+          <button class="btn btn-gold" id="btnAfterVsl">
+            Continuar minha missão
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · WHATSAPP CHAT -->
+    <section class="screen" id="s-chat" data-progress="50">
+      <div class="wa-frame">
+        <div class="wa-head">
+          <span class="av">MP</span>
+          <div class="who">
+            <div class="nm">Recrutador Master Point</div>
+            <div class="st" id="waStatus">online</div>
+          </div>
+        </div>
+        <div class="wa-body" id="waBody"></div>
+        <div class="wa-replies" id="waReplies"></div>
+      </div>
+    </section>
+
+    <!-- 4 · QUIZ (trilha) -->
+    <section class="screen" id="s-quiz" data-progress="55">
+      <div class="screen-inner quiz-inner" id="quizHost"></div>
+    </section>
+
+    <!-- 4b · TRILHA REVEAL -->
+    <section class="screen" id="s-trail" data-progress="70">
+      <div class="screen-inner reveal-inner">
+        <div class="quiz-step-lab">Trilha ideal encontrada</div>
+        <div class="trail-badge">
+          <span class="lv">Sua trilha</span>
+          <span class="nm" id="trailName">Inicial</span>
+          <span class="pr" id="trailPrice">R$600 · ~4 meses</span>
+        </div>
+        <p class="trail-desc" id="trailDesc"></p>
+        <button class="btn btn-teal" id="btnAfterTrail">
+          Continuar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5a · NAME CAPTURE -->
+    <section class="screen" id="s-name" data-progress="78">
+      <div class="screen-inner">
+        <div class="eyebrow">Último passo antes da aprovação</div>
+        <h1 class="big" style="margin:12px 0 10px">Como você quer<br>na sua <span class="accent">Carta de Aprovação?</span></h1>
+        <p class="lead" style="margin-bottom:18px">Vou emitir uma carta no seu nome. Escreve do jeitinho que você quer ver.</p>
+        <div class="field">
+          <label for="nameInput">Seu nome</label>
+          <input type="text" id="nameInput" placeholder="Ex.: Maria da Silva" autocomplete="given-name" maxlength="40" enterkeyhint="done">
+        </div>
+        <button class="btn btn-gold" id="btnName" style="margin-top:8px">
+          Emitir minha carta
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="hint">Só o nome. O telefone você entrega depois, no WhatsApp.</p>
+      </div>
+    </section>
+
+    <!-- 5b · APPROVAL + CARTA -->
+    <section class="screen" id="s-approval" data-progress="85">
+      <div class="screen-inner reveal-inner">
+        <div class="seal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="quiz-step-lab" style="text-align:center">Parabéns, você passou</div>
+        <div class="carta">
+          <div class="ct-mark">MP</div>
+          <div class="ct-k">Carta de Aprovação</div>
+          <div class="ct-title">Você foi selecionado</div>
+          <div class="ct-name" id="cartaName">Seu Nome</div>
+          <div class="ct-body">Reconhecemos seu potencial pra trilha <b id="cartaTrail">Inicial</b>. Gente que começou exatamente como você já está empregada hoje.</div>
+          <div class="ct-foot">MASTER POINT CURSOS · CASTELO DO PIAUÍ · +8 MIL ALUNOS</div>
+        </div>
+        <div class="depo">
+          <div class="dav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-11.6 7.9L3 21l1.6-6.4A8.5 8.5 0 1 1 21 11.5z"/></svg></div>
+          <div class="dt">
+            <div class="dn">Depoimento de ex-aluno</div>
+            <div class="dq"><span class="ph">[PH-DEPO] real · Yan coletando</span></div>
+          </div>
+        </div>
+        <button class="btn btn-gold" id="btnAfterApproval">
+          Resgatar meu benefício
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6 · TREASURE / RESGATE -->
+    <section class="screen" id="s-reward" data-progress="90">
+      <div class="screen-inner reward-inner">
+        <div id="chestStage">
+          <div class="eyebrow" style="text-align:center">Você desbloqueou um benefício</div>
+          <div class="chest" id="chest">
+            <div class="glow"></div>
+            <svg class="box" viewBox="0 0 24 24" width="104" height="104" fill="none" stroke="url(#gg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Baú de resgate">
+              <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0C882"/><stop offset="1" stop-color="#C9971F"/></linearGradient></defs>
+              <rect x="3" y="8" width="18" height="12" rx="2"/>
+              <path d="M3 12h18M12 8v12"/>
+              <path d="M12 8s-1.6-3-4-3a2.2 2.2 0 0 0 0 4.4c2.4 0 4-1.4 4-1.4z"/>
+              <path d="M12 8s1.6-3 4-3a2.2 2.2 0 0 1 0 4.4c-2.4 0-4-1.4-4-1.4z"/>
+            </svg>
+          </div>
+          <p class="chest-hint">Toque no baú pra abrir</p>
+          <button class="btn btn-gold" id="btnOpenChest">Abrir meu resgate</button>
+        </div>
+        <div id="rewardStage" style="display:none">
+          <div class="voucher">
+            <span class="vk">Voucher Vaga Certa</span>
+            <div class="vval"><span class="ph">[PH-VOUCHER] R$__</span></div>
+            <div class="vname">reservado no nome de <b id="voucherName">você</b></div>
+            <div class="vexp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              expira em [prazo a definir]
+            </div>
+          </div>
+          <div class="locknote">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            Ele só ATIVA quando você fala com a gente no WhatsApp.
+          </div>
+          <button class="btn btn-wa" id="btnWhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm5.9 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2a1 1 0 0 1 .7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.8.9c.3.1.5.2.5.4.1.2.1.9-.1 1.6z"/></svg>
+            Resgatar minha vaga no WhatsApp
+          </button>
+          <p class="hint">Vamos abrir seu WhatsApp com a mensagem pronta. Você só aperta enviar.</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="confetti"></div>
+  </div>
+
+  <!-- build-only strip (remove antes de publicar) -->
+  <div id="buildstrip">BUILD INTERNO V1 · <b>não publicar</b> · placeholders marcados ◆</div>
+</div>
+
+<script>
+/* ============================================================================
+   MISSÃO RESGATE — game state + flow (V1)
+   ============================================================================ */
+
+/* ---- TRACKING STUBS (plugar pixel/CAPI depois — nada dispara agora) ---- */
+function track(evt, data){
+  // STUB de medição. Aqui entra fbq('trackCustom', evt, data) + CAPI no futuro.
+  // Deixado pronto pra plugar: game_start, phase_reached:N, trilha_definida,
+  // reward_claimed, wa_click.
+  try{ (window.__RESGATE_EVENTS = window.__RESGATE_EVENTS || []).push({evt, data, t:Date.now()}); }catch(e){}
+  console.log('[track]', evt, data||'');
+}
+
+/* ---- GAME STATE ---- */
+const GAME = {
+  nome: '',
+  trilha: null,          // 'Inicial' | 'Intermediária' | 'Avançada'
+  respostas: {},
+  progress: 0,
+  phase: 0,
+};
+
+const TRILHAS = {
+  'Inicial':       { price:'R$600 · ~4 meses',  desc:'Você começa do zero e destrava no computador com calma. É o ponto de partida pra quem busca o primeiro emprego.' },
+  'Intermediária': { price:'R$800 · ~6 meses',  desc:'Você já mexe um pouco e quer um emprego melhor. Aqui você ganha o pacote que o mercado mais pede.' },
+  'Avançada':      { price:'R$1.200 · até 10 meses', desc:'Você quer crescer no que já faz. Excel avançado, Power BI e IA pra sair na frente de quase todo mundo na região.' },
+};
+
+/* ---- SCREEN MANAGER ---- */
+const screens = Array.from(document.querySelectorAll('.screen'));
+let current = 's-start';
+
+function setProgress(pct){
+  pct = Math.max(0, Math.min(100, pct));
+  GAME.progress = pct;
+  const fill = document.getElementById('pfill');
+  const lab  = document.getElementById('pctLabel');
+  fill.style.width = pct + '%';
+  lab.textContent = Math.round(pct) + '%';
+  const done = pct >= 100;
+  fill.classList.toggle('full', done);
+  lab.classList.toggle('done', done);
+}
+
+const STEP_LABELS = {
+  's-start':'Toque pra começar sua missão',
+  's-call':'Master Point está te ligando…',
+  's-audio':'Ouça o recado do recrutador',
+  's-vsl':'Assista antes de continuar',
+  's-chat':'Responda o recrutador',
+  's-quiz':'Descubra sua trilha',
+  's-trail':'Sua trilha ideal',
+  's-name':'Emita sua Carta de Aprovação',
+  's-approval':'Você foi aprovado',
+  's-reward':'Resgate seu benefício',
+};
+
+function go(id, opts){
+  opts = opts || {};
+  if(id === current) return;
+  const from = document.getElementById(current);
+  const to   = document.getElementById(id);
+  from.classList.remove('active');
+  from.classList.add('leaving');
+  setTimeout(()=>from.classList.remove('leaving'), 500);
+  to.classList.add('active');
+  to.scrollTop = 0;
+  current = id;
+
+  const p = opts.progress != null ? opts.progress : parseFloat(to.dataset.progress || GAME.progress);
+  setProgress(p);
+  document.getElementById('stepLab').textContent = STEP_LABELS[id] || '';
+
+  const phaseIdx = screens.indexOf(to);
+  if(phaseIdx !== GAME.phase){
+    GAME.phase = phaseIdx;
+    track('phase_reached', {phase:phaseIdx, screen:id, progress:p});
+  }
+  if(opts.onEnter) opts.onEnter();
+}
+
+/* ============================================================================
+   PHASE 0 → 1: start + call
+   ============================================================================ */
+document.getElementById('btnStart').addEventListener('click', ()=>{
+  track('game_start');
+  go('s-call');
+});
+
+document.getElementById('btnAnswer').addEventListener('click', ()=>{
+  go('s-audio', {progress:15});
+});
+
+/* ---- audio placeholder controls ---- */
+const callAudio = document.getElementById('callAudio');
+const audioBars = document.getElementById('audioBars');
+const playIcon  = document.getElementById('playIcon');
+audioBars.classList.add('paused');
+document.getElementById('btnPlayAudio').addEventListener('click', ()=>{
+  if(callAudio.paused){
+    callAudio.play().catch(()=>{});
+    audioBars.classList.remove('paused');
+    playIcon.innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+  } else {
+    callAudio.pause();
+    audioBars.classList.add('paused');
+    playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+  }
+});
+callAudio.addEventListener('ended', ()=>{
+  audioBars.classList.add('paused');
+  playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+});
+
+document.getElementById('btnSeeVaga').addEventListener('click', ()=>{
+  callAudio.pause();
+  go('s-vsl', {progress:30});
+});
+
+/* ============================================================================
+   PHASE 2: TikTok / VSL
+   ============================================================================ */
+let liked = false;
+document.getElementById('ttPlay').addEventListener('click', ()=>{
+  // placeholder: toggle a "playing" hint; real <video> plugs in here.
+  const btn = document.getElementById('ttPlay');
+  btn.style.opacity = btn.style.opacity === '0.35' ? '1' : '0.35';
+});
+document.getElementById('ttLike').addEventListener('click', ()=>{
+  const el = document.getElementById('ttLike');
+  liked = !liked;
+  el.classList.toggle('liked', liked);
+  document.getElementById('likeCount').textContent = liked ? '2.848' : '2.847';
+});
+document.getElementById('btnAfterVsl').addEventListener('click', ()=>{
+  go('s-chat', {progress:50, onEnter:startChat});
+});
+
+/* ============================================================================
+   PHASE 3: WhatsApp chat (scripted)
+   ============================================================================ */
+const waBody    = document.getElementById('waBody');
+const waReplies = document.getElementById('waReplies');
+const waStatus  = document.getElementById('waStatus');
+let chatStarted = false;
+
+function nowTime(){
+  const d = new Date();
+  return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0');
+}
+function addBubble(text, side){
+  const b = document.createElement('div');
+  b.className = 'bubble ' + side;
+  b.innerHTML = text + '<span class="t">'+nowTime()+'</span>';
+  waBody.appendChild(b);
+  waBody.scrollTop = waBody.scrollHeight;
+  return b;
+}
+function showTyping(){
+  waStatus.textContent = 'digitando…';
+  const t = document.createElement('div');
+  t.className = 'typing';
+  t.id = 'typingIndicator';
+  t.innerHTML = '<span></span><span></span><span></span>';
+  waBody.appendChild(t);
+  waBody.scrollTop = waBody.scrollHeight;
+}
+function hideTyping(){
+  const t = document.getElementById('typingIndicator');
+  if(t) t.remove();
+  waStatus.textContent = 'online';
+}
+
+const CHAT_INTRO = [
+  'Oi! 👋 Aqui é o recrutador da Master Point.',
+  'Uma empresa aqui da região tá contratando e pediu pra indicar gente qualificada.',
+  '(É uma simulação leve, tá? Serve pra você viver como é ter uma vaga chegando pra você 😉)',
+  'Posso te fazer uma pergunta rapidinha?',
+];
+const QUICK_REPLIES = [
+  {t:'Quero muito! 🙌', ico:'❤'},
+  {t:'Tô precisando de emprego', ico:'💼'},
+  {t:'Nunca mexi em computador… será que dá?', ico:'🤔'},
+];
+
+function startChat(){
+  if(chatStarted) return;
+  chatStarted = true;
+  waBody.innerHTML = '';
+  waReplies.innerHTML = '';
+  let i = 0;
+  function next(){
+    if(i >= CHAT_INTRO.length){ hideTyping(); showReplies(); return; }
+    showTyping();
+    setTimeout(()=>{
+      hideTyping();
+      addBubble(CHAT_INTRO[i], 'them');
+      i++;
+      setTimeout(next, 620);
+    }, 900 + Math.random()*500);
+  }
+  next();
+}
+
+function showReplies(){
+  waReplies.innerHTML = '';
+  QUICK_REPLIES.forEach(r=>{
+    const btn = document.createElement('button');
+    btn.className = 'qr';
+    btn.innerHTML = '<svg class="rico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l6 6L20 6"/></svg>'+r.t;
+    btn.addEventListener('click', ()=>chatReply(r.t));
+    waReplies.appendChild(btn);
+  });
+}
+
+function chatReply(text){
+  waReplies.innerHTML = '';
+  addBubble(text, 'me');
+  GAME.respostas.abertura = text;
+  showTyping();
+  setTimeout(()=>{
+    hideTyping();
+    addBubble('Perfeito! Você tem o perfil. ✅', 'them');
+    setTimeout(()=>{
+      showTyping();
+      setTimeout(()=>{
+        hideTyping();
+        addBubble('Bora descobrir qual vaga combina com você?', 'them');
+        setTimeout(()=>{
+          const go2 = document.createElement('button');
+          go2.className = 'qr';
+          go2.style.borderColor = 'rgba(240,200,130,.5)';
+          go2.innerHTML = '<svg class="rico" viewBox="0 0 24 24" fill="none" stroke="#F0C882" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Bora! Descobrir minha vaga';
+          go2.addEventListener('click', ()=>go('s-quiz', {progress:55, onEnter:renderQuiz}));
+          waReplies.appendChild(go2);
+        }, 500);
+      }, 900);
+    }, 700);
+  }, 800);
+}
+
+/* ============================================================================
+   PHASE 4: quiz (mapeia persona → trilha)
+   ============================================================================ */
+const QUIZ = [
+  {
+    key:'objetivo',
+    q:'O que você mais quer agora?',
+    opts:[
+      {t:'Conseguir meu PRIMEIRO emprego', v:'Inicial'},
+      {t:'Um emprego MELHOR que o de hoje', v:'Intermediária'},
+      {t:'CRESCER no que eu já faço', v:'Avançada'},
+    ]
+  },
+  {
+    key:'computador',
+    q:'E no computador, como você se vira?',
+    opts:[
+      {t:'Quase nada, tenho medo de errar', v:'Inicial'},
+      {t:'Um pouco, o básico do dia a dia', v:'Intermediária'},
+      {t:'Bem, mas quero dominar de verdade', v:'Avançada'},
+    ]
+  },
+  {
+    key:'carteira',
+    q:'Você já trabalhou de carteira assinada?',
+    opts:[
+      {t:'Ainda não', v:'Inicial'},
+      {t:'Já sim, e quero voltar melhor', v:'Intermediária'},
+      {t:'Trabalho hoje e quero subir', v:'Avançada'},
+    ]
+  },
+];
+
+let quizIndex = 0;
+const quizHost = document.getElementById('quizHost');
+
+function renderQuiz(){
+  quizIndex = 0;
+  GAME.respostas.quiz = {};
+  showQuizQuestion();
+}
+function showQuizQuestion(){
+  const item = QUIZ[quizIndex];
+  quizHost.innerHTML = '';
+  const lab = document.createElement('div');
+  lab.className = 'quiz-step-lab';
+  lab.textContent = 'Pergunta '+(quizIndex+1)+' de '+QUIZ.length;
+  const q = document.createElement('div');
+  q.className = 'quiz-q';
+  q.textContent = item.q;
+  const wrap = document.createElement('div');
+  wrap.className = 'quiz-opts';
+  item.opts.forEach((o, idx)=>{
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.innerHTML = '<span class="letter">'+String.fromCharCode(65+idx)+'</span><span class="ot">'+o.t+'</span>';
+    b.addEventListener('click', ()=>{
+      wrap.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel');
+      GAME.respostas.quiz[item.key] = o.v;
+      const prog = 55 + ((quizIndex+1)/QUIZ.length)*(70-55);
+      setProgress(prog);
+      setTimeout(()=>{
+        quizIndex++;
+        if(quizIndex < QUIZ.length) showQuizQuestion();
+        else revealTrail();
+      }, 320);
+    });
+    wrap.appendChild(b);
+  });
+  quizHost.appendChild(lab);
+  quizHost.appendChild(q);
+  quizHost.appendChild(wrap);
+}
+
+function computeTrail(){
+  // Voto simples entre as respostas; empate resolve pelo objetivo, depois computador.
+  const votes = {'Inicial':0,'Intermediária':0,'Avançada':0};
+  Object.values(GAME.respostas.quiz).forEach(v=>votes[v]++);
+  let best = 'Inicial', top = -1;
+  ['Avançada','Intermediária','Inicial'].forEach(k=>{ if(votes[k] > top){ top=votes[k]; best=k; } });
+  // desempate por objetivo
+  const maxV = Math.max(...Object.values(votes));
+  const tied = Object.keys(votes).filter(k=>votes[k]===maxV);
+  if(tied.length > 1 && GAME.respostas.quiz.objetivo) best = GAME.respostas.quiz.objetivo;
+  return best;
+}
+
+function revealTrail(){
+  GAME.trilha = computeTrail();
+  track('trilha_definida', {trilha:GAME.trilha});
+  const info = TRILHAS[GAME.trilha];
+  document.getElementById('trailName').textContent  = GAME.trilha;
+  document.getElementById('trailPrice').textContent = info.price;
+  document.getElementById('trailDesc').textContent  = info.desc;
+  go('s-trail', {progress:70});
+}
+document.getElementById('btnAfterTrail').addEventListener('click', ()=>{
+  go('s-name', {progress:78});
+});
+
+/* ============================================================================
+   PHASE 5: name → approval + carta
+   ============================================================================ */
+const nameInput = document.getElementById('nameInput');
+function submitName(){
+  const v = nameInput.value.trim();
+  if(v.length < 2){ nameInput.focus(); nameInput.style.borderColor = 'var(--danger)'; return; }
+  GAME.nome = v.replace(/\s+/g,' ');
+  document.getElementById('cartaName').textContent  = GAME.nome;
+  document.getElementById('cartaTrail').textContent = GAME.trilha || 'Inicial';
+  document.getElementById('voucherName').textContent = GAME.nome;
+  go('s-approval', {progress:85});
+}
+document.getElementById('btnName').addEventListener('click', submitName);
+nameInput.addEventListener('keydown', e=>{ if(e.key==='Enter') submitName(); });
+document.getElementById('btnAfterApproval').addEventListener('click', ()=>{
+  go('s-reward', {progress:90});
+});
+
+/* ============================================================================
+   PHASE 6: treasure / reward + confetti + WhatsApp handoff
+   ============================================================================ */
+const chest = document.getElementById('chest');
+function openChest(){
+  chest.classList.add('shake');
+  setTimeout(()=>{
+    document.getElementById('chestStage').style.display = 'none';
+    document.getElementById('rewardStage').style.display = 'block';
+    setProgress(100);
+    document.getElementById('stepLab').textContent = 'Missão cumprida! 🎉';
+    track('reward_claimed', {trilha:GAME.trilha, nome:GAME.nome});
+    fireConfetti();
+    document.getElementById('s-reward').scrollTop = 0;
+  }, 520);
+}
+chest.addEventListener('click', openChest);
+document.getElementById('btnOpenChest').addEventListener('click', openChest);
+
+function fireConfetti(){
+  const host = document.getElementById('confetti');
+  host.innerHTML = '';
+  const colors = ['#F0C882','#C9971F','#2A9D8F','#6fd8c9','#F4F1EA'];
+  const N = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 70;
+  for(let i=0;i<N;i++){
+    const c = document.createElement('div');
+    c.className = 'conf';
+    c.style.left = Math.random()*100 + '%';
+    c.style.background = colors[i % colors.length];
+    c.style.animationDuration = (2.4 + Math.random()*1.8) + 's';
+    c.style.animationDelay = (Math.random()*0.5) + 's';
+    c.style.transform = 'rotate('+(Math.random()*360)+'deg)';
+    host.appendChild(c);
+  }
+  setTimeout(()=>{ host.innerHTML=''; }, 5200);
+}
+
+document.getElementById('btnWhatsApp').addEventListener('click', ()=>{
+  const nome   = GAME.nome || 'aluno(a)';
+  const trilha = GAME.trilha || 'Inicial';
+  track('wa_click', {nome, trilha});
+  const msg = 'Oi! Terminei a Missão Resgate da Master Point. Meu nome é '+nome+
+              ', minha trilha ideal foi a '+trilha+' e quero ativar meu voucher VAGA CERTA.';
+  const url = 'https://wa.me/5586998046242?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+});
+
+/* init */
+setProgress(0);
+track('page_view');
+</script>
+</body>
+</html>
