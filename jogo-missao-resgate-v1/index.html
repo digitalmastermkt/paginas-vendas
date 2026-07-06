@@ -18,7 +18,10 @@
   deep-link do V2 mantidos intactos.
   ----------------------------------------------------------------------------
   PLACEHOLDERS (conteúdo real pendente — marcados também na tela com selo âmbar):
-    [PH-AUDIO]  áudios do recrutador / aprovação (gravar com voz humana, NÃO IA)
+    [PH-AUDIO]  RESOLVIDO 06/07: recado do recrutador gerado (ElevenLabs, voz
+                Michael Almeida / Nordeste — voz de PERSONAGEM recrutador, liberada
+                pelo Salatiel). Toca no s-audio ao chegar. Alternativa curta em
+                assets/recrutador-2.mp3 (não usada). NÃO usar a voz clonada do Salatiel.
     [PH-VSL]    vídeo da tela TikTok (mini-VSL curta) — thumb é imagem de contexto
     [PH-DEPO]   depoimento real de ex-aluno (Yan coletando em Castelo)
     [PH-VOUCHER] valor do voucher (a definir com o Salatiel)
@@ -1074,18 +1077,17 @@ h1.big .accent{
         <div class="obj-tag" style="margin:0 auto 16px"><span class="n">✓</span><span class="tx">Chamada atendida · <b>Recado do recrutador</b></span></div>
         <div class="audio-orb photo-av"><img src="img/recruiter.webp" alt="Recrutador da Master Point" width="98" height="98"></div>
         <div class="audio-bars" id="audioBars"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <div style="margin-bottom:14px"><span class="ph">[PH-AUDIO] recrutador · a gravar (voz humana)</span></div>
         <div class="transcript">
           <div class="th"><span class="who">Recrutador · Master Point</span></div>
-          <p>"Oi! Aqui é da Master Point. Apareceu uma oportunidade aqui na região e a gente lembrou de você. Quer ver se essa vaga é sua? É rapidinho."</p>
+          <p>"Oi! Tudo bem? Aqui é da Master Point. Apareceu uma oportunidade boa aqui na nossa região e a gente lembrou de você. Ó, é o seguinte: tem empresa aqui pertinho precisando de gente qualificada, e eu vou te fazer umas perguntas bem rápidas pra achar a vaga certa pra você. Pode confiar, é tranquilo, não é prova nem pegadinha. Bora começar?"</p>
         </div>
         <div class="audioctl">
           <button class="play" id="btnPlayAudio" aria-label="Tocar áudio">
             <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </button>
-          <div class="meta">Áudio do recrutador<br>0:12 · toque pra ouvir</div>
+          <div class="meta">Áudio do recrutador<br>0:22 · toque pra ouvir de novo</div>
         </div>
-        <audio id="callAudio" preload="none" src="assets/placeholder-silence.wav"></audio>
+        <audio id="callAudio" preload="auto" src="assets/recrutador-1.mp3"></audio>
         <button class="btn btn-teal" id="btnSeeVaga">
           Quero ver a vaga
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -1467,31 +1469,38 @@ document.getElementById('btnStart').addEventListener('click', ()=>{
   go('s-brief', {progress:12});
 });
 
-document.getElementById('btnBrief').addEventListener('click', ()=>{
-  track('briefing_accepted');
-  go('s-audio', {progress:18});
-});
-
-/* ---- audio placeholder controls ---- */
+/* ---- audio controls (recado do recrutador) ---- */
 const callAudio = document.getElementById('callAudio');
 const audioBars = document.getElementById('audioBars');
 const playIcon  = document.getElementById('playIcon');
 audioBars.classList.add('paused');
+const PLAY_ICON  = '<path d="M8 5v14l11-7z"/>';
+const PAUSE_ICON = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+function audioUiPlaying(){ audioBars.classList.remove('paused'); playIcon.innerHTML = PAUSE_ICON; }
+function audioUiPaused(){ audioBars.classList.add('paused'); playIcon.innerHTML = PLAY_ICON; }
+
+document.getElementById('btnBrief').addEventListener('click', ()=>{
+  track('briefing_accepted');
+  go('s-audio', {progress:18});
+  /* o recado toca automaticamente ao chegar: este é gesto do usuário (clique),
+     então o autoplay do áudio é permitido pelos navegadores mobile. */
+  try{
+    callAudio.currentTime = 0;
+    callAudio.play().then(()=>{ audioUiPlaying(); track('recruiter_audio_played'); })
+                    .catch(()=>{ audioUiPaused(); }); // se bloquear, fica no botão de play
+  }catch(e){ audioUiPaused(); }
+});
+
 document.getElementById('btnPlayAudio').addEventListener('click', ()=>{
   if(callAudio.paused){
-    callAudio.play().catch(()=>{});
-    audioBars.classList.remove('paused');
-    playIcon.innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+    callAudio.play().then(audioUiPlaying).catch(()=>{});
   } else {
     callAudio.pause();
-    audioBars.classList.add('paused');
-    playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    audioUiPaused();
   }
 });
-callAudio.addEventListener('ended', ()=>{
-  audioBars.classList.add('paused');
-  playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-});
+callAudio.addEventListener('ended', audioUiPaused);
+callAudio.addEventListener('pause', ()=>{ if(!callAudio.ended) audioUiPaused(); });
 
 document.getElementById('btnSeeVaga').addEventListener('click', ()=>{
   callAudio.pause();
