@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missão Resgate — Funil · Master Point Cursos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#F0C882;
+  --gold-deep:#C9971F;
+  --teal:#2A9D8F;
+  --teal-deep:#1F7A6F;
+  --ink:#0F0F0F;
+  --ink-soft:#1B1B1D;
+  --panel:#17181B;
+  --panel-2:#1E2024;
+  --line:#2E3036;
+  --line-soft:#26282D;
+  --text:#F4F1EA;
+  --text-mut:#C7C2B7;
+  --text-dim:#A6A299;
+  --bg:#0C0D0F;
+  --stage-game:#2A9D8F;
+  --stage-wa:#3FBF6B;
+  --stage-sale:#F0C882;
+  --shadow:0 18px 40px -24px rgba(0,0,0,.9);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(42,157,143,.10), transparent 60%),
+    radial-gradient(900px 500px at 90% 105%, rgba(240,200,130,.07), transparent 55%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:0 0 72px;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+/* ---------- HERO ---------- */
+header.hero{
+  padding:46px 20px 34px;
+  text-align:center;
+  position:relative;
+}
+.brandrow{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:13.5px;font-weight:600;
+  color:var(--text-mut);
+  margin-bottom:20px;
+}
+.brandrow b{color:var(--teal);font-weight:700}
+.brandrow .sep{color:var(--text-dim)}
+.brandrow .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(42,157,143,.18);flex:none}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-weight:800;
+  font-size:clamp(2.3rem,8vw,3.6rem);
+  line-height:1.02;
+  letter-spacing:-.02em;
+  color:var(--text);
+  text-wrap:balance;
+}
+.hero h1 .accent{color:var(--gold)}
+.hero .sub{
+  margin:16px auto 0;max-width:520px;
+  font-size:clamp(.98rem,3.6vw,1.08rem);
+  color:var(--text-mut);
+}
+.hero .meta{
+  margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+}
+.hero .chip{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:12.5px;font-weight:600;
+  padding:6px 12px;border-radius:8px;
+  border:1px solid var(--line);background:var(--panel);color:var(--text-mut);
+}
+.hero .chip b{color:var(--gold);font-weight:700}
+
+/* ---------- LEGEND ---------- */
+.legend{
+  display:grid;grid-template-columns:1fr;gap:10px;
+  margin:30px auto 8px;
+}
+@media(min-width:560px){.legend{grid-template-columns:repeat(3,1fr)}}
+.legend .lg{
+  display:flex;align-items:center;gap:11px;
+  padding:12px 14px;border-radius:12px;
+  border:1px solid var(--line);background:var(--panel);
+}
+.legend .swatch{width:14px;height:14px;border-radius:5px;flex:none}
+.legend .lg .t{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px}
+.legend .lg .d{font-size:12px;color:var(--text-dim);display:block}
+.sw-game{background:var(--stage-game)}
+.sw-wa{background:var(--stage-wa)}
+.sw-sale{background:var(--stage-sale)}
+
+/* ---------- STAGE GROUP BANDS ---------- */
+.band{
+  margin-top:26px;border-radius:20px;padding:20px 16px 22px;
+  border:1px solid var(--line-soft);
+  position:relative;
+}
+.band.game{background:linear-gradient(180deg, rgba(42,157,143,.075), rgba(42,157,143,.02));border-color:rgba(42,157,143,.28)}
+.band.wa{background:linear-gradient(180deg, rgba(63,191,107,.08), rgba(63,191,107,.02));border-color:rgba(63,191,107,.30)}
+.band.sale{background:linear-gradient(180deg, rgba(240,200,130,.09), rgba(240,200,130,.025));border-color:rgba(240,200,130,.32)}
+.band-head{
+  display:flex;align-items:center;gap:12px;margin:0 4px 16px;
+}
+.band-head .ico{
+  width:38px;height:38px;border-radius:11px;flex:none;
+  display:grid;place-items:center;font-size:19px;
+}
+.band.game .ico{background:rgba(42,157,143,.16);border:1px solid rgba(42,157,143,.4)}
+.band.wa .ico{background:rgba(63,191,107,.16);border:1px solid rgba(63,191,107,.42)}
+.band.sale .ico{background:rgba(240,200,130,.16);border:1px solid rgba(240,200,130,.44)}
+.band-head .txt .k{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.band.game .k{color:var(--teal)}
+.band.wa .k{color:var(--stage-wa)}
+.band.sale .k{color:var(--gold)}
+.band-head .txt h2{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:1.18rem;letter-spacing:-.01em;color:var(--text);line-height:1.1;
+}
+
+/* ---------- STEP CARDS ---------- */
+.steps{display:flex;flex-direction:column}
+.step{
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px 16px 16px 15px;
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:14px;
+  align-items:start;
+}
+.step .num{
+  width:34px;height:34px;border-radius:10px;flex:none;
+  display:grid;place-items:center;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px;
+  color:var(--ink);
+}
+.game .step .num{background:var(--teal)}
+.wa .step .num{background:var(--stage-wa)}
+.sale .step .num{background:var(--gold)}
+.step .body{min-width:0}
+.step .title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;
+  font-size:1.02rem;line-height:1.25;color:var(--text);letter-spacing:-.005em;
+}
+.step .desc{font-size:13.5px;color:var(--text-mut);margin-top:5px}
+.step .emo{
+  display:inline-flex;align-items:center;gap:7px;margin-top:11px;
+  font-size:12.5px;font-weight:600;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  padding:5px 11px;border-radius:8px;
+  background:var(--panel-2);border:1px solid var(--line);color:var(--gold);
+}
+.step .emo .lab{color:var(--text-dim);font-weight:600}
+.step .emo svg{width:13px;height:13px;flex:none}
+
+/* progress mini-bar on game steps */
+.pbar{margin-top:12px}
+.pbar .pmeta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+.pbar .pmeta .pl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim)}
+.pbar .pmeta .pv{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;color:var(--teal)}
+.pbar .track{height:7px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden;border:1px solid var(--line-soft)}
+.pbar .fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--teal),#6fd8c9)}
+
+/* connector arrow between steps */
+.arrow{
+  height:30px;position:relative;margin:0 auto;width:2px;
+}
+.arrow::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:2px;height:100%;background:linear-gradient(var(--line),var(--text-dim))}
+.arrow::after{content:"";position:absolute;left:50%;bottom:1px;transform:translateX(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--text-dim)}
+.arrow.big{height:14px}
+
+/* band-to-band big connector */
+.flowlink{
+  display:flex;flex-direction:column;align-items:center;gap:0;margin:6px auto 0;
+}
+.flowlink .cap{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:12.5px;
+  color:var(--text);background:var(--panel-2);border:1px solid var(--line);
+  border-radius:999px;padding:7px 15px;margin-bottom:0;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.flowlink .cap.wa{color:var(--stage-wa);border-color:rgba(63,191,107,.4)}
+.flowlink .cap.sale{color:var(--gold);border-color:rgba(240,200,130,.4)}
+.flowlink .stem{width:2px;height:20px;background:linear-gradient(var(--text-dim),var(--line))}
+.flowlink .stem.top{background:linear-gradient(var(--line),var(--text-dim))}
+
+/* ---------- TRACKS (matrículas) ---------- */
+.tracks{display:grid;grid-template-columns:1fr;gap:10px;margin-top:4px}
+@media(min-width:560px){.tracks{grid-template-columns:repeat(3,1fr)}}
+.track{
+  border:1px solid rgba(240,200,130,.3);border-radius:13px;padding:14px;
+  background:linear-gradient(180deg,rgba(240,200,130,.06),transparent);
+}
+.track .lv{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+.track .nm{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1rem;margin:4px 0 2px;color:var(--text)}
+.track .pr{font-family:'Playfair Display',serif;font-weight:700;font-size:1.35rem;color:var(--gold)}
+.track .du{font-size:12px;color:var(--text-dim);margin-top:2px}
+.backend{
+  margin-top:12px;padding:13px 15px;border-radius:12px;
+  border:1px dashed rgba(240,200,130,.4);background:rgba(240,200,130,.04);
+  font-size:13px;color:var(--text-mut);
+}
+.backend b{color:var(--gold);font-family:'Plus Jakarta Sans',sans-serif}
+
+/* ---------- MEASUREMENT PANEL ---------- */
+.measure{
+  margin-top:34px;border:1px solid rgba(42,157,143,.32);border-radius:20px;
+  padding:22px 18px;background:linear-gradient(180deg,rgba(42,157,143,.06),rgba(42,157,143,.015));
+}
+.measure .mh{display:flex;align-items:center;gap:11px;margin-bottom:6px}
+.measure .mh .ico{width:34px;height:34px;border-radius:10px;background:rgba(42,157,143,.16);border:1px solid rgba(42,157,143,.4);display:grid;place-items:center;font-size:17px}
+.measure .mh h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.12rem;color:var(--text)}
+.measure .msub{font-size:13px;color:var(--text-mut);margin:0 2px 16px}
+.events{display:flex;flex-direction:column;gap:8px}
+.ev{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+  padding:11px 13px;border-radius:11px;background:var(--panel);border:1px solid var(--line);
+}
+.ev .ename{display:flex;align-items:center;gap:10px;min-width:0}
+.ev .edot{width:9px;height:9px;border-radius:50%;flex:none}
+.ev .etxt{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13.5px;color:var(--text)}
+.ev .etag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);white-space:nowrap;grid-column:2}
+.ev .estage{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);white-space:nowrap}
+.measure .note{
+  margin-top:14px;font-size:12.5px;color:var(--text-dim);
+  padding:11px 13px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--line-soft);
+}
+.measure .note b{color:var(--gold)}
+
+/* footer */
+footer{margin-top:38px;text-align:center;font-size:12px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
+footer .fl{margin-top:6px;color:var(--text-dim)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="brandrow"><span class="dot"></span><b>Master Point Cursos</b><span class="sep">·</span>Peça interna de revisão</div>
+  <h1><span class="accent">Missão Resgate</span><br>— Funil</h1>
+  <p class="sub">Do anúncio à matrícula: o caminho que o lead percorre, fase a fase, com a emoção e a medição de cada etapa.</p>
+  <div class="meta">
+    <span class="chip">Campanha B2C · <b>empregabilidade</b></span>
+    <span class="chip">Castelo do Piauí + <b>online</b></span>
+    <span class="chip"><b>“E se a próxima vaga fosse SUA?”</b></span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="lg"><span class="swatch sw-game"></span><span><span class="t">No jogo</span><span class="d">A experiência gamificada</span></span></div>
+    <div class="lg"><span class="swatch sw-wa"></span><span><span class="t">No WhatsApp</span><span class="d">Resgate + SDR fecha</span></span></div>
+    <div class="lg"><span class="swatch sw-sale"></span><span><span class="t">Matrícula</span><span class="d">Trilha + backend</span></span></div>
+  </div>
+
+  <!-- ===== ENTRADA: ANÚNCIO ===== -->
+  <div class="band game" style="background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);border-color:var(--line)">
+    <div class="band-head">
+      <div class="ico" style="background:rgba(255,255,255,.06);border:1px solid var(--line)">📣</div>
+      <div class="txt"><span class="k" style="color:var(--text-dim)">Entrada · topo de funil</span><h2>O Anúncio</h2></div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num" style="background:#fff;color:var(--ink)">1</div>
+        <div class="body">
+          <div class="title">Anúncio no Instagram / TikTok</div>
+          <div class="desc">Vídeo vertical na voz do Salatiel: “você foi selecionado / a vaga certa é sua”. Objetivo único: <b style="color:var(--gold)">o clique</b> pra página-jogo.</div>
+          <div class="emo"><span class="lab">Emoção:</span> curiosidade &amp; “isso é comigo?”</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flowlink"><div class="stem top"></div><div class="cap">Clique no link → entra no jogo</div><div class="stem"></div></div>
+
+  <!-- ===== BAND 1: NO JOGO ===== -->
+  <div class="band game">
+    <div class="band-head">
+      <div class="ico">🎮</div>
+      <div class="txt"><span class="k">Etapa 1 · na página</span><h2>Página-jogo “Missão Resgate”</h2></div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="num">2</div>
+        <div class="body">
+          <div class="title">Chamada recebida + áudio</div>
+          <div class="desc">Tela abre imitando uma ligação (“Master Point está te ligando…”). Ela atende, ouve um áudio caloroso: apareceu uma oportunidade na região.</div>
+          <div class="emo"><span class="lab">Emoção:</span> curiosidade fisgada</div>
+          <div class="pbar"><div class="pmeta"><span class="pl">Progresso</span><span class="pv">15%</span></div><div class="track"><div class="fill" style="width:15%"></div></div></div>
+        </div>
+      </div>
+      <div class="arrow"></div>
+
+      <div class="step">
+        <div class="num">3</div>
+        <div class="body">
+          <div class="title">Tela estilo TikTok · VSL curta</div>
+          <div class="desc">Player nativo de TikTok tocando uma mini-VSL. Formato que ela já consome sem guarda: vende o contexto/sonho antes dos quizzes.</div>
+          <div class="emo"><span class="lab">Emoção:</span> imersão &amp; desejo</div>
+          <div class="pbar"><div class="pmeta"><span class="pl">Progresso</span><span class="pv">25%</span></div><div class="track"><div class="fill" style="width:25%"></div></div></div>
+        </div>
+      </div>
+      <div class="arrow"></div>
+
+      <div class="step">
+        <div class="num">4</div>
+        <div class="body">
+          <div class="title">Chat estilo WhatsApp</div>
+          <div class="desc">Simulador de conversa (balões, “digitando…”). O “recrutador” apresenta a vaga e ela escolhe uma resposta rápida. Qualquer resposta avança.</div>
+          <div class="emo"><span class="lab">Emoção:</span> “fui aceito”</div>
+          <div class="pbar"><div class="pmeta"><span class="pl">Progresso</span><span class="pv">40%</span></div><div class="track"><div class="fill" style="width:40%"></div></div></div>
+        </div>
+      </div>
+      <div class="arrow"></div>
+
+      <div class="step">
+        <div class="num">5</div>
+        <div class="body">
+          <div class="title">Quiz “você já sabe mais do que imagina”</div>
+          <div class="desc">2-3 perguntas fáceis do dia a dia (usa WhatsApp? manda áudio?). Todas dão “certo” + selo. Derruba a crença “não nasci pra isso”.</div>
+          <div class="emo"><span class="lab">Emoção:</span> “eu já sei coisa”</div>
+          <div class="pbar"><div class="pmeta"><span class="pl">Progresso</span><span class="pv">55%</span></div><div class="track"><div class="fill" style="width:55%"></div></div></div>
+        </div>
+      </div>
+      <div class="arrow"></div>
+
+      <div class="step">
+        <div class="num">6</div>
+        <div class="body">
+          <div class="title">Quiz que descobre a trilha</div>
+          <div class="desc">Segmentação disfarçada de diversão: revela “sua trilha ideal é <b style="color:var(--gold)">Inicial / Intermediária / Avançada</b>”. Personalização que gera relevância.</div>
+          <div class="emo"><span class="lab">Emoção:</span> “isso é pra mim”</div>
+          <div class="pbar"><div class="pmeta"><span class="pl">Progresso</span><span class="pv">70%</span></div><div class="track"><div class="fill" style="width:70%"></div></div></div>
+        </div>
+      </div>
+      <div class="arrow"></div>
+
+      <div class="step">
+        <div class="num">7</div>
+        <div class="body">
+          <div class="title">Aprovação + prova social</div>
+          <div class="desc">“Parabéns, você passou.” Carta de Aprovação com o nome dela + depoimento de ex-aluno em formato TikTok (crível, nativo). Compromisso selado.</div>
+          <div class="emo"><span class="lab">Emoção:</span> “fui aprovado”</div>
+          <div class="pbar"><div class="pmeta"><span class="pl">Progresso</span><span class="pv">85%</span></div><div class="track"><div class="fill" style="width:85%"></div></div></div>
+        </div>
+      </div>
+      <div class="arrow"></div>
+
+      <div class="step">
+        <div class="num">8</div>
+        <div class="body">
+          <div class="title">Resgate do bônus · 100%</div>
+          <div class="desc">Baú/cofre pra abrir. Resgata o <b style="color:var(--gold)">voucher</b>: “reservado no seu nome, expira em [prazo]”. Aversão à perda. Confete, missão cumprida. Mas <b style="color:var(--stage-wa)">só ATIVA no WhatsApp.</b></div>
+          <div class="emo"><span class="lab">Emoção:</span> conquista + medo de perder</div>
+          <div class="pbar"><div class="pmeta"><span class="pl">Progresso</span><span class="pv" style="color:var(--gold)">100%</span></div><div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,var(--teal),var(--gold))"></div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="flowlink"><div class="stem top"></div><div class="cap wa">Botão “Resgatar no WhatsApp” 💬</div><div class="stem"></div></div>
+
+  <!-- ===== BAND 2: NO WHATSAPP ===== -->
+  <div class="band wa">
+    <div class="band-head">
+      <div class="ico">💬</div>
+      <div class="txt"><span class="k">Etapa 2 · handoff</span><h2>No WhatsApp · o SDR fecha</h2></div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">9</div>
+        <div class="body">
+          <div class="title">Handoff com mensagem pré-preenchida</div>
+          <div class="desc">Abre <b>wa.me/5586998046242</b> já com nome + trilha + voucher. O SDR não recebe um “oi” cru: recebe um lead qualificado e pré-vendido.</div>
+          <div class="emo"><span class="lab">Emoção:</span> continuidade sem atrito</div>
+        </div>
+      </div>
+      <div class="arrow"></div>
+
+      <div class="step">
+        <div class="num">10</div>
+        <div class="body">
+          <div class="title">SDR ativa o voucher &amp; fecha</div>
+          <div class="desc">Entra já sabendo tudo: “vim ativar seu voucher”. Confirma a dor, ancora preço com desconto, quebra objeção e fecha por técnica OU (nunca sim/não).</div>
+          <div class="emo"><span class="lab">Emoção:</span> confiança &amp; decisão</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flowlink"><div class="stem top"></div><div class="cap sale">Matrícula confirmada ✓</div><div class="stem"></div></div>
+
+  <!-- ===== BAND 3: MATRÍCULA ===== -->
+  <div class="band sale">
+    <div class="band-head">
+      <div class="ico">🎓</div>
+      <div class="txt"><span class="k">Etapa 3 · conversão</span><h2>Matrícula na trilha</h2></div>
+    </div>
+
+    <div class="tracks">
+      <div class="track"><div class="lv">Trilha</div><div class="nm">Inicial</div><div class="pr">R$600</div><div class="du">~4 meses</div></div>
+      <div class="track"><div class="lv">Trilha</div><div class="nm">Intermediária</div><div class="pr">R$800</div><div class="du">~6 meses</div></div>
+      <div class="track"><div class="lv">Trilha</div><div class="nm">Avançada</div><div class="pr">R$1.200</div><div class="du">até 10 meses</div></div>
+    </div>
+
+    <div class="backend">
+      <b>Backend natural →</b> escada de valor. Quem entra na Inicial sobe pra Intermediária e Avançada ao longo do tempo. O primeiro sim abre a esteira.
+    </div>
+  </div>
+
+  <!-- ===== MEASUREMENT LAYER ===== -->
+  <div class="measure">
+    <div class="mh">
+      <div class="ico">📊</div>
+      <h2>Medição por fase</h2>
+    </div>
+    <p class="msub">Cada passo dispara um evento (pixel + CAPI). Assim dá pra ver <b style="color:var(--gold)">onde o funil vaza</b> e otimizar o tráfego.</p>
+
+    <div class="events">
+      <div class="ev"><div class="ename"><span class="edot" style="background:var(--teal)"></span><span class="etxt">Começou o jogo</span></div><span class="etag">game_start</span><span class="estage">passo 2</span></div>
+      <div class="ev"><div class="ename"><span class="edot" style="background:var(--teal)"></span><span class="etxt">Chegou na fase X</span></div><span class="etag">phase_reached</span><span class="estage">passos 3–7</span></div>
+      <div class="ev"><div class="ename"><span class="edot" style="background:var(--gold)"></span><span class="etxt">Resgatou o voucher</span></div><span class="etag">reward_claimed</span><span class="estage">passo 8 · 100%</span></div>
+      <div class="ev"><div class="ename"><span class="edot" style="background:var(--stage-wa)"></span><span class="etxt">Clicou no WhatsApp</span></div><span class="etag">wa_click</span><span class="estage">passo 9</span></div>
+      <div class="ev"><div class="ename"><span class="edot" style="background:var(--gold-deep)"></span><span class="etxt">Matriculou</span></div><span class="etag">enrolled</span><span class="estage">passo 10</span></div>
+    </div>
+
+    <div class="note">Cada queda entre dois eventos revela a fase que perde gente. Ex.: muitos <b>reward_claimed</b> mas poucos <b>wa_click</b> = o handoff está vazando, não o jogo.</div>
+  </div>
+
+  <footer>
+    Missão Resgate · Funil · visualização interna
+    <div class="fl">Master Point Cursos · preparado pela Maia · 06/07/2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
