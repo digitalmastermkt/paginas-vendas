@@ -1,0 +1,17 @@
+Sound: phone-vibrate.mp3 (tela de chamada cold-open "Missao Resgate")
+
+FONTE: Freesound.org
+Autor: mobaudio
+Titulo original: "cell phone vibrate glass_loopable.wav"
+ID: 384487  |  URL: https://freesound.org/s/384487/
+LICENCA: Creative Commons 0 (CC0 / Public Domain) — uso comercial livre, sem atribuicao obrigatoria.
+Confirmado CC0 em https://freesound.org/s/384487/ (2026-07-06).
+
+EDICAO (ffmpeg):
+- Origem: preview mp3 (48kHz mono), som de motor de vibracao ~180-300Hz com harmonicos, gravado sobre vidro (ressonancia de mesa real).
+- Extraidos 2 ciclos de buzz (bzzz 0.55s + gap 0.45s) x2, + ~0.9s de pausa final -> loop de ~2.83s (padrao bzzz-bzzz-pausa).
+- afade 0.02s nas emendas p/ loop suave; loudnorm I=-16 TP=-1.5 + alimiter (mean -19dB / peak -1.5dB, sem clipping).
+- Encode: libmp3lame 96kbps, 44.1kHz mono.
+
+Bruto original preservado neste diretorio: freesound_384487_cell-phone-vibrate-glass-loopable.mp3
+Substituiu o buzz sintetizado senoidal anterior.
