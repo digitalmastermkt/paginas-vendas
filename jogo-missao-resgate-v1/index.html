@@ -18,9 +18,9 @@
   deep-link do V2 mantidos intactos.
   ----------------------------------------------------------------------------
   PLACEHOLDERS (conteúdo real pendente — marcados também na tela com selo âmbar):
-    [PH-AUDIO]  RESOLVIDO 06/07: recado do recrutador gerado (ElevenLabs, voz
-                Michael Almeida / Nordeste — voz de PERSONAGEM recrutador, liberada
-                pelo Salatiel). Toca no s-audio ao chegar. Alternativa curta em
+    [PH-AUDIO]  RESOLVIDO 06/07: recado da recrutadora gerado (ElevenLabs, voz
+                Roberta - Casual Sales / feminina PT-BR — voz de PERSONAGEM recrutadora).
+                Toca no s-audio ao chegar. Alternativa curta em
                 assets/recrutador-2.mp3 (não usada). NÃO usar a voz clonada do Salatiel.
     [PH-VSL]    vídeo da tela TikTok (mini-VSL curta) — thumb é imagem de contexto
     [PH-DEPO]   depoimento real de ex-aluno (Yan coletando em Castelo)
@@ -992,8 +992,8 @@ h1.big .accent{
           <div class="call-status"><span class="live"></span>Chamada recebida</div>
           <!-- LOGO: a logo oficial da Master Point já está disponível em img/logo-masterpoint.png
                (chip claro). Se o Salatiel pedir, trocar o img do avatar abaixo (img/recruiter.webp)
-               pela logo. Por ora mantém o recrutador. Manter .photo-av. -->
-          <div class="call-avatar photo-av"><img src="img/recruiter.webp" alt="Recrutador da Master Point" width="122" height="122"></div>
+               pela logo. Por ora mantém a recrutadora. Manter .photo-av. -->
+          <div class="call-avatar photo-av"><img src="img/recruiter.webp" alt="Recrutadora da Master Point" width="122" height="122"></div>
           <div class="call-name">Master Point</div>
           <div class="call-sub">Oportunidade na sua região…</div>
         </div>
@@ -1049,7 +1049,7 @@ h1.big .accent{
           <div class="dk">Seus 5 objetivos</div>
           <ul class="obj-list">
             <li><span class="oi">1</span><span class="ol"><b>A oportunidade.</b> Veja a vaga que apareceu.</span></li>
-            <li><span class="oi">2</span><span class="ol"><b>Prove seu talento.</b> Converse com o recrutador.</span></li>
+            <li><span class="oi">2</span><span class="ol"><b>Prove seu talento.</b> Converse com a recrutadora.</span></li>
             <li><span class="oi">3</span><span class="ol"><b>Encontre sua trilha.</b> Descubra o caminho ideal.</span></li>
             <li><span class="oi">4</span><span class="ol"><b>Seja aprovado.</b> Receba sua Carta de Aprovação.</span></li>
             <li><span class="oi">5</span><span class="ol"><b>Resgate a recompensa.</b> Abra seu benefício.</span></li>
@@ -1065,27 +1065,27 @@ h1.big .accent{
         </div>
 
         <button class="btn btn-gold" id="btnBrief">
-          Ouvir o recado do recrutador
+          Ouvir o recado da recrutadora
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
       </div>
     </section>
 
-    <!-- 1b · IN-CALL AUDIO (recado do recrutador, logo após atender) -->
+    <!-- 1b · IN-CALL AUDIO (recado da recrutadora, logo após atender) -->
     <section class="screen" id="s-audio" data-progress="18">
       <div class="screen-inner">
-        <div class="obj-tag" style="margin:0 auto 16px"><span class="n">✓</span><span class="tx">Chamada atendida · <b>Recado do recrutador</b></span></div>
-        <div class="audio-orb photo-av"><img src="img/recruiter.webp" alt="Recrutador da Master Point" width="98" height="98"></div>
+        <div class="obj-tag" style="margin:0 auto 16px"><span class="n">✓</span><span class="tx">Chamada atendida · <b>Recado da recrutadora</b></span></div>
+        <div class="audio-orb photo-av"><img src="img/recruiter.webp" alt="Recrutadora da Master Point" width="98" height="98"></div>
         <div class="audio-bars" id="audioBars"><span></span><span></span><span></span><span></span><span></span><span></span></div>
         <div class="transcript">
-          <div class="th"><span class="who">Recrutador · Master Point</span></div>
+          <div class="th"><span class="who">Recrutadora · Master Point</span></div>
           <p>"Oi! Tudo bem? Aqui é da Master Point. Apareceu uma oportunidade boa aqui na nossa região e a gente lembrou de você. Ó, é o seguinte: tem empresa aqui pertinho precisando de gente qualificada, e eu vou te fazer umas perguntas bem rápidas pra achar a vaga certa pra você. Pode confiar, é tranquilo, não é prova nem pegadinha. Bora começar?"</p>
         </div>
         <div class="audioctl">
           <button class="play" id="btnPlayAudio" aria-label="Tocar áudio">
             <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </button>
-          <div class="meta">Áudio do recrutador<br>0:22 · toque pra ouvir de novo</div>
+          <div class="meta">Áudio da recrutadora<br>0:22 · toque pra ouvir de novo</div>
         </div>
         <audio id="callAudio" preload="auto" src="assets/recrutador-1.mp3"></audio>
         <button class="btn btn-teal" id="btnSeeVaga">
@@ -1137,9 +1137,9 @@ h1.big .accent{
     <section class="screen" id="s-chat" data-progress="50">
       <div class="wa-frame">
         <div class="wa-head">
-          <span class="av photo-av" style="overflow:hidden"><img src="img/recruiter.webp" alt="Recrutador Master Point" width="40" height="40"></span>
+          <span class="av photo-av" style="overflow:hidden"><img src="img/recruiter.webp" alt="Recrutadora Master Point" width="40" height="40"></span>
           <div class="who">
-            <div class="nm">Recrutador Master Point</div>
+            <div class="nm">Recrutadora Master Point</div>
             <div class="st" id="waStatus">online</div>
           </div>
         </div>
@@ -1316,7 +1316,7 @@ const STEP_LABELS = {
   's-call':'Chamada recebida',
   's-start':'Aceite a missão',
   's-brief':'Briefing da missão',
-  's-audio':'Recado do recrutador',
+  's-audio':'Recado da recrutadora',
   's-vsl':'Obj. 1 · A oportunidade',
   's-chat':'Obj. 2 · Prove seu talento',
   's-quiz':'Obj. 3 · Encontre sua trilha',
@@ -1469,7 +1469,7 @@ document.getElementById('btnStart').addEventListener('click', ()=>{
   go('s-brief', {progress:12});
 });
 
-/* ---- audio controls (recado do recrutador) ---- */
+/* ---- audio controls (recado da recrutadora) ---- */
 const callAudio = document.getElementById('callAudio');
 const audioBars = document.getElementById('audioBars');
 const playIcon  = document.getElementById('playIcon');
@@ -1562,7 +1562,7 @@ function hideTyping(){
 }
 
 const CHAT_INTRO = [
-  'Oi! 👋 Aqui é o recrutador da Master Point.',
+  'Oi! 👋 Aqui é a recrutadora da Master Point.',
   'Uma empresa aqui da região tá contratando e pediu pra indicar gente qualificada.',
   '(É uma simulação leve, tá? Serve pra você viver como é ter uma vaga chegando pra você 😉)',
   'Posso te fazer uma pergunta rapidinha?',
