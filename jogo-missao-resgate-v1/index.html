@@ -20,8 +20,9 @@
   PLACEHOLDERS (conteúdo real pendente — marcados também na tela com selo âmbar):
     [PH-AUDIO]  RESOLVIDO 06/07: recado da recrutadora gerado (ElevenLabs, voz
                 Roberta - Casual Sales / feminina PT-BR — voz de PERSONAGEM recrutadora).
-                Toca no s-audio ao chegar. Alternativa curta em
-                assets/recrutador-2.mp3 (não usada). NÃO usar a voz clonada do Salatiel.
+                Toca NA HORA ao ATENDER (tela s-incall / ligação em andamento).
+                Alternativa curta em assets/recrutador-2.mp3 (não usada).
+                NÃO usar a voz clonada do Salatiel.
     [PH-VSL]    vídeo da tela TikTok (mini-VSL curta) — thumb é imagem de contexto
     [PH-DEPO]   depoimento real de ex-aluno (Yan coletando em Castelo)
     [PH-VOUCHER] valor do voucher (a definir com o Salatiel)
@@ -169,8 +170,8 @@ img{max-width:100%;display:block}
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
   transition:opacity .5s var(--ease), transform .5s var(--ease-expo);
 }
-/* cold open: the phone call is the very first thing — no mission HUD yet */
-#topbar.preanswer{
+/* cold open + in-call: the phone call is the whole screen — no mission HUD yet */
+#topbar.preanswer,#topbar.callmode{
   opacity:0;transform:translateY(-14px);pointer-events:none;
 }
 .brandline{
@@ -386,7 +387,110 @@ h1.big .accent{
 @keyframes answerpulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 .call-btn .cl{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;color:var(--text-mut)}
 
-/* in-call audio panel (after answering) */
+/* ==================== SCREEN 1b: IN-CALL (chamada em andamento) ==================== */
+/* Parece a tela real de um celular numa ligação em andamento. Ocupa a tela toda. */
+#s-incall{padding:0}
+.incall-wrap{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:space-between;
+  padding:calc(env(safe-area-inset-top) + 44px) 28px calc(env(safe-area-inset-bottom) + 34px);
+  background:
+    radial-gradient(760px 520px at 50% 22%, rgba(42,157,143,.20), transparent 60%),
+    radial-gradient(640px 520px at 50% 92%, rgba(240,200,130,.10), transparent 62%),
+    linear-gradient(180deg,rgba(9,11,14,.72),rgba(10,13,17,.86));
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  text-align:center;
+}
+.incall-top{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+.incall-status{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--teal-lite);
+}
+.incall-status .live{
+  display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--teal-lite);
+  box-shadow:0 0 0 4px rgba(111,216,201,.18);animation:blink 1.4s var(--ease) infinite;
+}
+.incall-timer{
+  font-family:'JetBrains Mono',monospace;font-weight:600;
+  font-size:16px;letter-spacing:.06em;color:var(--text-mut);margin-top:3px;
+  font-variant-numeric:tabular-nums;
+}
+.incall-mid{display:flex;flex-direction:column;align-items:center;gap:4px}
+.incall-avatar{
+  width:132px;height:132px;border-radius:50%;margin:0 0 20px;position:relative;overflow:hidden;
+  box-shadow:0 24px 56px -20px rgba(240,200,130,.5), 0 0 0 6px rgba(240,200,130,.08);
+}
+.incall-avatar img{width:100%;height:100%;object-fit:cover}
+/* soft speaking ring that breathes only while audio plays */
+.incall-avatar::after{
+  content:"";position:absolute;inset:-9px;border-radius:50%;
+  border:2px solid rgba(240,200,130,.34);opacity:0;
+}
+#s-incall.speaking .incall-avatar::after{animation:ripple 2s var(--ease-soft) infinite;opacity:1}
+.incall-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:25px;color:var(--text);line-height:1.1}
+.incall-sub{font-size:14px;color:var(--text-mut);margin-top:5px}
+/* live speaking equalizer under the name */
+.incall-eq{display:flex;align-items:flex-end;gap:4px;justify-content:center;height:22px;margin-top:14px}
+.incall-eq span{width:4px;border-radius:3px;background:var(--teal-lite);height:6px}
+#s-incall.speaking .incall-eq span{animation:eq 1s var(--ease) infinite}
+#s-incall.speaking .incall-eq span:nth-child(2){animation-delay:.14s}
+#s-incall.speaking .incall-eq span:nth-child(3){animation-delay:.28s}
+#s-incall.speaking .incall-eq span:nth-child(4){animation-delay:.42s}
+#s-incall.speaking .incall-eq span:nth-child(5){animation-delay:.56s}
+#s-incall.speaking .incall-eq span:nth-child(6){animation-delay:.70s}
+#s-incall.speaking .incall-eq span:nth-child(7){animation-delay:.84s}
+/* discreet live caption (for who's without sound) */
+.incall-cap{
+  max-width:340px;margin:16px auto 0;min-height:44px;
+  font-size:14px;line-height:1.5;color:var(--text-mut);
+  text-wrap:pretty;transition:opacity .35s var(--ease);
+}
+.incall-cap b{color:var(--text);font-weight:600}
+/* bottom control cluster (iOS/Android-style) */
+.incall-controls{width:100%;max-width:300px;margin-top:10px}
+.incall-pad{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px 14px;margin-bottom:26px;
+}
+.ic-btn{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  background:none;color:var(--text-mut);
+}
+.ic-btn .ring{
+  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.07);border:1px solid var(--line);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transition:transform .28s var(--ease-expo),background .25s var(--ease),color .25s var(--ease);
+}
+.ic-btn .ring svg{width:26px;height:26px}
+.ic-btn:active .ring{transform:scale(.92)}
+.ic-btn .lb{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12.5px}
+.ic-btn.on .ring{background:var(--gold-hi);border-color:transparent;color:#1a1206}
+.ic-btn.on .lb{color:var(--gold)}
+/* end-call row */
+.incall-end{display:flex;flex-direction:column;align-items:center;gap:10px}
+.endcall{
+  width:74px;height:74px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(150deg,#F0715B,#D24632);color:#fff;
+  box-shadow:0 18px 40px -14px rgba(226,70,50,.6),0 0 0 1px rgba(255,255,255,.08) inset;
+  transition:transform .28s var(--ease-expo);
+}
+.endcall:active{transform:scale(.92)}
+.endcall svg{width:32px;height:32px}
+.endcall-lb{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12.5px;color:var(--text-dim)}
+/* "continue" pill that fades in once the call is finishing/ended */
+.incall-continue{
+  position:absolute;left:24px;right:24px;bottom:calc(env(safe-area-inset-bottom) + 30px);z-index:5;
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .5s var(--ease), transform .55s var(--ease-expo);
+}
+#s-incall.ended .incall-continue{opacity:1;transform:none;pointer-events:auto}
+#s-incall.ended .incall-controls{opacity:.32;pointer-events:none;transition:opacity .5s var(--ease)}
+@media (prefers-reduced-motion: reduce){
+  #s-incall.speaking .incall-avatar::after,#s-incall.speaking .incall-eq span{animation:none}
+}
+
+/* in-call audio panel (after answering) — legacy transcript pieces (kept for style reuse) */
 #s-audio .screen-inner{text-align:center}
 .audio-orb{
   width:98px;height:98px;border-radius:50%;margin:10px auto 22px;
@@ -1017,13 +1121,61 @@ h1.big .accent{
     <!-- ringtone / vibrate loop for the cold-open call (synthesized, CC0) -->
     <audio id="ringAudio" preload="auto" loop src="assets/phone-vibrate.mp3"></audio>
 
-    <!-- 0 · START (após atender) -->
-    <section class="screen has-hero" id="s-start" data-progress="8">
+    <!-- 1b · IN-CALL (chamada em andamento) — ao atender, o áudio da recrutadora
+         começa NA HORA e a tela vira uma ligação em andamento real. -->
+    <section class="screen" id="s-incall" data-progress="14">
+      <div class="incall-wrap">
+        <div class="incall-top">
+          <div class="incall-status"><span class="live"></span>Em ligação</div>
+          <div class="incall-timer" id="incallTimer">00:00</div>
+        </div>
+        <div class="incall-mid">
+          <div class="incall-avatar"><img src="img/recruiter.webp" alt="Recrutadora da Master Point" width="132" height="132"></div>
+          <div class="incall-name">Recrutadora</div>
+          <div class="incall-sub">Master Point · chamada em andamento</div>
+          <div class="incall-eq" id="incallEq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <p class="incall-cap" id="incallCap" aria-live="polite">Atendendo…</p>
+        </div>
+        <div class="incall-controls" id="incallControls">
+          <div class="incall-pad">
+            <button class="ic-btn" id="btnMute" aria-pressed="false">
+              <span class="ring"><svg id="muteIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10a7 7 0 0 1-14 0M12 19v3"/></svg></span>
+              <span class="lb" id="muteLb">Mudo</span>
+            </button>
+            <button class="ic-btn" id="btnSpeaker" aria-pressed="false">
+              <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg></span>
+              <span class="lb">Viva-voz</span>
+            </button>
+            <button class="ic-btn" id="btnKeypad">
+              <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r=".6"/><circle cx="12" cy="6" r=".6"/><circle cx="18" cy="6" r=".6"/><circle cx="6" cy="12" r=".6"/><circle cx="12" cy="12" r=".6"/><circle cx="18" cy="12" r=".6"/><circle cx="6" cy="18" r=".6"/><circle cx="12" cy="18" r=".6"/><circle cx="18" cy="18" r=".6"/></svg></span>
+              <span class="lb">Teclado</span>
+            </button>
+          </div>
+          <div class="incall-end">
+            <button class="endcall" id="btnEndCall" aria-label="Encerrar chamada">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1z" transform="rotate(135 12 12)"/></svg>
+            </button>
+            <span class="endcall-lb">Encerrar</span>
+          </div>
+        </div>
+        <div class="incall-continue">
+          <button class="btn btn-gold" id="btnAfterCall">
+            Começar a missão
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+      <!-- áudio da recrutadora: começa NA HORA que atende (gesto do usuário) -->
+      <audio id="callAudio" preload="auto" src="assets/recrutador-1.mp3"></audio>
+    </section>
+
+    <!-- 0 · START (após encerrar a ligação) -->
+    <section class="screen has-hero" id="s-start" data-progress="18">
       <div class="phase-hero"><img src="img/hero-hire.webp" alt="Pessoa sendo contratada em uma empresa" width="491" height="900" fetchpriority="high"></div>
       <div class="screen-inner">
-        <span class="start-badge"><span class="d"></span>Chamada atendida · leva ~3 min</span>
+        <span class="start-badge"><span class="d"></span>Ligação encerrada · leva ~3 min</span>
         <h1 class="big">E se a próxima <span class="accent">vaga fosse sua?</span></h1>
-        <p class="lead">Você atendeu. Apareceu uma oportunidade aqui na região. Sua missão: passar por 5 objetivos, descobrir a vaga certa pra você e resgatar um benefício pra começar.</p>
+        <p class="lead">Você acabou de ouvir a recrutadora. A oportunidade é real e é aqui na região. Sua missão: passar por 5 objetivos, descobrir a vaga certa pra você e resgatar um benefício pra começar.</p>
         <div class="start-meta">
           <span class="m"><b>25 anos</b> de mercado</span>
           <span class="m"><b>+8 mil</b> alunos</span>
@@ -1043,7 +1195,7 @@ h1.big .accent{
         <div class="brief-medal"><img src="img/medal.webp" alt="Medalha da missão" width="88" height="88"></div>
         <div class="eyebrow" style="text-align:center">Briefing da missão</div>
         <h1 class="big brief-title" style="margin:8px 0 4px">Garantir a<br><span class="accent">Vaga Certa</span></h1>
-        <p class="lead" style="text-align:center;max-width:340px;margin:8px auto 0">Você já atendeu a ligação. Agora são 5 objetivos rápidos. A cada um cumprido, você desbloqueia um selo. Complete a missão e o benefício é seu.</p>
+        <p class="lead" style="text-align:center;max-width:340px;margin:8px auto 0">A ligação foi só o começo. Agora são 5 objetivos rápidos. A cada um cumprido, você desbloqueia um selo. Complete a missão e o benefício é seu.</p>
 
         <div class="dossier">
           <div class="dk">Seus 5 objetivos</div>
@@ -1065,31 +1217,7 @@ h1.big .accent{
         </div>
 
         <button class="btn btn-gold" id="btnBrief">
-          Ouvir o recado da recrutadora
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-    </section>
-
-    <!-- 1b · IN-CALL AUDIO (recado da recrutadora, logo após atender) -->
-    <section class="screen" id="s-audio" data-progress="18">
-      <div class="screen-inner">
-        <div class="obj-tag" style="margin:0 auto 16px"><span class="n">✓</span><span class="tx">Chamada atendida · <b>Recado da recrutadora</b></span></div>
-        <div class="audio-orb photo-av"><img src="img/recruiter.webp" alt="Recrutadora da Master Point" width="98" height="98"></div>
-        <div class="audio-bars" id="audioBars"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="transcript">
-          <div class="th"><span class="who">Recrutadora · Master Point</span></div>
-          <p>"Oi! Tudo bem? Aqui é da Master Point. Apareceu uma oportunidade boa aqui na nossa região e a gente lembrou de você. Ó, é o seguinte: tem empresa aqui pertinho precisando de gente qualificada, e eu vou te fazer umas perguntas bem rápidas pra achar a vaga certa pra você. Pode confiar, é tranquilo, não é prova nem pegadinha. Bora começar?"</p>
-        </div>
-        <div class="audioctl">
-          <button class="play" id="btnPlayAudio" aria-label="Tocar áudio">
-            <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-          <div class="meta">Áudio da recrutadora<br>0:22 · toque pra ouvir de novo</div>
-        </div>
-        <audio id="callAudio" preload="auto" src="assets/recrutador-1.mp3"></audio>
-        <button class="btn btn-teal" id="btnSeeVaga">
-          Quero ver a vaga
+          Ver a primeira oportunidade
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
       </div>
@@ -1314,9 +1442,9 @@ function setProgress(pct){
 
 const STEP_LABELS = {
   's-call':'Chamada recebida',
+  's-incall':'Em ligação',
   's-start':'Aceite a missão',
   's-brief':'Briefing da missão',
-  's-audio':'Recado da recrutadora',
   's-vsl':'Obj. 1 · A oportunidade',
   's-chat':'Obj. 2 · Prove seu talento',
   's-quiz':'Obj. 3 · Encontre sua trilha',
@@ -1327,8 +1455,8 @@ const STEP_LABELS = {
 };
 
 /* ---- MISSION objectives: which objective a screen belongs to + when it's DONE ---- */
-// A chamada (s-call) é o cold-open / abertura — NÃO é objetivo numerado.
-// s-start/s-brief/s-audio são intro pós-atendimento — também sem número.
+// A chamada (s-call → s-incall) é o cold-open / abertura — NÃO é objetivo numerado.
+// s-start/s-brief são intro pós-ligação — também sem número.
 // objective is "completed" when the user LEAVES the screen that fulfills it
 const OBJ_OF = {          // screen -> objective number the user is currently on
   's-vsl':1, 's-chat':2,
@@ -1394,9 +1522,11 @@ function go(id, opts){
 }
 
 /* ============================================================================
-   COLD OPEN → START → BRIEFING → AUDIO
-   Nova ordem: a CHAMADA é a primeira tela. Ao ATENDER, revela o HUD e segue
-   pro start/briefing; a chamada deixou de ser "Objetivo 1".
+   COLD OPEN → IN-CALL (áudio na hora) → START → BRIEFING → MISSÃO
+   Ordem: a CHAMADA toca (s-call). Ao ATENDER, a tela vira uma LIGAÇÃO EM
+   ANDAMENTO (s-incall) e o áudio da recrutadora começa na hora. Quando o áudio
+   termina (ou a pessoa ENCERRA), a ligação acaba e aí entra a missão (s-start →
+   s-brief → s-vsl...). A chamada NÃO é objetivo numerado.
    ============================================================================ */
 
 /* ---- ringtone + vibration while the cold-open call is on screen ---- */
@@ -1440,12 +1570,100 @@ window.addEventListener('touchstart', primeRing, {once:false});
 // dispara a chamada assim que a página carrega (cold open)
 startRing();
 
-/* ATENDER → para o toque, revela o HUD, segue pro start */
+/* ---- IN-CALL: timer, caption sync, controls, audio ---- */
+const callAudio   = document.getElementById('callAudio');
+const incallEl    = document.getElementById('s-incall');
+const incallTimer = document.getElementById('incallTimer');
+const incallCap   = document.getElementById('incallCap');
+let callTimerInt = null, callSeconds = 0, callEnded = false;
+
+/* legenda discreta sincronizada por tempo (pra quem está sem som) */
+const CALL_CAPTIONS = [
+  {t:0.0,  s:'Oi! Tudo bem? Aqui é da Master Point.'},
+  {t:4.0,  s:'Apareceu uma oportunidade boa aqui na nossa região e a gente lembrou de você.'},
+  {t:10.0, s:'Tem empresa aqui pertinho precisando de gente qualificada.'},
+  {t:15.0, s:'Vou te fazer umas perguntas bem rápidas pra achar a vaga certa pra você.'},
+  {t:20.0, s:'Pode confiar, não é prova nem pegadinha. Bora começar?'},
+];
+function fmtTime(sec){
+  const m = Math.floor(sec/60), s = sec%60;
+  return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function startCallTimer(){
+  clearInterval(callTimerInt);
+  callSeconds = 0; incallTimer.textContent = '00:00';
+  callTimerInt = setInterval(()=>{ callSeconds++; incallTimer.textContent = fmtTime(callSeconds); }, 1000);
+}
+function stopCallTimer(){ clearInterval(callTimerInt); callTimerInt = null; }
+function syncCaption(){
+  const now = callAudio.currentTime || 0;
+  let cur = CALL_CAPTIONS[0].s;
+  for(const c of CALL_CAPTIONS){ if(now >= c.t) cur = c.s; }
+  if(incallCap.dataset.cur !== cur){ incallCap.dataset.cur = cur; incallCap.textContent = cur; }
+}
+callAudio.addEventListener('timeupdate', ()=>{ if(!callEnded) syncCaption(); });
+
+function finishCall(reason){
+  if(callEnded) return;
+  callEnded = true;
+  stopCallTimer();
+  incallEl.classList.remove('speaking');
+  incallEl.classList.add('ended');
+  try{ callAudio.pause(); }catch(e){}
+  incallCap.textContent = 'Chamada encerrada. Vamos pra sua missão.';
+  track('call_finished', {reason});
+}
+callAudio.addEventListener('ended', ()=>finishCall('audio_ended'));
+
+/* ATENDER → para o toque, revela o HUD, entra na LIGAÇÃO EM ANDAMENTO e o áudio
+   da recrutadora toca NA HORA (o clique é gesto do usuário → autoplay liberado). */
 document.getElementById('btnAnswer').addEventListener('click', ()=>{
   stopRing();
-  topbarEl.classList.remove('preanswer');   // revela a barra de missão
+  // HUD fica oculto durante a ligação (imersão total, como na chamada tocando)
+  topbarEl.classList.remove('preanswer');
+  topbarEl.classList.add('callmode');
   track('call_answered');
-  go('s-start', {progress:8});
+  callEnded = false;
+  incallEl.classList.remove('ended');
+  incallEl.classList.add('speaking');
+  incallCap.textContent = CALL_CAPTIONS[0].s;
+  incallCap.dataset.cur = CALL_CAPTIONS[0].s;
+  go('s-incall', {progress:14});
+  startCallTimer();
+  try{
+    callAudio.currentTime = 0;
+    callAudio.play().then(()=>{ track('recruiter_audio_played'); })
+                    .catch(()=>{ /* raro: se bloquear, o usuário tira do mudo */ });
+  }catch(e){}
+});
+
+/* controles da ligação (iOS/Android). Mudo pausa/despausa o áudio de verdade. */
+const btnMute = document.getElementById('btnMute');
+const muteLb  = document.getElementById('muteLb');
+let muted = false;
+btnMute.addEventListener('click', ()=>{
+  if(callEnded) return;
+  muted = !muted;
+  btnMute.classList.toggle('on', muted);
+  btnMute.setAttribute('aria-pressed', String(muted));
+  callAudio.muted = muted;
+  muteLb.textContent = muted ? 'No mudo' : 'Mudo';
+  incallEl.classList.toggle('speaking', !muted && !callAudio.paused);
+});
+const btnSpeaker = document.getElementById('btnSpeaker');
+btnSpeaker.addEventListener('click', ()=>{           // decorativo: só feedback visual
+  const on = btnSpeaker.classList.toggle('on');
+  btnSpeaker.setAttribute('aria-pressed', String(on));
+});
+document.getElementById('btnKeypad').addEventListener('click', ()=>{});  // decorativo
+document.getElementById('btnEndCall').addEventListener('click', ()=>finishCall('user_ended'));
+
+/* CONTINUAR (aparece quando a ligação termina/encerra) → começa a missão.
+   Reaparece o HUD de missão, que ficou oculto durante a ligação. */
+document.getElementById('btnAfterCall').addEventListener('click', ()=>{
+  if(!callEnded) finishCall('continue');
+  topbarEl.classList.remove('callmode');   // revela a barra de missão
+  go('s-start', {progress:18});
 });
 
 /* RECUSAR → reinicia/insiste (mantém o caminho principal em Atender) */
@@ -1466,44 +1684,12 @@ if(btnDecline){
 
 document.getElementById('btnStart').addEventListener('click', ()=>{
   track('game_start');
-  go('s-brief', {progress:12});
+  go('s-brief', {progress:24});
 });
 
-/* ---- audio controls (recado da recrutadora) ---- */
-const callAudio = document.getElementById('callAudio');
-const audioBars = document.getElementById('audioBars');
-const playIcon  = document.getElementById('playIcon');
-audioBars.classList.add('paused');
-const PLAY_ICON  = '<path d="M8 5v14l11-7z"/>';
-const PAUSE_ICON = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
-function audioUiPlaying(){ audioBars.classList.remove('paused'); playIcon.innerHTML = PAUSE_ICON; }
-function audioUiPaused(){ audioBars.classList.add('paused'); playIcon.innerHTML = PLAY_ICON; }
-
+/* BRIEFING → entra na missão (obj. 1 · a oportunidade / VSL) */
 document.getElementById('btnBrief').addEventListener('click', ()=>{
   track('briefing_accepted');
-  go('s-audio', {progress:18});
-  /* o recado toca automaticamente ao chegar: este é gesto do usuário (clique),
-     então o autoplay do áudio é permitido pelos navegadores mobile. */
-  try{
-    callAudio.currentTime = 0;
-    callAudio.play().then(()=>{ audioUiPlaying(); track('recruiter_audio_played'); })
-                    .catch(()=>{ audioUiPaused(); }); // se bloquear, fica no botão de play
-  }catch(e){ audioUiPaused(); }
-});
-
-document.getElementById('btnPlayAudio').addEventListener('click', ()=>{
-  if(callAudio.paused){
-    callAudio.play().then(audioUiPlaying).catch(()=>{});
-  } else {
-    callAudio.pause();
-    audioUiPaused();
-  }
-});
-callAudio.addEventListener('ended', audioUiPaused);
-callAudio.addEventListener('pause', ()=>{ if(!callAudio.ended) audioUiPaused(); });
-
-document.getElementById('btnSeeVaga').addEventListener('click', ()=>{
-  callAudio.pause();
   go('s-vsl', {progress:30});
 });
 
@@ -1807,7 +1993,7 @@ document.getElementById('btnWhatsApp').addEventListener('click', ()=>{
    ============================================================================ */
 const bgfx = document.getElementById('bgfx');
 // screens with their own full-bleed imagery (device UI or phase-hero) — dim the ambient bg
-const IMMERSIVE = new Set(['s-call','s-vsl','s-chat','s-start','s-quiz','s-trail','s-approval']);
+const IMMERSIVE = new Set(['s-call','s-incall','s-vsl','s-chat','s-start','s-quiz','s-trail','s-approval']);
 function applyMood(id){
   if(!bgfx) return;
   bgfx.style.opacity = IMMERSIVE.has(id) ? '0.22' : '1';

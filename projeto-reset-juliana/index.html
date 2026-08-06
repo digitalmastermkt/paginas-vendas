@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto Reset — Transforme bem-estar em uma nova fonte de renda | Juliana de Sousa</title>
+<meta name="description" content="Oportunidade para novas revendedoras. Comece com investimento acessível, trabalhe pelo celular e conquiste uma renda extra com o Projeto Reset.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =========================================================================
+   ⚙️  BLOCO DE CONFIG — TROQUE OS PLACEHOLDERS AQUI (Naia / Raquel)
+   -------------------------------------------------------------------------
+   Os valores abaixo são injetados via JS no fim do arquivo. Basta editar
+   o objeto CONFIG no <script> lá embaixo (procure "CONFIG =").
+   ========================================================================= */
+
+:root{
+  /* Paleta VERDE (extraída fielmente do sosdieta.com.br) */
+  --green-900:#033b2d;      /* verde escuro (fundos escuros) */
+  --green-800:#0b2e24;
+  --green-700:#0a4b39;
+  --green-600:#07864c;
+  --green-500:#10a65f;      /* verde vibrante */
+  --green-450:#16b767;
+  --green-400:#55d78e;
+  /* gradiente verde AA-safe (branco passa em todos os stops, ≥4.98:1) */
+  --grad-green:linear-gradient(145deg,#00683f,#0a7a4a 60%,#158049);
+  --wa:#128a42;             /* verde WhatsApp CTA (AA: branco 4.43:1) */
+  --wa-dark:#0d6f34;
+
+  --bg:#ffffff;
+  --bg-soft:linear-gradient(180deg,#f9fffb,#eefbf4);
+  --bg-soft2:linear-gradient(180deg,#f5fff9,#e4faee);
+  --ink:#123128;           /* texto principal (alto contraste sobre claro) */
+  --ink-soft:#3f5a50;      /* texto secundário */
+  --line:#d8f8e7;
+  --gold:#f1aa27;
+  --star:#f1aa27;
+
+  --radius:22px;
+  --radius-sm:14px;
+  --shadow:0 10px 30px rgba(3,59,45,.10);
+  --shadow-lg:0 20px 50px rgba(3,59,45,.16);
+  --content:820px;
+  --wide:1160px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:'Inter',Arial,sans-serif;color:var(--ink);
+  background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.font-head{font-family:'Poppins',Arial,sans-serif;line-height:1.15;margin:0}
+p{margin:0}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+.container{width:100%;max-width:var(--content);margin:0 auto;padding:0 20px}
+.wide{max-width:var(--wide)}
+.section{padding:56px 0}
+.section-dark{background:var(--green-900);color:#eafff4}
+.section-soft{background:var(--bg-soft)}
+.section-soft2{background:var(--bg-soft2)}
+
+/* ---------- Badges / pills ---------- */
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#e9fff2;color:var(--green-700);
+  border:1px solid var(--line);
+  font-weight:600;font-size:14px;
+  padding:9px 16px;border-radius:999px;
+}
+.badge .dot{color:var(--green-500);font-weight:800}
+.pill-gold{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#fff8dc;color:#725a22;border:1px solid #f1d895;
+  font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;
+  padding:16px 26px;border-radius:14px;border:0;cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease, background .15s ease;
+  text-align:center;width:100%;
+}
+.btn:active{transform:translateY(1px)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 8px 20px rgba(30,169,82,.35)}
+.btn-wa:hover{background:var(--wa-dark)}
+.btn-outline{background:#fff;color:var(--green-700);border:2px solid var(--green-500)}
+.btn-outline:hover{background:#f0fff7}
+.btn-row{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.wa-ico{width:22px;height:22px;flex:0 0 auto}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--bg-soft);padding:44px 0 52px;text-align:center;position:relative;overflow:hidden}
+.hero h1{font-size:34px;font-weight:800;margin:18px 0 14px;letter-spacing:-.5px}
+.hero h1 .hl{color:var(--green-600)}
+.hero .sub{font-size:17px;color:var(--ink-soft);max-width:640px;margin:0 auto}
+.hero .sub b{color:var(--green-700)}
+.trust{
+  margin-top:22px;font-size:14px;color:var(--ink-soft);font-weight:500;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;
+}
+.trust span{white-space:nowrap}
+
+/* ---------- Model card (Projeto Reset) ---------- */
+.model-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:26px 22px;margin-top:30px;
+  position:relative;text-align:left;max-width:560px;margin-left:auto;margin-right:auto;
+}
+.model-card .brand-line{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.model-card .brand{font-family:'Poppins';font-weight:800;font-size:22px;color:var(--green-700)}
+.model-card h3{font-size:19px;margin-top:6px;color:var(--ink)}
+.model-card p{color:var(--ink-soft);font-size:15px;margin-top:8px}
+.lucro-tag{
+  background:var(--grad-green);color:#fff;border-radius:16px;padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px;
+}
+.lucro-tag .lbl{font-size:13px;opacity:.92;font-weight:600}
+.lucro-tag .val{font-family:'Poppins';font-weight:800;font-size:22px}
+
+/* ---------- Section headers ---------- */
+.eyebrow{color:var(--green-600);font-weight:700;font-size:14px;letter-spacing:.5px;text-transform:uppercase}
+.section h2{font-size:27px;font-weight:800;margin-top:10px}
+.section-dark h2{color:#fff}
+.section .lead{color:var(--ink-soft);font-size:16px;margin-top:14px;max-width:680px}
+.section-dark .lead{color:#c8f1dc}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
+
+/* ---------- Video ---------- */
+.check-list{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.check-list li{display:flex;gap:12px;align-items:flex-start;font-weight:500;color:var(--ink)}
+.check-list .ck{
+  flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--green-500);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;
+}
+.video-frame{
+  margin-top:26px;background:var(--green-900);border-radius:var(--radius);
+  aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+  color:#bfe0d1;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);
+}
+.video-frame iframe,.video-frame video{width:100%;height:100%;border:0;object-fit:cover}
+.play-btn{
+  width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.15);
+  border:2px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+}
+.play-btn::after{content:"";border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
+.video-ph{display:flex;flex-direction:column;align-items:center;padding:20px}
+.video-ph small{opacity:.75;font-size:13px;margin-top:6px}
+
+/* ---------- Mentor ---------- */
+.mentor-wrap{display:grid;gap:26px;align-items:center}
+.mentor-photo{
+  width:220px;height:220px;border-radius:24px;margin:0 auto;
+  background:var(--grad-green);display:flex;align-items:center;justify-content:center;
+  color:#fff;text-align:center;box-shadow:var(--shadow-lg);overflow:hidden;position:relative;
+  border:6px solid #fff;
+}
+.mentor-photo img{width:100%;height:100%;object-fit:cover}
+.mentor-photo .ph-txt{font-size:13px;padding:16px;font-weight:600}
+.mentor-body h2{margin-bottom:6px}
+.mentor-body .role{color:var(--green-600);font-weight:700;font-size:15px;margin-bottom:14px}
+.mentor-body p{color:var(--ink-soft);margin-top:14px}
+.mentor-cta{
+  margin-top:20px;background:#effff6;border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:16px 18px;font-weight:600;color:var(--green-700)
+}
+
+/* ---------- Benefit cards ---------- */
+.cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;box-shadow:var(--shadow);
+}
+.section-dark .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+.card .ico{
+  width:46px;height:46px;border-radius:12px;background:#e9fff2;color:var(--green-600);
+  display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;
+}
+.section-dark .card .ico{background:rgba(85,215,142,.18);color:#7ff0ad}
+.card h3{font-size:18px;margin-bottom:6px}
+.section-dark .card h3{color:#fff}
+.card p{color:var(--ink-soft);font-size:15px}
+.section-dark .card p{color:#c8f1dc}
+
+/* ---------- Testimonials ---------- */
+.quotes{display:grid;gap:18px;margin-top:26px}
+.quote{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+}
+.stars{color:var(--star);font-size:18px;letter-spacing:2px;margin-bottom:10px}
+.quote p{color:var(--ink);font-size:15.5px}
+.quote .who{display:flex;align-items:center;gap:12px;margin-top:16px}
+.avatar{
+  width:44px;height:44px;border-radius:50%;background:var(--grad-green);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Poppins';flex:0 0 auto;
+}
+.who .nm{font-weight:700;color:var(--ink);font-size:15px}
+.who .loc{color:var(--ink-soft);font-size:13px}
+
+/* ---------- Galeria de prints reais ---------- */
+.gallery-head{margin-top:44px}
+.gallery-head .eyebrow{display:block}
+.gallery-head h3{font-size:22px;font-weight:800;margin-top:8px;color:var(--ink)}
+.gallery-head p{color:var(--ink-soft);font-size:15px;margin-top:10px;max-width:620px;margin-left:auto;margin-right:auto}
+.gallery{
+  display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px;
+}
+.shot{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;cursor:zoom-in;padding:0;
+  transition:transform .14s ease, box-shadow .14s ease;position:relative;
+}
+.shot:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.shot:focus-visible{outline:3px solid var(--green-500);outline-offset:2px}
+.shot img{width:100%;height:100%;object-fit:cover;aspect-ratio:9/16;display:block}
+.shot .zoom-hint{
+  position:absolute;right:12px;bottom:12px;background:rgba(3,59,45,.82);color:#fff;
+  font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:6px;
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox{
+  position:fixed;inset:0;background:rgba(3,20,15,.92);z-index:9999;
+  display:none;align-items:center;justify-content:center;padding:28px;cursor:zoom-out;
+}
+.lightbox.open{display:flex}
+.lightbox img{
+  max-width:100%;max-height:100%;width:auto;height:auto;border-radius:14px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);cursor:default;
+}
+.lightbox .lb-close{
+  position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.5);color:#fff;
+  font-size:26px;line-height:1;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-family:'Poppins',sans-serif;
+}
+.lightbox .lb-close:hover{background:rgba(255,255,255,.26)}
+
+/* ---------- Simulator ---------- */
+.sim{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:26px 22px;margin-top:26px}
+.sim-toggle{display:flex;background:#eafff2;border-radius:14px;padding:5px;gap:5px;margin-bottom:22px}
+.sim-toggle button{
+  flex:1;border:0;background:transparent;font-family:'Poppins';font-weight:700;font-size:15px;
+  color:var(--green-700);padding:12px;border-radius:10px;cursor:pointer;transition:.15s;
+}
+.sim-toggle button.active{background:var(--grad-green);color:#fff;box-shadow:0 6px 14px rgba(16,166,95,.3)}
+.sim-head{text-align:center;margin-bottom:8px}
+.sim-qty{font-family:'Poppins';font-weight:800;font-size:26px;color:var(--green-700)}
+.sim-qty span{font-size:16px;color:var(--ink-soft);font-weight:600}
+input[type=range]{
+  -webkit-appearance:none;width:100%;height:10px;border-radius:999px;
+  background:#d8f8e7;outline:none;margin:18px 0 8px;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:30px;height:30px;border-radius:50%;
+  background:var(--green-500);border:4px solid #fff;box-shadow:0 3px 10px rgba(16,166,95,.5);cursor:pointer;
+}
+input[type=range]::-moz-range-thumb{
+  width:30px;height:30px;border-radius:50%;background:var(--green-500);border:4px solid #fff;cursor:pointer;
+}
+.sim-hint{text-align:center;font-size:13px;color:var(--ink-soft);margin-bottom:20px}
+.sim-highlight{
+  background:var(--grad-green);color:#fff;border-radius:16px;padding:18px;text-align:center;margin-bottom:18px;
+}
+.sim-highlight .big{font-family:'Poppins';font-weight:800;font-size:30px;margin-top:4px}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sim-cell{background:#f5fff9;border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.sim-cell .k{font-size:13px;color:var(--ink-soft);font-weight:600}
+.sim-cell .v{font-family:'Poppins';font-weight:800;font-size:19px;color:var(--green-700);margin-top:4px}
+.sim-note{font-size:12px;color:var(--ink-soft);margin-top:16px;line-height:1.5}
+
+/* ---------- Final CTA ---------- */
+.final{background:var(--grad-green);color:#fff;text-align:center;padding:60px 0}
+.final h2{color:#fff;font-size:28px}
+.final p{color:#eafff4;margin-top:14px;max-width:620px;margin-left:auto;margin-right:auto}
+.final .btn-row{max-width:420px;margin-left:auto;margin-right:auto}
+.final .btn-wa{background:#fff;color:var(--green-700);box-shadow:0 10px 26px rgba(0,0,0,.2)}
+.final .btn-wa:hover{background:#f0fff7}
+.final small{display:block;margin-top:16px;color:#d8f8e7;font-size:14px}
+
+/* ---------- Footer ---------- */
+footer{background:var(--green-900);color:#a9cdbc;text-align:center;padding:34px 20px}
+footer .fbrand{font-family:'Poppins';font-weight:800;color:#fff;font-size:20px}
+footer .ftags{margin:10px 0;font-size:14px;color:#7fb79e}
+footer .disc{font-size:12px;max-width:640px;margin:14px auto 0;line-height:1.6;color:#79a693}
+
+/* ---------- Desktop ---------- */
+@media(min-width:720px){
+  .section{padding:72px 0}
+  .hero{padding:64px 0 72px}
+  .hero h1{font-size:52px}
+  .hero .sub{font-size:19px}
+  .section h2{font-size:34px}
+  .btn-row{flex-direction:row;justify-content:center}
+  .btn{width:auto;min-width:250px}
+  .cards{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr 1fr 1fr}
+  .gallery{grid-template-columns:1fr 1fr 1fr}
+  .mentor-wrap{grid-template-columns:260px 1fr;text-align:left}
+  .mentor-photo{margin:0}
+  .final .btn-row{flex-direction:column}
+  .video-block{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="container">
+    <span class="badge"><span class="dot">✓</span> Oportunidade para novas revendedoras</span>
+    <h1>Transforme bem-estar em <span class="hl">uma nova fonte de renda.</span></h1>
+    <p class="sub">Comece com investimento <b data-cfg="investimento_texto">a partir de R$ [INVESTIMENTO]</b>, trabalhe no seu próprio ritmo e conquiste lucro vendendo produtos ligados ao bem-estar e à disposição.</p>
+
+    <div class="btn-row">
+      <a class="btn btn-wa" data-wa href="#">
+        <svg class="wa-ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4c-1-1.6-1.5-3.4-1.5-5.3C4.9 9.5 9.8 4.9 16 4.9c6.1 0 11 4.9 11 11s-4.9 10.9-11 10.9z"/><path d="M22.3 18.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.8-.9-2.9-1.6-4.1-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+        Quero conhecer a oportunidade
+      </a>
+      <a class="btn btn-outline" href="#simulador">Simular meus ganhos</a>
+    </div>
+
+    <div class="trust">
+      <span>Sem loja física</span><span>•</span><span>Sem experiência anterior</span><span>•</span><span>Com treinamento e suporte</span>
+    </div>
+
+    <!-- Model card -->
+    <div class="model-card">
+      <div class="brand-line">
+        <div>
+          <div class="brand">Projeto Reset</div>
+          <h3>Escolha o modelo ideal para começar.</h3>
+        </div>
+        <span class="pill-gold">★ Lucro por kit</span>
+      </div>
+      <p>Kits de bebidas funcionais prontos para vender pelo celular. Você prepara, divulga e entrega, com margem clara e recompra.</p>
+      <div class="lucro-tag">
+        <span class="lbl">Lucro por kit vendido</span>
+        <span class="val">R$ 13 a R$ 35</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== VÍDEO ===================== -->
+<section class="section section-soft">
+  <div class="container">
+    <div class="video-block">
+      <div>
+        <span class="eyebrow">Assista antes de decidir</span>
+        <h2>Entenda o Projeto Reset em poucos minutos</h2>
+        <p class="lead">Neste vídeo você vai entender como funciona a oportunidade, quanto é preciso investir, como conquistar os primeiros clientes e qual é o potencial de retorno.</p>
+        <ul class="check-list">
+          <li><span class="ck">✓</span> Como funciona o negócio</li>
+          <li><span class="ck">✓</span> Quanto é necessário investir</li>
+          <li><span class="ck">✓</span> Como conquistar os primeiros clientes</li>
+          <li><span class="ck">✓</span> Qual é o potencial de retorno</li>
+        </ul>
+      </div>
+      <div class="video-frame" data-video>
+        <div class="video-ph">
+          <div class="play-btn"></div>
+          <div>Vídeo de apresentação</div>
+          <small>O vídeo será adicionado em breve</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MENTORA ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="mentor-wrap">
+      <div class="mentor-photo" data-foto>
+        <div class="ph-txt">Foto da<br>Juliana de Sousa<br><small>(a adicionar)</small></div>
+      </div>
+      <div class="mentor-body">
+        <span class="eyebrow">Quem está à frente do projeto</span>
+        <h2>Conheça Juliana de Sousa</h2>
+        <div class="role">Dra. em Ciências da Saúde · Mentora em saúde, bem-estar e transformação corporal</div>
+        <p>Olá! Eu sou a Juliana de Sousa, Dra. em Ciências da Saúde, mentora em saúde, bem-estar e transformação corporal. Atuo neste segmento ajudando pessoas a conquistarem mais saúde, qualidade de vida e resultados reais.</p>
+        <p>Estamos em busca de pessoas empreendedoras, profissionais da área da saúde e de qualquer pessoa que deseje conquistar uma renda extra ou até mesmo realizar uma transição de carreira por meio de um modelo de negócio simples, estruturado e em plena expansão.</p>
+        <p>Se você está insatisfeito com sua situação financeira, sente que trabalha muito e ganha pouco, deseja aumentar sua renda ou acredita que tem potencial para crescer, o Projeto Reset pode ser a oportunidade que você estava procurando.</p>
+        <div class="mentor-cta">Venha conhecer esse projeto e descubra como transformar vidas — inclusive a sua.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FORMA SIMPLES ===================== -->
+<section class="section section-soft2">
+  <div class="container center">
+    <span class="eyebrow">Uma oportunidade acessível</span>
+    <h2>Uma forma simples de ganhar dinheiro ajudando pessoas a se sentirem melhor</h2>
+    <p class="lead">O Projeto Reset combina uma oportunidade de renda com produtos ligados ao bem-estar, à disposição e à criação de hábitos mais saudáveis.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">💸</div>
+        <h3>Investimento acessível</h3>
+        <p>É possível começar sem loja física, sem funcionários e sem precisar montar uma estrutura complexa.</p>
+      </div>
+      <div class="card">
+        <div class="ico">📱</div>
+        <h3>Venda pelo celular</h3>
+        <p>Divulgue pelo WhatsApp, Instagram, grupos, indicações e para pessoas próximas que já confiam em você.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NÃO É SÓ VENDER (fundo escuro) ===================== -->
+<section class="section section-dark">
+  <div class="container center">
+    <span class="eyebrow">Mais que uma revenda</span>
+    <h2>Não é apenas sobre vender kits — é sobre conquistar uma renda que faz diferença</h2>
+    <p class="lead">Uma renda extra pode ajudar a pagar contas, realizar planos, cuidar melhor da família ou simplesmente trazer mais tranquilidade para o mês.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">🌎</div>
+        <h3>Trabalhe de onde estiver</h3>
+        <p>Organize suas vendas pelo celular e trabalhe dentro da sua realidade, no seu tempo.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🕒</div>
+        <h3>Tenha mais flexibilidade</h3>
+        <p>Você decide quando divulgar, atender e organizar seus pedidos, sem horário fixo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROVA SOCIAL ===================== -->
+<section class="section section-soft">
+  <div class="container center">
+    <span class="eyebrow">Prova real</span>
+    <h2>O que dizem sobre a experiência</h2>
+    <div class="quotes">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>“Eu estava procurando uma forma de aumentar minha renda sem precisar sair do meu trabalho atual. Comecei divulgando o Projeto Reset para amigos e conhecidos e, logo nas primeiras semanas, já consegui minhas primeiras vendas. O acompanhamento da equipe me deu segurança para continuar.”</p>
+        <div class="who"><span class="avatar">LF</span><div><div class="nm">Larissa Ferreira</div><div class="loc">Goiânia/GO</div></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>“Nunca tinha trabalhado com vendas, mas o material pronto facilitou muito. Bastou seguir as orientações, divulgar nas redes sociais e conversar com as pessoas. Hoje tenho clientes que compram todos os meses e isso se tornou uma excelente renda complementar.”</p>
+        <div class="who"><span class="avatar">MS</span><div><div class="nm">Marcos Silva</div><div class="loc">Teresina/PI</div></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>“O que mais gostei foi a flexibilidade. Consigo divulgar nos horários livres, sem precisar de estoque grande ou estrutura complicada. Em pouco tempo recuperei meu investimento e continuo expandindo minha carteira de clientes.”</p>
+        <div class="who"><span class="avatar">AR</span><div><div class="nm">Amanda Rocha</div><div class="loc">Parnaíba/PI</div></div></div>
+      </div>
+    </div>
+
+    <!-- Galeria de prints reais -->
+    <div class="gallery-head">
+      <span class="eyebrow">Quem já faz parte</span>
+      <h3>Resultados e depoimentos reais de clientes</h3>
+      <p>Prints reais de quem participa do Projeto Reset e de quem experimentou os produtos. Toque em uma imagem para ampliar.</p>
+    </div>
+    <div class="gallery">
+      <button type="button" class="shot" data-shot="assets/depoimentos/depo1.jpg" aria-label="Ampliar depoimento de Leide sobre a oportunidade de renda com a Juliana Sousa">
+        <img src="assets/depoimentos/depo1.jpg" alt="Depoimento de Leide: conheceu o projeto através da Juliana Sousa e relata resultados crescentes de renda." loading="lazy">
+        <span class="zoom-hint">🔍 Ampliar</span>
+      </button>
+      <button type="button" class="shot" data-shot="assets/depoimentos/depo2.jpg" aria-label="Ampliar feedback de cliente sobre o detox">
+        <img src="assets/depoimentos/depo2.jpg" alt="Feedback real de cliente sobre o detox, compartilhado no WhatsApp: 'Amei esse detox'." loading="lazy">
+        <span class="zoom-hint">🔍 Ampliar</span>
+      </button>
+      <button type="button" class="shot" data-shot="assets/depoimentos/depo3.jpg" aria-label="Ampliar feedback de cliente sobre o detox de 15 dias">
+        <img src="assets/depoimentos/depo3.jpg" alt="Feedback real de cliente sobre o detox de 15 dias: sensação de barriga desinchada e mais energia." loading="lazy">
+        <span class="zoom-hint">🔍 Ampliar</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox (JS puro, sem libs) -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Depoimento ampliado">
+  <button type="button" class="lb-close" id="lbClose" aria-label="Fechar">&times;</button>
+  <img id="lbImg" src="" alt="Depoimento ampliado">
+</div>
+
+<!-- ===================== SIMULADOR ===================== -->
+<section class="section" id="simulador">
+  <div class="container center">
+    <span class="eyebrow">Simulador de ganhos</span>
+    <h2>Quanto você pode ganhar por semana?</h2>
+    <p class="lead">Escolha o produto e simule quantos kits pretende vender por semana. Os números abaixo são os valores reais de custo, venda e lucro — sem promessa exagerada.</p>
+
+    <div class="sim">
+      <div class="sim-toggle">
+        <button class="active" data-prod="kit">Kit funcional</button>
+        <button data-prod="hype">Hype Drink</button>
+      </div>
+
+      <div class="sim-head">
+        <div class="sim-qty"><span id="simQty">3</span> <span>kits por semana</span></div>
+      </div>
+      <input type="range" id="simRange" min="1" max="30" value="3">
+      <div class="sim-hint">Arraste para simular de 1 até 30 kits por semana</div>
+
+      <div class="sim-highlight">
+        <div>Vendendo <b><span id="hlQty">3</span> kits por semana</b> você pode lucrar</div>
+        <div class="big" id="hlMonth">R$ 415,20 / mês</div>
+      </div>
+
+      <div class="sim-grid">
+        <div class="sim-cell"><div class="k">Lucro por kit</div><div class="v" id="cLucro">R$ 34,60</div></div>
+        <div class="sim-cell"><div class="k">Preço de venda</div><div class="v" id="cVenda">R$ 55,00</div></div>
+        <div class="sim-cell"><div class="k">Lucro por semana</div><div class="v" id="cWeek">R$ 103,80</div></div>
+        <div class="sim-cell"><div class="k">Lucro por mês</div><div class="v" id="cMonth">R$ 415,20</div></div>
+      </div>
+
+      <p class="sim-note" id="simNote"></p>
+
+      <div class="btn-row" style="margin-top:22px">
+        <a class="btn btn-wa" data-wa href="#">
+          <svg class="wa-ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3z"/></svg>
+          Quero começar agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="final">
+  <div class="container">
+    <h2>Seu primeiro passo começa aqui</h2>
+    <p>Escolha o seu modelo e comece a construir uma nova fonte de renda. Fale com a nossa equipe pelo WhatsApp, tire suas dúvidas e descubra qual opção combina com o seu momento.</p>
+    <div class="btn-row">
+      <a class="btn btn-wa" data-wa href="#">
+        <svg class="wa-ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3z"/></svg>
+        Quero começar no Projeto Reset
+      </a>
+    </div>
+    <small>Atendimento pelo WhatsApp • Sem compromisso</small>
+  </div>
+</section>
+
+<!-- ===================== RODAPÉ ===================== -->
+<footer>
+  <div class="fbrand">Projeto Reset</div>
+  <div class="ftags">Bem-estar • Empreendedorismo • Renda extra</div>
+  <p class="disc">Resultados financeiros e relacionados ao bem-estar podem variar. Este site não apresenta garantia de renda, cura ou emagrecimento. Os valores apresentados são estimativas e dependem da comercialização efetiva dos kits. As orientações têm caráter geral e educativo e não substituem acompanhamento médico ou nutricional individualizado.</p>
+</footer>
+
+<script>
+/* =========================================================================
+   ⚙️  CONFIG — TROQUE AQUI OS PLACEHOLDERS (Naia)
+   ========================================================================= */
+const CONFIG = {
+  // WhatsApp de contato. Formato internacional SEM símbolos: 55 + DDD + número.
+  // Ex.: "5586999998888". Deixe "PLACEHOLDER" até a cliente enviar.
+  whatsapp: "5589981220068",
+  // Mensagem que abre no WhatsApp ao clicar nos botões:
+  whatsappMsg: "Olá! Vim pela página e quero conhecer o Projeto Reset.",
+
+  // Texto do investimento inicial do HERO (a cliente ainda vai confirmar):
+  // Ex.: "a partir de R$ 500". Deixe com [INVESTIMENTO] até confirmar.
+  investimentoTexto: "a partir de R$ 100",
+
+  // Foto da Juliana: cole a URL/caminho da imagem. Vazio = mostra placeholder.
+  fotoJuliana: "assets/juliana.jpg",
+
+  // Vídeo de apresentação: cole o embed do YouTube (só o ID) ou URL de mp4.
+  // Ex.: { tipo:"youtube", id:"XXXXXXXXX" }  ou  { tipo:"mp4", url:"video.mp4" }
+  // Vazio = mostra placeholder do player.
+  video: { tipo:"mp4", url:"assets/video-apresentacao.mp4" },
+};
+
+/* ---- Números REAIS dos produtos (fonte: dados-juliana.md) ---- */
+const PRODUTOS = {
+  kit:  { nome:"Kit funcional", custo:20.40, venda:55.00, lucro:34.60 },
+  hype: { nome:"Hype Drink",    custo:18.91, venda:32.00, lucro:13.09 },
+};
+
+/* ---- Aplica CONFIG ---- */
+const brl = v => "R$ " + v.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+
+function waLink(){
+  if(CONFIG.whatsapp==="PLACEHOLDER" || !CONFIG.whatsapp)
+    return "#"; // sem link até configurar
+  return "https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(CONFIG.whatsappMsg);
+}
+document.querySelectorAll("[data-wa]").forEach(a=>{
+  a.href = waLink();
+  if(CONFIG.whatsapp==="PLACEHOLDER"){
+    a.addEventListener("click",e=>{e.preventDefault();alert("WhatsApp ainda não configurado. Edite CONFIG.whatsapp no HTML.");});
+  } else { a.target="_blank"; a.rel="noopener"; }
+});
+
+// Investimento do hero
+document.querySelector("[data-cfg='investimento_texto']").textContent = CONFIG.investimentoTexto;
+
+// Foto Juliana
+if(CONFIG.fotoJuliana){
+  const box=document.querySelector("[data-foto]");
+  box.innerHTML='<img src="'+CONFIG.fotoJuliana+'" alt="Juliana de Sousa">';
+}
+
+// Vídeo
+if(CONFIG.video){
+  const box=document.querySelector("[data-video]");
+  if(CONFIG.video.tipo==="youtube")
+    box.innerHTML='<iframe src="https://www.youtube.com/embed/'+CONFIG.video.id+'" allowfullscreen></iframe>';
+  else if(CONFIG.video.tipo==="mp4")
+    box.innerHTML='<video controls src="'+CONFIG.video.url+'"></video>';
+}
+
+/* ---- Simulador ---- */
+let prodAtual="kit";
+const range=document.getElementById("simRange");
+const $=id=>document.getElementById(id);
+
+function render(){
+  const p=PRODUTOS[prodAtual];
+  const q=parseInt(range.value,10);
+  const week=q*p.lucro;
+  const month=week*4.33; // ~4,33 semanas/mês
+  $("simQty").textContent=q;
+  $("hlQty").textContent=q;
+  $("hlMonth").textContent=brl(month)+" / mês";
+  $("cLucro").textContent=brl(p.lucro);
+  $("cVenda").textContent=brl(p.venda);
+  $("cWeek").textContent=brl(week);
+  $("cMonth").textContent=brl(month);
+  $("simNote").textContent=
+    p.nome+": custo de "+brl(p.custo)+" por unidade, venda por "+brl(p.venda)+
+    " e lucro estimado de "+brl(p.lucro)+" por unidade. Cálculo mensal considera ~4,33 semanas. "+
+    "Os valores são estimados e dependem das vendas efetivamente realizadas.";
+}
+range.addEventListener("input",render);
+document.querySelectorAll(".sim-toggle button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll(".sim-toggle button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    prodAtual=b.dataset.prod;
+    render();
+  });
+});
+render();
+
+/* ---- Lightbox da galeria de prints (JS puro) ---- */
+(function(){
+  const lb=document.getElementById("lightbox");
+  const lbImg=document.getElementById("lbImg");
+  const lbClose=document.getElementById("lbClose");
+  if(!lb) return;
+  function open(src,alt){
+    lbImg.src=src; lbImg.alt=alt||"Depoimento ampliado";
+    lb.classList.add("open");
+    document.body.style.overflow="hidden";
+  }
+  function close(){
+    lb.classList.remove("open");
+    lbImg.src="";
+    document.body.style.overflow="";
+  }
+  document.querySelectorAll(".shot").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const img=btn.querySelector("img");
+      open(btn.dataset.shot, img?img.alt:"");
+    });
+  });
+  // clicar fora (no overlay) fecha; clicar na imagem não
+  lb.addEventListener("click",e=>{ if(e.target!==lbImg) close(); });
+  lbClose.addEventListener("click",close);
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&lb.classList.contains("open")) close(); });
+})();
+</script>
+</body>
+</html>
