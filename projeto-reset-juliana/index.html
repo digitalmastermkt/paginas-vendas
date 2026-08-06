@@ -205,6 +205,45 @@ a{color:inherit;text-decoration:none}
 .who .nm{font-weight:700;color:var(--ink);font-size:15px}
 .who .loc{color:var(--ink-soft);font-size:13px}
 
+/* ---------- Galeria de prints reais ---------- */
+.gallery-head{margin-top:44px}
+.gallery-head .eyebrow{display:block}
+.gallery-head h3{font-size:22px;font-weight:800;margin-top:8px;color:var(--ink)}
+.gallery-head p{color:var(--ink-soft);font-size:15px;margin-top:10px;max-width:620px;margin-left:auto;margin-right:auto}
+.gallery{
+  display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px;
+}
+.shot{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;cursor:zoom-in;padding:0;
+  transition:transform .14s ease, box-shadow .14s ease;position:relative;
+}
+.shot:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.shot:focus-visible{outline:3px solid var(--green-500);outline-offset:2px}
+.shot img{width:100%;height:100%;object-fit:cover;aspect-ratio:9/16;display:block}
+.shot .zoom-hint{
+  position:absolute;right:12px;bottom:12px;background:rgba(3,59,45,.82);color:#fff;
+  font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:6px;
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox{
+  position:fixed;inset:0;background:rgba(3,20,15,.92);z-index:9999;
+  display:none;align-items:center;justify-content:center;padding:28px;cursor:zoom-out;
+}
+.lightbox.open{display:flex}
+.lightbox img{
+  max-width:100%;max-height:100%;width:auto;height:auto;border-radius:14px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);cursor:default;
+}
+.lightbox .lb-close{
+  position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.5);color:#fff;
+  font-size:26px;line-height:1;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-family:'Poppins',sans-serif;
+}
+.lightbox .lb-close:hover{background:rgba(255,255,255,.26)}
+
 /* ---------- Simulator ---------- */
 .sim{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:26px 22px;margin-top:26px}
 .sim-toggle{display:flex;background:#eafff2;border-radius:14px;padding:5px;gap:5px;margin-bottom:22px}
@@ -264,6 +303,7 @@ footer .disc{font-size:12px;max-width:640px;margin:14px auto 0;line-height:1.6;c
   .btn{width:auto;min-width:250px}
   .cards{grid-template-columns:1fr 1fr}
   .quotes{grid-template-columns:1fr 1fr 1fr}
+  .gallery{grid-template-columns:1fr 1fr 1fr}
   .mentor-wrap{grid-template-columns:260px 1fr;text-align:left}
   .mentor-photo{margin:0}
   .final .btn-row{flex-direction:column}
@@ -420,8 +460,35 @@ footer .disc{font-size:12px;max-width:640px;margin:14px auto 0;line-height:1.6;c
         <div class="who"><span class="avatar">AR</span><div><div class="nm">Amanda Rocha</div><div class="loc">Parnaíba/PI</div></div></div>
       </div>
     </div>
+
+    <!-- Galeria de prints reais -->
+    <div class="gallery-head">
+      <span class="eyebrow">Quem já faz parte</span>
+      <h3>Resultados e depoimentos reais de clientes</h3>
+      <p>Prints reais de quem participa do Projeto Reset e de quem experimentou os produtos. Toque em uma imagem para ampliar.</p>
+    </div>
+    <div class="gallery">
+      <button type="button" class="shot" data-shot="assets/depoimentos/depo1.jpg" aria-label="Ampliar depoimento de Leide sobre a oportunidade de renda com a Juliana Sousa">
+        <img src="assets/depoimentos/depo1.jpg" alt="Depoimento de Leide: conheceu o projeto através da Juliana Sousa e relata resultados crescentes de renda." loading="lazy">
+        <span class="zoom-hint">🔍 Ampliar</span>
+      </button>
+      <button type="button" class="shot" data-shot="assets/depoimentos/depo2.jpg" aria-label="Ampliar feedback de cliente sobre o detox">
+        <img src="assets/depoimentos/depo2.jpg" alt="Feedback real de cliente sobre o detox, compartilhado no WhatsApp: 'Amei esse detox'." loading="lazy">
+        <span class="zoom-hint">🔍 Ampliar</span>
+      </button>
+      <button type="button" class="shot" data-shot="assets/depoimentos/depo3.jpg" aria-label="Ampliar feedback de cliente sobre o detox de 15 dias">
+        <img src="assets/depoimentos/depo3.jpg" alt="Feedback real de cliente sobre o detox de 15 dias: sensação de barriga desinchada e mais energia." loading="lazy">
+        <span class="zoom-hint">🔍 Ampliar</span>
+      </button>
+    </div>
   </div>
 </section>
+
+<!-- Lightbox (JS puro, sem libs) -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Depoimento ampliado">
+  <button type="button" class="lb-close" id="lbClose" aria-label="Fechar">&times;</button>
+  <img id="lbImg" src="" alt="Depoimento ampliado">
+</div>
 
 <!-- ===================== SIMULADOR ===================== -->
 <section class="section" id="simulador">
@@ -583,6 +650,34 @@ document.querySelectorAll(".sim-toggle button").forEach(b=>{
   });
 });
 render();
+
+/* ---- Lightbox da galeria de prints (JS puro) ---- */
+(function(){
+  const lb=document.getElementById("lightbox");
+  const lbImg=document.getElementById("lbImg");
+  const lbClose=document.getElementById("lbClose");
+  if(!lb) return;
+  function open(src,alt){
+    lbImg.src=src; lbImg.alt=alt||"Depoimento ampliado";
+    lb.classList.add("open");
+    document.body.style.overflow="hidden";
+  }
+  function close(){
+    lb.classList.remove("open");
+    lbImg.src="";
+    document.body.style.overflow="";
+  }
+  document.querySelectorAll(".shot").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const img=btn.querySelector("img");
+      open(btn.dataset.shot, img?img.alt:"");
+    });
+  });
+  // clicar fora (no overlay) fecha; clicar na imagem não
+  lb.addEventListener("click",e=>{ if(e.target!==lbImg) close(); });
+  lbClose.addEventListener("click",close);
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&lb.classList.contains("open")) close(); });
+})();
 </script>
 </body>
 </html>
