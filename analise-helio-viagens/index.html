@@ -210,6 +210,18 @@ td .miss{color:var(--danger);font-weight:600}
 /* note */
 .note{font-size:12.5px;color:var(--ink-dim);margin-top:14px;line-height:1.7;font-style:italic}
 
+/* socios */
+.equipe-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:6px}
+.socio{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-align:center;break-inside:avoid}
+.socio .mono-role{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+.socio .av{width:100px;height:100px;border-radius:50%;margin:0 auto 15px;overflow:hidden;border:2px solid rgba(240,200,130,.35);box-shadow:0 6px 20px rgba(0,0,0,.45);background:var(--card-2)}
+.socio .av img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
+.socio h4{font-size:18px;font-weight:800;margin-bottom:4px;color:var(--ink)}
+.socio .socio-at{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:12px;color:var(--teal);margin-bottom:12px}
+.socio .papel{font-size:13px;line-height:1.6;color:var(--ink-soft)}
+.equipe-note{background:rgba(47,211,197,.06);border:1px solid rgba(47,211,197,.28);border-radius:14px;padding:20px;margin-top:16px;color:var(--ink-soft);font-size:14px;line-height:1.6}
+.equipe-note b{color:var(--ink)}
+
 /* footer */
 footer{padding:44px 0 60px;text-align:center}
 footer .fbrand{font-family:'Plus Jakarta Sans';font-weight:800;font-size:16px}
@@ -235,7 +247,7 @@ footer .fmeta b{color:var(--ink-soft)}
       <span class="chip"><b>546</b> seguindo</span>
       <span class="chip"><b>18</b> posts</span>
       <span class="chip">Travel agency · conta business</span>
-      <span class="chip">Praça: Castelo do Piauí / DDD 86 (a confirmar)</span>
+      <span class="chip">Praça: Castelo do Piauí / DDD 86</span>
     </div>
 
     <nav class="toc" aria-label="Índice">
@@ -528,6 +540,38 @@ footer .fmeta b{color:var(--ink-soft)}
   </div>
 </section>
 
+<!-- SÓCIOS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><div class="k">◆</div><div><h2>Os sócios por trás da Agência no Bolso</h2><div class="sub">Gente de verdade por trás de cada entrega</div></div></div>
+    <p class="subtitle" style="margin-top:0;margin-bottom:26px;max-width:760px">Por trás da MAIA e do time de desenvolvimento existe gente de verdade, responsável por cada entrega. São os três fundadores que respondem por este diagnóstico e pela parceria com a Helio Viagens.</p>
+    <div class="equipe-grid">
+      <div class="socio">
+        <div class="mono-role">CEO / CPO</div>
+        <div class="av"><img src="img/salatiel.jpg" alt="Salatiel Batista"></div>
+        <h4>Salatiel Batista</h4>
+        <div class="socio-at">@salatielbatistaoficial</div>
+        <p class="papel">Sócio-fundador responsável pela arquitetura tecnológica e visão estratégica do produto. Atua na intersecção entre programação e vendas, liderando a construção da MAIA e a metodologia que sustenta a escala do negócio.</p>
+      </div>
+      <div class="socio">
+        <div class="mono-role">CCO / BX</div>
+        <div class="av"><img src="img/raquel.jpg" alt="Raquel Coelho"></div>
+        <h4>Raquel Coelho</h4>
+        <div class="socio-at">@rbcoelho</div>
+        <p class="papel">Sócia idealizadora, responsável pela concepção estratégica e pela identidade da Agência no Bolso. Lidera a presença digital da marca, transformando a comunicação em uma jornada de alto valor para o cliente do começo ao fim.</p>
+      </div>
+      <div class="socio">
+        <div class="mono-role">COO / CX</div>
+        <div class="av"><img src="img/joel.jpg" alt="Joel Visgueira"></div>
+        <h4>Joel Visgueira</h4>
+        <div class="socio-at">@joelvisgueiraoficial</div>
+        <p class="papel">Sócio responsável por garantir a eficiência operacional da empresa e a excelência na jornada do cliente, integrando a estruturação administrativa ao acompanhamento contínuo da execução no dia a dia.</p>
+      </div>
+    </div>
+    <div class="equipe-note"><b>Fundadores de uma agência de IA aplicada a negócios.</b> A Agência no Bolso coloca inteligência artificial dentro da operação de empresas reais — atendimento, vendas, marketing e conteúdo — e é esse time que a Helio Viagens tem do outro lado da mesa.</div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="fbrand">AGÊNCIA NO BOLSO</div>
@@ -535,7 +579,7 @@ footer .fmeta b{color:var(--ink-soft)}
       Análise Estratégica de Conteúdo · @helio_viagens · 18/08/2026<br>
       <b>AGÊNCIA NO BOLSO INOVA SIMPLES (I.S.)</b> · CNPJ 63.598.117/0001-39 · Contato (86) 98114-1438
     </div>
-    <p class="disclaimer">Documento produzido pela Agência no Bolso sobre dados públicos do perfil coletados em 18/08/2026. Nenhuma publicação, follow ou interação foi realizada. Valores de rota/preço marcados como [R$ XX] são placeholders a serem preenchidos pelo cliente. Praça (Castelo do Piauí / DDD 86) a confirmar.</p>
+    <p class="disclaimer">Documento produzido pela Agência no Bolso sobre dados públicos do perfil coletados em 18/08/2026. Nenhuma publicação, follow ou interação foi realizada.</p>
   </div>
 </footer>
 
