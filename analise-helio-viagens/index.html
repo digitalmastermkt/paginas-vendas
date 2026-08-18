@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Análise Estratégica · @helio_viagens | Agência no Bolso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c1015;
+  --bg-soft:#121822;
+  --card:#161e2b;
+  --card-2:#1a2432;
+  --line:#243144;
+  --ink:#eef3fa;
+  --ink-soft:#aebbcd;
+  --ink-dim:#8496ac;
+  --teal:#2fd3c5;
+  --gold:#f0c882;
+  --danger:#f0776d;
+  --warn:#f0b45e;
+  --ok:#5cd897;
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:radial-gradient(1200px 700px at 80% -10%,rgba(47,211,197,.10),transparent 60%),
+             radial-gradient(900px 600px at 0% 0%,rgba(240,200,130,.06),transparent 55%),
+             var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+h1,h2,h3,h4,.mono-tag{font-family:'Plus Jakarta Sans',sans-serif}
+a{color:var(--teal);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- HERO ---------- */
+header.hero{
+  padding:60px 0 46px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.brandbar{display:flex;align-items:center;gap:12px;margin-bottom:36px;flex-wrap:wrap}
+.brandbar .dot{width:11px;height:11px;border-radius:50%;background:var(--teal);box-shadow:0 0 16px var(--teal)}
+.brandbar b{font-family:'Plus Jakarta Sans';font-weight:800;letter-spacing:.3px;font-size:15px}
+.brandbar span{color:var(--ink-dim);font-size:13px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Plus Jakarta Sans';font-weight:600;font-size:12.5px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--teal);
+  border:1px solid rgba(47,211,197,.35);background:rgba(47,211,197,.07);
+  padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+h1{font-size:clamp(32px,6vw,54px);font-weight:800;line-height:1.06;letter-spacing:-1px}
+h1 .at{color:var(--gold)}
+.subtitle{margin-top:18px;font-size:clamp(15.5px,2.2vw,19px);color:var(--ink-soft);max-width:680px}
+.herometa{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-soft);
+  background:var(--card);border:1px solid var(--line);padding:8px 14px;border-radius:999px;
+}
+.chip b{color:var(--ink);font-weight:600}
+
+/* ---------- INDEX / NAV ---------- */
+.toc{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
+.toc a{
+  font-family:'Plus Jakarta Sans';font-weight:600;font-size:12.5px;color:var(--ink-soft);
+  background:var(--card-2);border:1px solid var(--line);padding:8px 14px;border-radius:10px;
+  transition:border-color .15s ease,color .15s ease;text-decoration:none;
+}
+.toc a:hover{border-color:var(--teal);color:var(--ink);text-decoration:none}
+
+/* ---------- SECTIONS ---------- */
+section{padding:44px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.sec-head .k{
+  font-family:'Plus Jakarta Sans';font-weight:800;font-size:14px;
+  color:var(--bg);background:var(--teal);width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.sec-head.gold .k{background:var(--gold)}
+.sec-head.warn .k{background:var(--warn)}
+.sec-head h2{font-size:clamp(21px,3.5vw,29px);font-weight:800;letter-spacing:-.5px}
+.sec-head .sub{color:var(--ink-dim);font-size:13px;margin-top:2px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.card + .card{margin-top:16px}
+.lead{color:var(--ink-soft);font-size:15.5px;margin-bottom:18px}
+.field{margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+.field .ft{font-family:'Plus Jakarta Sans';font-weight:700;font-size:12.5px;letter-spacing:.5px;
+  text-transform:uppercase;color:var(--teal);margin-bottom:5px}
+.field .fv{color:var(--ink-soft);font-size:15px}
+.field .fv strong{color:var(--ink)}
+
+ul.clean{list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.clean li{position:relative;padding-left:22px;color:var(--ink-soft);font-size:14.5px}
+ul.clean li strong{color:var(--ink)}
+ul.clean li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--teal)}
+ul.clean.gold li::before{background:var(--gold)}
+ul.clean.warn li::before{background:var(--danger)}
+ul.clean.ok li::before{background:var(--ok)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+.tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.tag{font-size:12.5px;color:var(--ink-soft);background:var(--card-2);border:1px solid var(--line);padding:6px 12px;border-radius:8px}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+thead th{background:var(--card-2);color:var(--gold);font-family:'Plus Jakarta Sans';font-weight:700;
+  text-align:left;padding:12px 15px;font-size:12px;letter-spacing:.4px;text-transform:uppercase;border-bottom:1px solid var(--line)}
+tbody td{padding:11px 15px;color:var(--ink-soft);border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even) td{background:rgba(255,255,255,.012)}
+tbody td strong{color:var(--ink)}
+td .hit{color:var(--ok);font-weight:600}
+td .miss{color:var(--danger);font-weight:600}
+
+/* alert / callout */
+.alert{background:rgba(240,180,94,.06);border:1px solid rgba(240,180,94,.28);border-radius:14px;padding:20px;margin-top:6px}
+.alert .at{font-family:'Plus Jakarta Sans';font-weight:700;color:var(--warn);font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.alert.ok{background:rgba(92,216,151,.06);border-color:rgba(92,216,151,.28)}
+.alert.ok .at{color:var(--ok)}
+.alert .fv{color:var(--ink-soft);font-size:14.5px}
+.alert .fv strong{color:var(--ink)}
+
+/* quote / hooks */
+.quote{background:var(--bg-soft);border:1px solid rgba(240,200,130,.28);border-radius:12px;
+  padding:14px 18px;color:var(--ink-soft);font-size:14.5px;font-style:italic;margin-top:10px;position:relative}
+.quote::before{content:"\201C";position:absolute;left:10px;top:2px;color:rgba(240,200,130,.4);
+  font-family:'Playfair Display',Georgia,serif;font-size:34px;line-height:1}
+.quote{padding-left:34px}
+.hook{background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-top:12px}
+.hook .hk{font-family:'Plus Jakarta Sans';font-weight:700;font-size:12px;color:var(--teal);letter-spacing:.5px;
+  text-transform:uppercase;margin-bottom:7px}
+.hook .hv{color:var(--ink);font-size:14.5px}
+.hook .hv em{color:var(--gold);font-style:italic}
+
+/* comparison two-col */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
+@media(max-width:640px){.compare{grid-template-columns:1fr}}
+.compare .col{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:18px}
+.compare .col.bad{border-color:rgba(240,119,109,.28)}
+.compare .col.good{border-color:rgba(240,200,130,.28)}
+.compare .col h4{font-family:'Plus Jakarta Sans';font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.compare .col.bad h4{color:var(--danger)}
+.compare .col.good h4{color:var(--gold)}
+
+/* mix bars */
+.mix{display:flex;flex-direction:column;gap:14px}
+.mix .m{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center}
+@media(max-width:560px){.mix .m{grid-template-columns:120px 1fr 40px}}
+.mix .m .ml{font-size:13.5px;color:var(--ink-soft)}
+.mix .m .ml b{color:var(--ink);font-family:'Plus Jakarta Sans';font-weight:700}
+.mix .m .mp{text-align:right;font-family:'Plus Jakarta Sans';font-weight:700;font-size:14px;color:var(--gold)}
+.bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden}
+.bar > i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#d8a860,var(--gold))}
+
+/* timeline / reposicionamento steps */
+.steps{display:flex;flex-direction:column;gap:0}
+.step{border-left:2px solid var(--line);padding:0 0 22px 24px;position:relative;margin-left:6px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-8px;top:1px;width:14px;height:14px;border-radius:50%;
+  background:var(--card);border:2px solid var(--gold)}
+.step .sh{font-family:'Plus Jakarta Sans';font-weight:700;color:var(--ink);font-size:15px;margin-bottom:4px}
+.step .sv{color:var(--ink-soft);font-size:14px}
+.step .sv .biotag{display:block;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;
+  padding:12px 15px;margin-top:9px;color:var(--gold);font-size:14px;font-family:'Inter'}
+
+/* week grid */
+.week{display:grid;grid-template-columns:1fr;gap:8px}
+.week .d{display:grid;grid-template-columns:120px 100px 1fr;gap:14px;background:var(--card-2);border:1px solid var(--line);
+  border-radius:10px;padding:13px 16px;align-items:baseline}
+@media(max-width:640px){.week .d{grid-template-columns:1fr;gap:5px}}
+.week .d .dn{font-family:'Plus Jakarta Sans';font-weight:700;color:var(--gold);font-size:13px}
+.week .d .dp{font-family:'Plus Jakarta Sans';font-weight:600;color:var(--teal);font-size:12.5px}
+.week .d .dv{color:var(--ink-soft);font-size:14px}
+
+/* cta list */
+.ctagroup{display:grid;gap:12px}
+.ctablock{background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.ctablock .ck{font-family:'Plus Jakarta Sans';font-weight:800;font-size:12px;color:var(--teal);letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px}
+.ctablock ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.ctablock li{color:var(--ink-soft);font-size:14px;position:relative;padding-left:18px}
+.ctablock li::before{content:"›";position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* exec summary highlight cards */
+.exec{display:grid;grid-template-columns:1fr;gap:14px}
+.excard{border-radius:14px;padding:20px;border:1px solid var(--line);background:var(--card)}
+.excard .exl{font-family:'Plus Jakarta Sans';font-weight:800;font-size:12px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px}
+.excard.now{border-color:rgba(240,119,109,.28)}
+.excard.now .exl{color:var(--danger)}
+.excard.gap{border-color:rgba(240,180,94,.28)}
+.excard.gap .exl{color:var(--warn)}
+.excard.win{border-color:rgba(240,200,130,.3);background:linear-gradient(160deg,var(--card-2),var(--card))}
+.excard.win .exl{color:var(--gold)}
+.excard .exv{color:var(--ink-soft);font-size:14.5px}
+.excard .exv strong{color:var(--ink)}
+
+/* note */
+.note{font-size:12.5px;color:var(--ink-dim);margin-top:14px;line-height:1.7;font-style:italic}
+
+/* footer */
+footer{padding:44px 0 60px;text-align:center}
+footer .fbrand{font-family:'Plus Jakarta Sans';font-weight:800;font-size:16px}
+footer .fmeta{color:var(--ink-dim);font-size:12.5px;margin-top:8px;line-height:1.9}
+footer .fmeta b{color:var(--ink-soft)}
+.disclaimer{max-width:720px;margin:22px auto 0;font-size:12px;color:#8496ac;line-height:1.7}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brandbar">
+      <span class="dot"></span>
+      <b>AGÊNCIA NO BOLSO</b>
+      <span>· Inteligência de Conteúdo · Auditoria de Perfil</span>
+    </div>
+    <div class="eyebrow">◆ Análise Estratégica · Auditoria + Plano de Conteúdo</div>
+    <h1>Diagnóstico do Instagram de <span class="at">@helio_viagens</span></h1>
+    <p class="subtitle">Agência de venda de passagens (ônibus + aéreas) com loja online. Auditoria completa do perfil sobre dados reais e plano de conteúdo replicável: o que está travando o crescimento e o caminho pra dominar o nicho local.</p>
+    <div class="herometa">
+      <span class="chip"><b>2.582</b> seguidores</span>
+      <span class="chip"><b>546</b> seguindo</span>
+      <span class="chip"><b>18</b> posts</span>
+      <span class="chip">Travel agency · conta business</span>
+      <span class="chip">Praça: Castelo do Piauí / DDD 86 (a confirmar)</span>
+    </div>
+
+    <nav class="toc" aria-label="Índice">
+      <a href="#ficha">1 · Ficha do perfil</a>
+      <a href="#padrao">2 · Padrão de conteúdo hoje</a>
+      <a href="#eixos">3 · Eixos temáticos</a>
+      <a href="#auditoria">4 · O que funciona / não funciona</a>
+      <a href="#ganchos">5 · Ganchos copiáveis</a>
+      <a href="#referencia">6 · Perfil de referência</a>
+      <a href="#plano">7 · Método &amp; plano</a>
+      <a href="#resumo">8 · Resumo executivo</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HONESTIDADE / ACESSO -->
+<section id="acesso">
+  <div class="wrap">
+    <div class="sec-head"><div class="k">0</div><div><h2>Honestidade sobre o acesso</h2><div class="sub">O que foi visto de fato</div></div></div>
+    <div class="alert ok">
+      <div class="at">✓ Perfil aberto e coletado de verdade</div>
+      <div class="fv">Perfil público e business. Coletados nome, bio, nº de seguidores/seguindo, total de posts, categoria, link externo e as <strong>12 publicações mais recentes com legenda íntegra, data exata, curtidas, comentários, views de vídeo e hashtags</strong>. A auditoria abaixo é sobre dados reais, não chute. Coleta em 2026-08-18 via Apify + proxy residencial, ~17s. <strong>Nenhuma publicação, follow ou interação foi feita.</strong></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="grid2">
+        <div class="field"><div class="ft">Atenção ao handle certo</div><div class="fv"><strong>@helio_viagens</strong> (COM "s") = o correto → "Helio viagens", agência de viagem, 2.582 seguidores, 18 posts. <strong>@helioviagens</strong> (SEM "s") = "Helio Diniz", perfil pessoal vazio (<strong>não é o cliente</strong>.</div></div>
+        <div class="field"><div class="ft">O que NÃO deu pra ver</div><div class="fv">Vídeos não foram abertos frame a frame (só metadados). Análise de formato visual é inferida por thumbnails/legendas. Reach/impressões/salvamentos são privados (só o dono vê): o trabalho é sobre curtidas/comentários/views públicos, que já dizem muito aqui.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1 FICHA -->
+<section id="ficha">
+  <div class="wrap">
+    <div class="sec-head gold"><div class="k">1</div><div><h2>Ficha do perfil</h2><div class="sub">Dados reais coletados</div></div></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Campo</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Nome</strong></td><td>Helio viagens (@helio_viagens)</td></tr>
+          <tr><td><strong>Bio</strong></td><td>"TRABALHAMOS EXCLUSIVAMENTE COM PASSAGENS PRA ÔNIBUS E PASSAGENS AÉREAS" (tudo em caixa alta)</td></tr>
+          <tr><td><strong>Seguidores</strong></td><td>2.582</td></tr>
+          <tr><td><strong>Seguindo</strong></td><td>546</td></tr>
+          <tr><td><strong>Posts</strong></td><td>18 no total (conta jovem / pouco ativa)</td></tr>
+          <tr><td><strong>Categoria</strong></td><td>Travel agency (conta business)</td></tr>
+          <tr><td><strong>Verificado</strong></td><td>Não</td></tr>
+          <tr><td><strong>Link na bio</strong></td><td>comprarviagem.com.br/helioviagens (loja de venda de passagens)</td></tr>
+          <tr><td><strong>Praça</strong></td><td>Não declarada no perfil. Provável Castelo do Piauí / região DDD 86 (mesma praça de outros clientes da casa). <em>A confirmar com o Joel/cliente.</em></td></tr>
+          <tr><td><strong>Highlights</strong></td><td>Nenhum organizado/nomeado detectado. <span class="miss">Gap.</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="field"><div class="ft">Leitura da ficha</div><div class="fv">É uma conta <strong>pequena, local e recém-plantada</strong> (18 posts). O negócio é claro (venda de passagens de ônibus + aéreas, com loja online), mas o perfil ainda não conta uma história nem gera comunidade. Um ativo cru: existe, funciona, mas <strong>não vende sozinho</strong>.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 PADRAO -->
+<section id="padrao">
+  <div class="wrap">
+    <div class="sec-head warn"><div class="k">2</div><div><h2>Padrão de conteúdo hoje</h2><div class="sub">As 12 publicações auditadas · dados reais</div></div></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Data</th><th>Formato</th><th>Curtidas</th><th>Views</th><th>Legenda?</th><th>Tema</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>04/08/2026</td><td>Reel</td><td>1</td><td>37</td><td>Sim</td><td>"Viajar é viver experiências" · conforto/segurança</td></tr>
+          <tr><td>2</td><td>04/08/2026</td><td>Reel</td><td>1</td><td>27</td><td><span class="miss">Vazia</span></td><td class="empty">–</td></tr>
+          <tr><td>3</td><td>04/08/2026</td><td>Foto/card</td><td>1</td><td class="empty">–</td><td><span class="miss">Vazia</span></td><td class="empty">–</td></tr>
+          <tr><td>4</td><td>15/06/2026</td><td>Foto/card</td><td>0</td><td class="empty">–</td><td>Sim</td><td>"Vai viajar? Conte com a Hélio" · aérea + rodoviária</td></tr>
+          <tr><td>5</td><td>09/06/2026</td><td>Foto/card</td><td>2</td><td class="empty">–</td><td>Sim</td><td>"Sua próxima aventura começa aqui"</td></tr>
+          <tr><td>6</td><td>08/02/2026</td><td>Foto/card</td><td><strong>10</strong></td><td class="empty">–</td><td>Sim (post de <strong>terceiro</strong>)</td><td>Patrocínio do Desafio Castelo Bike</td></tr>
+          <tr><td>7</td><td>27/01/2026</td><td>Foto/card</td><td>1</td><td class="empty">–</td><td><span class="miss">Vazia</span></td><td class="empty">–</td></tr>
+          <tr><td>8</td><td>31/12/2025</td><td>Foto/card</td><td>1</td><td class="empty">–</td><td><span class="miss">Vazia</span></td><td class="empty">–</td></tr>
+          <tr><td>9</td><td>25/12/2025</td><td>Foto/card</td><td>0</td><td class="empty">–</td><td><span class="miss">Vazia</span></td><td class="empty">–</td></tr>
+          <tr><td>10</td><td>17/12/2025</td><td>Foto/card</td><td>0</td><td class="empty">–</td><td><span class="miss">Vazia</span></td><td class="empty">–</td></tr>
+          <tr><td>11</td><td>04/12/2025</td><td>Reel</td><td>0</td><td>34</td><td><span class="miss">Vazia</span></td><td class="empty">–</td></tr>
+          <tr><td>12</td><td>04/12/2025</td><td>Reel</td><td>0</td><td>8</td><td><span class="miss">Vazia</span></td><td class="empty">–</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="field"><div class="ft">Diagnóstico do padrão · o que os números contam</div>
+        <ul class="clean warn">
+          <li><strong>Engajamento no chão.</strong> Curtidas entre 0 e 2; views entre 8 e 37. O único post com tração real (10 curtidas) <strong>não é dele</strong>: é o organizador do Desafio Castelo Bike agradecendo o patrocínio. Ou seja: o que engaja hoje é prova social de terceiro, não o conteúdo próprio.</li>
+          <li><strong>Metade das legendas está VAZIA</strong> (6 de 12). Post sem legenda = zero contexto, zero SEO interno, zero CTA, zero razão pra parar de rolar.</li>
+          <li><strong>Cadência irregular e escassa.</strong> 12 posts espalhados de dez/2025 a ago/2026 (~9 meses). Rajada de 3 posts num único dia (04/08) e depois silêncio. Não há ritmo.</li>
+          <li><strong>Conteúdo 100% institucional genérico.</strong> Sempre a mesma coisa ("viajar é viver experiências, conte com a gente"). Nenhuma oferta concreta (rota, preço, promoção), nenhuma utilidade, nenhum rosto.</li>
+          <li><strong>Sem hierarquia visual de perfil.</strong> Sem highlights nomeados, sem destaque de link, sem identidade repetida entre os cards.</li>
+          <li><strong>Hashtags só em 2 posts</strong> e genéricas (#Viagem #Turismo #Conforto). Sem hashtag local (#CasteloDoPiauí, #Piauí), que é onde uma conta pequena consegue ser achada.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 EIXOS -->
+<section id="eixos">
+  <div class="wrap">
+    <div class="sec-head"><div class="k">3</div><div><h2>Eixos temáticos que existem hoje</h2><div class="sub">Com exemplos reais das legendas</div></div></div>
+    <div class="card">
+      <p class="lead">Só há um eixo, repetido: <strong style="color:var(--ink)">institucional-aspiracional genérico</strong> · "Viaje com a gente" (conforto/segurança).</p>
+      <div class="quote">"Viajar é viver novas experiências, criar memórias e chegar ao seu destino com mais conforto e tranquilidade. ✈️🚌 Conte com a Hélio Viagens para transformar cada percurso em uma viagem segura..." (post 1)</div>
+      <div class="quote">"✈️🚌 Vai viajar? Conte com a Hélio Viagens! Passagens aéreas e rodoviárias com praticidade, segurança e atendimento de confiança..." (post 4)</div>
+      <div class="quote">"✈️🌎 Sua próxima aventura começa aqui! Viajar é colecionar momentos..." (post 5)</div>
+      <div class="field" style="margin-top:18px"><div class="fv">É bonito, mas é <strong>intercambiável</strong>: poderia ser de qualquer agência do Brasil. Não tem rota, não tem preço, não tem cara, não tem cidade, não tem CTA de conversão (só "entre em contato" solto). O conteúdo não dá ao seguidor <strong>nenhum motivo pra comprar HOJE nem pra seguir</strong>.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 AUDITORIA -->
+<section id="auditoria">
+  <div class="wrap">
+    <div class="sec-head gold"><div class="k">4</div><div><h2>O que funciona e o que não funciona</h2><div class="sub">Auditoria honesta</div></div></div>
+    <div class="compare">
+      <div class="col good">
+        <h4>✓ Funciona / está a favor</h4>
+        <ul class="clean ok">
+          <li><strong>Negócio e oferta claros e concretos.</strong> Passagem de ônibus + aérea, com loja online. Produto de compra recorrente. Demanda existe, ticket recorrente.</li>
+          <li><strong>Conta business + link externo</strong> já configurados. Base técnica ok pra vender.</li>
+          <li><strong>Prova social real disponível.</strong> O patrocínio do Desafio Castelo Bike mostra envolvimento com a comunidade local: foi o post que mais engajou.</li>
+          <li><strong>Praça local pequena = vantagem.</strong> Dá pra dominar o nicho "passagem" com pouco esforço e virar referência.</li>
+        </ul>
+      </div>
+      <div class="col bad">
+        <h4>✗ Não funciona / precisa mudar</h4>
+        <ul class="clean warn">
+          <li><strong>Sem rosto e sem gente.</strong> Turismo vende emoção e confiança, e confiança em cidade pequena tem cara. Maior gap.</li>
+          <li><strong>Legendas vazias ou genéricas.</strong> Metade sem texto; a outra diz o óbvio. Zero oferta, zero utilidade, zero CTA.</li>
+          <li><strong>Sem cadência.</strong> Rajada + silêncio não constrói audiência. Instagram premia consistência.</li>
+          <li><strong>Sem prova de preço/rota.</strong> O que segura o comprador é "pra onde e por quanto". Não aparece.</li>
+          <li><strong>Sem highlights nem SEO local.</strong> Perfil não guia o visitante e não usa hashtag/geotag local.</li>
+          <li><strong>CTA fraco.</strong> "Entre em contato e saiba mais" não converte. Falta WhatsApp direto + link de compra explícito.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 GANCHOS -->
+<section id="ganchos">
+  <div class="wrap">
+    <div class="sec-head"><div class="k">5</div><div><h2>Ganchos copiáveis</h2><div class="sub">Com o que o conteúdo dele deveria abrir</div></div></div>
+    <div class="card">
+      <p class="lead">Hoje ele abre com "Viajar é viver experiências" (frase morta). No lugar, ganchos que param o dedo, testados no nicho viagem, adaptados pra praça local e pro produto real (passagem):</p>
+      <div class="hook"><div class="hk">Oferta com rota + preço</div><div class="hv"><em>"Passagem de [Castelo do Piauí] pra [Teresina/Fortaleza] a partir de R$ XX. Manda 'QUERO' que eu te passo o horário."</em></div></div>
+      <div class="hook"><div class="hk">Utilidade / medo bem usado</div><div class="hv"><em>"Comprar passagem aérea na terça de madrugada é mais barato? A verdade sobre o melhor dia pra comprar."</em></div></div>
+      <div class="hook"><div class="hk">Segmentação por destino do momento</div><div class="hv"><em>"Vai pra [São Paulo] esse mês? Tem ônibus leito e tem aéreo, te mostro qual compensa."</em></div></div>
+      <div class="hook"><div class="hk">Prova / bastidor</div><div class="hv"><em>"Cliente comprou 8h da manhã, tava embarcando às 14h. É assim que a gente resolve passagem de última hora."</em></div></div>
+      <div class="hook"><div class="hk">Autoridade local</div><div class="hv"><em>"Sou o Hélio, e já vendi passagem pra [X] pessoas daqui de [cidade]. Hoje te ensino a não pagar caro na aérea."</em></div></div>
+      <div class="hook"><div class="hk">FOMO de promoção</div><div class="hv"><em>"Promoção de passagem aérea some rápido. Ativa as notificações que quando cair um preço bom, eu aviso aqui primeiro."</em></div></div>
+      <div class="field" style="margin-top:18px"><div class="fv">Padrão: <strong>rota concreta + preço/utilidade + CTA de WhatsApp direto</strong>. Nunca mais "viajar é viver experiências" sozinho.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 REFERENCIA -->
+<section id="referencia">
+  <div class="wrap">
+    <div class="sec-head"><div class="k">6</div><div><h2>Perfil de referência do nicho</h2><div class="sub">Comparação real com @passagenspromo</div></div></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th></th><th>@helio_viagens (cliente)</th><th>@passagenspromo (referência)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Seguidores</strong></td><td>2.582</td><td>360.261 · verificado</td></tr>
+          <tr><td><strong>Posts</strong></td><td>18</td><td>2.366</td></tr>
+          <tr><td><strong>Bio</strong></td><td>Só operacional ("trabalhamos com passagens")</td><td><strong>Oferta + benefício + CTA:</strong> "Passagens, hospedagem, seguro, visto e experiências com descontos! Sua viagem começa aqui" + link bio</td></tr>
+          <tr><td><strong>Conteúdo</strong></td><td>Institucional genérico, sem oferta</td><td><strong>Promoção de preço concreta</strong> (rota X por R$ Y), utilidade de viagem, alto volume</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="field"><div class="ft">A lição da referência (aplicável mesmo sem a escala dela)</div><div class="fv">O que uma conta de viagem que vende faz e a Hélio não faz = <strong>anunciar PREÇO/PROMOÇÃO de rota concreta</strong> e <strong>postar utilidade de viagem</strong> com frequência. Não dá pra copiar os 360 mil, mas dá pra copiar o <strong>método</strong>: cada post responde "pra onde, por quanto, como comprar". A bio da PassagensPromo já ensina: promete benefício (descontos) + convida (CTA), enquanto a da Hélio só descreve o que faz.</div></div>
+      <p class="note">Nota: a referência ideal seria uma agência LOCAL de passagem com bom engajamento pra comparar praça vs praça. Se o Joel indicar um concorrente direto da região, coletamos e cruzamos. A PassagensPromo serve como parâmetro de método, não de escala.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 METODO / PLANO -->
+<section id="plano">
+  <div class="wrap">
+    <div class="sec-head gold"><div class="k">7</div><div><h2>Método &amp; plano replicável de conteúdo</h2><div class="sub">Como sair do zero e dominar o nicho local</div></div></div>
+
+    <h3 style="font-size:17px;margin-bottom:14px;color:var(--gold)">7.1 · Reposicionamento do perfil</h3>
+    <div class="card">
+      <p class="lead">Arrumar a casa antes de postar.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="sh">Bio nova (modelo PassagensPromo, adaptada)</div>
+          <div class="sv">Sair do "trabalhamos exclusivamente com passagens" pra algo com benefício + praça + CTA:
+            <span class="biotag">✈️🚌 Passagem aérea e de ônibus mais barata, sem sair de casa · 📍 [Castelo do Piauí-PI e região] · 📲 Chama no WhatsApp e te passo o melhor preço 👇</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sh">Link da bio</div>
+          <div class="sv">Manter comprarviagem.com.br/helioviagens, mas somar <strong>WhatsApp</strong> (conversão de cidade pequena é no zap, não no site).</div>
+        </div>
+        <div class="step">
+          <div class="sh">Highlights nomeados (criar 4)</div>
+          <div class="sv"><span class="tag">✈️ Aéreas</span> <span class="tag">🚌 Ônibus</span> <span class="tag">💬 Como comprar</span> <span class="tag">⭐ Depoimentos</span></div>
+        </div>
+        <div class="step">
+          <div class="sh">Confirmar a praça</div>
+          <div class="sv">Cravar cidade na bio + geotag em todo post (SEO local é o que faz conta pequena ser achada).</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:17px;margin:28px 0 14px;color:var(--gold)">7.2 · Pilares de conteúdo (4, revezando)</h3>
+    <div class="card">
+      <div class="mix">
+        <div class="m"><div class="ml"><b>P1</b> · Oferta/Preço</div><div class="bar"><i style="width:40%"></i></div><div class="mp">40%</div></div>
+        <div class="m"><div class="ml"><b>P2</b> · Utilidade de viagem</div><div class="bar"><i style="width:25%"></i></div><div class="mp">25%</div></div>
+        <div class="m"><div class="ml"><b>P3</b> · Prova/Confiança</div><div class="bar"><i style="width:20%"></i></div><div class="mp">20%</div></div>
+        <div class="m"><div class="ml"><b>P4</b> · Rosto/História</div><div class="bar"><i style="width:15%"></i></div><div class="mp">15%</div></div>
+      </div>
+      <div class="grid2" style="margin-top:20px">
+        <div class="field"><div class="ft">P1 · Oferta/Preço</div><div class="fv">"Rota X por R$ Y, chama no zap": o que efetivamente vende passagem.</div></div>
+        <div class="field"><div class="ft">P2 · Utilidade de viagem</div><div class="fv">Dicas: melhor dia pra comprar aérea, bagagem, documentos, ônibus x avião.</div></div>
+        <div class="field"><div class="ft">P3 · Prova/Confiança</div><div class="fv">Depoimento, bastidor de atendimento, "resolvi de última hora", patrocínios locais.</div></div>
+        <div class="field"><div class="ft">P4 · Rosto/História</div><div class="fv">Hélio (ou atendente) falando à câmera: humaniza e cria a âncora reconhecível.</div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:17px;margin:28px 0 14px;color:var(--gold)">7.3 · Formato (o "jeito", aprendendo com o modelo da casa)</h3>
+    <div class="card">
+      <ul class="clean gold">
+        <li><strong>Reel falando à câmera</strong> como carro-chefe (é o que a União/Bruno provaram que funciona no DDD 86): rosto do Hélio/atendente, legenda word-level animada, gancho de oferta/utilidade nos 3s, CTA WhatsApp no fim.</li>
+        <li><strong>Card de oferta</strong> (arte de rota + preço) pros posts de P1, com identidade fixa (cor + logo repetidos), nunca "facão" foto+texto.</li>
+        <li><strong>Sempre com legenda</strong> (rota, preço, CTA) + <strong>hashtag local</strong> + <strong>geotag</strong>.</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:17px;margin:28px 0 14px;color:var(--gold)">7.4 · Calendário sugerido</h3>
+    <div class="card">
+      <p class="lead">Realista pra conta pequena: 4 posts/semana.</p>
+      <div class="week">
+        <div class="d"><div class="dn">Segunda</div><div class="dp">P1 Oferta</div><div class="dv">Card "Castelo → Teresina a partir de R$ XX · chama no zap"</div></div>
+        <div class="d"><div class="dn">Quarta</div><div class="dp">P2 Utilidade</div><div class="dv">Reel "3 erros que fazem você pagar caro na passagem aérea"</div></div>
+        <div class="d"><div class="dn">Sexta</div><div class="dp">P1 Oferta</div><div class="dv">Card promoção do fim de semana / aéreo do mês</div></div>
+        <div class="d"><div class="dn">Sáb/Dom</div><div class="dp">P3 ou P4</div><div class="dv">Depoimento de cliente OU Hélio à câmera contando um caso</div></div>
+      </div>
+      <p class="note">Stories diários leves (bom dia + "qual destino você quer? me chama") pra manter presença.</p>
+    </div>
+
+    <h3 style="font-size:17px;margin:28px 0 14px;color:var(--gold)">7.5 · CTAs padrão</h3>
+    <div class="card">
+      <div class="ctagroup">
+        <div class="ctablock"><div class="ck">Conversão</div><ul>
+          <li>"Manda <strong style="color:var(--ink)">QUERO</strong> no direct que eu te passo o preço"</li>
+          <li>"Chama no WhatsApp (86) XXXXX, respondo na hora."</li>
+        </ul></div>
+        <div class="ctablock"><div class="ck">Alcance orgânico</div><ul>
+          <li>"Marca aquele amigo que tá querendo viajar"</li>
+          <li>"Compartilha com quem vai pra [destino]."</li>
+        </ul></div>
+        <div class="ctablock"><div class="ck">Salvamento</div><ul>
+          <li>"Salva esse post pra não esquecer o melhor dia de comprar aérea."</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:17px;margin:28px 0 14px;color:var(--gold)">7.6 · Métrica de sucesso (próximos 30–60 dias)</h3>
+    <div class="alert ok">
+      <div class="at">◎ Meta</div>
+      <div class="fv">Sair de 0–2 curtidas/post pra: <strong>cadência de 4 posts/semana mantida</strong>, <strong>primeiro reel de rosto publicado</strong>, e ao menos <strong>1 lead de WhatsApp rastreável por post de oferta</strong>. Engajamento vem depois da consistência: o gargalo hoje é volume + oferta concreta, não algoritmo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 RESUMO -->
+<section id="resumo">
+  <div class="wrap">
+    <div class="sec-head"><div class="k">8</div><div><h2>Resumo executivo</h2><div class="sub">Onde está, o que trava, o que fazer</div></div></div>
+    <div class="exec">
+      <div class="excard now">
+        <div class="exl">◆ Posicionamento atual</div>
+        <div class="exv">Agência de venda de passagens (ônibus + aéreo) com loja online, conta pequena e local (2.582 seguidores, 18 posts), postando conteúdo <strong>institucional genérico</strong> ("viajar é viver experiências"), sem rosto, sem oferta concreta e sem cadência.</div>
+      </div>
+      <div class="excard gap">
+        <div class="exl">◆ Principal problema</div>
+        <div class="exv">O perfil não dá motivo pra comprar nem pra seguir. Metade dos posts sem legenda, zero oferta de rota/preço, engajamento no chão (0–2 curtidas; o único post com tração é de um terceiro agradecendo patrocínio). Falta rosto, cadência e CTA de conversão.</div>
+      </div>
+      <div class="excard win">
+        <div class="exl">◆ Principal oportunidade</div>
+        <div class="exv">Numa praça pequena, com produto de compra recorrente (passagem), dá pra <strong>dominar o nicho local</strong> rápido, plantando 4 posts/semana com <strong>oferta concreta (rota + preço), utilidade de viagem e rosto à câmera</strong> (mesmo método reel-autoridade que já funciona pro Master Créditos no DDD 86), reforçado por prova social (patrocínios locais) e SEO local (bio + geotag + hashtag da cidade).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">AGÊNCIA NO BOLSO</div>
+    <div class="fmeta">
+      Análise Estratégica de Conteúdo · @helio_viagens · 18/08/2026<br>
+      <b>AGÊNCIA NO BOLSO INOVA SIMPLES (I.S.)</b> · CNPJ 63.598.117/0001-39 · Contato (86) 98114-1438
+    </div>
+    <p class="disclaimer">Documento produzido pela Agência no Bolso sobre dados públicos do perfil coletados em 18/08/2026. Nenhuma publicação, follow ou interação foi realizada. Valores de rota/preço marcados como [R$ XX] são placeholders a serem preenchidos pelo cliente. Praça (Castelo do Piauí / DDD 86) a confirmar.</p>
+  </div>
+</footer>
+
+</body>
+</html>
