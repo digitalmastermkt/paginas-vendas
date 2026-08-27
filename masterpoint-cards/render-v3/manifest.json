@@ -1,0 +1,72 @@
+{
+  "00-catalogo-geral": {
+    "n_slides": 5,
+    "arquivos": [
+      "slide_01.png",
+      "slide_02.png",
+      "slide_03.png",
+      "slide_04.png",
+      "slide_05.png"
+    ]
+  },
+  "01-office-escritorio": {
+    "n_slides": 5,
+    "arquivos": [
+      "slide_01.png",
+      "slide_02.png",
+      "slide_03.png",
+      "slide_04.png",
+      "slide_05.png"
+    ]
+  },
+  "02-design-criacao": {
+    "n_slides": 5,
+    "arquivos": [
+      "slide_01.png",
+      "slide_02.png",
+      "slide_03.png",
+      "slide_04.png",
+      "slide_05.png"
+    ]
+  },
+  "03-marketing-web": {
+    "n_slides": 5,
+    "arquivos": [
+      "slide_01.png",
+      "slide_02.png",
+      "slide_03.png",
+      "slide_04.png",
+      "slide_05.png"
+    ]
+  },
+  "04-ia-automacao": {
+    "n_slides": 5,
+    "arquivos": [
+      "slide_01.png",
+      "slide_02.png",
+      "slide_03.png",
+      "slide_04.png",
+      "slide_05.png"
+    ]
+  },
+  "05-profissionalizantes": {
+    "n_slides": 5,
+    "arquivos": [
+      "slide_01.png",
+      "slide_02.png",
+      "slide_03.png",
+      "slide_04.png",
+      "slide_05.png"
+    ]
+  },
+  "06-idiomas": {
+    "n_slides": 5,
+    "arquivos": [
+      "slide_01.png",
+      "slide_02.png",
+      "slide_03.png",
+      "slide_04.png",
+      "slide_05.png"
+    ]
+  }
+}
