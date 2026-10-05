@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Master | Links</title>
+<meta name="description" content="Digital Master — agência de marketing para empresas. Escolha o serviço e fale com a gente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#F0C882; --gold-deep:#C9971F; --teal:#2A9D8F; --teal-deep:#1F7A6F;
+  --ink:#0C0D0F; --panel:#15171A; --panel-2:#1C1F23; --line:rgba(240,200,130,.14);
+  --surface:#FFFFFF; --muted:#A7AEB6; --muted-2:#8C949D; --on-dark:#F4F2ED;
+  --display:'Playfair Display',Georgia,serif;
+  --heading:'Plus Jakarta Sans',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);min-height:100vh;color:var(--on-dark);line-height:1.6;-webkit-font-smoothing:antialiased;background:var(--ink)}
+img{max-width:100%;display:block}
+.wrap{width:100%;max-width:520px;margin:0 auto;padding:0 22px}
+
+/* header */
+.head{text-align:center;padding:44px 0 10px}
+.head img{height:72px;margin:0 auto 20px;filter:drop-shadow(0 4px 18px rgba(0,0,0,.6))}
+.head h1{font-family:var(--display);font-weight:800;font-size:clamp(25px,6.6vw,32px);color:var(--surface);line-height:1.12;letter-spacing:-.01em}
+.head h1 .hl{color:var(--gold);font-style:italic}
+.head p{color:var(--muted);font-size:15px;max-width:400px;margin:14px auto 0;line-height:1.55}
+
+/* label */
+.grouplabel{display:flex;align-items:center;gap:12px;max-width:520px;margin:30px auto 14px;padding:0 22px}
+.grouplabel span{font-family:var(--heading);font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);white-space:nowrap}
+.grouplabel:before,.grouplabel:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(42,157,143,.35),transparent)}
+
+/* links */
+.links{display:grid;gap:12px;padding-bottom:4px}
+.link{display:flex;align-items:center;gap:14px;background:var(--panel-2);border:1px solid var(--line);border-radius:16px;padding:17px 18px;text-decoration:none;color:var(--on-dark);transition:transform .25s cubic-bezier(.22,1,.36,1),border-color .25s ease,background .25s ease}
+.link:hover{transform:translateY(-2px);border-color:rgba(42,157,143,.5);background:#20242A}
+.link .ic{flex:0 0 42px;width:42px;height:42px;border-radius:12px;background:rgba(42,157,143,.14);display:flex;align-items:center;justify-content:center;font-size:21px}
+.link .tx{flex:1;min-width:0}
+.link .tx b{display:block;font-family:var(--heading);font-weight:700;font-size:16px;color:var(--surface);line-height:1.25}
+.link .tx small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.35}
+.link .arrow{flex:0 0 auto;color:var(--teal);font-size:19px;font-weight:700;opacity:.8}
+
+/* soon */
+.link.soon{cursor:default;opacity:.62}
+.link.soon:hover{transform:none;border-color:var(--line);background:var(--panel-2)}
+.link.soon .arrow{color:#C3CAD2;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:4px 10px;opacity:1}
+
+/* featured (active pilot) */
+.link.feat{background:#1A2B29;border-color:rgba(42,157,143,.5)}
+.link.feat .ic{background:var(--teal);color:#fff}
+.link.feat .arrow{opacity:1}
+.link.feat:hover{background:#1E332F;border-color:rgba(42,157,143,.7)}
+
+/* maia */
+.link.maia{background:#2A271D;border-color:rgba(240,200,130,.45)}
+.link.maia .ic{background:var(--gold);color:var(--ink)}
+.link.maia .arrow{color:var(--gold)}
+.link.maia:hover{background:#322D1F;border-color:rgba(240,200,130,.65)}
+
+/* whats */
+.link.wa .ic{background:#25D366}
+.link.wa .arrow{color:#25D366}
+.link.wa:hover{border-color:rgba(37,211,102,.55)}
+
+footer{text-align:center;padding:34px 22px 40px;color:var(--muted-2);font-size:12.5px;font-family:var(--heading);letter-spacing:.02em}
+footer b{color:var(--teal);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="head wrap">
+  <img src="images/logo.png" alt="Digital Master">
+  <h1>A agência que faz sua empresa <span class="hl">vender mais</span></h1>
+  <p>Escolha o serviço que você precisa e fale direto com a gente.</p>
+</header>
+
+<!-- SERVIÇOS -->
+<div class="grouplabel"><span>Nossos serviços</span></div>
+<main class="wrap">
+  <div class="links">
+
+    <!-- ATIVO: piloto -->
+    <a class="link feat" href="https://digitalmastermkt.github.io/paginas-vendas/gestao-redes-sociais/">
+      <div class="ic">&#128241;</div>
+      <div class="tx"><b>Gestão de Redes Sociais</b><small>Sua presença digital no automático</small></div>
+      <div class="arrow">&#8594;</div>
+    </a>
+
+    <!-- PLACEHOLDERS: em breve -->
+    <a class="link soon" href="#" aria-disabled="true" onclick="return false;">
+      <div class="ic">&#128200;</div>
+      <div class="tx"><b>Tráfego Pago</b><small>Anúncios que trazem cliente</small></div>
+      <div class="arrow">Em breve</div>
+    </a>
+
+    <a class="link soon" href="#" aria-disabled="true" onclick="return false;">
+      <div class="ic">&#128196;</div>
+      <div class="tx"><b>Página de Vendas</b><small>Página feita pra converter</small></div>
+      <div class="arrow">Em breve</div>
+    </a>
+
+    <a class="link soon" href="#" aria-disabled="true" onclick="return false;">
+      <div class="ic">&#127912;</div>
+      <div class="tx"><b>Design</b><small>Artes e materiais profissionais</small></div>
+      <div class="arrow">Em breve</div>
+    </a>
+
+    <a class="link soon" href="#" aria-disabled="true" onclick="return false;">
+      <div class="ic">&#10024;</div>
+      <div class="tx"><b>Identidade Visual</b><small>A cara da sua marca</small></div>
+      <div class="arrow">Em breve</div>
+    </a>
+
+    <a class="link soon" href="#" aria-disabled="true" onclick="return false;">
+      <div class="ic">&#128269;</div>
+      <div class="tx"><b>Análise de Perfil</b><small>Diagnóstico do seu Instagram</small></div>
+      <div class="arrow">Em breve</div>
+    </a>
+
+    <a class="link soon" href="#" aria-disabled="true" onclick="return false;">
+      <div class="ic">&#128197;</div>
+      <div class="tx"><b>Planejamento de Conteúdo</b><small>Estratégia e calendário editorial</small></div>
+      <div class="arrow">Em breve</div>
+    </a>
+
+  </div>
+
+  <!-- MAIA -->
+  <div class="grouplabel"><span>Nosso produto</span></div>
+  <div class="links">
+    <a class="link maia" href="https://agencianobolso.com.br" target="_blank" rel="noopener">
+      <div class="ic">&#129302;</div>
+      <div class="tx"><b>MaIA · Agência no Bolso</b><small>Inteligência artificial que atende e vende no seu WhatsApp</small></div>
+      <div class="arrow">&#8594;</div>
+    </a>
+  </div>
+
+  <!-- WHATSAPP -->
+  <div class="grouplabel"><span>Fale com a gente</span></div>
+  <div class="links">
+    <a class="link wa" href="https://wa.me/5586988894262?text=Oi!%20Vim%20pelo%20link%20da%20bio%20e%20quero%20falar%20com%20a%20Digital%20Master" target="_blank" rel="noopener">
+      <div class="ic">&#128172;</div>
+      <div class="tx"><b>WhatsApp</b><small>(86) 98889-4262 · resposta rápida</small></div>
+      <div class="arrow">&#8594;</div>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <b>Digital Master</b> · Marketing para quem quer crescer
+</footer>
+
+<!-- anb-maia-footer -->
+<style>
+.anb-maia-footer{box-sizing:border-box;width:100%;margin:0;padding:28px 20px;background:rgba(0,0,0,.04);border-top:1px solid rgba(255,255,255,.08);text-align:center;font-family:inherit;line-height:1.5;color:#8C949D;font-size:13px}
+.anb-maia-footer .anb-maia-brand{font-weight:700;color:#2A9D8F;letter-spacing:.2px;margin-bottom:4px;font-size:14px}
+.anb-maia-footer .anb-maia-sub{opacity:.85;margin-bottom:10px}
+@media print{.anb-maia-footer{display:none}}
+</style>
+<footer class="anb-maia-footer">
+  <div class="anb-maia-brand">Agência no Bolso · Powered by MAIA</div>
+  <div class="anb-maia-sub">Uma agência completa de inteligência artificial</div>
+</footer>
+<!-- /anb-maia-footer -->
+
+</body>
+</html>
