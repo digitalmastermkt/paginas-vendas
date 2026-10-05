@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestão de Redes Sociais | Digital Master</title>
+<meta name="description" content="A Digital Master assume a presença digital da sua empresa de ponta a ponta: estratégia, conteúdo, produção e publicação. Você volta a cuidar do negócio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#F0C882; --gold-deep:#C9971F; --teal:#2A9D8F; --teal-deep:#1F7A6F; --teal-btn:#146B61;
+  --ink:#0F0F0F; --panel:#15171A; --panel-2:#1C1F23; --line:rgba(240,200,130,.16);
+  --surface:#FFFFFF; --muted:#A7AEB6; --muted-2:#8C949D; --on-dark:#F4F2ED;
+  --display:'Playfair Display',Georgia,serif;
+  --heading:'Plus Jakarta Sans',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--ink);color:var(--on-dark);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+.wrap{width:100%;max-width:720px;margin:0 auto;padding:0 22px}
+section{padding:56px 0}
+
+/* ---------- top brand ---------- */
+.topbar{padding:22px 0 8px;text-align:center}
+.topbar img{height:44px;margin:0 auto;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))}
+
+/* ---------- hero ---------- */
+.hero{padding-top:30px;padding-bottom:40px;text-align:center}
+.eyebrow{display:inline-block;font-family:var(--heading);font-weight:700;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:18px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(33px,8.4vw,52px);line-height:1.08;color:var(--surface);letter-spacing:-.01em}
+.hero h1 .hl{color:var(--gold);font-style:italic}
+.hero .sub{font-size:clamp(16px,4.3vw,18.5px);color:var(--muted);max-width:560px;margin:22px auto 0;line-height:1.6}
+.cta{display:block;width:100%;max-width:470px;margin:34px auto 0;background:var(--teal-btn);background:linear-gradient(180deg,#178577 0%,var(--teal-btn) 100%);color:#fff;font-family:var(--heading);font-weight:800;font-size:clamp(16px,4.2vw,19px);letter-spacing:.005em;text-decoration:none;padding:21px 26px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,.4);transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s ease;text-align:center}
+.cta:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(0,0,0,.5)}
+.cta small{display:block;font-weight:600;font-size:13px;letter-spacing:.02em;opacity:.92;margin-top:5px}
+.trustline{margin-top:18px;font-family:var(--heading);font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--muted-2)}
+.trustline b{color:var(--gold)}
+
+/* ---------- stop/qualify banner ---------- */
+.stopband{background:linear-gradient(160deg,var(--panel) 0%,#0B1413 100%);border:1px solid var(--line);border-radius:26px;padding:42px 28px;text-align:center}
+.stopband p.k{font-family:var(--heading);font-weight:600;font-size:15px;color:var(--muted);margin-bottom:12px}
+.stopband h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,7.4vw,40px);line-height:1.1;color:var(--surface)}
+.stopband h2 .hl{color:var(--teal)}
+.chev{display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:24px auto 0;border-radius:50%;background:var(--gold);color:var(--ink);font-size:22px;font-weight:800;box-shadow:0 8px 18px rgba(0,0,0,.45)}
+
+/* ---------- fit lists ---------- */
+.fit{border-radius:24px;padding:34px 26px}
+.fit.yes{background:var(--panel-2);border:1px solid var(--line)}
+.fit.no{background:rgba(201,151,31,.05);border:1px solid rgba(201,151,31,.18);margin-top:26px}
+.fit .tag{display:inline-block;font-family:var(--display);font-weight:800;font-size:clamp(22px,5.8vw,28px);padding:8px 20px;border-radius:14px;margin-bottom:22px}
+.fit.yes .tag{background:var(--teal-btn);color:#fff}
+.fit.no .tag{background:var(--gold);color:var(--ink)}
+.fititem{display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-top:1px solid rgba(255,255,255,.06)}
+.fititem:first-of-type{border-top:none}
+.fitmark{flex:0 0 30px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-top:2px}
+.fit.yes .fitmark{background:rgba(42,157,143,.18);color:var(--teal)}
+.fit.no .fitmark{background:rgba(201,151,31,.18);color:var(--gold-deep)}
+.fit.no .fitmark{color:var(--gold)}
+.fititem p{font-size:15.5px;color:var(--on-dark);line-height:1.55}
+.fit.no .fititem p{color:var(--muted)}
+.verdict{text-align:center;font-family:var(--display);font-weight:700;font-style:italic;font-size:clamp(19px,5vw,24px);line-height:1.35;color:var(--surface);max-width:580px;margin:36px auto 0}
+.verdict b{color:var(--gold)}
+
+/* ---------- section head ---------- */
+.shead{text-align:center;margin-bottom:34px}
+.shead .eyebrow{margin-bottom:12px}
+.shead h2{font-family:var(--display);font-weight:800;font-size:clamp(27px,6.8vw,38px);line-height:1.12;color:var(--surface)}
+.shead h2 .hl{color:var(--gold)}
+.shead p{color:var(--muted);font-size:16px;max-width:540px;margin:14px auto 0}
+
+/* ---------- deliverables ---------- */
+.deliv{display:grid;gap:14px}
+.dcard{background:var(--panel-2);border:1px solid var(--line);border-radius:18px;padding:22px 22px}
+.dcard .num{font-family:var(--display);font-weight:800;font-size:22px;color:var(--teal);line-height:1}
+.dcard h3{font-family:var(--heading);font-weight:700;font-size:17.5px;color:var(--surface);margin:10px 0 6px}
+.dcard p{font-size:14.5px;color:var(--muted);line-height:1.55}
+
+/* ---------- value / why ---------- */
+.why{background:linear-gradient(165deg,var(--panel) 0%,#0B1413 100%);border:1px solid var(--line);border-radius:26px;padding:40px 28px}
+.why .shead h2{font-size:clamp(25px,6.4vw,34px)}
+.whygrid{display:grid;gap:22px;margin-top:8px}
+.whyitem{display:flex;gap:16px;align-items:flex-start}
+.whyitem .ic{flex:0 0 44px;width:44px;height:44px;border-radius:13px;background:rgba(240,200,130,.12);display:flex;align-items:center;justify-content:center;font-size:22px}
+.whyitem h3{font-family:var(--heading);font-weight:700;font-size:16.5px;color:var(--surface);margin-bottom:4px}
+.whyitem p{font-size:14.5px;color:var(--muted);line-height:1.55}
+
+/* ---------- process ---------- */
+.steps{display:grid;gap:0}
+.step{display:flex;gap:20px;padding:20px 0;border-top:1px solid rgba(255,255,255,.07)}
+.step:first-child{border-top:none}
+.step .sn{flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:var(--gold);color:var(--ink);font-family:var(--display);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,0,0,.4)}
+.step h3{font-family:var(--heading);font-weight:700;font-size:17px;color:var(--surface);margin-bottom:4px;padding-top:9px}
+.step p{font-size:14.5px;color:var(--muted);line-height:1.55}
+
+/* ---------- final cta ---------- */
+.final{background:linear-gradient(165deg,var(--teal-deep) 0%,#0C3B36 100%);border-radius:28px;padding:48px 28px;text-align:center}
+.final h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,7.2vw,40px);line-height:1.1;color:#fff}
+.final h2 .hl{color:var(--gold)}
+.final p{color:rgba(244,242,237,.82);font-size:16px;max-width:520px;margin:18px auto 0}
+.final .cta{background:var(--gold);background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);color:var(--ink);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.final .cta:hover{box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.final .trustline{color:rgba(244,242,237,.78)}
+.final .trustline b{color:#fff}
+
+/* ---------- sticky mobile cta ---------- */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px 16px;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(120%);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.sticky.show{transform:translateY(0)}
+.sticky a{display:block;max-width:560px;margin:0 auto;background:linear-gradient(180deg,#178577 0%,var(--teal-btn) 100%);color:#fff;font-family:var(--heading);font-weight:800;font-size:16px;text-decoration:none;text-align:center;padding:16px;border-radius:14px}
+body{padding-bottom:0}
+
+footer.page{text-align:center;padding:34px 22px 110px;color:var(--muted-2);font-size:13px;font-family:var(--heading)}
+footer.page .fbrand{color:var(--teal);font-weight:700;letter-spacing:.04em;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<div class="topbar wrap"><img src="images/logo.png" alt="Digital Master"></div>
+
+<!-- HERO -->
+<section class="hero wrap">
+  <span class="eyebrow">Gestão de Redes Sociais</span>
+  <h1>Sua empresa precisa aparecer. Mas quem vai <span class="hl">tocar isso</span> todo dia?</h1>
+  <p class="sub">A Digital Master assume sua presença digital de ponta a ponta: estratégia, conteúdo, produção e publicação. Você volta a cuidar do que só você faz: o seu negócio.</p>
+  <a class="cta" href="https://wa.me/5586988894262?text=Oi!%20Quero%20um%20or%C3%A7amento%20de%20Gest%C3%A3o%20de%20Redes%20Sociais" target="_blank" rel="noopener">
+    Solicitar orçamento no WhatsApp
+    <small>Resposta rápida · orçamento sob medida</small>
+  </a>
+  <p class="trustline"><b>Atendimento personalizado</b> · orçamento por projeto · sem fidelidade forçada</p>
+</section>
+
+<!-- STOP / QUALIFY -->
+<section class="wrap">
+  <div class="stopband">
+    <p class="k">Antes de pedir seu orçamento, entenda uma coisa:</p>
+    <h2>Esse serviço <span class="hl">é pra você?</span></h2>
+    <a href="#fit" class="chev" aria-label="Ver se é pra você">&#8595;</a>
+  </div>
+</section>
+
+<!-- FIT -->
+<section class="wrap" id="fit" style="padding-top:28px">
+  <div class="fit yes">
+    <span class="tag">É pra você que:</span>
+    <div class="fititem"><div class="fitmark">&#10003;</div><p>Tem um negócio que funciona, mas sua presença nas redes não acompanha o tamanho dele.</p></div>
+    <div class="fititem"><div class="fitmark">&#10003;</div><p>Sabe que precisa postar com constância, mas não tem tempo nem equipe pra produzir toda semana.</p></div>
+    <div class="fititem"><div class="fitmark">&#10003;</div><p>Está cansado de postar no improviso, sem linha, sem estratégia e sem retorno.</p></div>
+    <div class="fititem"><div class="fitmark">&#10003;</div><p>Quer um time cuidando do conteúdo com padrão de agência, não um estagiário fazendo "o que der".</p></div>
+    <div class="fititem"><div class="fitmark">&#10003;</div><p>Entende que presença digital constante é o que faz o cliente lembrar de você na hora de comprar.</p></div>
+  </div>
+
+  <div class="fit no">
+    <span class="tag">Não é pra você que:</span>
+    <div class="fititem"><div class="fitmark">&#10005;</div><p>Quer viralizar da noite pro dia e acha que uma semana de post resolve anos de ausência.</p></div>
+    <div class="fititem"><div class="fitmark">&#10005;</div><p>Prefere continuar postando no susto, uma vez por mês, quando sobra tempo.</p></div>
+    <div class="fititem"><div class="fitmark">&#10005;</div><p>Não quer envolver ninguém: nem passar informação do negócio, nem aprovar conteúdo, nem acompanhar resultado.</p></div>
+    <div class="fititem"><div class="fitmark">&#10005;</div><p>Busca o preço mais barato do mercado, sem se importar com estratégia, padrão ou constância.</p></div>
+  </div>
+
+  <p class="verdict">Se você se viu na primeira lista, a Digital Master <b>assume suas redes</b> e você para de se preocupar com isso.</p>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="wrap">
+  <div class="shead">
+    <span class="eyebrow">O que está incluso</span>
+    <h2>Uma operação de conteúdo <span class="hl">completa</span></h2>
+    <p>Da estratégia à publicação. Você aprova, a gente executa.</p>
+  </div>
+  <div class="deliv">
+    <div class="dcard"><div class="num">01</div><h3>Calendário editorial mensal</h3><p>Planejamento estratégico do mês inteiro: o que postar, quando e por quê. Nada no improviso.</p></div>
+    <div class="dcard"><div class="num">02</div><h3>Carrosséis, reels e stories</h3><p>Produção completa com copy e design no padrão da sua marca, prontos pra publicar.</p></div>
+    <div class="dcard"><div class="num">03</div><h3>Legendas e hashtags</h3><p>Texto que conversa com seu cliente e termos pensados pra te encontrarem.</p></div>
+    <div class="dcard"><div class="num">04</div><h3>Agendamento e publicação</h3><p>A gente posta na hora certa. Você não precisa lembrar de nada.</p></div>
+    <div class="dcard"><div class="num">05</div><h3>Relatório mensal de desempenho</h3><p>O que funcionou, o que cresceu e pra onde vamos no mês seguinte. Em linguagem de dono, não de técnico.</p></div>
+  </div>
+</section>
+
+<!-- WHY / VALUE -->
+<section class="wrap">
+  <div class="why">
+    <div class="shead" style="margin-bottom:28px">
+      <span class="eyebrow">Por que terceirizar</span>
+      <h2>O custo de "deixar pra depois"</h2>
+    </div>
+    <div class="whygrid">
+      <div class="whyitem"><div class="ic">&#9203;</div><div><h3>Seu tempo vale mais que isso</h3><p>Cada hora pensando em post é uma hora longe de vender, atender e crescer o negócio.</p></div></div>
+      <div class="whyitem"><div class="ic">&#128202;</div><div><h3>Constância é o que converte</h3><p>Quem aparece toda semana é lembrado. Quem some, perde pro concorrente que ficou na frente do cliente.</p></div></div>
+      <div class="whyitem"><div class="ic">&#127919;</div><div><h3>Estratégia, não sorte</h3><p>Conteúdo com linha editorial e intenção de venda, não post solto pra "manter o perfil vivo".</p></div></div>
+      <div class="whyitem"><div class="ic">&#129309;</div><div><h3>Um time, não um freela</h3><p>Copy, design e estratégia trabalhando juntos, com a responsabilidade de uma agência por trás.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Como funciona</span>
+    <h2>Simples pra <span class="hl">você</span>. Trabalhoso pra <span class="hl">gente</span>.</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="sn">1</div><div><h3>Diagnóstico</h3><p>A gente entende seu negócio, seu público e o que você quer alcançar com as redes.</p></div></div>
+    <div class="step"><div class="sn">2</div><div><h3>Estratégia e calendário</h3><p>Montamos a linha editorial e o planejamento do mês. Você aprova antes de rodar.</p></div></div>
+    <div class="step"><div class="sn">3</div><div><h3>Produção e publicação</h3><p>Criamos, você aprova, a gente publica. Tudo no tom e no padrão da sua marca.</p></div></div>
+    <div class="step"><div class="sn">4</div><div><h3>Análise e ajuste</h3><p>Relatório mensal, aprendizado do que deu certo e evolução contínua.</p></div></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="wrap">
+  <div class="final">
+    <h2>Chega de <span class="hl">improvisar</span> as suas redes</h2>
+    <p>Peça um orçamento sem compromisso. Como cada empresa tem um ritmo e um volume diferente, o valor é feito sob medida pro seu caso.</p>
+    <a class="cta" href="https://wa.me/5586988894262?text=Oi!%20Quero%20um%20or%C3%A7amento%20de%20Gest%C3%A3o%20de%20Redes%20Sociais" target="_blank" rel="noopener">
+      Solicitar orçamento no WhatsApp
+      <small>(86) 98889-4262 · resposta rápida</small>
+    </a>
+    <p class="trustline"><b>Atendimento personalizado</b> · orçamento sob medida · sem enrolação</p>
+  </div>
+</section>
+
+<footer class="page">
+  <div class="fbrand">Digital Master</div>
+  Agência de marketing para empresas que querem vender mais.
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky" id="sticky">
+  <a href="https://wa.me/5586988894262?text=Oi!%20Quero%20um%20or%C3%A7amento%20de%20Gest%C3%A3o%20de%20Redes%20Sociais" target="_blank" rel="noopener">Solicitar orçamento no WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  var s=document.getElementById('sticky');
+  function onScroll(){ if(window.scrollY>600){s.classList.add('show');}else{s.classList.remove('show');} }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+})();
+</script>
+
+<!-- anb-maia-footer -->
+<style>
+.anb-maia-footer{box-sizing:border-box;width:100%;margin:0;padding:28px 20px 96px;background:rgba(0,0,0,.04);border-top:1px solid rgba(255,255,255,.08);text-align:center;font-family:inherit;line-height:1.5;color:#8C949D;font-size:13px}
+.anb-maia-footer .anb-maia-brand{font-weight:700;color:#2A9D8F;letter-spacing:.2px;margin-bottom:4px;font-size:14px}
+.anb-maia-footer .anb-maia-sub{opacity:.85;margin-bottom:10px}
+@media print{.anb-maia-footer{display:none}}
+</style>
+<footer class="anb-maia-footer">
+  <div class="anb-maia-brand">Agência no Bolso · Powered by MAIA</div>
+  <div class="anb-maia-sub">Uma agência completa de inteligência artificial</div>
+</footer>
+<!-- /anb-maia-footer -->
+
+</body>
+</html>
