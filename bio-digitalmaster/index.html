@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Master — Agência de IA</title>
+<meta name="description" content="Agência de IA que coloca a inteligência artificial para operar e faturar no negócio do cliente. Solicite um diagnóstico gratuito.">
+<meta property="og:title" content="Digital Master — Agência de IA">
+<meta property="og:description" content="Colocamos a IA para atender, vender e operar no seu negócio. Solicite um diagnóstico gratuito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#F0C882; --gold-deep:#C9971F; --teal:#2A9D8F;
+    --ink:#0F0F0F; --surface:#121212; --card:#1A1A1A; --card-hover:#1F1F1F;
+    --line:rgba(240,200,130,.18);
+    --text:#FFFFFF; --muted:#9A968E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    background:var(--ink); color:var(--text);
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    background-image:radial-gradient(120% 60% at 50% -10%, rgba(42,157,143,.10) 0%, transparent 55%);
+  }
+  .wrap{max-width:480px; margin:0 auto; padding:40px 22px 56px}
+
+  /* HEADER */
+  .brand{display:flex; flex-direction:column; align-items:center; text-align:center; margin-bottom:34px}
+  .logo{width:84px; height:84px; border-radius:22px; object-fit:cover;
+    border:1px solid var(--line); box-shadow:0 10px 24px rgba(0,0,0,.5)}
+  .brand h1{font-family:'Playfair Display',serif; font-weight:700; font-size:1.95rem;
+    letter-spacing:-.01em; margin-top:18px; line-height:1.15}
+  .brand .tag{color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:600;
+    font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; margin-top:8px}
+  .brand p.pos{color:var(--muted); font-size:.98rem; margin-top:14px; max-width:38ch; line-height:1.55}
+
+  /* PRIMARY CTA */
+  .cta-primary{
+    display:flex; align-items:center; gap:14px; width:100%;
+    background:var(--gold); color:var(--ink);
+    border-radius:16px; padding:18px 20px; margin:28px 0 10px;
+    text-decoration:none; font-weight:700; font-size:1.05rem;
+    box-shadow:0 10px 26px rgba(0,0,0,.5);
+    transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s cubic-bezier(.16,1,.3,1);
+  }
+  .cta-primary:hover{transform:translateY(-2px); box-shadow:0 16px 34px rgba(0,0,0,.6)}
+  .cta-primary .ic{font-size:1.3rem; line-height:1}
+  .cta-primary .txt{display:flex; flex-direction:column; gap:1px}
+  .cta-primary .txt small{font-weight:600; font-size:.74rem; color:rgba(15,15,15,.62); letter-spacing:.01em}
+  .cta-primary .arw{margin-left:auto; font-weight:700}
+
+  /* SECTION LABEL */
+  .sec{display:flex; align-items:center; gap:12px; margin:30px 2px 14px}
+  .sec span{font-family:'Montserrat',sans-serif; font-size:.78rem; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+  .sec::after{content:""; flex:1; height:1px; background:var(--line)}
+
+  /* LINK CARDS */
+  .link{
+    display:flex; align-items:center; gap:15px; width:100%;
+    background:var(--card); border:1px solid var(--line); border-radius:15px;
+    padding:16px 18px; margin-bottom:11px; text-decoration:none; color:var(--text);
+    transition:transform .22s cubic-bezier(.16,1,.3,1), border-color .22s ease, background .22s ease;
+  }
+  .link:hover{transform:translateY(-2px); border-color:rgba(240,200,130,.45); background:#1F1F1F}
+  .link .ic{width:40px; height:40px; flex:none; border-radius:11px;
+    display:grid; place-items:center; font-size:1.15rem;
+    background:rgba(42,157,143,.14); color:var(--teal)}
+  .link.gold .ic{background:rgba(240,200,130,.14); color:var(--gold)}
+  .link .body{display:flex; flex-direction:column; gap:2px; min-width:0}
+  .link .body strong{font-weight:700; font-size:1rem; letter-spacing:-.005em}
+  .link .body small{color:var(--muted); font-size:.82rem; font-weight:400; line-height:1.4}
+  .link .arw{margin-left:auto; color:var(--muted); font-size:1rem; flex:none}
+
+  /* FOOTER */
+  footer{text-align:center; margin-top:34px; color:var(--muted); font-size:.78rem;
+    font-family:'Montserrat',sans-serif; letter-spacing:.02em; line-height:1.7}
+  footer .dot{color:var(--gold); margin:0 7px}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="brand">
+      <img class="logo" src="logo.png" alt="Digital Master" width="84" height="84">
+      <h1>Digital Master</h1>
+      <span class="tag">Agência de Inteligência Artificial</span>
+      <p class="pos">Colocamos a IA para operar e faturar dentro do seu negócio: atender, vender e organizar no automático.</p>
+    </header>
+
+    <a class="cta-primary" href="https://wa.me/5586981141438?text=Quero%20um%20diagn%C3%B3stico%20gratuito%20da%20Digital%20Master" target="_blank" rel="noopener">
+      <span class="ic">&#9889;</span>
+      <span class="txt">
+        <span>Diagnóstico gratuito</span>
+        <small>Fale com a agência no WhatsApp</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <div class="sec"><span>Nosso carro-chefe</span></div>
+
+    <a class="link gold" href="https://agencianobolso.com.br" target="_blank" rel="noopener">
+      <span class="ic">&#129302;</span>
+      <span class="body">
+        <strong>Conheça a MaIA</strong>
+        <small>IA de atendimento e vendas 24/7 · planos Start, Pro e Enterprise</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <a class="link" href="https://skill.agencianobolso.com.br" target="_blank" rel="noopener">
+      <span class="ic">&#128218;</span>
+      <span class="body">
+        <strong>Catálogo de skills da MaIA</strong>
+        <small>Tudo que a sua IA sabe fazer, sempre atualizado</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <div class="sec"><span>Serviços da agência</span></div>
+
+    <a class="link" href="https://wa.me/5586981141438?text=Quero%20saber%20sobre%20os%20servi%C3%A7os%20da%20Digital%20Master" target="_blank" rel="noopener">
+      <span class="ic">&#128241;</span>
+      <span class="body">
+        <strong>Gestão de redes + conteúdo</strong>
+        <small>Presença digital inteira: calendário, carrosséis, reels e relatório</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <a class="link" href="https://wa.me/5586981141438?text=Quero%20rodar%20tr%C3%A1fego%20pago%20com%20a%20Digital%20Master" target="_blank" rel="noopener">
+      <span class="ic">&#127919;</span>
+      <span class="body">
+        <strong>Tráfego pago (Meta Ads)</strong>
+        <small>Lead e venda previsíveis: estruturação, criativos e otimização</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <a class="link" href="https://wa.me/5586981141438?text=Quero%20uma%20p%C3%A1gina%20de%20vendas%20com%20a%20Digital%20Master" target="_blank" rel="noopener">
+      <span class="ic">&#128196;</span>
+      <span class="body">
+        <strong>Página de vendas / landing</strong>
+        <small>Copy persuasiva + design feito pra converter</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <a class="link" href="https://wa.me/5586981141438?text=Quero%20prospec%C3%A7%C3%A3o%20ativa%20com%20a%20Digital%20Master" target="_blank" rel="noopener">
+      <span class="ic">&#128269;</span>
+      <span class="body">
+        <strong>Prospecção ativa / SDR</strong>
+        <small>Agenda cheia de reunião sem montar equipe de pré-venda</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <div class="sec"><span>Mais da casa</span></div>
+
+    <a class="link" href="https://instagram.com/masterpointcursos" target="_blank" rel="noopener">
+      <span class="ic">&#127891;</span>
+      <span class="body">
+        <strong>Master Point Cursos</strong>
+        <small>Nossa marca de educação · @masterpointcursos</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <a class="link" href="https://instagram.com/digitalmastermkt" target="_blank" rel="noopener">
+      <span class="ic">&#128247;</span>
+      <span class="body">
+        <strong>Instagram</strong>
+        <small>@digitalmastermkt</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <a class="link" href="https://agencianobolso.com.br" target="_blank" rel="noopener">
+      <span class="ic">&#127760;</span>
+      <span class="body">
+        <strong>Site oficial</strong>
+        <small>agencianobolso.com.br</small>
+      </span>
+      <span class="arw">&rarr;</span>
+    </a>
+
+    <footer>
+      Digital Master <span class="dot">&bull;</span> Agência de IA<br>
+      Torne-se uma pessoa extraordinária
+    </footer>
+  </main>
+</body>
+</html>
