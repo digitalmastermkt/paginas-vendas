@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MAIA | Time de inteligência artificial para clínicas e empresas | Salatiel Batista</title>
+<meta name="description" content="Sua clínica fecha às 18h. A MAIA não fecha. Um time de agentes de inteligência artificial que responde o paciente em segundos, cuida da agenda, do conteúdo e do financeiro. Agende uma demonstração.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sua clínica fecha às 18h. A MAIA não fecha.">
+<meta property="og:description" content="Um time de agentes de inteligência artificial que responde o seu paciente em segundos, 24 horas. Agende uma demonstração de 40 minutos, online.">
+<meta property="og:image" content="https://digitalmastermkt.github.io/paginas-vendas/maia-v2-previa/images/salatiel-hero.webp">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preload" as="image" href="images/salatiel-hero.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0A; --bg2:#111111; --card:#161616; --line:#262626;
+  --text:#F5F5F4; --muted:#B5B5B0; --soft:#8E8E89;
+  --green:#22C55E; --green-hi:#4ADE80; --green-ink:#052E14;
+  --gold:#E0B04B; --red:#F87171;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.6;padding-bottom:84px}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
+.narrow{max-width:720px}
+section{padding:64px 0}
+h1,h2{font-family:'Montserrat','Inter',sans-serif}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:clamp(2.1rem,8vw,3.6rem);font-weight:900}
+h2{font-size:clamp(1.65rem,5.6vw,2.5rem);font-weight:800;margin-bottom:20px}
+h3{font-size:1.15rem;font-weight:700}
+p{color:var(--muted)}
+p+p{margin-top:14px}
+strong{color:var(--text)}
+.gold{color:var(--gold)}
+.green{color:var(--green-hi)}
+.center{text-align:center}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(224,176,75,.4);border-radius:999px;padding:6px 14px;margin-bottom:18px}
+
+/* CTA */
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:16px 28px;border-radius:14px;background:var(--green);color:var(--green-ink);font-weight:800;font-size:1.05rem;text-decoration:none;transition:background-color .2s ease-out,transform .2s ease-out}
+.cta:hover{background:var(--green-hi)}
+.cta:active{transform:translateY(1px)}
+.cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.cta svg{width:20px;height:20px;flex:none}
+.cta-block{width:100%}
+@media(min-width:640px){.cta-block{width:auto}}
+.trust{font-size:.92rem;color:var(--soft);margin-top:14px}
+
+/* HERO */
+.hero{padding:28px 0 56px;background:radial-gradient(ellipse at 70% 0%,rgba(34,197,94,.10) 0%,transparent 60%),var(--bg)}
+.hero-grid{display:grid;gap:36px;align-items:center}
+.hero .sub{font-size:1.05rem;margin-top:16px;margin-bottom:22px}
+.bullets{list-style:none;margin:26px 0 0;display:grid;gap:12px}
+.bullets li{display:flex;gap:12px;color:var(--text);font-size:1rem}
+.bullets svg{width:22px;height:22px;flex:none;color:var(--green);margin-top:2px}
+.hero-visual{position:relative;max-width:420px;margin:0 auto;width:100%}
+.hero-photo{border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--bg2)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.phone{position:relative;margin:-90px 12px 0 auto;max-width:300px;background:#0F1A14;border:1px solid #1F3A2A;border-radius:18px;padding:14px;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.phone-top{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--soft);margin-bottom:10px}
+.phone-top b{color:var(--text);font-size:.95rem}
+.bubble{font-size:.88rem;line-height:1.45;padding:9px 12px;border-radius:12px;margin-top:8px;max-width:92%}
+.bubble small{display:block;font-size:.7rem;color:var(--soft);margin-top:4px;text-align:right}
+.b-in{background:#1E1E1E;color:var(--text)}
+.b-out{background:#14532D;color:#ECFDF3;margin-left:auto}
+.sim{display:inline-block;margin-top:10px;font-size:.68rem;letter-spacing:.04em;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+@media(min-width:900px){
+  .hero{padding:56px 0 80px}
+  .hero-grid{grid-template-columns:1.1fr .9fr}
+  .phone{margin:-120px -24px 0 auto}
+}
+
+/* top bar */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.logo{font-weight:900;letter-spacing:.06em;font-size:1.05rem}
+.logo span{color:var(--green)}
+.toplink{display:inline-flex;align-items:center;min-height:44px;font-size:.9rem;font-weight:600;color:var(--text);text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:5px}
+
+/* ESPERA */
+.stop{background:#000}
+.stop p{font-size:1.12rem}
+.clock{font-family:'Montserrat','Inter',sans-serif;font-variant-numeric:tabular-nums;font-weight:900;color:var(--green-hi);font-size:clamp(3rem,14vw,5.5rem);line-height:1;margin-bottom:18px;letter-spacing:-.03em}
+.quote{margin-top:28px;padding:22px;border:1px solid rgba(224,176,75,.45);background:var(--bg2);border-radius:14px;color:var(--text);font-size:1.15rem;font-weight:700;line-height:1.45}
+
+/* cards */
+.grid{display:grid;gap:16px}
+@media(min-width:768px){.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.card h3{margin-bottom:10px}
+.card h3.gold{color:var(--gold)}
+.tag{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);display:block;margin-bottom:6px}
+.close-line{margin-top:28px;font-size:1.25rem;font-weight:800;color:var(--text);text-align:center}
+.alt{background:var(--bg2)}
+
+/* mitos */
+.myth{display:grid;gap:10px}
+.myth .false{display:flex;gap:10px;color:var(--soft);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+.myth .true{display:flex;gap:10px;color:var(--muted)}
+.myth svg{width:20px;height:20px;flex:none;margin-top:3px}
+.ic-x{color:var(--red)} .ic-ok{color:var(--green)}
+
+/* antigo x novo */
+.vs{display:grid;gap:16px}
+@media(min-width:768px){.vs{grid-template-columns:1fr 1fr}}
+.vs ul{list-style:none;display:grid;gap:12px;margin-top:14px}
+.vs li{display:flex;gap:10px;font-size:.98rem}
+.vs li svg{width:20px;height:20px;flex:none;margin-top:3px}
+.old li{color:var(--soft)}
+.new{border-color:rgba(34,197,94,.45)}
+.new li{color:var(--text)}
+
+/* passos */
+.steps{list-style:none;display:grid;gap:12px;counter-reset:s;margin:24px 0}
+@media(min-width:900px){.steps.row{grid-template-columns:repeat(4,1fr)}}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 18px 60px;position:relative;color:var(--muted)}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:16px;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#1A1405;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.steps li strong{display:block;margin-bottom:2px}
+
+/* time */
+.team{display:grid;gap:12px}
+@media(min-width:640px){.team{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.team{grid-template-columns:repeat(3,1fr)}}
+.agent{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.agent .who{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.av{width:42px;height:42px;border-radius:50%;background:#1F2A22;border:1px solid #2E4535;color:var(--green-hi);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex:none}
+.agent h3{font-size:1rem}
+.agent .names{font-size:.85rem;color:var(--gold);font-weight:600}
+.agent p{font-size:.95rem}
+.note{margin-top:20px;font-size:.95rem;color:var(--soft);text-align:center}
+
+/* ganhos */
+.gains{list-style:none;display:grid;gap:14px}
+.gains li{display:flex;gap:12px;color:var(--muted)}
+.gains svg{width:22px;height:22px;color:var(--gold);flex:none;margin-top:2px}
+.big{margin-top:30px;font-size:clamp(1.35rem,4.6vw,1.9rem);font-weight:900;color:var(--green-hi);text-align:center;line-height:1.25}
+
+/* nao e pra voce */
+.notfor{border:1px solid rgba(248,113,113,.35);background:#140D0D;border-radius:var(--radius);padding:26px}
+.notfor ul{list-style:none;display:grid;gap:14px;margin-top:6px}
+.notfor li{display:flex;gap:12px;color:var(--muted)}
+.notfor li svg{width:20px;height:20px;flex:none;color:var(--red);margin-top:3px}
+
+/* autoridade */
+.auth{display:grid;gap:32px;align-items:start}
+@media(min-width:900px){.auth{grid-template-columns:.8fr 1.2fr}}
+.auth-photo{border-radius:20px;overflow:hidden;aspect-ratio:4/5;max-width:420px;margin:0 auto;width:100%}
+.auth-photo img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+.timeline{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.timeline span{font-size:.8rem;font-weight:600;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.proofs{list-style:none;display:grid;gap:12px;margin:18px 0}
+.proofs li{position:relative;padding-left:28px;color:var(--muted)}
+.proofs li::before{content:"";position:absolute;left:4px;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--green)}
+.sign{margin-top:22px;color:var(--text);font-weight:800}
+.sign em{display:block;font-style:normal;font-weight:500;color:var(--gold)}
+
+/* caso */
+.case{max-width:720px;margin:0 auto;border:1px solid rgba(224,176,75,.45)}
+.case .who{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.case svg{width:26px;height:26px;color:var(--gold)}
+
+/* demo */
+.demo{border:1px solid rgba(224,176,75,.6);border-radius:22px;padding:28px 22px;background:var(--bg2)}
+@media(min-width:768px){.demo{padding:44px}}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
+.facts span{display:inline-flex;gap:8px;align-items:center;font-size:.9rem;font-weight:600;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.facts svg{width:16px;height:16px;color:var(--green)}
+
+/* final */
+.final{background:radial-gradient(ellipse at 50% 100%,rgba(34,197,94,.10) 0%,transparent 65%),#000;text-align:center}
+.final .clock{font-size:clamp(2.6rem,12vw,4.5rem);opacity:.9}
+
+/* footer */
+.site-footer{border-top:1px solid var(--line);padding:36px 0 28px;text-align:center;font-size:.88rem;color:var(--soft)}
+.site-footer .brand{color:var(--text);font-weight:800;margin-bottom:4px}
+.site-footer p{color:var(--soft)}
+.site-footer a{color:var(--muted)}
+
+/* sticky mobile */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(17,17,17,.96);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.sticky.show{transform:translateY(0)}
+.sticky .cta{width:100%}
+@media(min-width:900px){.sticky{display:none}body{padding-bottom:0}}
+
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="logo">MA<span>I</span>A</div>
+      <a class="toplink" href="#demonstracao">Como funciona a demonstração</a>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Time de inteligência artificial para clínicas e empresas</span>
+        <h1>Sua clínica fecha às 18h. <span class="green">A&nbsp;MAIA não fecha.</span></h1>
+        <p class="sub">Um time de agentes de inteligência artificial que responde o seu paciente em segundos, confirma, lembra e remarca a agenda, e ainda cuida do conteúdo, do financeiro e da gestão. Você pede por áudio. A MAIA delega, o time executa, ela confere e te entrega.</p>
+        
+        <a class="cta cta-block" href="https://agendar.agencianobolso.com.br/?p=pagina-maia" data-cta="hero">Agendar demonstração <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="trust">Demonstração individual, de 40 minutos, online e sem compromisso. Você vê a MAIA funcionando antes de decidir qualquer coisa.</p>
+        <ul class="bullets">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Paciente respondido em segundos, inclusive à meia-noite e no fim de semana.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Lembrete 24 horas, 1 hora e 15 minutos antes, com remarcação na hora. A vaga volta pra agenda.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Você não precisa entender de tecnologia. Se você sabe gravar um áudio, você sabe usar.</span></li>
+        </ul>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo"><img src="images/salatiel-hero.webp" alt="Salatiel Batista segurando um tablet com gráficos" width="800" height="1200" fetchpriority="high"></div>
+        <div class="phone" role="img" aria-label="Conversa ilustrativa no WhatsApp às 23h52: o paciente pergunta por horário e a MAIA responde na hora com três opções">
+          <div class="phone-top"><b>MAIA</b><span>23:52</span></div>
+          <div class="bubble b-in">Oi, boa noite. Vocês têm horário pra essa semana?<small>23:52</small></div>
+          <div class="bubble b-out">Boa noite! Tenho sim. Quinta às 9h, quinta às 14h30 ou sexta às 10h. Qual fica melhor pra você?<small>23:52</small></div>
+          <span class="sim">Simulação ilustrativa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ESPERA UM SEGUNDO -->
+<section class="stop">
+  <div class="wrap narrow center">
+    <div class="clock" aria-hidden="true">23:52</div>
+    <h2>Espera um segundo. Olha a hora.</h2>
+    <div style="text-align:left">
+      <p>Era quase meia-noite. Ninguém da minha equipe estava acordado.</p>
+      <p>Eu peguei o celular e mandei uma mensagem pra MAIA como se eu fosse um paciente.</p>
+      <p>Em segundos ela respondeu. Entendeu o que eu queria e já me mostrou os horários livres da agenda.</p>
+      <p><strong>Agora me responde com sinceridade: se essa mensagem chegasse na sua clínica hoje, à meia-noite, quem ia responder?</strong></p>
+      <p>Porque o paciente que chama no WhatsApp está pesquisando. Se ele não tem resposta na hora, ele vai pro seu concorrente. Não é que ele não queria a sua clínica. É que alguém respondeu primeiro.</p>
+      <div class="quote">Cada mensagem sem resposta é um paciente que você pagou pra atrair e entregou de graça pro concorrente.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 CENARIOS -->
+<section>
+  <div class="wrap">
+    <h2 class="center">Talvez você esteja vivendo um destes três cenários agora.</h2>
+    <div class="grid g3" style="margin-top:28px">
+      <article class="card">
+        <span class="tag">Cenário 1</span>
+        <h3 class="gold">A cadeira vazia</h3>
+        <p>O paciente marcou. O horário ficou reservado. Você recusou outro paciente por causa dele. E ele não veio. Na maioria das vezes não foi má vontade: ele simplesmente esqueceu. Ninguém lembrou ele a tempo, ninguém ofereceu remarcar. Cadeira vazia é dinheiro que não volta.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Cenário 2</span>
+        <h3 class="gold">O buraco negro do WhatsApp</h3>
+        <p>A clínica fecha às 18h. A mensagem chega às 19h, às 21h, às 23h. Alguém responde no outro dia às 8h. São 12, às vezes 16 horas sem resposta na primeira mensagem. E o pior: você pagou anúncio pra esse lead chegar. Ele abriu a conversa, esfriou, sumiu. E ninguém foi atrás dele.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Cenário 3</span>
+        <h3 class="gold">Você abriu uma clínica ou comprou um emprego?</h3>
+        <p>Você é a secretária, o gestor, o vendedor, o financeiro e ainda tem que gravar conteúdo. Quando finalmente treina alguém, a pessoa cresce e vai embora, e o processo volta pro zero. O dia continua tendo 24 horas e a clínica não sai do lugar. Você virou empresidiário do próprio negócio.</p>
+      </article>
+    </div>
+    <p class="close-line">Isso não é falta de esforço. É falta de estrutura.</p>
+  </div>
+</section>
+
+<!-- MITOS -->
+<section class="alt">
+  <div class="wrap narrow">
+    <h2>As mentiras que te contaram sobre inteligência artificial na sua empresa.</h2>
+    <div class="grid" style="margin-top:24px">
+      <div class="card myth">
+        <div class="false"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>"IA no atendimento é aquele robô do digite 1, digite 2."</span></div>
+        <div class="true"><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Verdade:</strong> aquilo é chatbot de menu, e ele trava quem só queria marcar uma consulta. A MAIA entende o que o paciente escreveu, conversa como gente e resolve: marca, remarca e cancela.</span></div>
+      </div>
+      <div class="card myth">
+        <div class="false"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>"Eu preciso entender de tecnologia pra usar isso."</span></div>
+        <div class="true"><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Verdade:</strong> você não precisa saber o que é prompt. Você pede pelo WhatsApp ou pelo Telegram, por texto ou por áudio. Tem MAIA rodando em empresa do agro onde a operação inteira é feita por áudio. Se você sabe falar, você consegue usar.</span></div>
+      </div>
+      <div class="card myth">
+        <div class="false"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>"IA vai substituir a minha equipe."</span></div>
+        <div class="true"><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Verdade:</strong> a MAIA ajuda quem está na sua equipe. Ela é treinada uma vez, fica disponível 24 horas, 7 dias por semana, e o conhecimento do seu negócio não vai embora quando alguém pede demissão. Sua equipe fica livre pra cuidar do paciente que está na frente dela.</span></div>
+      </div>
+      <div class="card myth">
+        <div class="false"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>"Isso é coisa de empresa grande, de capital."</span></div>
+        <div class="true"><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Verdade:</strong> eu opero o meu negócio com a MAIA a partir de Castelo do Piauí. O que manda não é o tamanho da sua empresa. É você decidir parar de fazer tudo no braço.</span></div>
+      </div>
+      <div class="card myth">
+        <div class="false"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>"Então a IA vai fazer o papel do meu contador e do meu advogado."</span></div>
+        <div class="true"><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Verdade:</strong> não vai, e eu não vou te prometer isso. Ela organiza os números, mostra regime tributário, alíquota efetiva e Fator R, adianta contratos. Você chega na reunião com o contador e com o advogado com tudo na mão, e eles trabalham melhor.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANTIGO x NOVO -->
+<section>
+  <div class="wrap">
+    <h2 class="center">Você tem duas opções.</h2>
+    <div class="vs" style="margin-top:26px">
+      <div class="card old">
+        <h3>Caminho antigo: continuar no braço</h3>
+        <ul>
+          <li><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Secretária confirmando paciente um por um</li>
+          <li><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Mensagem da noite respondida às 8h do dia seguinte</li>
+          <li><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Lead que chegou pelo anúncio esfria e some</li>
+          <li><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Paciente falta e a vaga fica perdida</li>
+          <li><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Mensalidade de sistema que você nunca vai ter</li>
+          <li><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Financeiro na planilha, tomando a sua noite</li>
+          <li><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Instagram parado porque não sobra tempo</li>
+          <li><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Treinou, a pessoa saiu, começa tudo de novo</li>
+          <li><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Você apagando incêndio o dia inteiro</li>
+        </ul>
+      </div>
+      <div class="card new">
+        <h3 class="green">Caminho novo: colocar o time pra operar</h3>
+        <ul>
+          <li><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Confirmação e lembrete automáticos 24h, 1h e 15 minutos antes</li>
+          <li><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Resposta em segundos, a qualquer hora</li>
+          <li><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Follow-up que vai atrás de quem parou de responder</li>
+          <li><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Paciente remarca na hora e a vaga volta pra agenda</li>
+          <li><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ferramenta construída sob medida, que passa a ser sua</li>
+          <li><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Você manda o comprovante e escreve "lança no ERP". Pronto</li>
+          <li><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Conteúdo criado, editado e postado pelo time</li>
+          <li><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Time treinado uma vez, disponível 24 horas, 7 dias</li>
+          <li><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Você liderando o negócio</li>
+        </ul>
+      </div>
+    </div>
+    <p class="close-line">A decisão é sua. Qual caminho você escolhe?</p>
+    <div class="center" style="margin-top:20px"><a class="cta cta-block" href="https://agendar.agencianobolso.com.br/?p=pagina-maia" data-cta="vs">Agendar demonstração <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- O QUE A MAIA FAZ -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="center">Você conversa com uma só. Ela coordena um time inteiro.</h2>
+    <p class="center" style="max-width:720px;margin:0 auto">A MAIA não é um chatbot. Ela é a orquestradora de um time de agentes especialistas, cada um cuidando de uma área do seu negócio. Você manda um áudio dizendo o que quer. Ela entende, passa pro especialista certo, ele executa, ela confere e te entrega pronto.</p>
+    <ol class="steps row">
+      <li><strong>Você pede.</strong>Por áudio ou texto, no WhatsApp ou no Telegram.</li>
+      <li><strong>A MAIA delega.</strong>Ela sabe qual especialista resolve aquilo.</li>
+      <li><strong>O especialista executa.</strong>Atendimento, agenda, arte, campanha, lançamento financeiro.</li>
+      <li><strong>A MAIA confere e te entrega.</strong>Você só aprova.</li>
+    </ol>
+    <div class="team">
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Li</div><div><h3>Atendimento e agenda</h3><div class="names">Lis</div></div></div><p>Responde o paciente em segundos, 24 horas, no tom da sua clínica. Marca, remarca e cancela. Manda lembrete 24 horas, 1 hora e 15 minutos antes, e se o paciente não puder vir, oferece outro horário na hora.</p></div>
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Ev</div><div><h3>Pós-atendimento e relacionamento</h3><div class="names">Eva</div></div></div><p>Boas-vindas, reativação de paciente sumido, pesquisa de satisfação e follow-up de quem perguntou e não marcou.</p></div>
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Th</div><div><h3>Conteúdo e Instagram</h3><div class="names">Théo e Bia</div></div></div><p>Linha editorial, roteiros, legendas, artes e vídeos. Eu pedi a arte de um evento por áudio e em três minutos ela estava pronta. Pedi um ajuste, mais dois minutos.</p></div>
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Ra</div><div><h3>Tráfego pago</h3><div class="names">Ravi</div></div></div><p>Sobe a campanha no Meta, acompanha os números e te avisa o que precisa ajustar ou pausar.</p></div>
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Lé</div><div><h3>Sites, sistemas e integrações</h3><div class="names">Léo e Boris</div></div></div><p>Página, link da bio, agenda online. Eu pagava todo mês por um sistema de agendamento; pedi pra IA estudar como ele funcionava e construir o nosso. Hoje a agenda funciona pelo site e pelo WhatsApp.</p></div>
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Má</div><div><h3>Financeiro</h3><div class="names">Márcia</div></div></div><p>Você paga uma conta, manda o comprovante e escreve "lança no ERP". O lançamento entra no sistema. Contas a pagar, a receber e fluxo de caixa sem planilha.</p></div>
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Ma</div><div><h3>Tributário</h3><div class="names">Maria</div></div></div><p>Mostra o seu regime, a alíquota efetiva e o Fator R, e acompanha o que muda com a reforma tributária. Não substitui o contador: deixa você chegar na reunião com os números na mão.</p></div>
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Al</div><div><h3>Jurídico</h3><div class="names">Aline</div></div></div><p>Apoio em contratos e registro de marca, acelerando o que hoje fica parado. Não substitui o advogado.</p></div>
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Ge</div><div><h3>RH</h3><div class="names">Geane</div></div></div><p>Triagem, processos e organização da equipe, pra que o conhecimento da clínica não vá embora com quem sai.</p></div>
+      <div class="agent"><div class="who"><div class="av" aria-hidden="true">Ni</div><div><h3>Operação e projetos</h3><div class="names">Nina e Caio</div></div></div><p>Prazos, entregas, prioridades e acompanhamento, pra nada importante cair no esquecimento.</p></div>
+    </div>
+    <p class="note">O time e o escopo de cada agente são desenhados para o tamanho e o momento do seu negócio. É isso que a gente define juntos na demonstração.</p>
+  </div>
+</section>
+
+<!-- O QUE VOCE GANHA -->
+<section>
+  <div class="wrap narrow">
+    <h2>O que sai da sua mesa e o que volta pra você.</h2>
+    <ul class="gains">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Agenda mais protegida.</strong> O paciente é lembrado, confirma ou remarca, e a vaga não fica vazia.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Paciente respondido na hora.</strong> Não às 8h do dia seguinte, quando ele já marcou em outro lugar.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>O lead que você pagou pra atrair não esfria.</strong> Alguém vai atrás dele.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Suas noites de volta.</strong> Financeiro em dia sem você digitar valor por valor.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Instagram ativo sem você parar a clínica pra produzir.</strong></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Processo que não vai embora pela porta</strong> quando alguém da equipe sai.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Números na mão pra decidir</strong>, e pra conversar com o seu contador.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Tempo pra ser dono</strong>, não o funcionário mais sobrecarregado da própria clínica.</span></li>
+    </ul>
+    <p class="big">Dono de clínica precisa de time, não de mais tarefa.</p>
+  </div>
+</section>
+
+<!-- NAO E PRA VOCE -->
+<section class="alt">
+  <div class="wrap narrow">
+    <div class="notfor">
+      <h2>Vou ser direto: a MAIA não é pra você se...</h2>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Você procura fórmula mágica e não quer participar da implantação. A MAIA aprende o seu negócio com você. Sem as suas informações, ela não trabalha bem.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Você quer só um robozinho barato de menu pra dizer que tem automação.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Você acha que tudo bem o paciente esperar até amanhã pra ter resposta.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Você espera que a IA substitua o seu contador, o seu advogado ou o profissional que atende o paciente.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Você não está disposto a mudar o jeito que a sua clínica funciona hoje.</span></li>
+      </ul>
+      <p style="margin-top:20px;color:var(--text)">Agora, se você está cansado de fazer tudo no braço e quer colocar um time pra operar, continua lendo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AUTORIDADE -->
+<section>
+  <div class="wrap">
+    <div class="auth">
+      <div class="auth-photo"><img src="images/salatiel-autoridade.webp" alt="Salatiel Batista de terno, braços cruzados, em um escritório" width="1000" height="1339" loading="lazy"></div>
+      <div>
+        <h2>Eu não estou te vendendo uma teoria. Eu uso isso todo dia.</h2>
+        <div class="timeline" aria-label="Linha do tempo"><span>2016</span><span>Agência com 10 pessoas</span><span>O desafio da Raquel</span><span>Agência no Bolso e a MAIA</span></div>
+        <p>Eu sou o Salatiel Batista. Desde 2016 eu ajudo empresários a vender mais e organizar o negócio com o digital, e hoje com inteligência artificial.</p>
+        <p>A gente tinha uma agência com 10 pessoas. Um dia a Raquel me fez um desafio: criar agentes de inteligência artificial que trabalhassem como uma equipe de verdade. Foi assim que nasceu a Agência no Bolso e a MAIA.</p>
+        <p>E eu sou o primeiro cliente dela. Olha o que acontece no meu próprio negócio:</p>
+        <ul class="proofs">
+          <li><strong>Desde 16 de maio eu não posto nada manualmente no meu Instagram.</strong> Todo o conteúdo foi a MAIA que criou, editou e postou, até vídeo com o meu clone.</li>
+          <li><strong>O evento Clínica Cheia foi montado inteiro pelo time da MAIA.</strong> Página, anúncio no Meta, convites, disparos, lembretes e artes.</li>
+          <li><strong>A arte do evento ficou pronta em três minutos</strong>, pedida por áudio.</li>
+          <li><strong>Eu paguei um Pix, mandei o comprovante e ela lançou no ERP.</strong> Na hora.</li>
+          <li><strong>A agenda que eu pagava todo mês virou um sistema nosso</strong>, feito pela IA.</li>
+        </ul>
+        <p>E eu faço tudo isso de Castelo do Piauí. Se funciona aqui, funciona na sua clínica.</p>
+        <p class="sign">Salatiel Batista<em>Torne-se uma pessoa extraordinária.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASO REAL -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="center">Quem já colocou o time pra operar.</h2>
+    <article class="card case" style="margin-top:24px">
+      <div class="who"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg><span class="tag" style="margin:0">Caso real | Agro</span></div>
+      <p style="color:var(--text);font-size:1.08rem">Tem MAIA rodando em empresa do agro onde boa parte da equipe tem pouca familiaridade com leitura e escrita. A operação inteira acontece por áudio. Ninguém precisou aprender tecnologia. Precisou só falar.</p>
+    </article>
+  </div>
+</section>
+
+<!-- DEMONSTRACAO -->
+<section id="demonstracao">
+  <div class="wrap narrow">
+    <div class="demo">
+      <h2>Veja a MAIA funcionando no seu caso antes de decidir qualquer coisa.</h2>
+      <p>Aqui não tem pacote de prateleira. Cada clínica tem uma agenda, um volume de mensagens, uma equipe e um gargalo diferente. Por isso o primeiro passo é uma demonstração individual.</p>
+      <div class="facts">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>40 minutos</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Online, por vídeo</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sem compromisso</span>
+      </div>
+      <ol class="steps">
+        <li><strong>Você agenda o horário</strong>no botão abaixo.</li>
+        <li><strong>A gente conversa sobre o seu negócio:</strong>onde você perde paciente, onde perde tempo, o que hoje depende só de você.</li>
+        <li><strong>Você vê a MAIA funcionando ao vivo,</strong>respondendo, agendando e executando.</li>
+        <li><strong>Você recebe o desenho da implantação</strong>pensado pro seu caso e decide com calma.</li>
+      </ol>
+      <a class="cta cta-block" href="https://agendar.agencianobolso.com.br/?p=pagina-maia" data-cta="demo">Agendar demonstração <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="trust">Individual, sem compromisso e sem pressão. Se não fizer sentido pro seu negócio, a gente vai ser o primeiro a te dizer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final">
+  <div class="wrap narrow">
+    <div class="clock" aria-hidden="true">23:52</div>
+    <h2>Hoje à noite alguém vai mandar mensagem pra sua clínica.</h2>
+    <p><strong>A pergunta é se vai ter alguém pra responder.</strong></p>
+    <p>Você pode continuar no braço: secretária confirmando um por um, lead respondido horas depois, você apagando incêndio.</p>
+    <p>Ou pode colocar o time pra operar: confirma, lembra, responde em segundos e remarca, enquanto você cuida do que só você faz.</p>
+    <p>Agenda a demonstração e vê com os seus olhos.</p>
+    <div style="margin-top:26px"><a class="cta cta-block" href="https://agendar.agencianobolso.com.br/?p=pagina-maia" data-cta="final">Agendar demonstração <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <p class="sign" style="margin-top:30px">Movimento gera resultado.<em>Salatiel Batista</em></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="brand">MAIA | Agência no Bolso</p>
+    <p>AGÊNCIA NO BOLSO INOVA SIMPLES (I.S.) · CNPJ 63.598.117/0001-39</p>
+    <p>Contato: <a href="https://wa.me/5586981141438">(86) 98114-1438</a> · @salatielbatistaoficial</p>
+    <p style="margin-top:10px;font-size:.8rem">© 2026 Agência no Bolso. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a class="cta" href="https://agendar.agencianobolso.com.br/?p=pagina-maia" data-cta="sticky">Agendar demonstração</a></div>
+
+<script>
+(function(){
+  var s=document.getElementById('sticky'),h=document.querySelector('.hero .cta');
+  if(!('IntersectionObserver' in window)){s.classList.add('show');return;}
+  new IntersectionObserver(function(e){s.classList.toggle('show',!e[0].isIntersecting && e[0].boundingClientRect.top<0);},{threshold:0}).observe(h);
+})();
+</script>
+
+<!-- anb-maia-footer -->
+<style>
+.anb-maia-footer{box-sizing:border-box;width:100%;margin:0;padding:28px 20px;background:rgba(0,0,0,.04);border-top:1px solid rgba(0,0,0,.08);text-align:center;font-family:inherit;line-height:1.5;color:#5a6472;font-size:13px}
+.anb-maia-footer .anb-maia-brand{font-weight:700;color:#0e7c86;letter-spacing:.2px;margin-bottom:4px;font-size:14px}
+.anb-maia-footer .anb-maia-sub{opacity:.85;margin-bottom:10px}
+@media print{.anb-maia-footer{display:none}}
+/* ajuste de contraste para fundo escuro */
+.anb-maia-footer{background:#0A0A0A;border-top:1px solid #262626;color:#B5B5B0}
+.anb-maia-footer .anb-maia-brand{color:#E0B04B}
+.anb-maia-footer a{color:inherit;text-decoration:none}
+</style>
+<footer class="anb-maia-footer">
+  <div class="anb-maia-brand"><a href="https://agencianobolso.com.br">Agência no Bolso · Powered by MAIA</a></div>
+  <div class="anb-maia-sub">Uma agência completa de inteligência artificial</div>
+</footer>
+<!-- /anb-maia-footer -->
+</body>
+</html>
